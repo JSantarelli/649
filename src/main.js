@@ -31,6 +31,7 @@ const bloomPass = new UnrealBloomPass(
   0.4,    
   0.85    
 );
+
 composer.addPass(bloomPass);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -44,27 +45,26 @@ const textures = {
   water: null
 };
 
-// Configuration for island height
-const ISLAND_HEIGHT = .5; // Uniform height for all islands
+const ISLAND_HEIGHT = .5; 
 
 let dateRange = {
   startDate: new Date(1982, 3, 2), 
-  endDate: new Date(1982, 5, 14),  
+  endDate: new Date(1982, 6, 8),  
   minDate: new Date(1982, 3, 2),
   maxDate: new Date(1982, 5, 14),
   currentStart: new Date(1982, 3, 2),
-  currentEnd: new Date(1982, 5, 14)
+  currentEnd: new Date(1982, 6, 8)
 };
 
 let globalBounds = null;
 let eventosData = [];
 
-// Average age tracking
+
 let ageTracker = {
   totalAge: 0,
   casualtyCount: 0,
   averageAge: 0,
-  ageHistory: [] // Track changes over time
+  ageHistory: [] 
 };
 
 const datasets = {
@@ -107,7 +107,15 @@ const datasets = {
     group: new THREE.Group(),
     visible: true,
     allMarkers: []
-  }
+  },
+  pnc: {
+    file: 'fallecidosContinente.geojson',
+    color: 0x634eff,
+    name: 'Continente',
+    group: new THREE.Group(),
+    visible: true,
+    allMarkers: []
+  },
 };
 
 let malvinasGroup = new THREE.Group();
@@ -270,11 +278,10 @@ function calculateAverageAge() {
   
   const averageAge = casualtyCount > 0 ? totalAge / casualtyCount : 0;
   
-  // Calculate additional statistics
   const minAge = ages.length > 0 ? Math.min(...ages) : 0;
   const maxAge = ages.length > 0 ? Math.max(...ages) : 0;
   
-  // Calculate median age
+  
   const sortedAges = ages.sort((a, b) => a - b);
   const medianAge = sortedAges.length > 0 
     ? sortedAges.length % 2 === 0 
@@ -351,7 +358,7 @@ function updateMarkersVisibility() {
   });
   
   updateTotalCount(totalVisible);
-  updateAgeDisplay(); // Update average age when visibility changes
+  updateAgeDisplay(); 
   updateEventsPanel();
 }
 
@@ -359,27 +366,25 @@ function updateEventsPanel() {
   const eventsContainer = document.getElementById('events-container');
   if (!eventsContainer) return;
 
-  // Filter events within current date range
+  
   const filteredEvents = eventosData.filter(evento => {
     return isDateInRange(evento.fechaInicio, dateRange.currentStart, dateRange.currentEnd);
   });
-
-  // Sort events by date
+  
   const sortedEvents = filteredEvents.sort((a, b) => {
     const dateA = parseDate(a.fechaInicio);
     const dateB = parseDate(b.fechaInicio);
     return dateA - dateB;
   });
 
-  // Clear existing content
+  
   eventsContainer.innerHTML = '';
 
   if (sortedEvents.length === 0) {
     eventsContainer.innerHTML = '<div style="color: #999; font-size: 12px; padding: 10px;">No hay eventos en el rango seleccionado</div>';
     return;
   }
-
-  // Add events to container
+  
   sortedEvents.forEach(evento => {
     const eventDiv = document.createElement('div');
     eventDiv.style.cssText = `
@@ -621,7 +626,6 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   
   shape.holes = holes;
   
-  // Create extruded geometry instead of flat shape
   const extrudeSettings = {
     depth: ISLAND_HEIGHT,
     bevelEnabled: false
@@ -629,12 +633,12 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   
   const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
   
-  // Generate UV coordinates for the extruded geometry
+  
   if (textures.terrain) {
     const positions = geometry.attributes.position;
     const uvs = [];
     
-    // Calculate bounds for UV mapping
+    
     let minX = Infinity, maxX = -Infinity;
     let minY = Infinity, maxY = -Infinity;
     
@@ -647,16 +651,16 @@ function createPolygonMesh(coordinates, bounds, group, id) {
       maxY = Math.max(maxY, y);
     }
     
-    // Generate UV coordinates
+    
     for (let i = 0; i < positions.count; i++) {
       const x = positions.getX(i);
       const y = positions.getY(i);
       
-      // Map to 0-1 range
+      
       const u = (x + 50) / 100; 
       const v = (y + 50) / 100; 
       
-      // Clamp values
+      
       const clampedU = Math.max(0, Math.min(1, u));
       const clampedV = Math.max(0, Math.min(1, v));
       
@@ -666,7 +670,6 @@ function createPolygonMesh(coordinates, bounds, group, id) {
     geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
   }
   
-  // Create terrain material
   let terrainMaterial;
   if (textures.terrain) {
     terrainMaterial = new THREE.MeshLambertMaterial({ 
@@ -684,13 +687,13 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   
   const terrainMesh = new THREE.Mesh(geometry, terrainMaterial);
   terrainMesh.rotation.x = -Math.PI / 2;
-  terrainMesh.position.y = 0; // Base of the island at y=0
+  terrainMesh.position.y = 0; 
   terrainMesh.receiveShadow = true;
-  terrainMesh.castShadow = true; // Islands now cast shadows
+  terrainMesh.castShadow = true; 
   terrainMesh.name = `terrain_${id}`;
   group.add(terrainMesh);
   
-  // Create wireframe edges for the extruded shape
+  
   const edgesGeometry = new THREE.EdgesGeometry(geometry);
   const edgesMaterial = new THREE.LineBasicMaterial({ 
     color: 0x2c3e50,
@@ -702,7 +705,7 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   edges.name = `edges_${id}`;
   group.add(edges);
   
-  // Create water plane for the first polygon only
+  
   if (coordinates.length === 1) { 
     createWaterPlane(bounds, group);
   }
@@ -749,7 +752,7 @@ function createMarkers(geojson, color, datasetKey) {
   let positionDebug = [];
   
   geojson.features.forEach((feature, index) => {
-    // Normalize dates in the feature
+    
     feature = normalizeFeatureDates(feature);
     
     if (feature.geometry && feature.geometry.type === 'Point') {
@@ -766,7 +769,7 @@ function createMarkers(geojson, color, datasetKey) {
       
       const pos = latLonToXY(lat, lon, globalBounds);
       
-      // Create marker geometry
+      
       const geometry = new THREE.CylinderGeometry(0.1, 0.1, height, 8);
       const material = new THREE.MeshBasicMaterial({ 
         color: color,
@@ -777,10 +780,9 @@ function createMarkers(geojson, color, datasetKey) {
       });
       
       const marker = new THREE.Mesh(geometry, material);
-      // Position markers on top of the island height
+      
       marker.position.set(pos.x, ISLAND_HEIGHT + (height / 2), -pos.y);
       
-      // Create glow effect
       const glowGeometry = new THREE.CylinderGeometry(0.15, 0.15, height, 8);
       const glowMaterial = new THREE.MeshBasicMaterial({
         color: color,
@@ -807,7 +809,7 @@ function createMarkers(geojson, color, datasetKey) {
         datasetName: group.name || 'unknown'
       };
       
-      // Store marker references
+      
       datasets[datasetKey].allMarkers.push({
         marker: marker,
         glowMarker: glowMarker,
@@ -844,7 +846,7 @@ async function loadEventosData() {
     }
     const data = await response.json();
     
-    // Normalize event dates
+    
     eventosData = data.map(evento => ({
       ...evento,
       fecha: convertISO8601ToDateString(evento.fechaInicio)
@@ -862,23 +864,23 @@ async function init() {
   try {
     showLoadingIndicator();
     
-    // Load textures
+    
     await loadTextures();
     
-    // Load events data
+    
     await loadEventosData();
     
-    // Load and process Malvinas geography
+    
     const malvinasData = await loadGeoJSON('malvinas.geojson');
     if (malvinasData) {
       globalBounds = calculateBounds(malvinasData);
       console.log('Global bounds:', globalBounds);
       
-      // Create 3D island geometry with uniform height
+      
       const islandGeometry = createIslandGeometry(malvinasData, globalBounds);
       malvinasGroup.add(islandGeometry);
       
-      // Load datasets and create markers
+      
       for (const [key, dataset] of Object.entries(datasets)) {
         console.log(`Loading dataset: ${dataset.name} (${dataset.file})`);
         const data = await loadGeoJSON(dataset.file);
@@ -890,10 +892,10 @@ async function init() {
         }
       }
       
-      // Update visibility and calculate initial average age
+      
       updateMarkersVisibility();
       
-      // Position camera to view the 3D islands
+      
       camera.position.set(30, 60, 80);
       camera.lookAt(0, ISLAND_HEIGHT / 2, 0);
       controls.target.set(0, ISLAND_HEIGHT / 2, 0);
@@ -964,7 +966,7 @@ function createUI() {
   title.style.cssText = 'margin: 0 0 15px 0; color: #ffffff; text-align: center;';
   ui.appendChild(title);
   
-  // Average age display section
+  
   const ageSection = document.createElement('div');
   ageSection.style.cssText = 'margin: 15px 0; padding: 15px; border: 2px solid #00ff88; border-radius: 8px; background: rgba(0, 255, 136, 0.1);';
   
@@ -975,7 +977,7 @@ function createUI() {
   ageSection.appendChild(ageDisplay);
   ui.appendChild(ageSection);
   
-  // Date filter section
+  
   const dateSection = document.createElement('div');
   dateSection.style.cssText = 'margin: 15px 0; padding: 15px 0; border-bottom: 1px solid #444;';
   
@@ -984,7 +986,7 @@ function createUI() {
   dateTitle.style.cssText = 'margin: 0 0 10px 0; color: #ffffff; font-size: 14px;';
   dateSection.appendChild(dateTitle);
   
-  // Start date slider
+  
   const startDateContainer = document.createElement('div');
   startDateContainer.style.cssText = 'margin: 10px 0;';
   
@@ -1009,7 +1011,7 @@ function createUI() {
   startDateContainer.appendChild(startDateSlider);
   dateSection.appendChild(startDateContainer);
   
-  // End date slider
+  
   const endDateContainer = document.createElement('div');
   endDateContainer.style.cssText = 'margin: 10px 0;';
   
@@ -1034,12 +1036,12 @@ function createUI() {
   endDateContainer.appendChild(endDateSlider);
   dateSection.appendChild(endDateContainer);
   
-  // Event listeners for date sliders
+  
   startDateSlider.addEventListener('input', () => {
     const days = parseInt(startDateSlider.value);
     dateRange.currentStart = new Date(dateRange.minDate.getTime() + days * 24 * 60 * 60 * 1000);
     
-    // Ensure start date doesn't exceed end date
+    
     if (dateRange.currentStart > dateRange.currentEnd) {
       dateRange.currentStart = new Date(dateRange.currentEnd);
       startDateSlider.value = String(Math.floor((dateRange.currentStart - dateRange.minDate) / (1000 * 60 * 60 * 24)));
@@ -1053,7 +1055,7 @@ function createUI() {
     const days = parseInt(endDateSlider.value);
     dateRange.currentEnd = new Date(dateRange.minDate.getTime() + days * 24 * 60 * 60 * 1000);
     
-    // Ensure end date doesn't precede start date
+    
     if (dateRange.currentEnd < dateRange.currentStart) {
       dateRange.currentEnd = new Date(dateRange.currentStart);
       endDateSlider.value = String(Math.floor((dateRange.currentEnd - dateRange.minDate) / (1000 * 60 * 60 * 24)));
@@ -1065,7 +1067,7 @@ function createUI() {
   
   ui.appendChild(dateSection);
   
-  // Dataset toggles section
+  
   const datasetSection = document.createElement('div');
   datasetSection.style.cssText = 'margin: 15px 0; padding: 15px 0; border-bottom: 1px solid #444;';
   
@@ -1101,7 +1103,7 @@ function createUI() {
   
   ui.appendChild(datasetSection);
   
-  // Total count display
+  
   const totalCount = document.createElement('div');
   totalCount.id = 'total-count';
   totalCount.style.cssText = 'margin: 10px 0; padding: 10px 0; border-top: 1px solid #444; font-weight: bold; color: #ffff00;';
@@ -1190,12 +1192,10 @@ function setupLighting() {
   directionalLight.shadow.bias = -0.0001;
   scene.add(directionalLight);
   
-  // Fill light
   const fillLight = new THREE.DirectionalLight(0x87ceeb, 0.3);
   fillLight.position.set(-50, 50, -50);
   scene.add(fillLight);
   
-  // Hemisphere light
   const hemisphereLight = new THREE.HemisphereLight(0x87ceeb, 0x3a5f3a, 0.4);
   scene.add(hemisphereLight);
 }
@@ -1203,8 +1203,6 @@ function setupLighting() {
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
-  
-  // Render using composer for bloom effect
   composer.render();
 }
 
