@@ -1,0 +1,83 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.7457850154332,
+                    -51.9206775972853
+                ]
+            },
+            "properties": {
+                "Nro": 633,
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO SEGUNDO",
+                "Grado_PM": "CABO PRIMERO",
+                "Arma": "MAQUINISTA",
+                "Nombre": "BENITEZ JULIO OMAR",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "",
+                "Unidad": "",
+                "N_Madre": "",
+                "N_Padre": "",
+                "L_Deceso": "",
+                "L_Entierro": "",
+                "Tumba": "",
+                "L_Nac": "Basabilbaso, Entre Ríos",
+                "F_Nac": "22/01/1962",
+                "Rol_Comb": "",
+                "F_Ingreso": "",
+                "F_Ascenso": "",
+                "Condec_1": "",
+                "Condec_2": "",
+                "F_Deceso": "30/05/1982",
+                "Latitud": -51.9206775972853,
+                "Longitud": -58.7457850154332,
+                "PDF": "./resenas/633.pdf",
+                "Foto": "./fotos/633 BENITEZ Julio Omar.jpg"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.4684514094461,
+                    -51.721841481637064
+                ]
+            },
+            "properties": {
+                "Nro": 634,
+                "Escalafon": "SUBOFICAL",
+                "Grado": "MARINERO",
+                "Grado_PM": "CABO SEGUNDO",
+                "Arma": "SEGURIDAD",
+                "Nombre": "LOPEZ JORGE EDUARDO",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "",
+                "Unidad": "",
+                "N_Madre": "",
+                "N_Padre": "",
+                "L_Deceso": "",
+                "L_Entierro": "",
+                "Tumba": "",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "26/06/1962",
+                "Rol_Comb": "",
+                "F_Ingreso": "",
+                "F_Ascenso": "",
+                "Condec_1": "",
+                "Condec_2": "",
+                "F_Deceso": "30/05/1982",
+                "Latitud": -51.721449227045,
+                "Longitud": -59.4835891142318,
+                "PDF": "./resenas/634.pdf",
+                "Foto": "./fotos/634 LOPEZ Jorge Eduardo.jpg"
+            }
+        }
+    ]
+}

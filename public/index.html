@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iluminando el cielo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #2c3e50;
+      width: 100vw;
+      height: 100vh;
+    }
+    
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 18px;
+      z-index: 1000;
+    }
+    
+    #info {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      color: white;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div id="info">
+    <strong>Controles:</strong><br>
+    • Click: Seleccionar parcela<br>
+    • Arrastrar: Rotar vista<br>
+    • Scroll: Zoom<br>
+    • Click medio: Paneo
+  </div>
+  <script src="/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,2150 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.21804586217295,
+                    -51.56937020674706
+                ]
+            },
+            "properties": {
+                "Nro": "180",
+                "Escalafon": "OFICIAL",
+                "Grado": "VICECOMODORO",
+                "Grado_PM": "COMODORO",
+                "Arma": "Aire",
+                "Nombre": "de la COLINA, Rodolfo Manuel",
+                "N_Esposa": "TASELLI, Leticia Alcira",
+                "N_Hijos": "Leandro y María Laura",
+                "DNI": "4 298 147",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "MEINERS Sara Esmeralda",
+                "N_Padre": "de la COLINA Manuel",
+                "L_Deceso": "Estrecho San Carlos",
+                "L_Entierro": "Cementerio de Darwin y en la Isla BORBON.",
+                "Tumba": "B-4-16",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "17/8/1939",
+                "Rol Comb": "Piloto de Lear Jet 35 A - T-24",
+                "F_Ingreso": "5/3/1956",
+                "F_Ascenso": "7/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "7/6/1982",
+                "Latitud": "-51.18333",
+                "Longitud": "-60.366667",
+                "Foto": "./fotos/180 DE LA COLINA RODOLFO MANUEL.jpg",
+                "PDF": "./resenas/180.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -55.916667,
+                    -50.33333
+                ]
+            },
+            "properties": {
+                "Nro": "181",
+                "Escalafon": "OFICIAL",
+                "Grado": "VICECOMODORO",
+                "Grado_PM": "COMODORO",
+                "Arma": "General",
+                "Nombre": "MEISNER, Hugo Cesar",
+                "N_Esposa": "ZECCHINI Elsa Noemí",
+                "N_Hijos": "Hugo Cesar, Ariadna y Sebastián",
+                "DNI": "6 516 593",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "DE MATTIA Irma Amanda",
+                "N_Padre": "MEISNER Amado Rafael",
+                "L_Deceso": "Aguas del Atlántico Sur",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Córdoba",
+                "F_Nac": "25/12/1940",
+                "Rol Comb": "Navegador de Hércules C-130 - TC-63",
+                "F_Ingreso": "1/2/1956",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.33333",
+                "Longitud": "-55.916667",
+                "Foto": "./fotos/181 MEISNER HUGO CESAR.jpg",
+                "PDF": "./resenas/181.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.21909824797528,
+                    -51.545691526194624
+                ]
+            },
+            "properties": {
+                "Nro": "182",
+                "Escalafon": "OFICIAL",
+                "Grado": "MAYOR",
+                "Grado_PM": "VICECOMODORO",
+                "Arma": "Aire",
+                "Nombre": "FALCONIER, Juan Jose Ramon",
+                "N_Esposa": "GRAF Claudia Inés",
+                "N_Hijos": "María Alejandra, Juan José, Eduardo César, María de los Ángeles y María Belén",
+                "DNI": "5 950 555",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "FORMENTO Ángela",
+                "N_Padre": "FALCONIER Juan Enrique",
+                "L_Deceso": "Estrecho San Carlos",
+                "L_Entierro": "Cementerio de Darwin y en la Isla BORBON.",
+                "Tumba": "B-4-16",
+                "L_Nac": "Crespo, Entre Ríos",
+                "F_Nac": "31/5/1944",
+                "Rol Comb": "Piloto de Lear Jet 35 A - T-24",
+                "F_Ingreso": "13/2/1961",
+                "F_Ascenso": "7/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "7/6/1982",
+                "Latitud": "-51.18333",
+                "Longitud": "-60.366667",
+                "Foto": "./fotos/182 FALCONIER JUAN JOSE RAMON.jpg",
+                "PDF": "./resenas/182.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.73486595228636,
+                    -51.282216874464325
+                ]
+            },
+            "properties": {
+                "Nro": "183",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "Aire",
+                "Nombre": "PALAVER, Hugo Angel Del Valle",
+                "N_Esposa": "GONZALEZ Silvia Susana",
+                "N_Hijos": "Ana Belén",
+                "DNI": "7 956 873",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "GERVASONI Santina Josefina",
+                "N_Padre": "PALAVER Ramón Fidel",
+                "L_Deceso": "Isla Borbón",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Dean Funes, Córdoba",
+                "F_Nac": "18/1/1947",
+                "Rol Comb": "Piloto de A-4B Skyhawk  - C-244",
+                "F_Ingreso": "17/2/1965",
+                "F_Ascenso": "26/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "25/5/1982",
+                "Latitud": "-51.416667",
+                "Longitud": "-59.65",
+                "Foto": "./fotos/183 PALAVER HUGO ANGEL DEL VALLE.jpg",
+                "PDF": "./resenas/183.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.02788613,
+                    -51.48195365
+                ]
+            },
+            "properties": {
+                "Nro": "184",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "Aire",
+                "Nombre": "GARCIA, Jorge Osvaldo",
+                "N_Esposa": "MORENO Ana",
+                "N_Hijos": "Mariana Elizabeth",
+                "DNI": "7 646 683",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "OZCARIZ María Delia",
+                "N_Padre": "GARCIA Horacio",
+                "L_Deceso": "Campo Verde - Rincón de Picaso",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "A-4-2",
+                "L_Nac": "Godoy Cruz, Mendoza",
+                "F_Nac": "2/3/1949",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-304",
+                "F_Ingreso": "17/2/1965",
+                "F_Ascenso": "26/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "25/5/1982",
+                "Latitud": "-51.48195365",
+                "Longitud": "-59.02788613",
+                "Foto": "./fotos/184 GARCIA JORGE OSVALDO.jpg",
+                "PDF": "./resenas/184.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.16454189992723,
+                    -51.66286810787282
+                ]
+            },
+            "properties": {
+                "Nro": "185",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "General",
+                "Nombre": "CASADO, Fernando Juan",
+                "N_Esposa": "CHAPARROTTI Ilda Leonor",
+                "N_Hijos": "Sebastián Fernando y Hernán Emilio",
+                "DNI": "4 529 286",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "ARANA Eufemia Bienvenida",
+                "N_Padre": "CASADO Miguel",
+                "L_Deceso": "Monte Harriet",
+                "L_Entierro": "Carlos Paz",
+                "Tumba": "",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "7/9/1945",
+                "Rol Comb": "Navegador de BMk-62 Canberra - B-108",
+                "F_Ingreso": "17/2/1965",
+                "F_Ascenso": "14/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "13/6/1982",
+                "Latitud": "-51.66667",
+                "Longitud": "-58.166667",
+                "Foto": "./fotos/185 CASADO FERNANDO JUAN.jpg",
+                "PDF": "./resenas/185.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.909923753092805,
+                    -50.2833218692425
+                ]
+            },
+            "properties": {
+                "Nro": "186",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "Aire",
+                "Nombre": "MARTEL, Ruben Hector",
+                "N_Esposa": "GARCÍA Elisa Delia",
+                "N_Hijos": "María Laura, María del Pilar y Ezequiel Rubén",
+                "DNI": "7 781 723",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "FERNANDEZ Herminda",
+                "N_Padre": "MARTEL Francisco Antonio Héctor",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Reconquista, Santa Fé",
+                "F_Nac": "12/4/1947",
+                "Rol Comb": "Piloto de Hércules C-130 - TC-63",
+                "F_Ingreso": "14/2/1966",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.33333",
+                "Longitud": "-59.916667",
+                "Foto": "./fotos/186 MARTEL RUBEN HECTOR.jpg",
+                "PDF": "./resenas/186.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.754374533468805,
+                    -51.675891382176665
+                ]
+            },
+            "properties": {
+                "Nro": "187",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "Aire",
+                "Nombre": "GARCIA CUERVA, Gustavo Argentino",
+                "N_Esposa": "FRANCO Liliana Raquel",
+                "N_Hijos": "Liliana Isabel, Federico Gustavo y Leonardo Matías",
+                "DNI": "7 767 800",
+                "Unidad": "VIII Brigada Aérea",
+                "N_Madre": "CALABRESE Isabel Magdalena",
+                "N_Padre": "GARCIA CUERVA Argentino",
+                "L_Deceso": "Puerto Argentino",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Dolores, Provincia de Buenos Aires",
+                "F_Nac": "28/2/1946",
+                "Rol Comb": "Piloto de Mirage III/EA matrícula I-015",
+                "F_Ingreso": "17/2/1965",
+                "F_Ascenso": "1/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.67575534",
+                "Longitud": "-57.75459783",
+                "Foto": "./fotos/187 GARCIA CUERVA GUSTAVO ARGENTINO.jpg",
+                "PDF": "./resenas/187.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.96471358892653,
+                    -50.27625115213332
+                ]
+            },
+            "properties": {
+                "Nro": "188",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "Aire",
+                "Nombre": "KRAUSE, Carlos Eduardo",
+                "N_Esposa": "LUCERO Nilda Esther",
+                "N_Hijos": "María Eugenia, Guillermo Eduardo, Adolfo Germán y Walter Rodolfo",
+                "DNI": "4 990 818",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "GRALH María Teresa",
+                "N_Padre": "KRAUSE Guillermo",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Oberá, Misiones",
+                "F_Nac": "4/4/1948",
+                "Rol Comb": "Piloto de Hércules C-130 - TC-63",
+                "F_Ingreso": "14/2/1966",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.33333",
+                "Longitud": "-59.916667",
+                "Foto": "./fotos/188 KRAUSE CARLOS EDUARDO.jpg",
+                "PDF": "./resenas/188.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.21909824797528,
+                    -51.56200350613075
+                ]
+            },
+            "properties": {
+                "Nro": "189",
+                "Escalafon": "OFICIAL",
+                "Grado": "CAPITÁN",
+                "Grado_PM": "MAYOR",
+                "Arma": "General",
+                "Nombre": "LOTUFO, Marcelo Pedro",
+                "N_Esposa": "BRIGADA Alicia",
+                "N_Hijos": "Marcelo César",
+                "DNI": "4 999 261",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "VALDES Inés",
+                "N_Padre": "LOTUFO Marcelo",
+                "L_Deceso": "Estrecho San Carlos",
+                "L_Entierro": "Cementerio de Darwin y en la Isla BORBON.",
+                "Tumba": "B-4-16",
+                "L_Nac": "Salta",
+                "F_Nac": "7/9/1948",
+                "Rol Comb": "Fotógrafo de Lear Jet 35 A - T-24",
+                "F_Ingreso": "14/2/1968",
+                "F_Ascenso": "7/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "7/6/1982",
+                "Latitud": "-51.183333",
+                "Longitud": "-60.36667",
+                "Foto": "./fotos/189 LOTUFO MARCELO PEDRO.jpg",
+                "PDF": "./resenas/189.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.50475521919545,
+                    -49.449832313796534
+                ]
+            },
+            "properties": {
+                "Nro": "190",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "General",
+                "Nombre": "GONZALEZ, Mario Hipolito",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "8 159 728",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "TEBES Zulma Livia",
+                "N_Padre": "GONZALEZ Hipólito Rosario",
+                "L_Deceso": "Bahía de la Anunciación",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Adelia María, Córdoba",
+                "F_Nac": "6/10/1947",
+                "Rol Comb": "Navegador de BMk-62 Canberra - B-110",
+                "F_Ingreso": "15/2/1967",
+                "F_Ascenso": "3/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-49.5",
+                "Longitud": "-59.5",
+                "Foto": "./fotos/190 GONZALEZ MARIO HIPOLITO.jpg",
+                "PDF": "./resenas/190.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.999383103074116,
+                    -51.99979599990026
+                ]
+            },
+            "properties": {
+                "Nro": "191",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "BUSTOS, Manuel Oscar",
+                "N_Esposa": "ALTAMIRANO Mabel Mercedes",
+                "N_Hijos": "Lucas Manuel y Leticia Andrea",
+                "DNI": "10 172 350",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "MORENO Francisca Nélida",
+                "N_Padre": "BUSTOS José Manuel Prudencio",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Córdoba",
+                "F_Nac": "13/3/1952",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-246",
+                "F_Ingreso": "19/2/1969",
+                "F_Ascenso": "12/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "12/5/1982",
+                "Latitud": "-52",
+                "Longitud": "-58",
+                "Foto": "./fotos/191 BUSTOS MANUEL OSCAR.jpg",
+                "PDF": "./resenas/191.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.81133491501996,
+                    -51.69628135709682
+                ]
+            },
+            "properties": {
+                "Nro": "192",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "General",
+                "Nombre": "CASTAGNARI, Luis Dario Jose",
+                "N_Esposa": "SCAVARDA María Cristina",
+                "N_Hijos": "Guillermo Oscar, Martín Adolfo, Walter Rodolfo y Roxana Patricia",
+                "DNI": "5 528 629",
+                "Unidad": "VII Brigada Aérea",
+                "N_Madre": "CINO Alejandra",
+                "N_Padre": "CASTAGNARI Armando",
+                "L_Deceso": "Puerto Argentino",
+                "L_Entierro": "Río Cuarto",
+                "Tumba": "",
+                "L_Nac": "General Cabrera, Córdoba",
+                "F_Nac": "24/3/1949",
+                "Rol Comb": "Jefe de Seguridad la Base Aérea Militar Malvinas",
+                "F_Ingreso": "19/2/1969",
+                "F_Ascenso": "31/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "29/5/1982",
+                "Latitud": "-51.69441882",
+                "Longitud": "-57.81146654",
+                "Foto": "./fotos/192 CASTAGNARI LUIS DARIO JOSE.jpg",
+                "PDF": "./resenas/192.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.83001476301133,
+                    -51.675759833951375
+                ]
+            },
+            "properties": {
+                "Nro": "193",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "VAZQUEZ, Jose Daniel",
+                "N_Esposa": "ASENCIO Liliana Ester",
+                "N_Hijos": "Bernardo, María Paula y Mariano",
+                "DNI": "10 172 742",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "LAURIENTE Filomena",
+                "N_Padre": "VAZQUEZ Daniel",
+                "L_Deceso": "Puerto Argentino",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Mendoza",
+                "F_Nac": "1/1/1952",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-301",
+                "F_Ingreso": "27/2/1967",
+                "F_Ascenso": "31/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Heróico Valor en Combate",
+                "F_Deceso": "30/5/1982",
+                "Latitud": "-51.67956694",
+                "Longitud": "-57.82991045",
+                "Foto": "./fotos/193 VAZQUEZ JOSE DANIEL.jpg",
+                "PDF": "./resenas/193.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59,
+                    -51
+                ]
+            },
+            "properties": {
+                "Nro": "194",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "MANZOTTI, Daniel Fernando",
+                "N_Esposa": "KRAUSE Marta Elena",
+                "N_Hijos": "María Daniela, Marcos Javier y María Alejandra",
+                "DNI": "7 372 825",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "PESSINA Ester Elba",
+                "N_Padre": "MANZOTTI Luis Remigio",
+                "L_Deceso": "Bahía Navidad",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-18",
+                "L_Nac": "Mendoza",
+                "F_Nac": "19/3/1949",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-325",
+                "F_Ingreso": "16/2/1970",
+                "F_Ascenso": "22/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "21/5/1982",
+                "Latitud": "-51",
+                "Longitud": "-59",
+                "Foto": "./fotos/194 MANZOTTI DANIEL FERNANDO.jpg",
+                "PDF": "./resenas/194.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.5,
+                    -51.5
+                ]
+            },
+            "properties": {
+                "Nro": "195",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "GUADAGNINI, Luciano",
+                "N_Esposa": "CABRERA Graciela Mónica",
+                "N_Hijos": "Andréa Verónica",
+                "DNI": "10 228 489",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "SAVIO Catalina",
+                "N_Padre": "GUADAGNINI Pedro",
+                "L_Deceso": "Bahía San Carlos",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Bahía Blanca, Buenos Aires",
+                "F_Nac": "10/11/1952",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-242",
+                "F_Ingreso": "24/2/1971",
+                "F_Ascenso": "24/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "23/5/1982",
+                "Latitud": "-51.5",
+                "Longitud": "-59.5",
+                "Foto": "./fotos/195 GUADAGNINI LUCIANO.jpg",
+                "PDF": "./resenas/195.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.97777302867832,
+                    -51.77968293193153
+                ]
+            },
+            "properties": {
+                "Nro": "196",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "GAVAZZI, Fausto",
+                "N_Esposa": "IURI María Beatriz",
+                "N_Hijos": "Mariana Andrea y María Victoria",
+                "DNI": "10 323 927",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "LUZZI Ana Alma",
+                "N_Padre": "GAVAZZI José Guido",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-4",
+                "L_Nac": "Campana, Buenos Aires",
+                "F_Nac": "2/3/1952",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-248",
+                "F_Ingreso": "24/2/1971",
+                "F_Ascenso": "12/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "12/5/1982",
+                "Latitud": "-51.79564074",
+                "Longitud": "-58.97804367",
+                "Foto": "./fotos/196 GAVAZZI FAUSTO.jpg",
+                "PDF": "./resenas/196.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.83001476301133,
+                    -51.66997171203856
+                ]
+            },
+            "properties": {
+                "Nro": "197",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "CASTILLO, Omar Jesus",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "10 870 123",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "PRIETO Florinda Clemencia",
+                "N_Padre": "CASTILLO Daniel Horacio",
+                "L_Deceso": "Puerto Argentino",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Cosquín, Córdoba",
+                "F_Nac": "31/8/1953",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-310",
+                "F_Ingreso": "21/1/1972",
+                "F_Ascenso": "31/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Heróico Valor en Combate",
+                "F_Deceso": "30/5/1982",
+                "Latitud": "-51.67956694",
+                "Longitud": "-57.82991045",
+                "Foto": "./fotos/197 CASTILLO OMAR JESUS.jpg",
+                "PDF": "./resenas/197.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.45833444,
+                    -51.9952679
+                ]
+            },
+            "properties": {
+                "Nro": "198",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "ARDILES, Jose Leonidas",
+                "N_Esposa": "MARTINEZ Inés María del Pilar",
+                "N_Hijos": "Sebastián José y María Inés",
+                "DNI": "11 583 456",
+                "Unidad": "VI Brigada Aérea",
+                "N_Madre": "DE LUCCA María del Carmen",
+                "N_Padre": "ARDILES Leónidas Cirilo",
+                "L_Deceso": "Isla Bougainville",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Obispo Trejo, Córdoba",
+                "F_Nac": "19/8/1954",
+                "Rol Comb": "Piloto de M-5 Dagger - C-433",
+                "F_Ingreso": "21/1/1972",
+                "F_Ascenso": "4/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.9952679",
+                "Longitud": "-58.45833444",
+                "Foto": "./fotos/198 ARDILES JOSE LEONIDAS.jpg",
+                "PDF": "./resenas/198.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.43671517805514,
+                    -51.82059442999715
+                ]
+            },
+            "properties": {
+                "Nro": "199",
+                "Escalafon": "OFICIAL",
+                "Grado": "1ER. TENIENTE",
+                "Grado_PM": "CAPITÁN",
+                "Arma": "Aire",
+                "Nombre": "BOLZAN, Danilo Ruben",
+                "N_Esposa": "RUSI Laura Ester",
+                "N_Hijos": "Pablo Sebastián",
+                "DNI": "11 536 234",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "CAPELLINO Elsa Catalina",
+                "N_Padre": "BOLZAN Delfín Miguel",
+                "L_Deceso": "Seno Choiseul",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "C-3-1",
+                "L_Nac": "Distrito Palmar, Entre Ríos",
+                "F_Nac": "20/1/1955",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-204",
+                "F_Ingreso": "21/1/1972",
+                "F_Ascenso": "9/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "8/6/1982",
+                "Latitud": "-51.83333",
+                "Longitud": "-58.41667",
+                "Foto": "./fotos/199 BOLZAN DANILO RUBEN.jpg",
+                "PDF": "./resenas/199.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59,
+                    -51.5
+                ]
+            },
+            "properties": {
+                "Nro": "200",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "BERNHARDT, Juan Domingo",
+                "N_Esposa": "CÁSERES Celina del Valle",
+                "N_Hijos": "María Celina y José Nicolás",
+                "DNI": "8 509 597",
+                "Unidad": "VI Brigada Aérea",
+                "N_Madre": "FRANK Berta Luisa",
+                "N_Padre": "BERNHARDT Alberto",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Rosario del Tala, Entre Ríos",
+                "F_Nac": "1/5/1951",
+                "Rol Comb": "Piloto de M-5 Dagger - C-436",
+                "F_Ingreso": "1/8/1967",
+                "F_Ascenso": "29/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "29/5/1982",
+                "Latitud": "-51.5",
+                "Longitud": "-59",
+                "Foto": "./fotos/200 BERNHARDT JUAN DOMINGO.jpg",
+                "PDF": "./resenas/200.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.25536099,
+                    -51.44857896
+                ]
+            },
+            "properties": {
+                "Nro": "201",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "BEAN, Pedro Ignacio",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "11 190 104",
+                "Unidad": "VI Brigada Aérea",
+                "N_Madre": "GILABERT América Prisca",
+                "N_Padre": "BEAN Pedro Juan",
+                "L_Deceso": "Bahia Hospital",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Córdoba",
+                "F_Nac": "31/7/1954",
+                "Rol Comb": "Piloto de M-5 Dagger - C-428",
+                "F_Ingreso": "1/2/1973",
+                "F_Ascenso": "22/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "21/5/1982",
+                "Latitud": "-51.44857896",
+                "Longitud": "-59.25536099",
+                "Foto": "./fotos/201 BEAN PEDRO IGNACIO.jpg",
+                "PDF": "./resenas/201.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.58050346,
+                    -51.33106767
+                ]
+            },
+            "properties": {
+                "Nro": "202",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "VOLPONI, Hector Ricardo",
+                "N_Esposa": "RICO María Inés",
+                "N_Hijos": "María Soledad",
+                "DNI": "10 825 210",
+                "Unidad": "VI Brigada Aérea",
+                "N_Madre": "GURENDIAIN María Elena",
+                "N_Padre": "VOLPONI Héctor Roberto",
+                "L_Deceso": "Base ARA Calderon",
+                "L_Entierro": "Mendoza",
+                "Tumba": "",
+                "L_Nac": "Tres Arroyos, Buenos Aires",
+                "F_Nac": "25/6/1953",
+                "Rol Comb": "Piloto de M-5 Dagger - C-437",
+                "F_Ingreso": "1/2/1973",
+                "F_Ascenso": "24/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "23/5/1982",
+                "Latitud": "-51.33106767",
+                "Longitud": "-59.58050346",
+                "Foto": "./fotos/202 VOLPONI HECTOR RICARDO.jpg",
+                "PDF": "./resenas/202.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.97908851093129,
+                    -51.8202820029621
+                ]
+            },
+            "properties": {
+                "Nro": "203",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "JUKIC, Daniel Antonio",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "11 563 904",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "ROZAS Haydeé Esther",
+                "N_Padre": "JUKIC Antonio",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-3",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "5/6/1955",
+                "Rol Comb": "Piloto de IA-58 Pucará - A-527",
+                "F_Ingreso": "1/2/1973",
+                "F_Ascenso": "1/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/203 JUKIC DANIEL ANTONIO.jpg",
+                "PDF": "./resenas/203.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.001,
+                    -54.001
+                ]
+            },
+            "properties": {
+                "Nro": "204",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "NIVOLI, Mario Victor",
+                "N_Esposa": "ALVAREZ Graciela Raquel",
+                "N_Hijos": "Diego Hernán y Mario César",
+                "DNI": "11 047 219",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "LEONE María Catalina",
+                "N_Padre": "NIVOLI Victor",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Río Tercero, Córdoba",
+                "F_Nac": "14/4/1954",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-206",
+                "F_Ingreso": "1/2/1973",
+                "F_Ascenso": "12/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "12/5/1982",
+                "Latitud": "-54.001",
+                "Longitud": "-58.001",
+                "Foto": "./fotos/204 NIVOLI MARIO VICTOR.jpg",
+                "PDF": "./resenas/204.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.98250876478887,
+                    -51.81957493125116
+                ]
+            },
+            "properties": {
+                "Nro": "205",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "GIMENEZ, Miguel Angel",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "11 190 012",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "TOMMASINO Teresita Elba",
+                "N_Padre": "GIMENEZ Isaias Lenin",
+                "L_Deceso": "Cerro Azul/Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-20",
+                "L_Nac": "Paraná, Entre Ríos",
+                "F_Nac": "27/5/1954",
+                "Rol Comb": "Piloto de IA-58 Pucará - A-537",
+                "F_Ingreso": "21/1/1972",
+                "F_Ascenso": "29/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "28/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/205 GIMENEZ MIGUEL ANGEL.jpg",
+                "PDF": "./resenas/205.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.00797984148075,
+                    -50.36886110273842
+                ]
+            },
+            "properties": {
+                "Nro": "206",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "CASCO, Jorge Eduardo",
+                "N_Esposa": "DENTESANO Ivone María",
+                "N_Hijos": "Guillermo Manuel y Julieta",
+                "DNI": "11 443 978",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "CODUTTI Orfelia Carolina",
+                "N_Padre": "CASCO Tito Livio",
+                "L_Deceso": "Isla Sebaldes",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-17",
+                "L_Nac": "Presidencia Roque Saenz Peña, Chaco",
+                "F_Nac": "2/3/1955",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-313",
+                "F_Ingreso": "1/2/1973",
+                "F_Ascenso": "11/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "9/5/1982",
+                "Latitud": "-50.5",
+                "Longitud": "-64",
+                "Foto": "./fotos/206 CASCO JORGE EDUARDO.jpg",
+                "PDF": "./resenas/206.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.08094300275473,
+                    -52.08161899603146
+                ]
+            },
+            "properties": {
+                "Nro": "207",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "IBARLUCEA, Jorge Ruben",
+                "N_Esposa": "WUTHRICH Alicia Inés",
+                "N_Hijos": "María Eugenia",
+                "DNI": "11 559 240",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "SANCHEZ HERNANDEZ Sara",
+                "N_Padre": "IBARLUCEA Rodolfo Héctor",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Córdoba",
+                "F_Nac": "31/1/1955",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-208",
+                "F_Ingreso": "4/2/1974",
+                "F_Ascenso": "12/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "12/5/1982",
+                "Latitud": "-52.0833",
+                "Longitud": "-58.082",
+                "Foto": "./fotos/207 IBARLUCEA JORGE RUBEN.jpg",
+                "PDF": "./resenas/207.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.502650447590796,
+                    -49.49613728909909
+                ]
+            },
+            "properties": {
+                "Nro": "208",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "DE IBAÑEZ, Eduardo Jorge Raul",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "12 990 470",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "FAZIO Elsa Susana",
+                "N_Padre": "DE IBAÑEZ Eduardo Rosendo Honorio",
+                "L_Deceso": "Bahía de la Anunciación",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Las Lajas, Neuquén",
+                "F_Nac": "7/4/1957",
+                "Rol Comb": "Piloto de BMk-62 Canberra - B-110",
+                "F_Ingreso": "3/2/1975",
+                "F_Ascenso": "3/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-49.5",
+                "Longitud": "-59.5",
+                "Foto": "./fotos/208 DE IBAÑEZ EDUARDO JORGE RAUL.jpg",
+                "PDF": "./resenas/208.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -60.83333,
+                    -51.95
+                ]
+            },
+            "properties": {
+                "Nro": "209",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "BONO, Jorge Alberto",
+                "N_Esposa": "IBARRA Miriam Beatriz",
+                "N_Hijos": "Nicolás",
+                "DNI": "11 975 826",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "HERRERA Nelly Carolina",
+                "N_Padre": "BONO Egidio Etgar",
+                "L_Deceso": "Isla San Jorge",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Bell Ville, Córdoba",
+                "F_Nac": "18/2/1956",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-305",
+                "F_Ingreso": "3/2/1975",
+                "F_Ascenso": "25/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "24/5/1982",
+                "Latitud": "-51.95",
+                "Longitud": "-60.83333",
+                "Foto": "./fotos/209 BONO JORGE ALBERTO.jpg",
+                "PDF": "./resenas/209.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.43658362982985,
+                    -51.82651410013526
+                ]
+            },
+            "properties": {
+                "Nro": "210",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "ARRARAS, Juan Jose",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "12 942 391",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "ISASMENDI Clara Mercedes",
+                "N_Padre": "ARRARAS Eliseo",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "La Plata, Buenos Aires",
+                "F_Nac": "23/5/1957",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-226",
+                "F_Ingreso": "3/2/1975",
+                "F_Ascenso": "9/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "8/6/1982",
+                "Latitud": "-51.83333",
+                "Longitud": "-58.41667",
+                "Foto": "./fotos/210 ARRARAS JUAN JOSE.jpg",
+                "PDF": "./resenas/210.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.006976734693,
+                    -50.92948675187358
+                ]
+            },
+            "properties": {
+                "Nro": "211",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "LOPEZ, Nestor Edgardo",
+                "N_Esposa": "CHAIJALE Mirta Gladys",
+                "N_Hijos": "Pablo Daniel",
+                "DNI": "12 244 228",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "CUELLO Noemí Yolanda",
+                "N_Padre": "LOPEZ Alfonso",
+                "L_Deceso": "Bahía Navidad",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "A-4-4",
+                "L_Nac": "Córdoba",
+                "F_Nac": "6/2/1956",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-309",
+                "F_Ingreso": "3/2/1975",
+                "F_Ascenso": "22/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "21/5/1982",
+                "Latitud": "-51",
+                "Longitud": "-59",
+                "Foto": "./fotos/211 LOPEZ NESTOR EDGARDO.jpg",
+                "PDF": "./resenas/211.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.57105552474229,
+                    -51.26414543701477
+                ]
+            },
+            "properties": {
+                "Nro": "212",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "CASTILLO, Carlos Julio",
+                "N_Esposa": "RE Norma Beatriz",
+                "N_Hijos": "Claudio Javier",
+                "DNI": "12 392 861",
+                "Unidad": "VI Brigada Aérea",
+                "N_Madre": "GUEVEL Onella Juana",
+                "N_Padre": "CASTILLO Carlos Julio",
+                "L_Deceso": "Bahía Elefante",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Oliva, Córdoba",
+                "F_Nac": "20/9/1956",
+                "Rol Comb": "Piloto de M-5 Dagger - C-430",
+                "F_Ingreso": "3/2/1975",
+                "F_Ascenso": "25/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "24/5/1982",
+                "Latitud": "-51.28429919",
+                "Longitud": "-59.56019321",
+                "Foto": "./fotos/212 CASTILLO CARLOS JULIO.jpg",
+                "PDF": "./resenas/212.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -64.02060847110872,
+                    -50.490937855808774
+                ]
+            },
+            "properties": {
+                "Nro": "213",
+                "Escalafon": "OFICIAL",
+                "Grado": "TENIENTE",
+                "Grado_PM": "1ER. TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "FARIAS, Jorge Ricardo",
+                "N_Esposa": "CHIOZZA Nora Claudia",
+                "N_Hijos": "María Victoria",
+                "DNI": "12 998 436",
+                "Unidad": "IV Brigada Aérea",
+                "N_Madre": "BURGOS Gilda Celia",
+                "N_Padre": "FARIAS Arturo Jorge",
+                "L_Deceso": "Islas Sebaldes",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Córdoba",
+                "F_Nac": "23/4/1957",
+                "Rol Comb": "Piloto de A-4C Skyhawk  - C-303",
+                "F_Ingreso": "3/2/1975",
+                "F_Ascenso": "11/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "9/5/1982",
+                "Latitud": "-50",
+                "Longitud": "-64",
+                "Foto": "./fotos/213 FARIAS JORGE RICARDO.jpg",
+                "PDF": "./resenas/213.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.43664940394249,
+                    -51.8236858132915
+                ]
+            },
+            "properties": {
+                "Nro": "214",
+                "Escalafon": "OFICIAL",
+                "Grado": "ALFEREZ",
+                "Grado_PM": "TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "VAZQUEZ, Alfredo Jorge Alberto",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "13 255 584",
+                "Unidad": "V Brigada Aérea",
+                "N_Madre": "LUCIANI, Nélida Martisa",
+                "N_Padre": "VAZQUEZ Alfredo",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Rosario, Santa Fe",
+                "F_Nac": "8/9/1957",
+                "Rol Comb": "Piloto de A4-B Skyhawk - C-226",
+                "F_Ingreso": "2/2/1976",
+                "F_Ascenso": "9/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "8/6/1982",
+                "Latitud": "-51.83333",
+                "Longitud": "-58.41667",
+                "Foto": "./fotos/214 VAZQUEZ ALFREDO JORGE ALBERTO.jpg",
+                "PDF": "./resenas/214.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -63.94407938,
+                    -47.24969451
+                ]
+            },
+            "properties": {
+                "Nro": "215",
+                "Escalafon": "OFICIAL",
+                "Grado": "ALFEREZ",
+                "Grado_PM": "TENIENTE",
+                "Arma": "Aire",
+                "Nombre": "VALKO, Mario Luis",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "12 127 701",
+                "Unidad": "IX Brigada Aérea",
+                "N_Madre": "KOPANCHUK Tatiana",
+                "N_Padre": "VALKO, José Mariano",
+                "L_Deceso": "Golfo de San Jorge",
+                "L_Entierro": "Morón",
+                "Tumba": "",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "18/6/1958",
+                "Rol Comb": "Piloto de IA-58 Pucará - A-540",
+                "F_Ingreso": "1/3/1977",
+                "F_Ascenso": "25/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "24/5/1982",
+                "Latitud": "-47.24969451",
+                "Longitud": "-63.94407938",
+                "Foto": "./fotos/215 VALKO MARIO LUIS.jpg",
+                "PDF": "./resenas/215.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.90781898148815,
+                    -50.19913100505604
+                ]
+            },
+            "properties": {
+                "Nro": "216",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "SUBOFICIAL PRINCIPAL",
+                "Grado_PM": "SUBOFICIAL MAYOR",
+                "Arma": "Seg y Def",
+                "Nombre": "LASTRA, Julio Jesus",
+                "N_Esposa": "SANZ Ilda Elvira",
+                "N_Hijos": "Pablo Javier, María Laura y David Santiago",
+                "DNI": "6 378 018",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "CASTRO Liduvina",
+                "N_Padre": "LASTRA Julio",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "La Puerta, Córdoba",
+                "F_Nac": "22/8/1935",
+                "Rol Comb": "Carga y despacho de Hércules C-130 - TC-63",
+                "F_Ingreso": "1/2/1955",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.466667",
+                "Longitud": "-59.91667",
+                "Foto": "./fotos/216 LASTRA JULIO JESUS.jpg",
+                "PDF": "./resenas/216.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.958399274112544,
+                    -50.18995551634221
+                ]
+            },
+            "properties": {
+                "Nro": "217",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "SUBOFICIAL AYUDANTE",
+                "Grado_PM": "SUBOFICIAL PRINCIPAL",
+                "Arma": "Abast",
+                "Nombre": "ALBELOS, Manuel Alberto",
+                "N_Esposa": "BARATTI Emma Haydeé",
+                "N_Hijos": "Pablo Daniel",
+                "DNI": "7 750 451",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "BALTAZAR Matilde",
+                "N_Padre": "ALBELOS Alberto",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Córdoba",
+                "F_Nac": "3/1/1944",
+                "Rol Comb": "Carga y despacho de Hércules C-130 - TC-63",
+                "F_Ingreso": "27/2/1959",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.466667",
+                "Longitud": "-59.91667",
+                "Foto": "./fotos/217 ALBELOS MANUEL ALBERTO.jpg",
+                "PDF": "./resenas/217.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.21909824797528,
+                    -51.53858792202889
+                ]
+            },
+            "properties": {
+                "Nro": "218",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "SUBOFICIAL AYUDANTE",
+                "Grado_PM": "SUBOFICIAL PRINCIPAL",
+                "Arma": "Com",
+                "Nombre": "LUNA, Francisco Tomas",
+                "N_Esposa": "SALCEDO Nelly Lucía",
+                "N_Hijos": "Fernando Andrés y María Luciana",
+                "DNI": "6 696 989",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "GIL María",
+                "N_Padre": "LUNA Feliciano Ireneo",
+                "L_Deceso": "Estrecho San Carlos",
+                "L_Entierro": "Cementerio de Darwin y en la Isla BORBON.",
+                "Tumba": "B-4-16",
+                "L_Nac": "Córdoba",
+                "F_Nac": "28/9/1944",
+                "Rol Comb": "Operador de comunicaciones de Lear Jet 35 A - T-24",
+                "F_Ingreso": "27/2/1960",
+                "F_Ascenso": "7/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "7/6/1982",
+                "Latitud": "-51.18333",
+                "Longitud": "-60.366667",
+                "Foto": "./fotos/218 LUNA FRANCISCO TOMAS.jpg",
+                "PDF": "./resenas/218.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.219887537327025,
+                    -51.55332132326152
+                ]
+            },
+            "properties": {
+                "Nro": "219",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "SUBOFICIAL AUXILIAR",
+                "Grado_PM": "SUBOFICIAL AYUDANTE",
+                "Arma": "Mec Aer",
+                "Nombre": "MARIZZA, Guido Antonino",
+                "N_Esposa": "GIANOTTI María Magdalena",
+                "N_Hijos": "Carolina Lorena y Sebastián Guido",
+                "DNI": "4 625 610",
+                "Unidad": "II Brigada Aérea",
+                "N_Madre": "BRESSAN Ángela",
+                "N_Padre": "MARIZZA Carlos Silvestre",
+                "L_Deceso": "Estrecho San Carlos",
+                "L_Entierro": "Cementerio de Darwin y en la Isla BORBON.",
+                "Tumba": "B-4-16",
+                "L_Nac": "Paraná, Entre Ríos",
+                "F_Nac": "10/5/1948",
+                "Rol Comb": "Auxiliar en Sensores de Imágenes del avión Learjet 35A - T-24",
+                "F_Ingreso": "24/2/1964",
+                "F_Ascenso": "7/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "7/6/1982",
+                "Latitud": "-51.18333",
+                "Longitud": "-60.366667",
+                "Foto": "./fotos/219 MARIZZA GUIDO ANTONINO.jpg",
+                "PDF": "./resenas/219.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.97313267534517,
+                    -50.34360384348248
+                ]
+            },
+            "properties": {
+                "Nro": "220",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO PRINCIPAL",
+                "Grado_PM": "SUBOFICIAL AUXILIAR",
+                "Arma": "Mec Aer",
+                "Nombre": "CARDONE, Miguel Angel",
+                "N_Esposa": "VARAS Laura Cristina",
+                "N_Hijos": "Sergio Miguel y María Laura",
+                "DNI": "10 174 788",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "POCARDI Rosa Teresa",
+                "N_Padre": "CARDONE Juan Pablo",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Santa Fe",
+                "F_Nac": "3/3/1952",
+                "Rol Comb": "Mecánico de Hércules C-130 - TC-63",
+                "F_Ingreso": "23/1/1972",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.466667",
+                "Longitud": "-59.916667",
+                "Foto": "./fotos/220 CARDONE MIGUEL ANGEL.jpg",
+                "PDF": "./resenas/220.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.91630384201932,
+                    -50.3478133866918
+                ]
+            },
+            "properties": {
+                "Nro": "221",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO PRINCIPAL",
+                "Grado_PM": "SUBOFICIAL AUXILIAR",
+                "Arma": "Mec Aer",
+                "Nombre": "CANTEZANO, Carlos Domingo",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "7 823 937",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "RIZZUTI Rosa",
+                "N_Padre": "CANTEZANO Domingo",
+                "L_Deceso": "",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "10/8/1949",
+                "Rol Comb": "Mecánico de Hércules C-130 - TC-63",
+                "F_Ingreso": "20/2/1971",
+                "F_Ascenso": "2/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/6/1982",
+                "Latitud": "-50.466667",
+                "Longitud": "-59.916667",
+                "Foto": "./fotos/221 CANTEZANO CARLOS DOMINGO.jpg",
+                "PDF": "./resenas/221.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.97912139798762,
+                    -51.81885141601206
+                ]
+            },
+            "properties": {
+                "Nro": "222",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO PRINCIPAL",
+                "Grado_PM": "SUBOFICIAL AUXILIAR",
+                "Arma": "Mec Arm",
+                "Nombre": "DUARTE, Mario",
+                "N_Esposa": "SPERANZA Dora Mercedes",
+                "N_Hijos": "Patricia Haydeé, Yanina Lorena y Darío Daniel",
+                "DNI": "11 114 053",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "",
+                "N_Padre": "",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-2",
+                "L_Nac": "Colonia Elisa, Chaco",
+                "F_Nac": "27/3/1954",
+                "Rol Comb": "Armero de IA-58 Pucará",
+                "F_Ingreso": "2/3/1972",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/222 DUARTE MARIO.jpg",
+                "PDF": "./resenas/222.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.97920361562842,
+                    -51.817272837308565
+                ]
+            },
+            "properties": {
+                "Nro": "223",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO PRINCIPAL",
+                "Grado_PM": "SUBOFICIAL AUXILIAR",
+                "Arma": "Mec Inst",
+                "Nombre": "RODRIGUEZ, Juan Antonio",
+                "N_Esposa": "SANCHEZ Dora Nora",
+                "N_Hijos": "Juan Marcelo y Mara Gisela",
+                "DNI": "10 545 637",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "",
+                "N_Padre": "",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-1",
+                "L_Nac": "Córdoba",
+                "F_Nac": "6/1/1953",
+                "Rol Comb": "Armero de IA-58 Pucará",
+                "F_Ingreso": "2/3/1972",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/223 RODRIGUEZ JUAN ANTONIO.jpg",
+                "PDF": "./resenas/223.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.98257453890152,
+                    -51.81817723135744
+                ]
+            },
+            "properties": {
+                "Nro": "224",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO 1RO.",
+                "Grado_PM": "CABO PRINCIPAL",
+                "Arma": "Elect.",
+                "Nombre": "CARRIZO, Miguel Angel",
+                "N_Esposa": "SILVA Graciela Beatriz",
+                "N_Hijos": "",
+                "DNI": "12 488 613",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "QUINTEROS María Hortencia",
+                "N_Padre": "CARRIZO Héctor Raúl",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-1-1",
+                "L_Nac": "Córdoba",
+                "F_Nac": "8/8/1958",
+                "Rol Comb": "Apoyo técnico de IA-58 Pucará",
+                "F_Ingreso": "20/2/1975",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/225 MALDONADO JOSE ALBERTO.jpg",
+                "PDF": "./resenas/224.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.98250876478887,
+                    -51.81890074659655
+                ]
+            },
+            "properties": {
+                "Nro": "225",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO 1RO.",
+                "Grado_PM": "CABO PRINCIPAL",
+                "Arma": "Mec Aer",
+                "Nombre": "MALDONADO, Jose Alberto",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "13 535 983",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "GONZALEZ Prica Haydeé",
+                "N_Padre": "MALDONADO Adán Isabelino",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-6",
+                "L_Nac": "Córdoba",
+                "F_Nac": "3/10/1957",
+                "Rol Comb": "Apoyo técnico de IA-58 Pucará",
+                "F_Ingreso": "3/3/1976",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/225 MALDONADO JOSE ALBERTO.jpg",
+                "PDF": "./resenas/225.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.97925294621291,
+                    -51.81603957269646
+                ]
+            },
+            "properties": {
+                "Nro": "226",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO 1RO.",
+                "Grado_PM": "CABO PRINCIPAL",
+                "Arma": "Mec Aer",
+                "Nombre": "MONTAÑO, Agustin Hugo",
+                "N_Esposa": "RAMIREZ Alicia Rosa",
+                "N_Hijos": "Hugo Alejandro",
+                "DNI": "12 630 023",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "AGUERO Pascuala",
+                "N_Padre": "MONTAÑO Ricardo Hugo",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-5",
+                "L_Nac": "Causete, San Juan",
+                "F_Nac": "9/8/1956",
+                "Rol Comb": "Apoyo técnico de IA-58 Pucará",
+                "F_Ingreso": "28/2/1977",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/226 MONTAÑO AGUSTIN HUGO.jpg",
+                "PDF": "./resenas/226.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.98265675654232,
+                    -51.816845305576365
+                ]
+            },
+            "properties": {
+                "Nro": "227",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO 1RO.",
+                "Grado_PM": "CABO PRINCIPAL",
+                "Arma": "Mec Arm",
+                "Nombre": "PERALTA, Jose Luis",
+                "N_Esposa": "GAMBA Patricia Beatriz",
+                "N_Hijos": "",
+                "DNI": "13 762 342",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "TEJEDA Norma Gladis",
+                "N_Padre": "PERALTA Aurelio Martiniano",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-4-7",
+                "L_Nac": "San Carlos Sud, Santa Fe",
+                "F_Nac": "2/9/1960",
+                "Rol Comb": "Armero de IA-58 Pucará",
+                "F_Ingreso": "28/2/1977",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/227 PERALTA JOSE LUIS.jpg",
+                "PDF": "./resenas/227.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.982442990676226,
+                    -51.82011756768049
+                ]
+            },
+            "properties": {
+                "Nro": "228",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO 1RO.",
+                "Grado_PM": "CABO PRINCIPAL",
+                "Arma": "Mec Arm",
+                "Nombre": "BRASHICH, Andres Luis",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "14 219 164",
+                "Unidad": "III Brigada Aérea",
+                "N_Madre": "DUVAL Elsa Niria",
+                "N_Padre": "BRASHICH Norberto José",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "A-5-11",
+                "L_Nac": "Córdoba",
+                "F_Nac": "22/10/1960",
+                "Rol Comb": "Armero de IA-58 Pucará",
+                "F_Ingreso": "28/2/1977",
+                "F_Ascenso": "4/6/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/228 BRASHICH ANDRES LUIS.jpg",
+                "PDF": "./resenas/228.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -59.50177378,
+                    -51.77557407
+                ]
+            },
+            "properties": {
+                "Nro": "229",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "CABO",
+                "Grado_PM": "CABO 1RO.",
+                "Arma": "Mec Aut",
+                "Nombre": "VARAS, Hector Hugo",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "13 984 318",
+                "Unidad": "VI Brigada Aérea",
+                "N_Madre": "VARAS María Elena",
+                "N_Padre": "",
+                "L_Deceso": "Isla Cisne",
+                "L_Entierro": "Mar Argentino",
+                "Tumba": "",
+                "L_Nac": "Villa del Rosario, Córdoba",
+                "F_Nac": "29/7/1960",
+                "Rol Comb": "Conductor Motorista",
+                "F_Ingreso": "10/6/1978",
+                "F_Ascenso": "10/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "10/5/1982",
+                "Latitud": "-51.77557407",
+                "Longitud": "-59.50177378",
+                "Foto": "./fotos/229 VARAS HECTOR HUGO.jpg",
+                "PDF": "./resenas/229.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.999383103074116,
+                    -51.98900904542637
+                ]
+            },
+            "properties": {
+                "Nro": "230",
+                "Escalafon": "SUBOFICIAL",
+                "Grado": "SOLDADO CLASE 63",
+                "Grado_PM": "CABO",
+                "Arma": "",
+                "Nombre": "GARCIA, Guillermo Ubaldo",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "16 689 527",
+                "Unidad": "I Brigada Aérea",
+                "N_Madre": "VISINTIN Nelly Teresa",
+                "N_Padre": "GARCIA Héctor Pedro",
+                "L_Deceso": "Puerto Argentino",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-1-5",
+                "L_Nac": "Saenz Peña, Chaco",
+                "F_Nac": "26/9/1963",
+                "Rol Comb": "Fusilero en la Compañía de Seguridad y Defensa en la Base Aérea Militar Malvinas",
+                "F_Ingreso": "1982",
+                "F_Ascenso": "4/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.68110394",
+                "Longitud": "-57.85406319",
+                "Foto": "./fotos/230 GARCIA GUILLERMO UBALDO.jpg",
+                "PDF": "./resenas/230.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -57.85395654001436,
+                    -51.685231306172355
+                ]
+            },
+            "properties": {
+                "Nro": "231",
+                "Escalafon": "SOLDADO",
+                "Grado": "SOLDADO CLASE 63",
+                "Grado_PM": "CABO",
+                "Arma": "",
+                "Nombre": "BORDON, Hector Ramon",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "16 444 206",
+                "Unidad": "IX Brigada Aérea",
+                "N_Madre": "MEDINA Juana Ester",
+                "N_Padre": "BORDON Ladislao Cándido",
+                "L_Deceso": "Puerto Argentino",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-3-4",
+                "L_Nac": "Goya, Corrientes",
+                "F_Nac": "2/6/1963",
+                "Rol Comb": "Servicio de Armamento en la Base Aérea Militar Malvinas",
+                "F_Ingreso": "1982",
+                "F_Ascenso": "4/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "",
+                "F_Deceso": "1/5/1982",
+                "Latitud": "-51.68110394",
+                "Longitud": "-57.85406319",
+                "Foto": "./fotos/231 BORDON HECTOR RAMON.jpg",
+                "PDF": "./resenas/231.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.9791707285721,
+                    -51.81812790077296
+                ]
+            },
+            "properties": {
+                "Nro": "232",
+                "Escalafon": "SOLDADO",
+                "Grado": "SOLDADO CLASE 63",
+                "Grado_PM": "CABO",
+                "Arma": "",
+                "Nombre": "AGUIRRE, Hector Walter",
+                "N_Esposa": "MORALES María de las Mercedes",
+                "N_Hijos": "Mariana Soledad",
+                "DNI": "16 310 782",
+                "Unidad": "EAM",
+                "N_Madre": "AGUIRRE Lila Yolanda",
+                "N_Padre": "",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-2-8",
+                "L_Nac": "Capital Federal",
+                "F_Nac": "19/9/1963",
+                "Rol Comb": "Fusilero en la Compañía de Seguridad y Defensa en la Base Aérea Militar Cóndor",
+                "F_Ingreso": "1982",
+                "F_Ascenso": "29/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "28/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/232 AGUIRRE HECTOR WALTER.jpg",
+                "PDF": "./resenas/232.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.98066708963474,
+                    -51.848515540815214
+                ]
+            },
+            "properties": {
+                "Nro": "233",
+                "Escalafon": "SOLDADO",
+                "Grado": "SOLDADO CLASE 63",
+                "Grado_PM": "CABO",
+                "Arma": "",
+                "Nombre": "SEVILLA, Luis Guillermo",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "16 578 951",
+                "Unidad": "EAM",
+                "N_Madre": "LERA Cristina",
+                "N_Padre": "SEVILLA José Reyes",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "A-2-8",
+                "L_Nac": "Rosario de la Frontera, Salta",
+                "F_Nac": "17/9/1963",
+                "Rol Comb": "Fusilero en la Compañía de Seguridad y Defensa en la Base Aérea Militar Cóndor",
+                "F_Ingreso": "1982",
+                "F_Ascenso": "29/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "28/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/233 SEVILLA LUIS GUILLERMO.jpg",
+                "PDF": "./resenas/233.pdf"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.9791707285721,
+                    -51.81945982655403
+                ]
+            },
+            "properties": {
+                "Nro": "234",
+                "Escalafon": "SOLDADO",
+                "Grado": "SOLDADO CLASE 63",
+                "Grado_PM": "CABO",
+                "Arma": "",
+                "Nombre": "LUNA, Mario Ramon",
+                "N_Esposa": "",
+                "N_Hijos": "",
+                "DNI": "16 310 810",
+                "Unidad": "EAM",
+                "N_Madre": "LUNA Esther Aidee",
+                "N_Padre": "",
+                "L_Deceso": "Darwin",
+                "L_Entierro": "Cementerio de Darwin",
+                "Tumba": "B-2-4",
+                "L_Nac": "Pozo del Castaño, Santiago del Estero",
+                "F_Nac": "10/7/1963",
+                "Rol Comb": "Fusilero en la Compañía de Seguridad y Defensa en la Base Aérea Militar Cóndor",
+                "F_Ingreso": "1982",
+                "F_Ascenso": "29/5/1982",
+                "Condec_1": "\"La Nación Argentina al Muerto en Combate\"",
+                "Condec_2": "La Nación Argentina al Valor en Combate",
+                "F_Deceso": "28/5/1982",
+                "Latitud": "-51.82016057",
+                "Longitud": "-58.98179009",
+                "Foto": "./fotos/234 LUNA MARIO RAMON.jpg",
+                "PDF": "./resenas/234.pdf"
+            }
+        }
+    ]
+}
