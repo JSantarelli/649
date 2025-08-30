@@ -15,10 +15,11 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
+const canvas = document.getElementById('map');
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-document.body.appendChild(renderer.domElement);
+canvas.appendChild(renderer.domElement);
 
 const composer = new EffectComposer(renderer);
 
@@ -69,7 +70,7 @@ let ageTracker = {
 
 const datasets = {
   armada: {
-    file: 'fallecidosArmada.geojson',
+    file: './data/fallecidosArmada.geojson',
     color: 0x0066cc,
     name: 'Armada',
     group: new THREE.Group(),
@@ -77,7 +78,7 @@ const datasets = {
     allMarkers: [] 
   },
   ea: {
-    file: 'fallecidosEA.geojson',
+    file: './data/fallecidosEA.geojson',
     color: 0x00FF66,
     name: 'Ejército Argentino',
     group: new THREE.Group(),
@@ -85,7 +86,7 @@ const datasets = {
     allMarkers: []
   },
   ffa: {
-    file: 'fallecidosFFA.geojson',
+    file: './data/fallecidosFFA.geojson',
     color: 0x00FFFF,
     name: 'Fuerza Aérea',
     group: new THREE.Group(),
@@ -93,7 +94,7 @@ const datasets = {
     allMarkers: []
   },
   gna: {
-    file: 'fallecidosGNA.geojson',
+    file: './data/fallecidosGNA.geojson',
     color: 0xffd700,
     name: 'Gendarmería',
     group: new THREE.Group(),
@@ -101,7 +102,7 @@ const datasets = {
     allMarkers: []
   },
   pna: {
-    file: 'fallecidosPNA.geojson',
+    file: './data/fallecidosPNA.geojson',
     color: 0xff6347,
     name: 'Prefectura',
     group: new THREE.Group(),
@@ -109,7 +110,7 @@ const datasets = {
     allMarkers: []
   },
   pnc: {
-    file: 'fallecidosContinente.geojson',
+    file: './data/fallecidosContinente.geojson',
     color: 0x634eff,
     name: 'Continente',
     group: new THREE.Group(),
@@ -395,6 +396,7 @@ function updateEventsPanel() {
       border-left: 3px solid #ffff00;
       font-size: 11px;
       line-height: 1.3;
+      display: none;
     `;
 
     eventDiv.innerHTML = `
@@ -861,9 +863,7 @@ async function loadEventosData() {
 }
 
 async function init() {
-  try {
-    showLoadingIndicator();
-    
+  try {    
     
     await loadTextures();
     
@@ -871,7 +871,7 @@ async function init() {
     await loadEventosData();
     
     
-    const malvinasData = await loadGeoJSON('malvinas.geojson');
+    const malvinasData = await loadGeoJSON('./data/malvinas.geojson');
     if (malvinasData) {
       globalBounds = calculateBounds(malvinasData);
       console.log('Global bounds:', globalBounds);
@@ -900,31 +900,12 @@ async function init() {
       camera.lookAt(0, ISLAND_HEIGHT / 2, 0);
       controls.target.set(0, ISLAND_HEIGHT / 2, 0);
       controls.update();
-      
-      hideLoadingIndicator();
-      
+            
     } else {
       console.error('Failed to load Malvinas geography data');
-      hideLoadingIndicator();
     }
   } catch (error) {
     console.error('Initialization error:', error);
-    hideLoadingIndicator();
-  }
-}
-
-function showLoadingIndicator() {
-  const loader = document.createElement('div');
-  loader.id = 'loading-indicator';
-  loader.className = 'loading';
-  loader.innerHTML = 'Cargando Malvinas...';
-  document.body.appendChild(loader);
-}
-
-function hideLoadingIndicator() {
-  const loader = document.getElementById('loading-indicator');
-  if (loader) {
-    loader.remove();
   }
 }
 
@@ -959,6 +940,7 @@ function createUI() {
     min-width: 250px;
     max-height: 80vh;
     overflow-y: auto;
+    display: none;
   `;
   
   const title = document.createElement('h3');
@@ -1148,6 +1130,7 @@ function createEventsPanel() {
     max-height: 80vh;
     overflow-y: auto;
     border: 1px solid #444;
+    display: none;
   `;
   
   const title = document.createElement('h3');
@@ -1273,12 +1256,14 @@ function onMouseMove(event) {
       const fNac = userData.F_Nac || 'Sin fecha';
       const fDeceso = userData.F_Deceso || 'Sin fecha';
       const LDeceso = userData.L_Deceso || 'Sin lugar';
+      const Escalafon = userData.Escalafon || 'Sin escalafón';
       
       tooltip.innerHTML = `
         <strong>${name}</strong><br>
         Edad: ${age} años<br>
         <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
-        <small>Lugar: ${LDeceso}</small>
+        <small>Lugar: ${LDeceso}</small><br>
+        <small>Escalafón: ${Escalafon}</small>
       `;
       tooltip.style.display = 'block';
       document.body.style.cursor = 'pointer';

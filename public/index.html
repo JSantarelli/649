@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iluminando el cielo</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./assets/icons.css" />
+  <title>649</title>
   <style>
     body {
       margin: 0;
@@ -39,13 +41,46 @@
   </style>
 </head>
 <body>
-  <div id="info">
-    <strong>Controles:</strong><br>
-    • Click: Seleccionar parcela<br>
-    • Arrastrar: Rotar vista<br>
-    • Scroll: Zoom<br>
-    • Click medio: Paneo
+    <div class="container">
+      <!-- First Screen -->
+      <section class="screen screen--first active">
+        <blockquote class="intro__wrapper" id="quote">
+            <p class="intro__txt">
+                <span class="line line-1">...al principio, las bajas son <span class="bold-placeholder">números</span>,</span><br>
+                <span class="line line-2">...después son números con <span class="bold-placeholder">nombre y apellido</span>,</span><br>
+                <span class="line line-3">...luego son <span class="bold-placeholder">bajas conocidas</span>,</span><br>
+                <span class="line line-4">...y finalmente son <span class="bold-placeholder">bajas conocidas y queridas...</span></span>
+                
+                <!-- Bold words as separate floating elements -->
+                <b class="bold-word bold-1">números</b>
+                <b class="bold-word bold-2">nombre y apellido</b>
+                <b class="bold-word bold-3">bajas conocidas</b>
+                <b class="bold-word bold-4">bajas conocidas y queridas...</b>
+            </p>
+            <cite>
+                <span class="intro__autor">Capitán Andrés Ferrero</span>
+                <small class="intro__subfix">Jefe de la 3ra Sección de la Compañia de Comandos 602</small>
+            </cite>
+        </blockquote>
+      </section>
+
+      <!-- Second Screen -->
+      <section class="screen screen--second">
+          <nav class="second-nav">
+              <button class="heroes-btn" onclick="goToThirdScreen()">Conocé a nuestros héroes</button>
+              <h1 class="cover__title">649</h1>
+          </nav>
+          <p class="second-description">
+              Quiénes, dónde y cuándo dieron su vida cada uno de nuestros héroes de Malvinas.
+          </p>
+      </section>
+
+      <!-- Third Screen -->
+      <section class="screen screen--third">
+          <div id="map"></div>
+      </section>
   </div>
   <script src="/bundle.js"></script>
+  <script src="./js/animations.js"></script>
 </body>
 </html>
