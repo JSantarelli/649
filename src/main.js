@@ -60,7 +60,6 @@ let dateRange = {
 let globalBounds = null;
 let eventosData = [];
 
-
 let ageTracker = {
   totalAge: 0,
   casualtyCount: 0,
@@ -282,7 +281,6 @@ function calculateAverageAge() {
   const minAge = ages.length > 0 ? Math.min(...ages) : 0;
   const maxAge = ages.length > 0 ? Math.max(...ages) : 0;
   
-  
   const sortedAges = ages.sort((a, b) => a - b);
   const medianAge = sortedAges.length > 0 
     ? sortedAges.length % 2 === 0 
@@ -309,22 +307,22 @@ function updateAgeDisplay() {
   const avgAgeElement = document.getElementById('average-age-display');
   if (avgAgeElement && ageStats.casualtyCount > 0) {
     avgAgeElement.innerHTML = `
-      <div style="color: #00ff88; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
+      <div class="age-average">
         Promedio de Edad: ${ageStats.averageAge.toFixed(1)} años
       </div>
-      <div style="color: #ffff00; font-size: 12px; margin-bottom: 4px;">
+      <div class="age-median">
         Mediana: ${ageStats.medianAge.toFixed(1)} años
       </div>
-      <div style="color: #ff6b6b; font-size: 12px; margin-bottom: 4px;">
+      <div class="age-range">
         Rango: ${ageStats.minAge} - ${ageStats.maxAge} años
       </div>
-      <div style="color: #74c0fc; font-size: 12px;">
+      <div class="age-count">
         Bajas analizadas: ${ageStats.casualtyCount}
       </div>
     `;
   } else if (avgAgeElement) {
     avgAgeElement.innerHTML = `
-      <div style="color: #999; font-size: 14px;">
+      <div class="age-no-data">
         No hay datos en el rango seleccionado
       </div>
     `;
@@ -367,7 +365,6 @@ function updateEventsPanel() {
   const eventsContainer = document.getElementById('events-container');
   if (!eventsContainer) return;
 
-  
   const filteredEvents = eventosData.filter(evento => {
     return isDateInRange(evento.fechaInicio, dateRange.currentStart, dateRange.currentEnd);
   });
@@ -378,41 +375,31 @@ function updateEventsPanel() {
     return dateA - dateB;
   });
 
-  
   eventsContainer.innerHTML = '';
 
   if (sortedEvents.length === 0) {
-    eventsContainer.innerHTML = '<div style="color: #999; font-size: 12px; padding: 10px;">No hay eventos en el rango seleccionado</div>';
+    eventsContainer.innerHTML = '<div class="events-no-data">No hay eventos en el rango seleccionado</div>';
     return;
   }
   
   sortedEvents.forEach(evento => {
     const eventDiv = document.createElement('div');
-    eventDiv.style.cssText = `
-      background: rgba(255, 255, 255, 0.1);
-      margin: 5px 0;
-      padding: 8px;
-      border-radius: 5px;
-      border-left: 3px solid #ffff00;
-      font-size: 11px;
-      line-height: 1.3;
-      display: none;
-    `;
+    eventDiv.className = 'event-item';
 
     eventDiv.innerHTML = `
-      <div style="font-weight: bold; color: #ffff00; margin-bottom: 3px;">
+      <div class="event-date">
         ${formatDateForDisplay(parseDate(evento.fechaInicio))}
       </div>
-      <div style="color: #fff; font-weight: bold; margin-bottom: 2px;">
+      <div class="event-title">
         ${evento.evento}
       </div>
-      <div style="color: #ccc; font-size: 10px; margin-bottom: 3px;">
+      <div class="event-type">
         Tipo: ${evento.tipo}
       </div>
-      <div style="color: #ddd; font-size: 10px;">
+      <div class="event-description">
         ${evento.descripcion}
       </div>
-      <div style="color: #ddd; font-size: 10px;">
+      <div class="event-casualties">
         ${evento.bajas}
       </div>
     `;
@@ -635,11 +622,9 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   
   const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
   
-  
   if (textures.terrain) {
     const positions = geometry.attributes.position;
     const uvs = [];
-    
     
     let minX = Infinity, maxX = -Infinity;
     let minY = Infinity, maxY = -Infinity;
@@ -653,15 +638,12 @@ function createPolygonMesh(coordinates, bounds, group, id) {
       maxY = Math.max(maxY, y);
     }
     
-    
     for (let i = 0; i < positions.count; i++) {
       const x = positions.getX(i);
       const y = positions.getY(i);
       
-      
       const u = (x + 50) / 100; 
       const v = (y + 50) / 100; 
-      
       
       const clampedU = Math.max(0, Math.min(1, u));
       const clampedV = Math.max(0, Math.min(1, v));
@@ -695,7 +677,6 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   terrainMesh.name = `terrain_${id}`;
   group.add(terrainMesh);
   
-  
   const edgesGeometry = new THREE.EdgesGeometry(geometry);
   const edgesMaterial = new THREE.LineBasicMaterial({ 
     color: 0x2c3e50,
@@ -706,7 +687,6 @@ function createPolygonMesh(coordinates, bounds, group, id) {
   edges.position.y = 0.01;
   edges.name = `edges_${id}`;
   group.add(edges);
-  
   
   if (coordinates.length === 1) { 
     createWaterPlane(bounds, group);
@@ -754,7 +734,6 @@ function createMarkers(geojson, color, datasetKey) {
   let positionDebug = [];
   
   geojson.features.forEach((feature, index) => {
-    
     feature = normalizeFeatureDates(feature);
     
     if (feature.geometry && feature.geometry.type === 'Point') {
@@ -770,7 +749,6 @@ function createMarkers(geojson, color, datasetKey) {
       ageStats.count++;
       
       const pos = latLonToXY(lat, lon, globalBounds);
-      
       
       const geometry = new THREE.CylinderGeometry(0.1, 0.1, height, 8);
       const material = new THREE.MeshBasicMaterial({ 
@@ -811,7 +789,6 @@ function createMarkers(geojson, color, datasetKey) {
         datasetName: group.name || 'unknown'
       };
       
-      
       datasets[datasetKey].allMarkers.push({
         marker: marker,
         glowMarker: glowMarker,
@@ -842,12 +819,11 @@ async function loadGeoJSON(filename) {
 
 async function loadEventosData() {
   try {
-    const response = await fetch('eventosBelicos.json');
+    const response = await fetch('./data/eventosBelicos.json');
     if (!response.ok) {
       throw new Error('Failed to load eventosBelicos.json');
     }
     const data = await response.json();
-    
     
     eventosData = data.map(evento => ({
       ...evento,
@@ -864,22 +840,17 @@ async function loadEventosData() {
 
 async function init() {
   try {    
-    
     await loadTextures();
     
-    
     await loadEventosData();
-    
     
     const malvinasData = await loadGeoJSON('./data/malvinas.geojson');
     if (malvinasData) {
       globalBounds = calculateBounds(malvinasData);
       console.log('Global bounds:', globalBounds);
       
-      
       const islandGeometry = createIslandGeometry(malvinasData, globalBounds);
       malvinasGroup.add(islandGeometry);
-      
       
       for (const [key, dataset] of Object.entries(datasets)) {
         console.log(`Loading dataset: ${dataset.name} (${dataset.file})`);
@@ -892,9 +863,8 @@ async function init() {
         }
       }
       
-      
       updateMarkersVisibility();
-      
+      setupUIEventListeners(); // Initialize UI event listeners after data is loaded
       
       camera.position.set(30, 60, 80);
       camera.lookAt(0, ISLAND_HEIGHT / 2, 0);
@@ -925,235 +895,77 @@ function updateTotalCount(visible) {
   }
 }
 
-function createUI() {
-  const ui = document.createElement('div');
-  ui.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0,0,0,0.8);
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    z-index: 1000;
-    min-width: 250px;
-    max-height: 80vh;
-    overflow-y: auto;
-    display: none;
-  `;
+// NEW: Function to setup UI event listeners (replaces createUI function)
+function setupUIEventListeners() {
+  // Get DOM elements
+  const startDateSlider = document.getElementById('start-date-slider');
+  const endDateSlider = document.getElementById('end-date-slider');
+  const startDateValue = document.getElementById('start-date-value');
+  const endDateValue = document.getElementById('end-date-value');
+
+  // Calculate max days for sliders
+  const maxDays = Math.floor((dateRange.maxDate - dateRange.minDate) / (1000 * 60 * 60 * 24));
   
-  const title = document.createElement('h3');
-  title.textContent = 'Fallecidos en Malvinas';
-  title.style.cssText = 'margin: 0 0 15px 0; color: #ffffff; text-align: center;';
-  ui.appendChild(title);
-  
-  
-  const ageSection = document.createElement('div');
-  ageSection.style.cssText = 'margin: 15px 0; padding: 15px; border: 2px solid #00ff88; border-radius: 8px; background: rgba(0, 255, 136, 0.1);';
-  
-  const ageDisplay = document.createElement('div');
-  ageDisplay.id = 'average-age-display';
-  ageDisplay.style.cssText = 'text-align: center;';
-  
-  ageSection.appendChild(ageDisplay);
-  ui.appendChild(ageSection);
-  
-  
-  const dateSection = document.createElement('div');
-  dateSection.style.cssText = 'margin: 15px 0; padding: 15px 0; border-bottom: 1px solid #444;';
-  
-  const dateTitle = document.createElement('h4');
-  dateTitle.textContent = 'Filtro por Fecha de Deceso';
-  dateTitle.style.cssText = 'margin: 0 0 10px 0; color: #ffffff; font-size: 14px;';
-  dateSection.appendChild(dateTitle);
-  
-  
-  const startDateContainer = document.createElement('div');
-  startDateContainer.style.cssText = 'margin: 10px 0;';
-  
-  const startDateLabel = document.createElement('label');
-  startDateLabel.textContent = 'Desde: ';
-  startDateLabel.style.cssText = 'display: block; margin-bottom: 5px; font-size: 12px; color: #ccc;';
-  
-  const startDateValue = document.createElement('span');
-  startDateValue.id = 'start-date-value';
-  startDateValue.textContent = formatDateForDisplay(dateRange.currentStart);
-  startDateValue.style.cssText = 'color: #00ff00; font-weight: bold;';
-  startDateLabel.appendChild(startDateValue);
-  
-  const startDateSlider = document.createElement('input');
-  startDateSlider.type = 'range';
-  startDateSlider.min = '0';
-  startDateSlider.max = String(Math.floor((dateRange.maxDate - dateRange.minDate) / (1000 * 60 * 60 * 24)));
-  startDateSlider.value = '0';
-  startDateSlider.style.cssText = 'width: 100%; margin: 5px 0;';
-  
-  startDateContainer.appendChild(startDateLabel);
-  startDateContainer.appendChild(startDateSlider);
-  dateSection.appendChild(startDateContainer);
-  
-  
-  const endDateContainer = document.createElement('div');
-  endDateContainer.style.cssText = 'margin: 10px 0;';
-  
-  const endDateLabel = document.createElement('label');
-  endDateLabel.textContent = 'Hasta: ';
-  endDateLabel.style.cssText = 'display: block; margin-bottom: 5px; font-size: 12px; color: #ccc;';
-  
-  const endDateValue = document.createElement('span');
-  endDateValue.id = 'end-date-value';
-  endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
-  endDateValue.style.cssText = 'color: #ff0000; font-weight: bold;';
-  endDateLabel.appendChild(endDateValue);
-  
-  const endDateSlider = document.createElement('input');
-  endDateSlider.type = 'range';
-  endDateSlider.min = '0';
-  endDateSlider.max = String(Math.floor((dateRange.maxDate - dateRange.minDate) / (1000 * 60 * 60 * 24)));
-  endDateSlider.value = endDateSlider.max;
-  endDateSlider.style.cssText = 'width: 100%; margin: 5px 0;';
-  
-  endDateContainer.appendChild(endDateLabel);
-  endDateContainer.appendChild(endDateSlider);
-  dateSection.appendChild(endDateContainer);
-  
-  
-  startDateSlider.addEventListener('input', () => {
-    const days = parseInt(startDateSlider.value);
-    dateRange.currentStart = new Date(dateRange.minDate.getTime() + days * 24 * 60 * 60 * 1000);
-    
-    
-    if (dateRange.currentStart > dateRange.currentEnd) {
-      dateRange.currentStart = new Date(dateRange.currentEnd);
-      startDateSlider.value = String(Math.floor((dateRange.currentStart - dateRange.minDate) / (1000 * 60 * 60 * 24)));
-    }
-    
-    startDateValue.textContent = formatDateForDisplay(dateRange.currentStart);
-    updateMarkersVisibility();
-  });
-  
-  endDateSlider.addEventListener('input', () => {
-    const days = parseInt(endDateSlider.value);
-    dateRange.currentEnd = new Date(dateRange.minDate.getTime() + days * 24 * 60 * 60 * 1000);
-    
-    
-    if (dateRange.currentEnd < dateRange.currentStart) {
-      dateRange.currentEnd = new Date(dateRange.currentStart);
-      endDateSlider.value = String(Math.floor((dateRange.currentEnd - dateRange.minDate) / (1000 * 60 * 60 * 24)));
-    }
-    
-    endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
-    updateMarkersVisibility();
-  });
-  
-  ui.appendChild(dateSection);
-  
-  
-  const datasetSection = document.createElement('div');
-  datasetSection.style.cssText = 'margin: 15px 0; padding: 15px 0; border-bottom: 1px solid #444;';
-  
-  const datasetTitle = document.createElement('h4');
-  datasetTitle.textContent = 'Datasets';
-  datasetTitle.style.cssText = 'margin: 0 0 10px 0; color: #ffffff; font-size: 14px;';
-  datasetSection.appendChild(datasetTitle);
-  
-  Object.entries(datasets).forEach(([key, dataset]) => {
-    const container = document.createElement('div');
-    container.style.cssText = 'margin: 10px 0; display: flex; align-items: center;';
-    
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = dataset.visible;
-    checkbox.id = `toggle-${key}`;
-    checkbox.style.cssText = 'margin-right: 10px; transform: scale(1.2);';
-    
-    const label = document.createElement('label');
-    label.htmlFor = `toggle-${key}`;
-    label.textContent = dataset.name;
-    label.style.cssText = `color: #${dataset.color.toString(16).padStart(6, '0')}; cursor: pointer; font-weight: bold; font-size: 12px;`;
-    
-    checkbox.addEventListener('change', () => {
-      dataset.visible = checkbox.checked;
+  // Set slider ranges
+  if (startDateSlider && endDateSlider) {
+    startDateSlider.max = String(maxDays);
+    endDateSlider.max = String(maxDays);
+    endDateSlider.value = String(maxDays);
+  }
+
+  // Date slider event listeners
+  if (startDateSlider) {
+    startDateSlider.addEventListener('input', () => {
+      const days = parseInt(startDateSlider.value);
+      dateRange.currentStart = new Date(dateRange.minDate.getTime() + days * 24 * 60 * 60 * 1000);
+      
+      if (dateRange.currentStart > dateRange.currentEnd) {
+        dateRange.currentStart = new Date(dateRange.currentEnd);
+        startDateSlider.value = String(Math.floor((dateRange.currentStart - dateRange.minDate) / (1000 * 60 * 60 * 24)));
+      }
+      
+      if (startDateValue) {
+        startDateValue.textContent = formatDateForDisplay(dateRange.currentStart);
+      }
       updateMarkersVisibility();
     });
-    
-    container.appendChild(checkbox);
-    container.appendChild(label);
-    datasetSection.appendChild(container);
-  });
-  
-  ui.appendChild(datasetSection);
-  
-  
-  const totalCount = document.createElement('div');
-  totalCount.id = 'total-count';
-  totalCount.style.cssText = 'margin: 10px 0; padding: 10px 0; border-top: 1px solid #444; font-weight: bold; color: #ffff00;';
-  totalCount.textContent = 'Total visible: 0/0';
-  ui.appendChild(totalCount);
-  
-  const stats = document.createElement('div');
-  stats.style.cssText = 'margin-top: 15px; padding-top: 15px; border-top: 1px solid #444; font-size: 12px;';
-  stats.innerHTML = `
-    <div style="margin: 5px 0;"><strong>Visualización 3D:</strong></div>
-    <div style="margin: 2px 0; color: #ccc;">• Islas con altura uniforme (${ISLAND_HEIGHT} unidades)</div>
-    <div style="margin: 2px 0; color: #ccc;">• Altura de cilindros = Edad al deceso</div>
-    <div style="margin: 2px 0; color: #ccc;">• Marcadores sobre la superficie</div>
-    <div style="margin: 2px 0; color: #ccc;">• Filtro temporal activo</div>
-    <div style="margin: 2px 0; color: #ccc;">• Efecto bloom habilitado</div>
-    <div style="margin: 2px 0; color: #ccc;">• Conversión automática de fechas ISO 8601</div>
-    <div style="margin: 2px 0; color: #00ff88;">• Estadísticas de edad en tiempo real</div>
-    <div style="margin: 5px 0;"><strong>Controles:</strong></div>
-    <div style="margin: 2px 0; color: #ccc;">• Mouse: Rotar vista</div>
-    <div style="margin: 2px 0; color: #ccc;">• Scroll: Zoom</div>
-    <div style="margin: 2px 0; color: #ccc;">• Sliders: Filtrar fechas y ver cambios en edad promedio</div>
-  `;
-  ui.appendChild(stats);
-  
-  document.body.appendChild(ui);
-}
+  }
 
-function createEventsPanel() {
-  const eventsPanel = document.createElement('div');
-  eventsPanel.id = 'events-panel';
-  eventsPanel.style.cssText = `
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: rgba(0,0,0,0.9);
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    z-index: 1000;
-    width: 300px;
-    max-height: 80vh;
-    overflow-y: auto;
-    border: 1px solid #444;
-    display: none;
-  `;
-  
-  const title = document.createElement('h3');
-  title.textContent = 'Eventos Bélicos';
-  title.style.cssText = `
-    margin: 0 0 15px 0; 
-    color: #ffff00; 
-    text-align: center;
-    font-size: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #555;
-  `;
-  eventsPanel.appendChild(title);
-  
-  const eventsContainer = document.createElement('div');
-  eventsContainer.id = 'events-container';
-  eventsContainer.style.cssText = `
-    max-height: calc(80vh - 100px);
-    overflow-y: auto;
-  `;
-  
-  eventsPanel.appendChild(eventsContainer);
-  document.body.appendChild(eventsPanel);
+  if (endDateSlider) {
+    endDateSlider.addEventListener('input', () => {
+      const days = parseInt(endDateSlider.value);
+      dateRange.currentEnd = new Date(dateRange.minDate.getTime() + days * 24 * 60 * 60 * 1000);
+      
+      if (dateRange.currentEnd < dateRange.currentStart) {
+        dateRange.currentEnd = new Date(dateRange.currentStart);
+        endDateSlider.value = String(Math.floor((dateRange.currentEnd - dateRange.minDate) / (1000 * 60 * 60 * 24)));
+      }
+      
+      if (endDateValue) {
+        endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
+      }
+      updateMarkersVisibility();
+    });
+  }
+
+  // Dataset checkbox event listeners
+  Object.entries(datasets).forEach(([key, dataset]) => {
+    const checkbox = document.getElementById(`toggle-${key}`);
+    if (checkbox) {
+      checkbox.addEventListener('change', () => {
+        dataset.visible = checkbox.checked;
+        updateMarkersVisibility();
+      });
+    }
+  });
+
+  // Initial date display update
+  if (startDateValue) {
+    startDateValue.textContent = formatDateForDisplay(dateRange.currentStart);
+  }
+  if (endDateValue) {
+    endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
+  }
 }
 
 function setupLighting() {
@@ -1189,30 +1001,13 @@ function animate() {
   composer.render();
 }
 
+// Mouse interaction variables
 const mouse = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
 let hoveredMarker = null;
-let tooltip = null;
 
-function createTooltip() {
-  tooltip = document.createElement('div');
-  tooltip.style.cssText = `
-    position: fixed;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    pointer-events: none;
-    z-index: 10000;
-    display: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  `;
-  document.body.appendChild(tooltip);
-}
+// Get tooltip element from HTML (replaces createTooltip function)
+const tooltip = document.getElementById('tooltip');
 
 function onMouseMove(event) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -1258,19 +1053,23 @@ function onMouseMove(event) {
       const LDeceso = userData.L_Deceso || 'Sin lugar';
       const Escalafon = userData.Escalafon || 'Sin escalafón';
       
-      tooltip.innerHTML = `
-        <strong>${name}</strong><br>
-        Edad: ${age} años<br>
-        <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
-        <small>Lugar: ${LDeceso}</small><br>
-        <small>Escalafón: ${Escalafon}</small>
-      `;
-      tooltip.style.display = 'block';
+      if (tooltip) {
+        tooltip.innerHTML = `
+          <strong>${name}</strong><br>
+          Edad: ${age} años<br>
+          <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
+          <small>Lugar: ${LDeceso}</small><br>
+          <small>Escalafón: ${Escalafon}</small>
+        `;
+        tooltip.style.display = 'block';
+      }
       document.body.style.cursor = 'pointer';
     }
     
-    tooltip.style.left = (event.clientX + 15) + 'px';
-    tooltip.style.top = (event.clientY - 10) + 'px';
+    if (tooltip) {
+      tooltip.style.left = (event.clientX + 15) + 'px';
+      tooltip.style.top = (event.clientY - 10) + 'px';
+    }
     
   } else {
     if (hoveredMarker) {
@@ -1292,15 +1091,13 @@ function onWindowResize() {
   composer.setSize(window.innerWidth, window.innerHeight);
 }
 
+// Event listeners
 window.addEventListener('resize', onWindowResize);
+window.addEventListener('mousemove', onMouseMove);
 
+// Initialize the application
 setupLighting();
-createUI();
-createEventsPanel();
-createTooltip(); 
 init();
 animate();
-
-window.addEventListener('mousemove', onMouseMove);
 
 export { scene, camera, renderer, datasets, composer };

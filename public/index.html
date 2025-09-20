@@ -39,48 +39,116 @@
       z-index: 1000;
     }
   </style>
-</head>
+</head> 
 <body>
-    <div class="container">
-      <!-- First Screen -->
-      <section class="screen screen--first active">
-        <blockquote class="intro__wrapper" id="quote">
-            <p class="intro__txt">
-                <span class="line line-1">...al principio, las bajas son <span class="bold-placeholder">números</span>,</span><br>
-                <span class="line line-2">...después son números con <span class="bold-placeholder">nombre y apellido</span>,</span><br>
-                <span class="line line-3">...luego son <span class="bold-placeholder">bajas conocidas</span>,</span><br>
-                <span class="line line-4">...y finalmente son <span class="bold-placeholder">bajas conocidas y queridas...</span></span>
-                
-                <!-- Bold words as separate floating elements -->
-                <b class="bold-word bold-1">números</b>
-                <b class="bold-word bold-2">nombre y apellido</b>
-                <b class="bold-word bold-3">bajas conocidas</b>
-                <b class="bold-word bold-4">bajas conocidas y queridas...</b>
-            </p>
-            <cite>
-                <span class="intro__autor">Capitán Andrés Ferrero</span>
-                <small class="intro__subfix">Jefe de la 3ra Sección de la Compañia de Comandos 602</small>
-            </cite>
-        </blockquote>
-      </section>
+  
+  <section id="map">
+    <span class="overlay"></span>
+  </section>
 
-      <!-- Second Screen -->
-      <section class="screen screen--second">
-          <nav class="second-nav">
-              <button class="heroes-btn" onclick="goToThirdScreen()">Conocé a nuestros héroes</button>
-              <h1 class="cover__title">649</h1>
-          </nav>
-          <p class="second-description">
-              Quiénes, dónde y cuándo dieron su vida cada uno de nuestros héroes de Malvinas.
-          </p>
-      </section>
-
-      <!-- Third Screen -->
-      <section class="screen screen--third">
-          <div id="map"></div>
-      </section>
+  <!-- Main UI Panel -->
+  <div class="main-ui" id="main-ui">
+    <h3>Fallecidos en Malvinas</h3>
+    
+    <!-- Age Statistics Section -->
+    <div class="age-section">
+      <div id="average-age-display">
+        <div class="age-no-data">
+          Cargando datos...
+        </div>
+      </div>
+    </div>
+    
+    <!-- Date Filter Section -->
+    <div class="date-section">
+      <h4>Filtro por Fecha de Deceso</h4>
+      
+      <div class="date-container">
+        <label class="date-label">
+          Desde: <span id="start-date-value" class="start-date-value">02/04/1982</span>
+        </label>
+        <input type="range" class="date-slider" id="start-date-slider" min="0" max="73" value="0">
+      </div>
+      
+      <div class="date-container">
+        <label class="date-label">
+          Hasta: <span id="end-date-value" class="end-date-value">08/07/1982</span>
+        </label>
+        <input type="range" class="date-slider" id="end-date-slider" min="0" max="73" value="73">
+      </div>
+    </div>
+    
+    <!-- Dataset Section -->
+    <div class="dataset-section">
+      <h4>Datasets</h4>
+      
+      <div class="dataset-container">
+        <input type="checkbox" class="dataset-checkbox" id="toggle-armada" checked>
+        <label for="toggle-armada" class="dataset-label armada">Armada (0/0)</label>
+      </div>
+      
+      <div class="dataset-container">
+        <input type="checkbox" class="dataset-checkbox" id="toggle-ea" checked>
+        <label for="toggle-ea" class="dataset-label ea">Ejército Argentino (0/0)</label>
+      </div>
+      
+      <div class="dataset-container">
+        <input type="checkbox" class="dataset-checkbox" id="toggle-ffa" checked>
+        <label for="toggle-ffa" class="dataset-label ffa">Fuerza Aérea (0/0)</label>
+      </div>
+      
+      <div class="dataset-container">
+        <input type="checkbox" class="dataset-checkbox" id="toggle-gna" checked>
+        <label for="toggle-gna" class="dataset-label gna">Gendarmería (0/0)</label>
+      </div>
+      
+      <div class="dataset-container">
+        <input type="checkbox" class="dataset-checkbox" id="toggle-pna" checked>
+        <label for="toggle-pna" class="dataset-label pna">Prefectura (0/0)</label>
+      </div>
+      
+      <div class="dataset-container">
+        <input type="checkbox" class="dataset-checkbox" id="toggle-pnc" checked>
+        <label for="toggle-pnc" class="dataset-label pnc">Continente (0/0)</label>
+      </div>
+    </div>
+    
+    <!-- Total Count -->
+    <div id="total-count">Total visible: 0/0</div>
+    
+    <!-- Stats Section -->
+    <div class="stats">
+      <strong>Visualización 3D:</strong>
+      <div class="stats-item">• Islas con altura uniforme (0.5 unidades)</div>
+      <div class="stats-item">• Altura de cilindros = Edad al deceso</div>
+      <div class="stats-item">• Marcadores sobre la superficie</div>
+      <div class="stats-item">• Filtro temporal activo</div>
+      <div class="stats-item">• Efecto bloom habilitado</div>
+      <div class="stats-item">• Conversión automática de fechas ISO 8601</div>
+      <div class="stats-item highlight">• Estadísticas de edad en tiempo real</div>
+      
+      <strong>Controles:</strong>
+      <div class="stats-item">• Mouse: Rotar vista</div>
+      <div class="stats-item">• Scroll: Zoom</div>
+      <div class="stats-item">• Sliders: Filtrar fechas y ver cambios en edad promedio</div>
+    </div>
   </div>
+
+  <!-- Events Panel -->
+  <div id="events-panel">
+    <h3>Eventos Bélicos</h3>
+    <div id="events-container">
+      <div class="events-no-data">Cargando eventos...</div>
+    </div>
+  </div>
+
+  <!-- Mobile Toggle Buttons -->
+  <button class="panel-toggle" id="toggle-main-ui" style="display: none;">Panel Principal</button>
+  <button class="panel-toggle" id="toggle-events" style="display: none;">Eventos</button>
+
+  <!-- Tooltip -->
+  <div class="tooltip" id="tooltip"></div>
+
   <script src="/bundle.js"></script>
-  <script src="./js/animations.js"></script>
 </body>
 </html>
