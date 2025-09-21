@@ -304,31 +304,55 @@ function calculateAverageAge() {
 function updateAgeDisplay() {
   const ageStats = calculateAverageAge();
   
-  const avgAgeElement = document.getElementById('average-age-display');
-  if (avgAgeElement && ageStats.casualtyCount > 0) {
-    avgAgeElement.innerHTML = `
-      <div class="age-average">
-        Promedio de Edad: ${ageStats.averageAge.toFixed(1)} años
-      </div>
-      <div class="age-median">
-        Mediana: ${ageStats.medianAge.toFixed(1)} años
-      </div>
-      <div class="age-range">
-        Rango: ${ageStats.minAge} - ${ageStats.maxAge} años
-      </div>
-      <div class="age-count">
-        Bajas analizadas: ${ageStats.casualtyCount}
-      </div>
-    `;
-  } else if (avgAgeElement) {
-    avgAgeElement.innerHTML = `
-      <div class="age-no-data">
-        No hay datos en el rango seleccionado
-      </div>
-    `;
+  // Get HTML elements
+  const averageValue = document.getElementById('average-value');
+  const medianValue = document.getElementById('median-value');
+  const minAgeElement = document.getElementById('min-age');
+  const maxAgeElement = document.getElementById('max-age');
+  const casualtyCountElement = document.getElementById('casualty-count');
+  const ageStatsElements = document.querySelectorAll('#age-average, #age-median, #age-range, #age-count');
+  const noDataElement = document.getElementById('age-no-data');
+  
+  if (ageStats.casualtyCount > 0) {
+    // Show statistics and hide "no data" message
+    ageStatsElements.forEach(el => el.style.display = 'block');
+    if (noDataElement) noDataElement.style.display = 'none';
+    
+    // Update values
+    if (averageValue) averageValue.textContent = ageStats.averageAge.toFixed(1);
+    if (medianValue) medianValue.textContent = ageStats.medianAge.toFixed(1);
+    if (minAgeElement) minAgeElement.textContent = ageStats.minAge;
+    if (maxAgeElement) maxAgeElement.textContent = ageStats.maxAge;
+    if (casualtyCountElement) casualtyCountElement.textContent = ageStats.casualtyCount;
+  } else {
+    // Hide statistics and show "no data" message
+    ageStatsElements.forEach(el => el.style.display = 'none');
+    if (noDataElement) noDataElement.style.display = 'block';
   }
 }
 
+// NEW: Updated progress bar function (replaces updateDatasetCount)
+function updateDatasetProgressBar(key, total, visible) {
+  const container = document.querySelector(`[data-key="${key}"]`);
+  if (!container) return;
+
+  const progressBar = container.querySelector('.progress-bar');
+  const progressText = container.querySelector('.progress-text');
+  
+  const percentage = total > 0 ? (visible / total) * 100 : 0;
+  
+  progressBar.style.width = `${percentage}%`;
+  progressText.textContent = `${visible}/${total}`;
+  
+  // Update container state based on visibility
+  if (datasets[key].visible) {
+    container.classList.remove('disabled');
+  } else {
+    container.classList.add('disabled');
+  }
+}
+
+// UPDATED: Modified to use progress bars
 function updateMarkersVisibility() {
   let totalVisible = 0;
   
@@ -353,12 +377,14 @@ function updateMarkersVisibility() {
       }
     });
     
-    updateDatasetCount(key, dataset.allMarkers.length, visibleCount);
+    // Use the new progress bar update function
+    updateDatasetProgressBar(key, dataset.allMarkers.length, visibleCount);
   });
   
   updateTotalCount(totalVisible);
   updateAgeDisplay(); 
   updateEventsPanel();
+  updateEscalafonDisplay();
 }
 
 function updateEventsPanel() {
@@ -879,14 +905,7 @@ async function init() {
   }
 }
 
-function updateDatasetCount(key, total, visible) {
-  const label = document.querySelector(`label[for="toggle-${key}"]`);
-  if (label) {
-    const datasetName = datasets[key].name;
-    label.textContent = `${datasetName} (${visible}/${total})`;
-  }
-}
-
+// UPDATED: Modified to use the new progress bar system
 function updateTotalCount(visible) {
   const totalElement = document.getElementById('total-count');
   if (totalElement) {
@@ -895,7 +914,7 @@ function updateTotalCount(visible) {
   }
 }
 
-// NEW: Function to setup UI event listeners (replaces createUI function)
+// UPDATED: Complete UI event listeners setup with progress bar support
 function setupUIEventListeners() {
   // Get DOM elements
   const startDateSlider = document.getElementById('start-date-slider');
@@ -948,15 +967,22 @@ function setupUIEventListeners() {
     });
   }
 
-  // Dataset checkbox event listeners
-  Object.entries(datasets).forEach(([key, dataset]) => {
-    const checkbox = document.getElementById(`toggle-${key}`);
-    if (checkbox) {
-      checkbox.addEventListener('change', () => {
-        dataset.visible = checkbox.checked;
-        updateMarkersVisibility();
-      });
-    }
+  // NEW: Dataset toggle event listeners for the custom progress bar toggles
+  document.querySelectorAll('.dataset-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const key = this.getAttribute('data-toggle');
+      const isActive = this.classList.contains('active');
+      
+      if (isActive) {
+        this.classList.remove('active');
+        datasets[key].visible = false;
+      } else {
+        this.classList.add('active');
+        datasets[key].visible = true;
+      }
+      
+      updateMarkersVisibility();
+    });
   });
 
   // Initial date display update
@@ -966,6 +992,11 @@ function setupUIEventListeners() {
   if (endDateValue) {
     endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
   }
+
+  // Initialize progress bars with current data
+  Object.entries(datasets).forEach(([key, dataset]) => {
+    updateDatasetProgressBar(key, dataset.allMarkers.length, 0);
+  });
 }
 
 function setupLighting() {
@@ -1082,6 +1113,155 @@ function onMouseMove(event) {
       tooltip.style.display = 'none';
     }
   }
+}
+
+// Escalafón
+// Add this variable with your other global variables
+let escalafoneTracker = {
+  counts: {},
+  total: 0,
+  visible: 0
+};
+
+// Add these functions to your JavaScript file
+
+function calculateEscalafonStats() {
+  let escalafoneStats = {};
+  let totalVisible = 0;
+  
+  Object.entries(datasets).forEach(([key, dataset]) => {
+    if (dataset.visible) {
+      dataset.allMarkers.forEach(markerData => {
+        const isInDateRange = isDateInRange(
+          markerData.userData.F_Deceso, 
+          dateRange.currentStart, 
+          dateRange.currentEnd
+        );
+        
+        if (isInDateRange) {
+          const escalafon = markerData.userData.Escalafon || 
+                          markerData.userData.escalafon || 
+                          markerData.userData.ESCALAFON || 
+                          'Sin escalafón';
+          
+          const normalizedEscalafon = normalizeEscalafon(escalafon);
+          
+          if (!escalafoneStats[normalizedEscalafon]) {
+            escalafoneStats[normalizedEscalafon] = 0;
+          }
+          escalafoneStats[normalizedEscalafon]++;
+          totalVisible++;
+        }
+      });
+    }
+  });
+  
+  escalafoneTracker = {
+    counts: escalafoneStats,
+    total: totalVisible,
+    visible: totalVisible
+  };
+  
+  return escalafoneTracker;
+}
+
+function normalizeEscalafon(escalafon) {
+  if (!escalafon || escalafon.toLowerCase().includes('sin escalafón') || 
+      escalafon.toLowerCase().includes('sin escalafon') || 
+      escalafon === '' || escalafon === 'N/A') {
+    return 'Sin escalafón';
+  }
+  
+  const normalized = escalafon.toString().trim();
+  
+  // Group similar ranks together
+  const rankMappings = {
+    'Soldado': ['Soldado', 'Soldado Conscripto', 'Conscripto', 'Soldado Voluntario'],
+    'Cabo': ['Cabo', 'Cabo 1°', 'Cabo 1ro', 'Cabo Primero', 'Cabo Principal'],
+    'Sargento': ['Sargento', 'Sargento 1°', 'Sargento 1ro', 'Sargento Primero', 'Sargento Ayudante'],
+    'Suboficial': ['Suboficial', 'Suboficial Mayor', 'Suboficial Principal'],
+    'Teniente': ['Teniente', 'Teniente 1°', 'Teniente 1ro', 'Teniente Primero', 'Subteniente'],
+    'Capitán': ['Capitán', 'Capitán de Fragata', 'Capitán de Corbeta'],
+    'Mayor': ['Mayor', 'Comandante'],
+    'Teniente Coronel': ['Teniente Coronel', 'Tte. Coronel'],
+    'Coronel': ['Coronel'],
+    'General': ['General', 'General de Brigada', 'General de División'],
+    'Marinero': ['Marinero', 'Marinero de 2da', 'Marinero de 1ra'],
+    'Aviador': ['Aviador', 'Aviador Principal'],
+    'Civil': ['Civil', 'Piloto Civil', 'Tripulante Civil']
+  };
+  
+  for (const [mainRank, variants] of Object.entries(rankMappings)) {
+    if (variants.some(variant => normalized.toLowerCase().includes(variant.toLowerCase()))) {
+      return mainRank;
+    }
+  }
+  
+  return normalized;
+}
+
+function updateEscalafonDisplay() {
+  const escalafoneStats = calculateEscalafonStats();
+  const escalafoneContainer = document.getElementById('escalafone-container');
+  
+  if (!escalafoneContainer) return;
+  
+  // Clear existing content
+  escalafoneContainer.innerHTML = '';
+  
+  if (escalafoneStats.total === 0) {
+    escalafoneContainer.innerHTML = '<div class="escalafone-no-data">No hay datos de escalafón en el rango seleccionado</div>';
+    return;
+  }
+  
+  // Sort by count (descending)
+  const sortedEscalafones = Object.entries(escalafoneStats.counts)
+    .sort(([,a], [,b]) => b - a)
+    .filter(([,count]) => count > 0);
+  
+  sortedEscalafones.forEach(([escalafon, count], index) => {
+    const percentage = escalafoneStats.total > 0 ? (count / escalafoneStats.total) * 100 : 0;
+    
+    const escalafoneDiv = document.createElement('div');
+    escalafoneDiv.className = 'escalafone-item';
+    
+    const colorClass = getEscalafonColorClass(escalafon, index);
+    
+    escalafoneDiv.innerHTML = `
+      <div class="escalafone-container ${colorClass}" data-escalafon="${escalafon}">
+        <div class="escalafone-info">
+          <div class="escalafone-label">${escalafon}</div>
+          <div class="escalafone-count">${count} (${percentage.toFixed(1)}%)</div>
+        </div>
+        <div class="escalafone-progress-bar-container">
+          <div class="escalafone-progress-bar" style="width: ${percentage}%"></div>
+        </div>
+      </div>
+    `;
+    
+    escalafoneContainer.appendChild(escalafoneDiv);
+  });
+}
+
+function getEscalafonColorClass(escalafon, index) {
+  const colorClasses = {
+    'General': 'escalafon-general',
+    'Coronel': 'escalafon-coronel',
+    'Teniente Coronel': 'escalafon-teniente-coronel',
+    'Mayor': 'escalafon-mayor',
+    'Capitán': 'escalafon-capitan',
+    'Teniente': 'escalafon-teniente',
+    'Suboficial': 'escalafon-suboficial',
+    'Sargento': 'escalafon-sargento',
+    'Cabo': 'escalafon-cabo',
+    'Soldado': 'escalafon-soldado',
+    'Marinero': 'escalafon-marinero',
+    'Aviador': 'escalafon-aviador',
+    'Civil': 'escalafon-civil',
+    'Sin escalafón': 'escalafon-sin-escalafon'
+  };
+  
+  return colorClasses[escalafon] || `escalafon-other-${index % 6}`;
 }
 
 function onWindowResize() {

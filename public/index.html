@@ -46,93 +46,117 @@
     <span class="overlay"></span>
   </section>
 
+   <!-- Fuerzas -->
+    <div class="dataset-section">
+      <h4>Datasets</h4>
+        <div class="dataset-container armada" data-key="armada">
+            <div class="dataset-toggle active" data-toggle="armada"></div>
+            <div class="progress-container">
+                <div class="dataset-label">Armada</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="progress-text">0/0</div>
+                </div>
+            </div>
+        </div>
+       <div class="dataset-container ea" data-key="ea">
+            <div class="dataset-toggle active" data-toggle="ea"></div>
+            <div class="progress-container">
+                <div class="dataset-label">Ejército Argentino</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="progress-text">0/0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dataset-container ffa" data-key="ffa">
+            <div class="dataset-toggle active" data-toggle="ffa"></div>
+            <div class="progress-container">
+                <div class="dataset-label">Fuerza Aérea</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="progress-text">0/0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dataset-container gna" data-key="gna">
+            <div class="dataset-toggle active" data-toggle="gna"></div>
+            <div class="progress-container">
+                <div class="dataset-label">Gendarmería</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="progress-text">0/0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dataset-container pna" data-key="pna">
+            <div class="dataset-toggle active" data-toggle="pna"></div>
+            <div class="progress-container">
+                <div class="dataset-label">Prefectura</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="progress-text">0/0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dataset-container pnc" data-key="pnc">
+            <div class="dataset-toggle active" data-toggle="pnc"></div>
+            <div class="progress-container">
+                <div class="dataset-label">Continente</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%"></div>
+                    <div class="progress-text">0/0</div>
+                </div>
+            </div>
+        </div>
+
+           <!-- NEW: Escalafón Progress Bars Section -->
+      <div class="escalafone-section">
+          <h4>Distribución por Escalafón</h4>
+          <div id="escalafone-container">
+              <div class="escalafone-no-data">Cargando datos de escalafón...</div>
+          </div>
+      </div>
+
+      <div id="total-count">Total visible: 0/0</div>
+    </div>
+        
+  <!-- Fechas -->
+  <div class="date-section">
+    <!-- <h4>Filtro por Fecha de Deceso</h4> -->
+    
+    <div class="date-container">
+      <label class="date-label">
+        Desde: <span id="start-date-value" class="start-date-value">02/04/1982</span>
+      </label>
+      <input type="range" class="date-slider" id="start-date-slider" min="0" max="73" value="0">
+    </div>
+    
+    <div class="date-container">
+      <label class="date-label">
+        Hasta: <span id="end-date-value" class="end-date-value">08/07/1982</span>
+      </label>
+      <input type="range" class="date-slider" id="end-date-slider" min="0" max="73" value="73">
+    </div>
+  </div>
+
   <!-- Main UI Panel -->
   <div class="main-ui" id="main-ui">
     <h3>Fallecidos en Malvinas</h3>
-    
+  </div>
     <!-- Age Statistics Section -->
     <div class="age-section">
       <div id="average-age-display">
-        <div class="age-no-data">
-          Cargando datos...
+        <div class="age-average" id="age-average">
+          Promedio de Edad: <span id="average-value">--</span> años
         </div>
       </div>
     </div>
-    
-    <!-- Date Filter Section -->
-    <div class="date-section">
-      <h4>Filtro por Fecha de Deceso</h4>
-      
-      <div class="date-container">
-        <label class="date-label">
-          Desde: <span id="start-date-value" class="start-date-value">02/04/1982</span>
-        </label>
-        <input type="range" class="date-slider" id="start-date-slider" min="0" max="73" value="0">
-      </div>
-      
-      <div class="date-container">
-        <label class="date-label">
-          Hasta: <span id="end-date-value" class="end-date-value">08/07/1982</span>
-        </label>
-        <input type="range" class="date-slider" id="end-date-slider" min="0" max="73" value="73">
-      </div>
-    </div>
-    
-    <!-- Dataset Section -->
-    <div class="dataset-section">
-      <h4>Datasets</h4>
-      
-      <div class="dataset-container">
-        <input type="checkbox" class="dataset-checkbox" id="toggle-armada" checked>
-        <label for="toggle-armada" class="dataset-label armada">Armada (0/0)</label>
-      </div>
-      
-      <div class="dataset-container">
-        <input type="checkbox" class="dataset-checkbox" id="toggle-ea" checked>
-        <label for="toggle-ea" class="dataset-label ea">Ejército Argentino (0/0)</label>
-      </div>
-      
-      <div class="dataset-container">
-        <input type="checkbox" class="dataset-checkbox" id="toggle-ffa" checked>
-        <label for="toggle-ffa" class="dataset-label ffa">Fuerza Aérea (0/0)</label>
-      </div>
-      
-      <div class="dataset-container">
-        <input type="checkbox" class="dataset-checkbox" id="toggle-gna" checked>
-        <label for="toggle-gna" class="dataset-label gna">Gendarmería (0/0)</label>
-      </div>
-      
-      <div class="dataset-container">
-        <input type="checkbox" class="dataset-checkbox" id="toggle-pna" checked>
-        <label for="toggle-pna" class="dataset-label pna">Prefectura (0/0)</label>
-      </div>
-      
-      <div class="dataset-container">
-        <input type="checkbox" class="dataset-checkbox" id="toggle-pnc" checked>
-        <label for="toggle-pnc" class="dataset-label pnc">Continente (0/0)</label>
-      </div>
-    </div>
-    
-    <!-- Total Count -->
-    <div id="total-count">Total visible: 0/0</div>
-    
-    <!-- Stats Section -->
-    <div class="stats">
-      <strong>Visualización 3D:</strong>
-      <div class="stats-item">• Islas con altura uniforme (0.5 unidades)</div>
-      <div class="stats-item">• Altura de cilindros = Edad al deceso</div>
-      <div class="stats-item">• Marcadores sobre la superficie</div>
-      <div class="stats-item">• Filtro temporal activo</div>
-      <div class="stats-item">• Efecto bloom habilitado</div>
-      <div class="stats-item">• Conversión automática de fechas ISO 8601</div>
-      <div class="stats-item highlight">• Estadísticas de edad en tiempo real</div>
-      
-      <strong>Controles:</strong>
-      <div class="stats-item">• Mouse: Rotar vista</div>
-      <div class="stats-item">• Scroll: Zoom</div>
-      <div class="stats-item">• Sliders: Filtrar fechas y ver cambios en edad promedio</div>
-    </div>
-  </div>
+
 
   <!-- Events Panel -->
   <div id="events-panel">

@@ -19,7 +19,11 @@ export default {
     },
     port: 8080,
     hot: true,
-    open: true
+    open: {
+      app: {
+        name: 'Google Chrome'
+      }
+    }
   },
   module: {
     rules: [
