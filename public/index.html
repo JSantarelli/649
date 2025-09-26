@@ -46,13 +46,21 @@
     <span class="overlay"></span>
   </section>
 
+    <!-- Main UI Panel -->
+  <div class="title__wrapper" id="main-ui">
+    <span class="ui__prefix">Gesta de Malvinas</span>
+    <h1 class="ui__title">649</h1>
+    <p class="">Quiénes, dónde y qué edad tenían  nuestros caídos en Malvinas. </p>
+  </div>
+
    <!-- Fuerzas -->
     <div class="dataset-section">
-      <h4>Datasets</h4>
+      <h3 class="ui__subtitle">Datasets</h3>
         <div class="dataset-container armada" data-key="armada">
             <div class="dataset-toggle active" data-toggle="armada"></div>
             <div class="progress-container">
                 <div class="dataset-label">Armada</div>
+                <span class="progress-percent"></span>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%"></div>
                     <div class="progress-text">0/0</div>
@@ -63,6 +71,7 @@
             <div class="dataset-toggle active" data-toggle="ea"></div>
             <div class="progress-container">
                 <div class="dataset-label">Ejército Argentino</div>
+                <span class="progress-percent"></span>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%"></div>
                     <div class="progress-text">0/0</div>
@@ -74,6 +83,7 @@
             <div class="dataset-toggle active" data-toggle="ffa"></div>
             <div class="progress-container">
                 <div class="dataset-label">Fuerza Aérea</div>
+                <span class="progress-percent"></span>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%"></div>
                     <div class="progress-text">0/0</div>
@@ -85,6 +95,7 @@
             <div class="dataset-toggle active" data-toggle="gna"></div>
             <div class="progress-container">
                 <div class="dataset-label">Gendarmería</div>
+                <span class="progress-percent"></span>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%"></div>
                     <div class="progress-text">0/0</div>
@@ -96,6 +107,7 @@
             <div class="dataset-toggle active" data-toggle="pna"></div>
             <div class="progress-container">
                 <div class="dataset-label">Prefectura</div>
+                <span class="progress-percent"></span>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%"></div>
                     <div class="progress-text">0/0</div>
@@ -107,6 +119,7 @@
             <div class="dataset-toggle active" data-toggle="pnc"></div>
             <div class="progress-container">
                 <div class="dataset-label">Continente</div>
+                <span class="progress-percent"></span>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: 0%"></div>
                     <div class="progress-text">0/0</div>
@@ -114,51 +127,60 @@
             </div>
         </div>
 
-           <!-- NEW: Escalafón Progress Bars Section -->
-      <div class="escalafone-section">
+      <!-- <div class="escalafone-section">
           <h4>Distribución por Escalafón</h4>
           <div id="escalafone-container">
               <div class="escalafone-no-data">Cargando datos de escalafón...</div>
           </div>
-      </div>
-
-      <div id="total-count">Total visible: 0/0</div>
+      </div> -->
     </div>
-        
+
+
+  <section class="panel__floating--bottom">
+            
   <!-- Fechas -->
-  <div class="date-section">
-    <!-- <h4>Filtro por Fecha de Deceso</h4> -->
-    
-    <div class="date-container">
-      <label class="date-label">
-        Desde: <span id="start-date-value" class="start-date-value">02/04/1982</span>
-      </label>
-      <input type="range" class="date-slider" id="start-date-slider" min="0" max="73" value="0">
-    </div>
-    
-    <div class="date-container">
-      <label class="date-label">
-        Hasta: <span id="end-date-value" class="end-date-value">08/07/1982</span>
-      </label>
-      <input type="range" class="date-slider" id="end-date-slider" min="0" max="73" value="73">
-    </div>
-  </div>
-
-  <!-- Main UI Panel -->
-  <div class="main-ui" id="main-ui">
-    <h3>Fallecidos en Malvinas</h3>
-  </div>
-    <!-- Age Statistics Section -->
-    <div class="age-section">
-      <div id="average-age-display">
-        <div class="age-average" id="age-average">
-          Promedio de Edad: <span id="average-value">--</span> años
-        </div>
+  <section class="date__wrapper">
+    <h3 class="ui__subtitle">Rango de fechas</h3>
+    <div class="date-section"> 
+      <div class="kpi">
+        <label class="kpi__body">
+          Desde
+        </label>
+        <input type="range" class="date-slider" id="start-date-slider" min="0" max="73" value="0">
+         <span id="start-date-value" class="kpi__subtitle">02/04/1982</span>
+      </div>
+      
+      <div class="kpi">
+        <label class="kpi__body">
+          Hasta
+        </label>
+        <input type="range" class="date-slider" id="end-date-slider" min="0" max="73" value="73">
+        <span id="end-date-value" class="kpi__subtitle">08/07/1982</span>
       </div>
     </div>
+  </section>
 
 
-  <!-- Events Panel -->
+    <div class="kpi" id="average-age-display">
+      <div class="kpi__body" id="age-average">
+        Promedio de Edad
+      </div>
+        <span id="average-value" class="kpi__title">--</span>
+        <p class="kpi__subtitle">Años</p> 
+    </div>
+    <div class="kpi">
+      <div class="kpi__body" id="age-average">
+        Texto de apoyo
+      </div>
+        <span id="total-count" class="kpi__title">--</span>
+        <p class="kpi__subtitle">Caídos</p> 
+    </div>
+
+
+  </section>
+
+
+  <!-- Eventos  -->
   <div id="events-panel">
     <h3>Eventos Bélicos</h3>
     <div id="events-container">
@@ -166,11 +188,6 @@
     </div>
   </div>
 
-  <!-- Mobile Toggle Buttons -->
-  <button class="panel-toggle" id="toggle-main-ui" style="display: none;">Panel Principal</button>
-  <button class="panel-toggle" id="toggle-events" style="display: none;">Eventos</button>
-
-  <!-- Tooltip -->
   <div class="tooltip" id="tooltip"></div>
 
   <script src="/bundle.js"></script>

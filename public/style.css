@@ -2,17 +2,17 @@
 * {
   margin: 0;
   padding: 0;
-  position: relative;
   box-sizing: border-box;
-  --bodyPadding: 96px;
-  --bodyGap: 48px;
-  --panelPadding: 52px;
-  --panelGap: 36px;
-  --cardPadding: 36px;
+  --bodyPadding: 48px;
+  --bodyGap: 16px;
+  --panelPadding: 24px;
+  --panelGap: 96px;
+  --panelWidth: 280px;
+  --cardPadding: 24px;
   --cardWidth: 320px;
   --cardFontSize: 14px;
   --cardTitleSize: 24px;
-  --cardGap: 16px;
+  --cardGap: 10px;
   --containerGap: 24px;
   --containerGapRow: 16px;
   --primary: #0E7490;
@@ -94,126 +94,85 @@ body.container {
   background: linear-gradient(to top, rgb(1, 24, 30) 0%, rgba(1, 24, 30, 0.5) 25%, rgba(1, 24, 30, 0) 100%);
 }
 
-.kpi {
-  font-family: "Rajdhani";
-  display: flex;
-  flex-direction: column;
-  gap: var(--cardGap);
-  text-align: left;
-  color: white;
-  padding: var(--cardPadding);
-}
-.kpi__title {
-  font-size: 48px;
-  letter-spacing: 4%;
-}
-.kpi__subtitle {
-  font-size: 20px;
-}
-.kpi__body {
-  font-size: 16px;
-  color: var(--secondary);
-}
-
-.main-ui {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  color: white;
-  z-index: 1000;
-  min-width: 250px;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-.main-ui h3 {
-  margin: 0 0 15px 0;
-  color: #ffffff;
-  text-align: center;
-}
-
-.age-section {
+.panel__floating--bottom {
   position: absolute;
-  left: calc(75vw - 280px);
-  bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--panelGap);
+  left: calc(var(--panelWidth) + var(--bodyPadding));
+  bottom: var(--cardPadding);
   z-index: 2;
 }
-
-#average-age-display {
-  text-align: center;
+.panel__floating--bottom .date__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
 }
-
-.age-average {
-  color: #00ff88;
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.age-median {
-  color: #ffff00;
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-
-.age-range {
-  color: #ff6b6b;
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-
-.age-count {
-  color: #74c0fc;
-  font-size: 12px;
-}
-
-.age-no-data {
-  color: #999;
-  font-size: 14px;
-}
-
-.date-section {
-  position: absolute;
-  left: calc(50vw - 280px);
-  bottom: 48px;
+.panel__floating--bottom .date__wrapper .date-section {
   display: flex;
   flex-direction: row;
   gap: 48px;
   z-index: 2;
 }
-
-.date-section h4 {
-  margin: 0 0 10px 0;
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.date-container {
-  margin: 10px 0;
-}
-
-.date-label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
-  color: #ccc;
-}
-
-.start-date-value {
-  color: #00ff00;
-  font-weight: bold;
-}
-
-.end-date-value {
-  color: #ff0000;
-  font-weight: bold;
-}
-
-.date-slider {
+.panel__floating--bottom .date__wrapper .date-slider {
   width: 100%;
-  margin: 5px 0;
+}
+.panel__floating--bottom .kpi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--cardGap);
+  font-family: "Rajdhani";
+  text-align: left;
+  color: white;
+}
+.panel__floating--bottom .kpi__title {
+  font-size: 48px;
+  letter-spacing: 4%;
+  font-weight: bolder;
+}
+.panel__floating--bottom .kpi__subtitle {
+  font-size: 28px;
+}
+.panel__floating--bottom .kpi__body {
+  font-size: 16px;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+.title__wrapper {
+  position: absolute;
+  top: var(--panelPadding);
+  left: var(--panelPadding);
+  font-family: "Rajdhani";
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bodyGap);
+  width: 280px;
+  text-align: left;
+}
+.title__wrapper .ui__prefix {
+  font-size: 14px;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+.title__wrapper h1.ui__title {
+  font-size: 72px;
+  text-transform: uppercase;
+}
+.title__wrapper p {
+  font-size: 18px;
+}
+
+.ui__subtitle {
+  font-size: 24px;
+  color: white;
+  font-family: "Rajdhani";
 }
 
 .dataset-section {
@@ -420,7 +379,7 @@ body.container {
   background: linear-gradient(90deg, #7f8c8d, #95a5a6);
 }
 .dataset-section .escalafon-marinero .escalafone-progress-bar {
-  background: linear-gradient(90deg, #2c3e50, #34495e);
+  background: linear-gradient(90deg, #577ca1, #9bc8f5);
 }
 .dataset-section .escalafon-aviador .escalafone-progress-bar {
   background: linear-gradient(90deg, #00FFFF, #1abc9c);
@@ -497,14 +456,6 @@ body.container {
   color: #634eff;
 }
 
-#total-count {
-  margin: 10px 0;
-  padding: 10px 0;
-  border-top: 1px solid #444;
-  font-weight: bold;
-  color: #ffff00;
-}
-
 .stats {
   margin-top: 15px;
   padding-top: 15px;
@@ -535,7 +486,7 @@ body.container {
   border-radius: 10px;
   color: white;
   z-index: 1000;
-  width: 200px;
+  width: var(--panelWidth);
   max-height: 40vh;
   overflow-y: auto;
   border: 1px solid #444;

@@ -304,7 +304,7 @@ function calculateAverageAge() {
 function updateAgeDisplay() {
   const ageStats = calculateAverageAge();
   
-  // Get HTML elements
+  
   const averageValue = document.getElementById('average-value');
   const medianValue = document.getElementById('median-value');
   const minAgeElement = document.getElementById('min-age');
@@ -314,37 +314,39 @@ function updateAgeDisplay() {
   const noDataElement = document.getElementById('age-no-data');
   
   if (ageStats.casualtyCount > 0) {
-    // Show statistics and hide "no data" message
+    
     ageStatsElements.forEach(el => el.style.display = 'block');
     if (noDataElement) noDataElement.style.display = 'none';
     
-    // Update values
+    
     if (averageValue) averageValue.textContent = ageStats.averageAge.toFixed(1);
     if (medianValue) medianValue.textContent = ageStats.medianAge.toFixed(1);
     if (minAgeElement) minAgeElement.textContent = ageStats.minAge;
     if (maxAgeElement) maxAgeElement.textContent = ageStats.maxAge;
     if (casualtyCountElement) casualtyCountElement.textContent = ageStats.casualtyCount;
   } else {
-    // Hide statistics and show "no data" message
+    
     ageStatsElements.forEach(el => el.style.display = 'none');
     if (noDataElement) noDataElement.style.display = 'block';
   }
 }
 
-// NEW: Updated progress bar function (replaces updateDatasetCount)
+
 function updateDatasetProgressBar(key, total, visible) {
   const container = document.querySelector(`[data-key="${key}"]`);
   if (!container) return;
 
   const progressBar = container.querySelector('.progress-bar');
+  const progressPercent = container.querySelector('.progress-percent');
   const progressText = container.querySelector('.progress-text');
   
   const percentage = total > 0 ? (visible / total) * 100 : 0;
   
   progressBar.style.width = `${percentage}%`;
+  progressPercent.textContent = `${percentage}%`;
   progressText.textContent = `${visible}/${total}`;
   
-  // Update container state based on visibility
+  
   if (datasets[key].visible) {
     container.classList.remove('disabled');
   } else {
@@ -352,7 +354,7 @@ function updateDatasetProgressBar(key, total, visible) {
   }
 }
 
-// UPDATED: Modified to use progress bars
+
 function updateMarkersVisibility() {
   let totalVisible = 0;
   
@@ -377,7 +379,7 @@ function updateMarkersVisibility() {
       }
     });
     
-    // Use the new progress bar update function
+    
     updateDatasetProgressBar(key, dataset.allMarkers.length, visibleCount);
   });
   
@@ -890,7 +892,7 @@ async function init() {
       }
       
       updateMarkersVisibility();
-      setupUIEventListeners(); // Initialize UI event listeners after data is loaded
+      
       
       camera.position.set(30, 60, 80);
       camera.lookAt(0, ISLAND_HEIGHT / 2, 0);
@@ -905,16 +907,16 @@ async function init() {
   }
 }
 
-// UPDATED: Modified to use the new progress bar system
+
 function updateTotalCount(visible) {
   const totalElement = document.getElementById('total-count');
   if (totalElement) {
     const total = Object.values(datasets).reduce((sum, dataset) => sum + dataset.allMarkers.length, 0);
-    totalElement.textContent = `Total visible: ${visible}/${total}`;
+    totalElement.textContent = `${visible}/${total}`;
   }
 }
 
-// UPDATED: Complete UI event listeners setup with progress bar support
+
 function setupUIEventListeners() {
   // Get DOM elements
   const startDateSlider = document.getElementById('start-date-slider');
@@ -967,7 +969,6 @@ function setupUIEventListeners() {
     });
   }
 
-  // NEW: Dataset toggle event listeners for the custom progress bar toggles
   document.querySelectorAll('.dataset-toggle').forEach(toggle => {
     toggle.addEventListener('click', function() {
       const key = this.getAttribute('data-toggle');
@@ -998,6 +999,8 @@ function setupUIEventListeners() {
     updateDatasetProgressBar(key, dataset.allMarkers.length, 0);
   });
 }
+
+setupUIEventListeners();
 
 function setupLighting() {
   const ambientLight = new THREE.AmbientLight(0x87ceeb, 0.15);
@@ -1032,12 +1035,12 @@ function animate() {
   composer.render();
 }
 
-// Mouse interaction variables
+
 const mouse = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
 let hoveredMarker = null;
 
-// Get tooltip element from HTML (replaces createTooltip function)
+
 const tooltip = document.getElementById('tooltip');
 
 function onMouseMove(event) {
@@ -1115,15 +1118,15 @@ function onMouseMove(event) {
   }
 }
 
-// Escalafón
-// Add this variable with your other global variables
+
+
 let escalafoneTracker = {
   counts: {},
   total: 0,
   visible: 0
 };
 
-// Add these functions to your JavaScript file
+
 
 function calculateEscalafonStats() {
   let escalafoneStats = {};
@@ -1174,20 +1177,75 @@ function normalizeEscalafon(escalafon) {
   
   const normalized = escalafon.toString().trim();
   
-  // Group similar ranks together
+  
   const rankMappings = {
-    'Soldado': ['Soldado', 'Soldado Conscripto', 'Conscripto', 'Soldado Voluntario'],
-    'Cabo': ['Cabo', 'Cabo 1°', 'Cabo 1ro', 'Cabo Primero', 'Cabo Principal'],
-    'Sargento': ['Sargento', 'Sargento 1°', 'Sargento 1ro', 'Sargento Primero', 'Sargento Ayudante'],
-    'Suboficial': ['Suboficial', 'Suboficial Mayor', 'Suboficial Principal'],
-    'Teniente': ['Teniente', 'Teniente 1°', 'Teniente 1ro', 'Teniente Primero', 'Subteniente'],
-    'Capitán': ['Capitán', 'Capitán de Fragata', 'Capitán de Corbeta'],
-    'Mayor': ['Mayor', 'Comandante'],
-    'Teniente Coronel': ['Teniente Coronel', 'Tte. Coronel'],
-    'Coronel': ['Coronel'],
-    'General': ['General', 'General de Brigada', 'General de División'],
-    'Marinero': ['Marinero', 'Marinero de 2da', 'Marinero de 1ra'],
-    'Aviador': ['Aviador', 'Aviador Principal'],
+    'Soldado': [
+      'Soldado', 
+      'Soldado Conscripto', 
+      'Conscripto', 
+      'Soldado Voluntario'
+    ],
+    'Cabo': [
+      'Cabo', 
+      'Cabo 1°', 
+      'Cabo 1ro', 
+      'Cabo Primero', 
+      'Cabo Principal'
+    ],
+    'Sargento': [
+      'Sargento', 
+      'Sargento 1°', 
+      'Sargento 1ro', 
+      'Sargento Primero', 
+      'Sargento Ayudante'
+    ],
+    'Oficial': [
+      'Guardiamarina', 
+      'Teniente de corbeta', 
+      'Capitan de corbeta',
+      'Capitán de Corbeta', 
+      'Teniente de fragata', 
+      'Capitan de fragata',
+      'Capitán de Fragata', 
+      'GENERAL DE BRIGADA',
+      'CAPITÁN',
+      'TENIENTE',
+      'SUBTENIENTE',
+      'TENIENTE 1º',
+      '1ER. TENIENTE',
+      'TENIENTE PRIMERO',
+      'VICECOMODORO',
+      'MAYOR',
+      'ALFEREZ',
+      'PRIMER ALFÉREZ',
+      'General', 
+      'General de Brigada', 
+      'General de División'
+    ],
+    'Suboficial': [
+      'Suboficial', 
+      'Suboficial Mayor',
+      'SUBOFICIAL PRIMERO',
+      'SUBOFICIAL SEGUNDO',
+      'SUBOFICIAL PRINCIPAL',
+      'SUBOFICIAL AYUDANTE',
+      'SUBOFICIAL AUXILIAR',
+      'CABO',
+      'CABO PRINCIPAL',
+      'CABO 1RO.',
+      'CABO 1º',
+      'CABO PRIMERO',
+      'CABO SEGUNDO',
+      'CABO EN COMISIÓN',
+      'SOLDADO CLASE 63',
+      'MARINERO',
+      'MARINERO PRIMERO',
+      'SUBOFICIAL PRIMERO',
+      'SUBOFICIAL SEGUNDO',
+      'SARGENTO',
+      'SARGENTO AYUDANTE',
+      'SARGENTO PRIMERO'
+    ],
     'Civil': ['Civil', 'Piloto Civil', 'Tripulante Civil']
   };
   
@@ -1206,7 +1264,7 @@ function updateEscalafonDisplay() {
   
   if (!escalafoneContainer) return;
   
-  // Clear existing content
+  
   escalafoneContainer.innerHTML = '';
   
   if (escalafoneStats.total === 0) {
@@ -1214,7 +1272,7 @@ function updateEscalafonDisplay() {
     return;
   }
   
-  // Sort by count (descending)
+  
   const sortedEscalafones = Object.entries(escalafoneStats.counts)
     .sort(([,a], [,b]) => b - a)
     .filter(([,count]) => count > 0);
@@ -1271,11 +1329,11 @@ function onWindowResize() {
   composer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Event listeners
+
 window.addEventListener('resize', onWindowResize);
 window.addEventListener('mousemove', onMouseMove);
 
-// Initialize the application
+
 setupLighting();
 init();
 animate();
