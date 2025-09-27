@@ -1313,6 +1313,10 @@ let hoveredMarker = null;
 
 const tooltip = document.getElementById('tooltip');
 
+// Global variable to track clicked tooltip state
+let clickedTooltip = false;
+let clickedMarker = null;
+
 function onMouseMove(event) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -1339,52 +1343,165 @@ function onMouseMove(event) {
   if (intersects.length > 0) {
     const intersectedMarker = intersects[0].object;
     
+    // Don't change hover state if tooltip is clicked and pinned
+    if (clickedTooltip && clickedMarker === intersectedMarker) {
+      // Update tooltip position for pinned tooltip
+      if (tooltip) {
+        tooltip.style.left = (event.clientX + 15) + 'px';
+        tooltip.style.top = (event.clientY - 10) + 'px';
+      }
+      return;
+    }
+    
     if (hoveredMarker !== intersectedMarker) {
-      if (hoveredMarker) {
+      // Reset previous hovered marker (but not if it's the clicked one)
+      if (hoveredMarker && hoveredMarker !== clickedMarker) {
         hoveredMarker.material.opacity = 0.4;
         hoveredMarker.material.emissiveIntensity = 2.5;
       }
       
       hoveredMarker = intersectedMarker;
-      hoveredMarker.material.opacity = 1.0;
-      hoveredMarker.material.emissiveIntensity = 3.5; 
       
-      const userData = hoveredMarker.userData;
-      const age = userData.age;
-      const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
-      const fNac = userData.F_Nac || 'Sin fecha';
-      const fDeceso = userData.F_Deceso || 'Sin fecha';
-      const LDeceso = userData.L_Deceso || 'Sin lugar';
-      const Escalafon = userData.Escalafon || 'Sin escalafón';
-      
-      if (tooltip) {
-        tooltip.innerHTML = `
-          <strong>${name}</strong><br>
-          Edad: ${age} años<br>
-          <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
-          <small>Lugar: ${LDeceso}</small><br>
-          <small>Escalafón: ${Escalafon}</small>
-        `;
-        tooltip.style.display = 'block';
+      // Don't change appearance if this is the clicked marker
+      if (hoveredMarker !== clickedMarker) {
+        hoveredMarker.material.opacity = 1.0;
+        hoveredMarker.material.emissiveIntensity = 3.5;
       }
+      
+      // Don't show hover tooltip if there's a pinned tooltip
+      if (!clickedTooltip) {
+        showTooltip(hoveredMarker, event);
+      }
+      
       document.body.style.cursor = 'pointer';
     }
     
-    if (tooltip) {
+    // Update tooltip position (for both hover and clicked tooltips)
+    if (tooltip && !clickedTooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
       tooltip.style.top = (event.clientY - 10) + 'px';
     }
     
   } else {
-    if (hoveredMarker) {
-      hoveredMarker.material.opacity = 0.4;
-      hoveredMarker.material.emissiveIntensity = 2.5;
+    // Only hide tooltip and reset marker if not clicked/pinned
+    if (!clickedTooltip) {
+      if (hoveredMarker) {
+        hoveredMarker.material.opacity = 0.4;
+        hoveredMarker.material.emissiveIntensity = 2.5;
+        hoveredMarker = null;
+        document.body.style.cursor = 'default';
+      }
+      if (tooltip) {
+        tooltip.style.display = 'none';
+      }
+    } else {
+      // Reset hover state but keep clicked marker highlighted
+      if (hoveredMarker && hoveredMarker !== clickedMarker) {
+        hoveredMarker.material.opacity = 0.4;
+        hoveredMarker.material.emissiveIntensity = 2.5;
+      }
       hoveredMarker = null;
       document.body.style.cursor = 'default';
     }
-    if (tooltip) {
-      tooltip.style.display = 'none';
+  }
+}
+
+function onClick(event) {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  
+  raycaster.setFromCamera(mouse, camera);
+  
+  const allMarkers = [];
+  Object.values(datasets).forEach(dataset => {
+    if (dataset.visible) {
+      dataset.allMarkers.forEach(markerData => {
+        if (markerData.marker.visible && 
+            markerData.marker.geometry && 
+            markerData.marker.geometry.type === 'CylinderGeometry' && 
+            markerData.marker.userData && 
+            typeof markerData.marker.userData.age === 'number') {
+          allMarkers.push(markerData.marker);
+        }
+      });
     }
+  });
+  
+  const intersects = raycaster.intersectObjects(allMarkers);
+  
+  if (intersects.length > 0) {
+    const intersectedMarker = intersects[0].object;
+    
+    // Reset previous clicked marker
+    if (clickedMarker && clickedMarker !== intersectedMarker) {
+      clickedMarker.material.opacity = 0.4;
+      clickedMarker.material.emissiveIntensity = 2.5;
+    }
+    
+    // Set new clicked marker
+    clickedMarker = intersectedMarker;
+    clickedMarker.material.opacity = 1.0;
+    clickedMarker.material.emissiveIntensity = 3.5;
+    
+    // Show pinned tooltip
+    clickedTooltip = true;
+    showTooltip(clickedMarker, event, true);
+  } else {
+    // Clicked on empty space - dismiss tooltip
+    dismissTooltip();
+  }
+}
+
+function showTooltip(marker, event, isPinned = false) {
+  const userData = marker.userData;
+  const age = userData.age;
+  const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
+  const fNac = userData.F_Nac || 'Sin fecha';
+  const fDeceso = userData.F_Deceso || 'Sin fecha';
+  const LDeceso = userData.L_Deceso || 'Sin lugar';
+  const Escalafon = userData.Escalafon || 'Sin escalafón';
+  
+  if (tooltip) {
+    tooltip.innerHTML = `
+      ${isPinned ? '<button class="tooltip-close" onclick="dismissTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
+      <div style="${isPinned ? 'padding-right: 25px;' : ''}">
+        <strong>${name}</strong><br>
+        Edad: ${age} años<br>
+        <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
+        <small>Lugar: ${LDeceso}</small><br>
+        <small>Escalafón: ${Escalafon}</small>
+      </div>
+    `;
+    tooltip.style.display = 'block';
+    tooltip.style.left = (event.clientX + 15) + 'px';
+    tooltip.style.top = (event.clientY - 10) + 'px';
+    
+    // Add some styling for pinned tooltips
+    if (isPinned) {
+      tooltip.style.border = '2px solid #007acc';
+      tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+    } else {
+      tooltip.style.border = '1px solid #ccc';
+      tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+    }
+  }
+}
+
+function dismissTooltip() {
+  clickedTooltip = false;
+  
+  // Reset clicked marker appearance
+  if (clickedMarker) {
+    clickedMarker.material.opacity = 0.4;
+    clickedMarker.material.emissiveIntensity = 2.5;
+    clickedMarker = null;
+  }
+  
+  // Hide tooltip
+  if (tooltip) {
+    tooltip.style.display = 'none';
+    tooltip.style.border = '1px solid #ccc';
+    tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
   }
 }
 
@@ -1394,12 +1511,10 @@ class SoldierSearch {
         this.searchResults = [];
         this.setupSearchUI();
     }
-
     
     extractName(userData) {
         return userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
     }
-
     
     searchByName(searchTerm) {
         if (!searchTerm || searchTerm.trim() === '') {
@@ -1571,7 +1686,6 @@ class SoldierSearch {
         searchContainer.appendChild(resultsContainer);
         document.body.appendChild(searchContainer);
 
-        
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
@@ -1579,7 +1693,6 @@ class SoldierSearch {
                 this.performSearch(e.target.value);
             }, 300); 
         });
-
         
         document.addEventListener('click', (e) => {
             if (!searchContainer.contains(e.target)) {
@@ -1972,6 +2085,8 @@ function onWindowResize() {
 
 window.addEventListener('resize', onWindowResize);
 window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('click', onClick);
+
 
 setupLighting();
 init();
