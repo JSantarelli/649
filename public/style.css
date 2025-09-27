@@ -400,6 +400,9 @@ body.container {
   font-size: 11px;
   line-height: 1.3;
 }
+.event-item.active {
+  --panelBg: red;
+}
 .event-item .event-date {
   font-weight: bold;
   color: #2DEACA;

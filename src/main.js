@@ -388,6 +388,9 @@ function updateMarkersVisibility() {
   updateEventsPanel();
   updateEscalafonDisplay();
 }
+// Global variable to store event highlights and current selection
+let eventHighlights = new THREE.Group();
+let currentSelectedEvent = null;
 
 function updateEventsPanel() {
   const eventsContainer = document.getElementById('events-panel');
@@ -430,7 +433,25 @@ function updateEventsPanel() {
     const eventItem = eventElement.querySelector('.event-item') || eventElement.children[0];
     if (eventItem && evento.coordinates) {
       eventItem.addEventListener('click', () => {
-        highlightSpecificEvent(evento);
+        // Check if this item is already active
+        const isCurrentlyActive = eventItem.classList.contains('active');
+        
+        // Remove 'active' class from all event items
+        const allEventItems = eventsContainer.querySelectorAll('.event-item');
+        allEventItems.forEach(item => item.classList.remove('active'));
+        
+        if (isCurrentlyActive) {
+          // If clicking the same item again, reset zoom and clear selection
+          currentSelectedEvent = null;
+          updateEventHighlightStates();
+          returnToOverview();
+        } else {
+          // If clicking a different item, activate it and highlight
+          currentSelectedEvent = evento;
+          eventItem.classList.add('active');
+          updateEventHighlightStates();
+          highlightSpecificEvent(evento);
+        }
       });
       eventItem.style.cursor = 'pointer';
     }
@@ -438,9 +459,6 @@ function updateEventsPanel() {
     eventsContainer.appendChild(eventElement);
   });
 }
-
-// Global variable to store event highlights
-let eventHighlights = new THREE.Group();
 
 function createEventHighlights(events) {
   if (!globalBounds || !scene) return;
@@ -496,7 +514,7 @@ function createEventHighlight(evento, pos) {
   glow.position.set(pos.x, ISLAND_HEIGHT + 0.05, -pos.y);
   glow.rotation.x = -Math.PI / 2;
   
-  // Add userData for interaction
+  // Add userData for interaction and state management
   circle.userData = {
     evento: evento,
     isEventHighlight: true
@@ -505,15 +523,48 @@ function createEventHighlight(evento, pos) {
   group.add(circle);
   group.add(glow);
   
-  // Add subtle animation
+  // Store materials and opacity values for dimming control
   group.userData = {
+    evento: evento,
     originalOpacity: circleMaterial.opacity,
     glowOpacity: glowMaterial.opacity,
+    dimmedOpacity: 0.15, // Opacity when dimmed
+    dimmedGlowOpacity: 0.05, // Glow opacity when dimmed
     materials: [circleMaterial, glowMaterial],
     time: Math.random() * Math.PI * 2 // Random start phase
   };
   
   return group;
+}
+
+// New function to update highlight states based on selection
+function updateEventHighlightStates() {
+  if (!eventHighlights) return;
+  
+  eventHighlights.traverse((child) => {
+    // Check if this child has the materials array and event data
+    if (child.userData && child.userData.evento && child.userData.materials) {
+      const isSelected = currentSelectedEvent && 
+                        child.userData.evento.evento === currentSelectedEvent.evento &&
+                        child.userData.evento.fechaInicio === currentSelectedEvent.fechaInicio;
+      
+      const [circleMaterial, glowMaterial] = child.userData.materials;
+      
+      if (currentSelectedEvent === null) {
+        // No selection - show all at normal opacity
+        circleMaterial.opacity = child.userData.originalOpacity;
+        glowMaterial.opacity = child.userData.glowOpacity;
+      } else if (isSelected) {
+        // This is the selected event - show at full brightness
+        circleMaterial.opacity = child.userData.originalOpacity * 1.2; // Slightly brighter
+        glowMaterial.opacity = child.userData.glowOpacity * 1.5;
+      } else {
+        // This is not selected - dim it
+        circleMaterial.opacity = child.userData.dimmedOpacity;
+        glowMaterial.opacity = child.userData.dimmedGlowOpacity;
+      }
+    }
+  });
 }
 
 function clearEventHighlights() {
@@ -536,6 +587,7 @@ function clearEventHighlights() {
   }
   
   eventHighlights = new THREE.Group();
+  currentSelectedEvent = null; // Clear selection when clearing highlights
 }
 
 function highlightSpecificEvent(evento) {
@@ -656,24 +708,12 @@ function animateCameraToPosition(targetPos, targetLookAt, duration = 1000) {
   animate();
 }
 
-// Optional: Function to return to overview
 function returnToOverview() {
-  if (!camera || !controls || !globalBounds) return;
+  if (!camera || !controls) return;
   
-  // Calculate overview position based on map bounds
-  const centerX = (globalBounds.minX + globalBounds.maxX) / 2;
-  const centerY = (globalBounds.minY + globalBounds.maxY) / 2;
-  const mapWidth = globalBounds.maxX - globalBounds.minX;
-  const mapHeight = globalBounds.maxY - globalBounds.minY;
-  const maxDimension = Math.max(mapWidth, mapHeight);
-  
-  const overviewPosition = new THREE.Vector3(
-    centerX,
-    ISLAND_HEIGHT + maxDimension * 1.5,
-    centerY + maxDimension
-  );
-  
-  const overviewTarget = new THREE.Vector3(centerX, ISLAND_HEIGHT, centerY);
+  // Use the same position and target as your initial camera setup
+  const overviewPosition = new THREE.Vector3(30, 60, 80);
+  const overviewTarget = new THREE.Vector3(0, ISLAND_HEIGHT / 2, 0);
   
   animateCameraToPosition(overviewPosition, overviewTarget, 2000);
 }
