@@ -394,6 +394,9 @@ function updateEventsPanel() {
   const template = document.getElementById('event-item-template');
   if (!eventsContainer || !template) return;
 
+  // Clear any existing event highlights
+  clearEventHighlights();
+
   const filteredEvents = eventosData.filter(evento => {
     return isDateInRange(evento.fechaInicio, dateRange.currentStart, dateRange.currentEnd);
   });
@@ -411,6 +414,9 @@ function updateEventsPanel() {
     return;
   }
   
+  // Create event highlights on the map
+  createEventHighlights(sortedEvents);
+  
   sortedEvents.forEach(evento => {
     const eventElement = template.content.cloneNode(true);
     
@@ -420,9 +426,176 @@ function updateEventsPanel() {
     eventElement.querySelector('.event-description').textContent = evento.descripcion;
     eventElement.querySelector('.event-casualties').textContent = evento.bajas;
 
+    // Add click handler to highlight specific event location
+    const eventItem = eventElement.querySelector('.event-item') || eventElement.children[0];
+    if (eventItem && evento.coordinates) {
+      eventItem.addEventListener('click', () => {
+        highlightSpecificEvent(evento);
+      });
+      eventItem.style.cursor = 'pointer';
+    }
+
     eventsContainer.appendChild(eventElement);
   });
 }
+
+// Global variable to store event highlights
+let eventHighlights = new THREE.Group();
+
+function createEventHighlights(events) {
+  if (!globalBounds || !scene) return;
+  
+  events.forEach(evento => {
+    if (!evento.coordinates) return;
+    
+    const [lon, lat] = evento.coordinates;
+    const pos = latLonToXY(lat, lon, globalBounds);
+    
+    // Create highlight based on event type and casualties
+    const highlight = createEventHighlight(evento, pos);
+    eventHighlights.add(highlight);
+  });
+  
+  scene.add(eventHighlights);
+}
+
+function createEventHighlight(evento, pos) {
+  const group = new THREE.Group();
+  
+  // Determine color and size based on event type and casualties
+  let color = 0xff4444;
+  let baseRadius = 1.5;
+  
+  // Scale radius based on casualties (logarithmic scale for better visualization)
+  const casualtyMultiplier = Math.log10(evento.bajas + 1) + 1;
+  const radius = baseRadius * casualtyMultiplier;
+  
+  // Create main highlight circle
+  const circleGeometry = new THREE.RingGeometry(radius * 0.8, radius, 32);
+  const circleMaterial = new THREE.MeshBasicMaterial({
+    color: color,
+    transparent: true,
+    opacity: 0.6,
+    side: THREE.DoubleSide
+  });
+  
+  const circle = new THREE.Mesh(circleGeometry, circleMaterial);
+  circle.position.set(pos.x, ISLAND_HEIGHT + 0.1, -pos.y);
+  circle.rotation.x = -Math.PI / 2;
+  
+  // Create pulsing glow effect
+  const glowGeometry = new THREE.RingGeometry(radius * 0.5, radius * 1.2, 32);
+  const glowMaterial = new THREE.MeshBasicMaterial({
+    color: color,
+    transparent: true,
+    opacity: 0.2,
+    side: THREE.DoubleSide
+  });
+  
+  const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+  glow.position.set(pos.x, ISLAND_HEIGHT + 0.05, -pos.y);
+  glow.rotation.x = -Math.PI / 2;
+  
+  // Add userData for interaction
+  circle.userData = {
+    evento: evento,
+    isEventHighlight: true
+  };
+  
+  group.add(circle);
+  group.add(glow);
+  
+  // Add subtle animation
+  group.userData = {
+    originalOpacity: circleMaterial.opacity,
+    glowOpacity: glowMaterial.opacity,
+    materials: [circleMaterial, glowMaterial],
+    time: Math.random() * Math.PI * 2 // Random start phase
+  };
+  
+  return group;
+}
+
+function clearEventHighlights() {
+  if (eventHighlights && scene) {
+    scene.remove(eventHighlights);
+    
+    // Dispose of geometries and materials
+    eventHighlights.traverse((child) => {
+      if (child.geometry) child.geometry.dispose();
+      if (child.material) {
+        if (Array.isArray(child.material)) {
+          child.material.forEach(material => material.dispose());
+        } else {
+          child.material.dispose();
+        }
+      }
+    });
+    
+    eventHighlights.clear();
+  }
+  
+  eventHighlights = new THREE.Group();
+}
+
+function highlightSpecificEvent(evento) {
+  if (!evento.coordinates || !globalBounds) return;
+  
+  const [lon, lat] = evento.coordinates;
+  const pos = latLonToXY(lat, lon, globalBounds);
+  
+  // Create a temporary bright highlight
+  const geometry = new THREE.RingGeometry(1.5, 2.5, 32);
+  const material = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.8,
+    side: THREE.DoubleSide
+  });
+  
+  const highlight = new THREE.Mesh(geometry, material);
+  highlight.position.set(pos.x, ISLAND_HEIGHT + 0.2, -pos.y);
+  highlight.rotation.x = -Math.PI / 2;
+  
+  scene.add(highlight);
+  
+  // Animate and remove after 2 seconds
+  let opacity = 0.8;
+  const fadeOut = () => {
+    opacity -= 0.02;
+    material.opacity = opacity;
+    
+    if (opacity > 0) {
+      requestAnimationFrame(fadeOut);
+    } else {
+      scene.remove(highlight);
+      geometry.dispose();
+      material.dispose();
+    }
+  };
+  
+  setTimeout(fadeOut, 500);
+}
+
+// Optional: Add this to your animation loop to make event highlights pulse
+function animateEventHighlights() {
+  if (!eventHighlights) return;
+  
+  const time = Date.now() * 0.002;
+  
+  eventHighlights.children.forEach((group) => {
+    if (group.userData && group.userData.materials) {
+      const phase = group.userData.time + time;
+      const pulse = Math.sin(phase) * 0.3 + 0.7; // Pulse between 0.4 and 1.0
+      
+      group.userData.materials.forEach((material, index) => {
+        const baseOpacity = index === 0 ? group.userData.originalOpacity : group.userData.glowOpacity;
+        material.opacity = baseOpacity * pulse;
+      });
+    }
+  });
+}
+
 async function loadTextures() {
   return new Promise((resolve) => {
     let loadedCount = 0;

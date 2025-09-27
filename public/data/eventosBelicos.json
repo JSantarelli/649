@@ -5,7 +5,8 @@
     "fechaFin": "02/04/1982",
     "evento": "Operación Rosario",
     "descripcion": "Desembarco y toma de Puerto Argentino",
-    "bajas": 1
+    "bajas": 1,
+    "coordinates": [-57.851, -51.693]
   },
   {
     "tipo": "Operación",
@@ -13,7 +14,8 @@
     "fechaFin": "03/04/1982",
     "evento": "Asalto a las Georgias del Sur",
     "descripcion": "Desembarco y combate en Grytviken, rendición de la guarnición británica",
-    "bajas": 1
+    "bajas": 1,
+    "coordinates": [-36.509, -54.281]
   },
   {
     "tipo": "Operación submarina",
@@ -21,7 +23,8 @@
     "fechaFin": "02/05/1982",
     "evento": "Ataque al ARA General Belgrano",
     "descripcion": "Hundido por torpedos del HMS Conqueror",
-    "bajas": 323
+    "bajas": 323,
+    "coordinates": [-61.700, -55.117]
   },
   {
     "tipo": "Ataque aéreo",
@@ -29,7 +32,8 @@
     "fechaFin": "03/05/1982",
     "evento": "Ataque al ARA Alférez Sobral",
     "descripcion": "Atacado por helicópteros Lynx con misiles Sea Skua",
-    "bajas": 8
+    "bajas": 8,
+    "coordinates": [-60.542, -47.940]
   },
   {
     "tipo": "Ataque naval",
@@ -37,7 +41,8 @@
     "fechaFin": "11/05/1982",
     "evento": "Ataque al ARA Isla de los Estados",
     "descripcion": "Hundido por fuego de la fragata HMS Alacrity",
-    "bajas": 22
+    "bajas": 22,
+    "coordinates": [-59.633, -51.700]
   },
   {
     "tipo": "Batalla",
@@ -45,7 +50,8 @@
     "fechaFin": "29/05/1982",
     "evento": "Combate de Pradera del Ganso",
     "descripcion": "Captura de Pradera del Ganso y Darwin por 2 Para",
-    "bajas": 45
+    "bajas": 45,
+    "coordinates": [-58.483, -51.800]
   },
   {
     "tipo": "Operación",
@@ -53,7 +59,8 @@
     "fechaFin": "31/05/1982",
     "evento": "Combate de Top Malo House",
     "descripcion": "Asalto SAS/Royal Marines en Top Malo House",
-    "bajas": 2
+    "bajas": 2,
+    "coordinates": [-58.418, -51.713]
   },
   {
     "tipo": "Batalla",
@@ -61,7 +68,8 @@
     "fechaFin": "12/06/1982",
     "evento": "Batalla de Monte Harriet",
     "descripcion": "Asalto nocturno de 42 Commando RM a Monte Harriet",
-    "bajas": 18
+    "bajas": 18,
+    "coordinates": [-58.273, -51.700]
   },
   {
     "tipo": "Batalla",
@@ -69,7 +77,8 @@
     "fechaFin": "12/06/1982",
     "evento": "Batalla de Monte Longdon",
     "descripcion": "Conquista de Monte Longdon por 3 Para",
-    "bajas": 31
+    "bajas": 31,
+    "coordinates": [-58.325, -51.733]
   },
   {
     "tipo": "Batalla",
@@ -77,7 +86,8 @@
     "fechaFin": "12/06/1982",
     "evento": "Batalla de Dos Hermanas",
     "descripcion": "Toma de Dos Hermanas por 45 Commando RM",
-    "bajas": 20
+    "bajas": 20,
+    "coordinates": [-58.300, -51.717]
   },
   {
     "tipo": "Batalla",
@@ -85,7 +95,8 @@
     "fechaFin": "14/06/1982",
     "evento": "Combates aislados en Monte Tumbledown",
     "descripcion": "Ofensiva para expulsar fuerzas argentinas de Monte Tumbledown",
-    "bajas": 30
+    "bajas": 30,
+    "coordinates": [-58.237, -51.717]
   },
   {
     "tipo": "Incidente aéreo",
@@ -93,6 +104,7 @@
     "fechaFin": "07/06/1982",
     "evento": "Derribo del Learjet T-24",
     "descripcion": "Learjet T-24 derribado por misil Sea Dart",
-    "bajas": 2
+    "bajas": 2,
+    "coordinates": [-57.800, -51.700]
   }
 ]

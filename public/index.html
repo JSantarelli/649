@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./assets/icons.css" />
+  <link rel="stylesheet" href="./icons.css" />
   <title>649</title>
   <style>
     body {
@@ -54,7 +54,15 @@
   </div>
 
    <!-- Fuerzas -->
-    <div class="dataset__panel">
+   <div class="info__panel">
+     <i class="fa fa-file-word"></i>
+     <article class="panel__wrapper">
+       <b class="">Cómo navegar el mapa?</b>
+       <small class="">Lorem upsum....</small>
+      </article>
+    </div>
+    
+    <section class="dataset__panel">
       <h3 class="ui__subtitle">Datasets</h3>
 
       <!-- Armada -->
@@ -65,8 +73,10 @@
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
-                <div class="dataset__subfix">0/0</div>
-                <span class="progress-percent"></span>
+                <span class="dataset__footer">
+                  <p class="dataset__subfix">0/0</p>
+                  <small class="progress-percent"></small>
+                </span>
             </div>
         </div>
        <div class="dataset__wrapper ea" data-key="ea">
@@ -76,8 +86,10 @@
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
-                <div class="dataset__subfix">0/0</div>
-                <span class="progress-percent"></span>
+                <span class="dataset__footer">   
+                  <p class="dataset__subfix">0/0</p>
+                  <small class="progress-percent"></small>
+                </span>
             </div>
         </div>
 
@@ -88,8 +100,10 @@
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
-                <div class="dataset__subfix">0/0</div>
-                <span class="progress-percent"></span>
+                <span class="dataset__footer">   
+                  <p class="dataset__subfix">0/0</p>
+                  <small class="progress-percent"></small>
+                </span>
             </div>
         </div>
 
@@ -100,8 +114,10 @@
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
-                <div class="dataset__subfix">0/0</div>
-                <span class="progress-percent"></span>
+                <span class="dataset__footer">   
+                  <p class="dataset__subfix">0/0</p>
+                  <small class="progress-percent"></small>
+                </span>
             </div>
         </div>
 
@@ -112,8 +128,10 @@
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
-                <div class="dataset__subfix">0/0</div>
-                <span class="progress-percent"></span>
+                <span class="dataset__footer">   
+                  <p class="dataset__subfix">0/0</p>
+                  <small class="progress-percent"></small>
+                </span>
             </div>
         </div>
 
@@ -121,14 +139,16 @@
             <!-- <div class="dataset-toggle active" data-toggle="pnc"></div> -->
             <div class="progress-container">
                 <div class="dataset__prefix">Continente</div>
-                <div class="progress-bar-container">
+                <div class="progress-bar-container">  
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
-                <div class="dataset__subfix">0/0</div>
-                <span class="progress-percent"></span>
-            </div>
+                <span class="dataset__footer">
+                </div>
+                  <p class="dataset__subfix">0/0</p>
+                  <small class="progress-percent"></small>
+                </span>
         </div>
-    </div>
+      </section>
 
 
   <section class="panel__floating--bottom">
@@ -155,7 +175,6 @@
     </div>
   </section>
 
-
     <div class="kpi" id="average-age-display">
       <span id="average-value" class="kpi__title">--</span>
       <p class="kpi__subtitle">Promedio de Edad</p> 
@@ -172,14 +191,10 @@
     </div>
   </section>
 
-
   <!-- Eventos  -->
   <div id="events-panel">
     <div class="events-no-data">Cargando eventos...</div>
   </div>
-
-  
-
   <template id="event-item-template">
     <div class="event-item">
       <div class="event-date"></div>
@@ -189,6 +204,7 @@
       <div class="event-casualties"></div>
     </div>
   </template>
+
   <div class="tooltip" id="tooltip"></div>
 
   <script src="/bundle.js"></script>
