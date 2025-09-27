@@ -100,8 +100,8 @@ body.container {
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--panelGap);
-  left: calc(var(--panelWidth) + var(--bodyPadding));
-  bottom: var(--cardPadding);
+  left: calc(var(--panelWidth) + var(--bodyPadding) + var(--panelGap));
+  bottom: var(--bodyPadding);
   z-index: 2;
 }
 .panel__floating--bottom .date__wrapper {
@@ -147,12 +147,12 @@ body.container {
 .title__wrapper {
   position: absolute;
   top: var(--panelPadding);
-  left: var(--panelPadding);
+  left: var(--bodyPadding);
   font-family: "Rajdhani";
   color: white;
   display: flex;
   flex-direction: column;
-  gap: var(--bodyGap);
+  gap: var(--cardGap);
   width: fit-content;
   text-align: left;
 }
@@ -175,6 +175,11 @@ body.container {
   font-family: "Rajdhani";
   text-transform: uppercase;
   letter-spacing: 5%;
+}
+.ui__subtitle.fixed {
+  position: fixed;
+  width: var(--panelWidth);
+  transform: translateY(-50px);
 }
 
 .dataset__panel {
@@ -336,26 +341,13 @@ body.container {
 
 #events-panel {
   position: absolute;
-  top: 280px;
-  left: 20px;
-  background: rgba(0, 0, 0, 0.9);
-  padding: 15px;
-  border-radius: 10px;
+  bottom: var(--bodyPadding);
+  left: var(--bodyPadding);
   color: white;
   z-index: 1000;
   width: var(--panelWidth);
-  max-height: 40vh;
+  max-height: 60vh;
   overflow-y: auto;
-  border: 1px solid #444;
-}
-
-#events-panel h3 {
-  margin: 0 0 15px 0;
-  color: #ffff00;
-  text-align: center;
-  font-size: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #555;
 }
 
 #events-container {
@@ -368,14 +360,14 @@ body.container {
   margin: 5px 0;
   padding: 8px;
   border-radius: 5px;
-  border-left: 3px solid #ffff00;
+  border-left: 3px solid #2DEACA;
   font-size: 11px;
   line-height: 1.3;
 }
 
 .event-date {
   font-weight: bold;
-  color: #ffff00;
+  color: #2DEACA;
   margin-bottom: 3px;
 }
 

@@ -390,8 +390,9 @@ function updateMarkersVisibility() {
 }
 
 function updateEventsPanel() {
-  const eventsContainer = document.getElementById('events-container');
-  if (!eventsContainer) return;
+  const eventsContainer = document.getElementById('events-panel');
+  const template = document.getElementById('event-item-template');
+  if (!eventsContainer || !template) return;
 
   const filteredEvents = eventosData.filter(evento => {
     return isDateInRange(evento.fechaInicio, dateRange.currentStart, dateRange.currentEnd);
@@ -403,7 +404,7 @@ function updateEventsPanel() {
     return dateA - dateB;
   });
 
-  eventsContainer.innerHTML = '';
+  eventsContainer.innerHTML = '<h3 class="ui__subtitle fixed">Eventos bélicos</h3>';
 
   if (sortedEvents.length === 0) {
     eventsContainer.innerHTML = '<div class="events-no-data">No hay eventos en el rango seleccionado</div>';
@@ -411,31 +412,17 @@ function updateEventsPanel() {
   }
   
   sortedEvents.forEach(evento => {
-    const eventDiv = document.createElement('div');
-    eventDiv.className = 'event-item';
+    const eventElement = template.content.cloneNode(true);
+    
+    eventElement.querySelector('.event-date').textContent = formatDateForDisplay(parseDate(evento.fechaInicio));
+    eventElement.querySelector('.event-title').textContent = evento.evento;
+    eventElement.querySelector('.event-type').textContent = `Tipo: ${evento.tipo}`;
+    eventElement.querySelector('.event-description').textContent = evento.descripcion;
+    eventElement.querySelector('.event-casualties').textContent = evento.bajas;
 
-    eventDiv.innerHTML = `
-      <div class="event-date">
-        ${formatDateForDisplay(parseDate(evento.fechaInicio))}
-      </div>
-      <div class="event-title">
-        ${evento.evento}
-      </div>
-      <div class="event-type">
-        Tipo: ${evento.tipo}
-      </div>
-      <div class="event-description">
-        ${evento.descripcion}
-      </div>
-      <div class="event-casualties">
-        ${evento.bajas}
-      </div>
-    `;
-
-    eventsContainer.appendChild(eventDiv);
+    eventsContainer.appendChild(eventElement);
   });
 }
-
 async function loadTextures() {
   return new Promise((resolve) => {
     let loadedCount = 0;

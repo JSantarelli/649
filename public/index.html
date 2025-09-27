@@ -128,13 +128,6 @@
                 <span class="progress-percent"></span>
             </div>
         </div>
-
-      <!-- <div class="escalafone-section">
-          <h4>Distribución por Escalafón</h4>
-          <div id="escalafone-container">
-              <div class="escalafone-no-data">Cargando datos de escalafón...</div>
-          </div>
-      </div> -->
     </div>
 
 
@@ -177,19 +170,25 @@
         Texto de apoyo
       </p>
     </div>
-
-
   </section>
 
 
   <!-- Eventos  -->
   <div id="events-panel">
-    <h3>Eventos Bélicos</h3>
-    <div id="events-container">
-      <div class="events-no-data">Cargando eventos...</div>
-    </div>
+    <div class="events-no-data">Cargando eventos...</div>
   </div>
 
+  
+
+  <template id="event-item-template">
+    <div class="event-item">
+      <div class="event-date"></div>
+      <div class="event-title"></div>
+      <div class="event-type"></div>
+      <div class="event-description"></div>
+      <div class="event-casualties"></div>
+    </div>
+  </template>
   <div class="tooltip" id="tooltip"></div>
 
   <script src="/bundle.js"></script>
