@@ -96,7 +96,7 @@
     "evento": "Combates aislados en Monte Tumbledown",
     "descripcion": "Ofensiva para expulsar fuerzas argentinas de Monte Tumbledown",
     "bajas": 30,
-    "coordinates": [-58.237, -51.717]
+    "coordinates": [-57.95759996, -51.69707833]                  
   },
   {
     "tipo": "Incidente aéreo",
@@ -106,5 +106,14 @@
     "descripcion": "Learjet T-24 derribado por misil Sea Dart",
     "bajas": 2,
     "coordinates": [-57.800, -51.700]
+  },
+  {
+    "tipo": "Incidente aéreo",
+    "fechaInicio": "01/06/1982",
+    "fechaFin": "01/06/1982",
+    "evento": "Derribo del Hércules C-130 TC-63",
+    "descripcion": "El C-130 TC-63 de la Fuerza Aérea Argentina fue interceptado por Sea Harrier y derribado al norte de las Islas Malvinas durante una misión de exploración.",
+    "bajas": 7,
+    "coordinates": [-59.909923753092805, -50.2833218692425]
   }
 ]

@@ -539,7 +539,7 @@ function clearEventHighlights() {
 }
 
 function highlightSpecificEvent(evento) {
-  if (!evento.coordinates || !globalBounds) return;
+  if (!evento.coordinates || !globalBounds || !camera || !controls) return;
   
   const [lon, lat] = evento.coordinates;
   const pos = latLonToXY(lat, lon, globalBounds);
@@ -559,10 +559,13 @@ function highlightSpecificEvent(evento) {
   
   scene.add(highlight);
   
-  // Animate and remove after 2 seconds
+  // Zoom to event location
+  zoomToEvent(pos, evento);
+  
+  // Animate and remove after 3 seconds (extended to give time to see the zoom)
   let opacity = 0.8;
   const fadeOut = () => {
-    opacity -= 0.02;
+    opacity -= 0.01;
     material.opacity = opacity;
     
     if (opacity > 0) {
@@ -574,26 +577,105 @@ function highlightSpecificEvent(evento) {
     }
   };
   
-  setTimeout(fadeOut, 500);
+  setTimeout(fadeOut, 1000); // Start fade after 1 second
 }
 
-// Optional: Add this to your animation loop to make event highlights pulse
-function animateEventHighlights() {
-  if (!eventHighlights) return;
+function zoomToEvent(eventPos, evento) {
+  if (!camera || !controls) return;
   
-  const time = Date.now() * 0.002;
+  // Store current camera position and target for potential restoration
+  const currentPosition = camera.position.clone();
+  const currentTarget = controls.target.clone();
   
-  eventHighlights.children.forEach((group) => {
-    if (group.userData && group.userData.materials) {
-      const phase = group.userData.time + time;
-      const pulse = Math.sin(phase) * 0.3 + 0.7; // Pulse between 0.4 and 1.0
-      
-      group.userData.materials.forEach((material, index) => {
-        const baseOpacity = index === 0 ? group.userData.originalOpacity : group.userData.glowOpacity;
-        material.opacity = baseOpacity * pulse;
-      });
+  // Calculate zoom level based on event type and casualties
+  let zoomDistance;
+  switch (evento.tipo) {
+    case 'Batalla':
+      zoomDistance = 8; // Closer for battles
+      break;
+    case 'Operación':
+      zoomDistance = 12; // Medium distance for operations
+      break;
+    case 'Ataque aéreo':
+    case 'Ataque naval':
+    case 'Operación submarina':
+      zoomDistance = 10; // Close for attacks
+      break;
+    default:
+      zoomDistance = 15; // Default distance
+  }
+  
+  // Calculate new camera position (elevated and angled for good view)
+  const targetPosition = new THREE.Vector3(
+    eventPos.x,
+    ISLAND_HEIGHT + zoomDistance,
+    -eventPos.y + zoomDistance * 0.7
+  );
+  
+  const targetLookAt = new THREE.Vector3(
+    eventPos.x,
+    ISLAND_HEIGHT,
+    -eventPos.y
+  );
+  
+  // Smooth animation to the event location
+  animateCameraToPosition(targetPosition, targetLookAt, 1500); // 1.5 second animation
+}
+
+function animateCameraToPosition(targetPos, targetLookAt, duration = 1000) {
+  if (!camera || !controls) return;
+  
+  const startPos = camera.position.clone();
+  const startLookAt = controls.target.clone();
+  const startTime = Date.now();
+  
+  function animate() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // Use easeInOutCubic for smooth animation
+    const eased = progress < 0.5 
+      ? 4 * progress * progress * progress 
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+    
+    // Interpolate camera position
+    camera.position.lerpVectors(startPos, targetPos, eased);
+    
+    // Interpolate look-at target
+    const currentLookAt = new THREE.Vector3().lerpVectors(startLookAt, targetLookAt, eased);
+    controls.target.copy(currentLookAt);
+    
+    // Update controls
+    controls.update();
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate);
     }
-  });
+  }
+  
+  animate();
+}
+
+// Optional: Function to return to overview
+function returnToOverview() {
+  if (!camera || !controls || !globalBounds) return;
+  
+  // Calculate overview position based on map bounds
+  const centerX = (globalBounds.minX + globalBounds.maxX) / 2;
+  const centerY = (globalBounds.minY + globalBounds.maxY) / 2;
+  const mapWidth = globalBounds.maxX - globalBounds.minX;
+  const mapHeight = globalBounds.maxY - globalBounds.minY;
+  const maxDimension = Math.max(mapWidth, mapHeight);
+  
+  const overviewPosition = new THREE.Vector3(
+    centerX,
+    ISLAND_HEIGHT + maxDimension * 1.5,
+    centerY + maxDimension
+  );
+  
+  const overviewTarget = new THREE.Vector3(centerX, ISLAND_HEIGHT, centerY);
+  
+  animateCameraToPosition(overviewPosition, overviewTarget, 2000);
 }
 
 async function loadTextures() {
