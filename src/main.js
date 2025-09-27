@@ -331,7 +331,6 @@ function updateAgeDisplay() {
   }
 }
 
-
 function updateDatasetProgressBar(key, total, visible) {
   const container = document.querySelector(`[data-key="${key}"]`);
   if (!container) return;
@@ -379,16 +378,14 @@ function updateMarkersVisibility() {
       }
     });
     
-    
     updateDatasetProgressBar(key, dataset.allMarkers.length, visibleCount);
   });
   
   updateTotalCount(totalVisible);
   updateAgeDisplay(); 
   updateEventsPanel();
-  updateEscalafonDisplay();
 }
-// Global variable to store event highlights and current selection
+
 let eventHighlights = new THREE.Group();
 let currentSelectedEvent = null;
 
@@ -397,7 +394,7 @@ function updateEventsPanel() {
   const template = document.getElementById('event-item-template');
   if (!eventsContainer || !template) return;
 
-  // Clear any existing event highlights
+  
   clearEventHighlights();
 
   const filteredEvents = eventosData.filter(evento => {
@@ -417,7 +414,7 @@ function updateEventsPanel() {
     return;
   }
   
-  // Create event highlights on the map
+  
   createEventHighlights(sortedEvents);
   
   sortedEvents.forEach(evento => {
@@ -429,24 +426,24 @@ function updateEventsPanel() {
     eventElement.querySelector('.event-description').textContent = evento.descripcion;
     eventElement.querySelector('.event-casualties').textContent = evento.bajas;
 
-    // Add click handler to highlight specific event location
+    
     const eventItem = eventElement.querySelector('.event-item') || eventElement.children[0];
     if (eventItem && evento.coordinates) {
       eventItem.addEventListener('click', () => {
-        // Check if this item is already active
+        
         const isCurrentlyActive = eventItem.classList.contains('active');
         
-        // Remove 'active' class from all event items
+        
         const allEventItems = eventsContainer.querySelectorAll('.event-item');
         allEventItems.forEach(item => item.classList.remove('active'));
         
         if (isCurrentlyActive) {
-          // If clicking the same item again, reset zoom and clear selection
+          
           currentSelectedEvent = null;
           updateEventHighlightStates();
           returnToOverview();
         } else {
-          // If clicking a different item, activate it and highlight
+          
           currentSelectedEvent = evento;
           eventItem.classList.add('active');
           updateEventHighlightStates();
@@ -469,7 +466,7 @@ function createEventHighlights(events) {
     const [lon, lat] = evento.coordinates;
     const pos = latLonToXY(lat, lon, globalBounds);
     
-    // Create highlight based on event type and casualties
+    
     const highlight = createEventHighlight(evento, pos);
     eventHighlights.add(highlight);
   });
@@ -480,15 +477,15 @@ function createEventHighlights(events) {
 function createEventHighlight(evento, pos) {
   const group = new THREE.Group();
   
-  // Determine color and size based on event type and casualties
+  
   let color = 0xff4444;
   let baseRadius = 1.5;
   
-  // Scale radius based on casualties (logarithmic scale for better visualization)
+  
   const casualtyMultiplier = Math.log10(evento.bajas + 1) + 1;
   const radius = baseRadius * casualtyMultiplier;
   
-  // Create main highlight circle
+  
   const circleGeometry = new THREE.RingGeometry(radius * 0.8, radius, 32);
   const circleMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -501,7 +498,7 @@ function createEventHighlight(evento, pos) {
   circle.position.set(pos.x, ISLAND_HEIGHT + 0.1, -pos.y);
   circle.rotation.x = -Math.PI / 2;
   
-  // Create pulsing glow effect
+  
   const glowGeometry = new THREE.RingGeometry(radius * 0.5, radius * 1.2, 32);
   const glowMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -514,7 +511,7 @@ function createEventHighlight(evento, pos) {
   glow.position.set(pos.x, ISLAND_HEIGHT + 0.05, -pos.y);
   glow.rotation.x = -Math.PI / 2;
   
-  // Add userData for interaction and state management
+  
   circle.userData = {
     evento: evento,
     isEventHighlight: true
@@ -523,26 +520,25 @@ function createEventHighlight(evento, pos) {
   group.add(circle);
   group.add(glow);
   
-  // Store materials and opacity values for dimming control
+  
   group.userData = {
     evento: evento,
     originalOpacity: circleMaterial.opacity,
     glowOpacity: glowMaterial.opacity,
-    dimmedOpacity: 0.15, // Opacity when dimmed
-    dimmedGlowOpacity: 0.05, // Glow opacity when dimmed
+    dimmedOpacity: 0.15, 
+    dimmedGlowOpacity: 0.05, 
     materials: [circleMaterial, glowMaterial],
-    time: Math.random() * Math.PI * 2 // Random start phase
+    time: Math.random() * Math.PI * 2 
   };
   
   return group;
 }
 
-// New function to update highlight states based on selection
 function updateEventHighlightStates() {
   if (!eventHighlights) return;
   
   eventHighlights.traverse((child) => {
-    // Check if this child has the materials array and event data
+    
     if (child.userData && child.userData.evento && child.userData.materials) {
       const isSelected = currentSelectedEvent && 
                         child.userData.evento.evento === currentSelectedEvent.evento &&
@@ -551,15 +547,15 @@ function updateEventHighlightStates() {
       const [circleMaterial, glowMaterial] = child.userData.materials;
       
       if (currentSelectedEvent === null) {
-        // No selection - show all at normal opacity
+        
         circleMaterial.opacity = child.userData.originalOpacity;
         glowMaterial.opacity = child.userData.glowOpacity;
       } else if (isSelected) {
-        // This is the selected event - show at full brightness
-        circleMaterial.opacity = child.userData.originalOpacity * 1.2; // Slightly brighter
+        
+        circleMaterial.opacity = child.userData.originalOpacity * 1.2; 
         glowMaterial.opacity = child.userData.glowOpacity * 1.5;
       } else {
-        // This is not selected - dim it
+        
         circleMaterial.opacity = child.userData.dimmedOpacity;
         glowMaterial.opacity = child.userData.dimmedGlowOpacity;
       }
@@ -571,7 +567,7 @@ function clearEventHighlights() {
   if (eventHighlights && scene) {
     scene.remove(eventHighlights);
     
-    // Dispose of geometries and materials
+    
     eventHighlights.traverse((child) => {
       if (child.geometry) child.geometry.dispose();
       if (child.material) {
@@ -587,7 +583,7 @@ function clearEventHighlights() {
   }
   
   eventHighlights = new THREE.Group();
-  currentSelectedEvent = null; // Clear selection when clearing highlights
+  currentSelectedEvent = null; 
 }
 
 function highlightSpecificEvent(evento) {
@@ -596,7 +592,7 @@ function highlightSpecificEvent(evento) {
   const [lon, lat] = evento.coordinates;
   const pos = latLonToXY(lat, lon, globalBounds);
   
-  // Create a temporary bright highlight
+  
   const geometry = new THREE.RingGeometry(1.5, 2.5, 32);
   const material = new THREE.MeshBasicMaterial({
     color: 0xffffff,
@@ -611,10 +607,10 @@ function highlightSpecificEvent(evento) {
   
   scene.add(highlight);
   
-  // Zoom to event location
+  
   zoomToEvent(pos, evento);
   
-  // Animate and remove after 3 seconds (extended to give time to see the zoom)
+  
   let opacity = 0.8;
   const fadeOut = () => {
     opacity -= 0.01;
@@ -629,35 +625,35 @@ function highlightSpecificEvent(evento) {
     }
   };
   
-  setTimeout(fadeOut, 1000); // Start fade after 1 second
+  setTimeout(fadeOut, 1000); 
 }
 
 function zoomToEvent(eventPos, evento) {
   if (!camera || !controls) return;
   
-  // Store current camera position and target for potential restoration
+  
   const currentPosition = camera.position.clone();
   const currentTarget = controls.target.clone();
   
-  // Calculate zoom level based on event type and casualties
+  
   let zoomDistance;
   switch (evento.tipo) {
     case 'Batalla':
-      zoomDistance = 8; // Closer for battles
+      zoomDistance = 8; 
       break;
     case 'Operación':
-      zoomDistance = 12; // Medium distance for operations
+      zoomDistance = 12; 
       break;
     case 'Ataque aéreo':
     case 'Ataque naval':
     case 'Operación submarina':
-      zoomDistance = 10; // Close for attacks
+      zoomDistance = 10; 
       break;
     default:
-      zoomDistance = 15; // Default distance
+      zoomDistance = 15; 
   }
   
-  // Calculate new camera position (elevated and angled for good view)
+  
   const targetPosition = new THREE.Vector3(
     eventPos.x,
     ISLAND_HEIGHT + zoomDistance,
@@ -670,8 +666,7 @@ function zoomToEvent(eventPos, evento) {
     -eventPos.y
   );
   
-  // Smooth animation to the event location
-  animateCameraToPosition(targetPosition, targetLookAt, 1500); // 1.5 second animation
+  animateCameraToPosition(targetPosition, targetLookAt, 1500); 
 }
 
 function animateCameraToPosition(targetPos, targetLookAt, duration = 1000) {
@@ -685,19 +680,19 @@ function animateCameraToPosition(targetPos, targetLookAt, duration = 1000) {
     const elapsed = Date.now() - startTime;
     const progress = Math.min(elapsed / duration, 1);
     
-    // Use easeInOutCubic for smooth animation
+    
     const eased = progress < 0.5 
       ? 4 * progress * progress * progress 
       : 1 - Math.pow(-2 * progress + 2, 3) / 2;
     
-    // Interpolate camera position
+    
     camera.position.lerpVectors(startPos, targetPos, eased);
     
-    // Interpolate look-at target
+    
     const currentLookAt = new THREE.Vector3().lerpVectors(startLookAt, targetLookAt, eased);
     controls.target.copy(currentLookAt);
     
-    // Update controls
+    
     controls.update();
     
     if (progress < 1) {
@@ -711,7 +706,7 @@ function animateCameraToPosition(targetPos, targetLookAt, duration = 1000) {
 function returnToOverview() {
   if (!camera || !controls) return;
   
-  // Use the same position and target as your initial camera setup
+  
   const overviewPosition = new THREE.Vector3(30, 60, 80);
   const overviewTarget = new THREE.Vector3(0, ISLAND_HEIGHT / 2, 0);
   
@@ -1174,7 +1169,6 @@ async function init() {
       
       updateMarkersVisibility();
       
-      
       camera.position.set(30, 60, 80);
       camera.lookAt(0, ISLAND_HEIGHT / 2, 0);
       controls.target.set(0, ISLAND_HEIGHT / 2, 0);
@@ -1188,7 +1182,6 @@ async function init() {
   }
 }
 
-
 function updateTotalCount(visible) {
   const totalElement = document.getElementById('total-count');
   if (totalElement) {
@@ -1197,25 +1190,22 @@ function updateTotalCount(visible) {
   }
 }
 
-
 function setupUIEventListeners() {
-  // Get DOM elements
+  
   const startDateSlider = document.getElementById('start-date-slider');
   const endDateSlider = document.getElementById('end-date-slider');
   const startDateValue = document.getElementById('start-date-value');
   const endDateValue = document.getElementById('end-date-value');
 
-  // Calculate max days for sliders
   const maxDays = Math.floor((dateRange.maxDate - dateRange.minDate) / (1000 * 60 * 60 * 24));
   
-  // Set slider ranges
   if (startDateSlider && endDateSlider) {
     startDateSlider.max = String(maxDays);
     endDateSlider.max = String(maxDays);
     endDateSlider.value = String(maxDays);
   }
 
-  // Date slider event listeners
+  
   if (startDateSlider) {
     startDateSlider.addEventListener('input', () => {
       const days = parseInt(startDateSlider.value);
@@ -1267,7 +1257,7 @@ function setupUIEventListeners() {
     });
   });
 
-  // Initial date display update
+  
   if (startDateValue) {
     startDateValue.textContent = formatDateForDisplay(dateRange.currentStart);
   }
@@ -1275,7 +1265,7 @@ function setupUIEventListeners() {
     endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
   }
 
-  // Initialize progress bars with current data
+  
   Object.entries(datasets).forEach(([key, dataset]) => {
     updateDatasetProgressBar(key, dataset.allMarkers.length, 0);
   });
@@ -1315,7 +1305,6 @@ function animate() {
   controls.update();
   composer.render();
 }
-
 
 const mouse = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -1399,209 +1388,580 @@ function onMouseMove(event) {
   }
 }
 
+class SoldierSearch {
+    constructor(datasets) {
+        this.datasets = datasets;
+        this.searchResults = [];
+        this.setupSearchUI();
+    }
 
+    
+    extractName(userData) {
+        return userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
+    }
 
-let escalafoneTracker = {
-  counts: {},
-  total: 0,
-  visible: 0
-};
-
-
-
-function calculateEscalafonStats() {
-  let escalafoneStats = {};
-  let totalVisible = 0;
-  
-  Object.entries(datasets).forEach(([key, dataset]) => {
-    if (dataset.visible) {
-      dataset.allMarkers.forEach(markerData => {
-        const isInDateRange = isDateInRange(
-          markerData.userData.F_Deceso, 
-          dateRange.currentStart, 
-          dateRange.currentEnd
-        );
-        
-        if (isInDateRange) {
-          const escalafon = markerData.userData.Escalafon || 
-                          markerData.userData.escalafon || 
-                          markerData.userData.ESCALAFON || 
-                          'Sin escalafón';
-          
-          const normalizedEscalafon = normalizeEscalafon(escalafon);
-          
-          if (!escalafoneStats[normalizedEscalafon]) {
-            escalafoneStats[normalizedEscalafon] = 0;
-          }
-          escalafoneStats[normalizedEscalafon]++;
-          totalVisible++;
+    
+    searchByName(searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            return [];
         }
-      });
+
+        const results = [];
+        const normalizedSearch = searchTerm.toLowerCase().trim();
+
+        
+        Object.entries(this.datasets).forEach(([datasetKey, dataset]) => {
+            
+            if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
+                dataset.allMarkers.forEach((markerData, index) => {
+                    
+                    if (markerData.marker && 
+                        markerData.marker.userData && 
+                        typeof markerData.marker.userData.age === 'number') {
+                        
+                        const userData = markerData.marker.userData;
+                        const name = this.extractName(userData);
+                        
+                        
+                        if (name !== 'Sin nombre') {
+                            const normalizedName = name.toLowerCase();
+                            
+                            
+                            if (normalizedName.includes(normalizedSearch)) {
+                                
+                                let coordinates = null;
+                                
+                                
+                                if (markerData.coordinates) {
+                                    coordinates = markerData.coordinates;
+                                }
+                                
+                                else if (userData.coordinates) {
+                                    coordinates = userData.coordinates;
+                                }
+                                
+                                else if (userData.lat && userData.lon) {
+                                    coordinates = [userData.lon, userData.lat];
+                                }
+                                
+                                else {
+                                    coordinates = this.extractCoordinatesFromUserData(userData);
+                                }
+                                
+                                results.push({
+                                    name: name,
+                                    dataset: dataset.name,
+                                    datasetKey: datasetKey,
+                                    marker: markerData.marker, 
+                                    markerData: markerData,    
+                                    markerIndex: index,
+                                    userData: userData,        
+                                    coordinates: coordinates,  
+                                    color: dataset.color
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        
+        results.sort((a, b) => a.name.localeCompare(b.name));
+        
+        this.searchResults = results;
+        return results;
     }
-  });
-  
-  escalafoneTracker = {
-    counts: escalafoneStats,
-    total: totalVisible,
-    visible: totalVisible
-  };
-  
-  return escalafoneTracker;
-}
 
-function normalizeEscalafon(escalafon) {
-  if (!escalafon || escalafon.toLowerCase().includes('sin escalafón') || 
-      escalafon.toLowerCase().includes('sin escalafon') || 
-      escalafon === '' || escalafon === 'N/A') {
-    return 'Sin escalafón';
-  }
-  
-  const normalized = escalafon.toString().trim();
-  
-  
-  const rankMappings = {
-    'Soldado': [
-      'Soldado', 
-      'Soldado Conscripto', 
-      'Conscripto', 
-      'Soldado Voluntario'
-    ],
-    'Cabo': [
-      'Cabo', 
-      'Cabo 1°', 
-      'Cabo 1ro', 
-      'Cabo Primero', 
-      'Cabo Principal'
-    ],
-    'Sargento': [
-      'Sargento', 
-      'Sargento 1°', 
-      'Sargento 1ro', 
-      'Sargento Primero', 
-      'Sargento Ayudante'
-    ],
-    'Oficial': [
-      'Guardiamarina', 
-      'Teniente de corbeta', 
-      'Capitan de corbeta',
-      'Capitán de Corbeta', 
-      'Teniente de fragata', 
-      'Capitan de fragata',
-      'Capitán de Fragata', 
-      'GENERAL DE BRIGADA',
-      'CAPITÁN',
-      'TENIENTE',
-      'SUBTENIENTE',
-      'TENIENTE 1º',
-      '1ER. TENIENTE',
-      'TENIENTE PRIMERO',
-      'VICECOMODORO',
-      'MAYOR',
-      'ALFEREZ',
-      'PRIMER ALFÉREZ',
-      'General', 
-      'General de Brigada', 
-      'General de División'
-    ],
-    'Suboficial': [
-      'Suboficial', 
-      'Suboficial Mayor',
-      'SUBOFICIAL PRIMERO',
-      'SUBOFICIAL SEGUNDO',
-      'SUBOFICIAL PRINCIPAL',
-      'SUBOFICIAL AYUDANTE',
-      'SUBOFICIAL AUXILIAR',
-      'CABO',
-      'CABO PRINCIPAL',
-      'CABO 1RO.',
-      'CABO 1º',
-      'CABO PRIMERO',
-      'CABO SEGUNDO',
-      'CABO EN COMISIÓN',
-      'SOLDADO CLASE 63',
-      'MARINERO',
-      'MARINERO PRIMERO',
-      'SUBOFICIAL PRIMERO',
-      'SUBOFICIAL SEGUNDO',
-      'SARGENTO',
-      'SARGENTO AYUDANTE',
-      'SARGENTO PRIMERO'
-    ],
-    'Civil': ['Civil', 'Piloto Civil', 'Tripulante Civil']
-  };
-  
-  for (const [mainRank, variants] of Object.entries(rankMappings)) {
-    if (variants.some(variant => normalized.toLowerCase().includes(variant.toLowerCase()))) {
-      return mainRank;
+    
+    searchInGeoJSONData(searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            return [];
+        }
+
+        const results = [];
+        const normalizedSearch = searchTerm.toLowerCase().trim();
+
+        Object.entries(this.datasets).forEach(([datasetKey, dataset]) => {
+            
+            if (dataset.geoJsonData && dataset.geoJsonData.features) {
+                dataset.geoJsonData.features.forEach((feature, index) => {
+                    const userData = feature.properties;
+                    const name = this.extractName(userData);
+                    
+                    if (name !== 'Sin nombre') {
+                        const normalizedName = name.toLowerCase();
+                        
+                        if (normalizedName.includes(normalizedSearch)) {
+                            results.push({
+                                name: name,
+                                dataset: dataset.name,
+                                datasetKey: datasetKey,
+                                feature: feature,
+                                featureIndex: index,
+                                userData: userData,
+                                color: dataset.color,
+                                coordinates: feature.geometry.coordinates 
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
+        results.sort((a, b) => a.name.localeCompare(b.name));
+        this.searchResults = results;
+        return results;
     }
-  }
-  
-  return normalized;
+
+    
+    setupSearchUI() {
+        
+        const searchContainer = document.createElement('div');
+        searchContainer.id = 'soldier-search-container';
+        searchContainer.style.cssText = `
+            position: absolute;
+            top: calc(var(--bodyPadding) + 60px);
+            right: var(--bodyPadding);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+            min-width: 300px;
+            max-width: 400px;
+        `;
+
+        
+        const searchInput = document.createElement('input');
+        searchInput.id = 'soldier-search-input';
+        searchInput.type = 'text';
+        searchInput.placeholder = 'Buscar soldado por nombre...';
+        searchInput.style.cssText = `
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        `;
+
+        
+        const resultsContainer = document.createElement('div');
+        resultsContainer.id = 'search-results';
+        resultsContainer.style.cssText = `
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 10px;
+        `;
+
+        
+        const searchStats = document.createElement('div');
+        searchStats.id = 'search-stats';
+        searchStats.style.cssText = `
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 10px;
+        `;
+
+        searchContainer.appendChild(searchInput);
+        searchContainer.appendChild(searchStats);
+        searchContainer.appendChild(resultsContainer);
+        document.body.appendChild(searchContainer);
+
+        
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                this.performSearch(e.target.value);
+            }, 300); 
+        });
+
+        
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target)) {
+                this.clearHoverEffect(); 
+            }
+        });
+    }
+
+    
+    performSearch(searchTerm) {
+        const results = this.searchByName(searchTerm);
+        this.updateSearchResults(results, searchTerm);
+    }
+
+    
+    updateSearchResults(results, searchTerm) {
+        const resultsContainer = document.getElementById('search-results');
+        const searchStats = document.getElementById('search-stats');
+
+        
+        if (searchTerm.trim() === '') {
+            searchStats.textContent = '';
+            resultsContainer.innerHTML = '';
+            return;
+        }
+
+        searchStats.textContent = `${results.length} resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}`;
+
+        
+        resultsContainer.innerHTML = '';
+
+        if (results.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.textContent = 'No se encontraron soldados con ese nombre';
+            noResults.style.cssText = 'color: #999; font-style: italic; padding: 10px;';
+            resultsContainer.appendChild(noResults);
+            return;
+        }
+
+        
+        results.forEach((result, index) => {
+            const resultItem = document.createElement('div');
+            resultItem.style.cssText = `
+                padding: 8px;
+                margin: 2px 0;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
+                cursor: pointer;
+                border-left: 4px solid #${result.color.toString(16).padStart(6, '0')};
+                transition: background-color 0.2s;
+            `;
+
+            resultItem.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 2px;">${result.name}</div>
+                <div style="font-size: 12px; color: #ccc;">${result.dataset}</div>
+            `;
+
+            
+            resultItem.addEventListener('click', () => {
+                this.focusOnResult(result);
+            });
+
+            resultItem.addEventListener('mouseenter', () => {
+                resultItem.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+            });
+
+            resultItem.addEventListener('mouseleave', () => {
+                resultItem.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            });
+
+            resultsContainer.appendChild(resultItem);
+        });
+    }
+
+    
+    focusOnResult(result) {
+        console.log('Focusing on:', result);
+        console.log('Result structure:', {
+            hasCoordinates: !!result.coordinates,
+            hasMarker: !!result.marker,
+            hasUserData: !!result.userData,
+            markerPosition: result.marker?.position,
+            userData: result.userData
+        });
+        
+        
+        this.simulateHoverEffect(result);
+        
+        
+        let coordinates = null;
+        
+        
+        if (result.coordinates && Array.isArray(result.coordinates) && result.coordinates.length >= 2) {
+            coordinates = result.coordinates;
+            console.log('Found coordinates in result.coordinates:', coordinates);
+        }
+        
+        
+        else if (result.marker?.userData) {
+            const userData = result.marker.userData;
+            coordinates = this.extractCoordinatesFromUserData(userData);
+            if (coordinates) console.log('Found coordinates in marker.userData:', coordinates);
+        }
+        
+        
+        else if (result.userData) {
+            coordinates = this.extractCoordinatesFromUserData(result.userData);
+            if (coordinates) console.log('Found coordinates in result.userData:', coordinates);
+        }
+        
+        
+        else if (result.marker?.position) {
+            const pos = result.marker.position;
+            
+            console.log('Found THREE.js position:', pos);
+            console.log('You may need to convert THREE.js position back to lat/lon coordinates');
+        }
+        
+        if (coordinates && coordinates.length >= 2) {
+            
+            const evento = {
+                name: result.name,
+                coordinates: coordinates,
+                dataset: result.dataset,
+                userData: result.userData || result.marker?.userData
+            };
+
+            
+            this.highlightSoldier(evento);
+            
+            console.log(`Highlighting ${result.name} from ${result.dataset}`);
+        } else {
+            console.warn('No valid coordinates found for soldier:', result.name);
+            console.log('Available data:', {
+                result: result,
+                marker: result.marker,
+                userData: result.userData || result.marker?.userData
+            });
+        }
+    }
+
+    
+    extractCoordinatesFromUserData(userData) {
+        if (!userData) return null;
+        
+        
+        if (userData.originalCoords && userData.originalCoords.lat && userData.originalCoords.lon) {
+            const { lat, lon } = userData.originalCoords;
+            return [lon, lat]; 
+        }
+        
+        
+        let lat = null;
+        let lon = null;
+        
+        
+        lat = userData.lat || userData.latitude || userData.Latitude || 
+              userData.LAT || userData.LATITUDE;
+              
+        
+        lon = userData.lon || userData.longitude || userData.Longitude || 
+              userData.LON || userData.LONGITUDE || userData.lng;
+        
+        
+        if (typeof lat === 'number' && typeof lon === 'number') {
+            return [lon, lat]; 
+        }
+        
+        
+        if (lat !== null && lon !== null) {
+            const numLat = parseFloat(lat);
+            const numLon = parseFloat(lon);
+            
+            if (!isNaN(numLat) && !isNaN(numLon)) {
+                return [numLon, numLat];
+            }
+        }
+        
+        console.log('Could not extract coordinates from userData:', userData);
+        return null;
+    }
+
+    
+    simulateHoverEffect(result) {
+        
+        if (!result.marker || !tooltip) {
+            console.warn('Marker or tooltip not available for hover simulation');
+            return;
+        }
+
+        const marker = result.marker;
+        const userData = result.userData || marker.userData;
+
+        
+        if (!marker.material) {
+            console.warn('Marker does not have material property:', marker);
+            return;
+        }
+
+        
+        if (window.hoveredMarker && window.hoveredMarker !== marker && window.hoveredMarker.material) {
+            window.hoveredMarker.material.opacity = 0.4;
+            window.hoveredMarker.material.emissiveIntensity = 2.5;
+        }
+
+        
+        window.hoveredMarker = marker;
+        if (marker.material) {
+            marker.material.opacity = 1.0;
+            marker.material.emissiveIntensity = 3.5;
+        }
+
+        
+        const age = userData.age;
+        const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
+        const fNac = userData.F_Nac || 'Sin fecha';
+        const fDeceso = userData.F_Deceso || 'Sin fecha';
+        const LDeceso = userData.L_Deceso || 'Sin lugar';
+        const Escalafon = userData.Escalafon || 'Sin escalafón';
+
+        
+        if (tooltip) {
+            tooltip.innerHTML = `
+                <strong>${name}</strong><br>
+                Edad: ${age} años<br>
+                <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
+                <small>Lugar: ${LDeceso}</small><br>
+                <small>Escalafón: ${Escalafon}</small>
+            `;
+            tooltip.style.display = 'block';
+            
+            
+            const searchContainer = document.getElementById('soldier-search-container');
+            if (searchContainer) {
+                const rect = searchContainer.getBoundingClientRect();
+                tooltip.style.left = (rect.right + 15) + 'px';
+                tooltip.style.top = (rect.top + 50) + 'px';
+            }
+        }
+
+        
+        document.body.style.cursor = 'pointer';
+
+        
+        setTimeout(() => {
+            this.clearHoverEffect();
+        }, 5000); 
+    }
+
+    
+    clearHoverEffect() {
+        if (window.hoveredMarker && window.hoveredMarker.material) {
+            window.hoveredMarker.material.opacity = 0.4;
+            window.hoveredMarker.material.emissiveIntensity = 2.5;
+            window.hoveredMarker = null;
+        }
+
+        if (tooltip) {
+            tooltip.style.display = 'none';
+        }
+
+        document.body.style.cursor = 'default';
+    }
+
+    
+    highlightSoldier(evento) {
+        
+        if (!evento.coordinates || !globalBounds || !camera || !controls || !scene) {
+            console.warn('Required globals not available for highlighting');
+            return;
+        }
+
+        const [lon, lat] = evento.coordinates;
+        const pos = latLonToXY(lat, lon, globalBounds);
+
+        
+        const geometry = new THREE.RingGeometry(1.5, 2.5, 32);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffffff, 
+            transparent: true,
+            opacity: 0.8,
+            side: THREE.DoubleSide
+        });
+
+        const highlight = new THREE.Mesh(geometry, material);
+        highlight.position.set(pos.x, ISLAND_HEIGHT + 0.2, -pos.y);
+        highlight.rotation.x = -Math.PI / 2;
+        scene.add(highlight);
+
+        
+        this.zoomToSoldier(pos, evento);
+
+        
+        let opacity = 0.8;
+        const fadeOut = () => {
+            opacity -= 0.01;
+            material.opacity = opacity;
+            if (opacity > 0) {
+                requestAnimationFrame(fadeOut);
+            } else {
+                scene.remove(highlight);
+                geometry.dispose();
+                material.dispose();
+            }
+        };
+
+        setTimeout(fadeOut, 1000);
+    }
+
+    
+    zoomToSoldier(pos, soldierEvento) {
+        if (!camera || !controls) return;
+
+        
+        const targetPosition = {
+            x: pos.x,
+            y: camera.position.y * 0.7, 
+            z: -pos.y + 10 
+        };
+
+        
+        controls.target.set(pos.x, 0, -pos.y);
+
+        
+        const startPosition = {
+            x: camera.position.x,
+            y: camera.position.y,
+            z: camera.position.z
+        };
+
+        const animationDuration = 1000; 
+        const startTime = Date.now();
+
+        const animateCamera = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / animationDuration, 1);
+            
+            
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+
+            camera.position.x = startPosition.x + (targetPosition.x - startPosition.x) * easeOut;
+            camera.position.y = startPosition.y + (targetPosition.y - startPosition.y) * easeOut;
+            camera.position.z = startPosition.z + (targetPosition.z - startPosition.z) * easeOut;
+
+            controls.update();
+
+            if (progress < 1) {
+                requestAnimationFrame(animateCamera);
+            }
+        };
+
+        animateCamera();
+    }
+    
+    getSearchStats() {
+        const stats = {
+            totalSoldiers: 0,
+            soldiersByDataset: {}
+        };
+
+        Object.entries(this.datasets).forEach(([key, dataset]) => {
+            let count = 0;
+            if (dataset.allMarkers) {
+                dataset.allMarkers.forEach(marker => {
+                    if (marker.userData) {
+                        const name = this.extractName(marker.userData);
+                        if (name !== 'Sin nombre') {
+                            count++;
+                        }
+                    }
+                });
+            }
+            
+            stats.soldiersByDataset[dataset.name] = count;
+            stats.totalSoldiers += count;
+        });
+
+        return stats;
+    }
 }
 
-function updateEscalafonDisplay() {
-  const escalafoneStats = calculateEscalafonStats();
-  const escalafoneContainer = document.getElementById('escalafone-container');
-  
-  if (!escalafoneContainer) return;
-  
-  
-  escalafoneContainer.innerHTML = '';
-  
-  if (escalafoneStats.total === 0) {
-    escalafoneContainer.innerHTML = '<div class="escalafone-no-data">No hay datos de escalafón en el rango seleccionado</div>';
-    return;
-  }
-  
-  
-  const sortedEscalafones = Object.entries(escalafoneStats.counts)
-    .sort(([,a], [,b]) => b - a)
-    .filter(([,count]) => count > 0);
-  
-  sortedEscalafones.forEach(([escalafon, count], index) => {
-    const percentage = escalafoneStats.total > 0 ? (count / escalafoneStats.total) * 100 : 0;
-    
-    const escalafoneDiv = document.createElement('div');
-    escalafoneDiv.className = 'escalafone-item';
-    
-    const colorClass = getEscalafonColorClass(escalafon, index);
-    
-    escalafoneDiv.innerHTML = `
-      <div class="escalafone-container ${colorClass}" data-escalafon="${escalafon}">
-        <div class="escalafone-info">
-          <div class="escalafone-label">${escalafon}</div>
-          <div class="escalafone-count">${count} (${percentage.toFixed(1)}%)</div>
-        </div>
-        <div class="escalafone-progress-bar-container">
-          <div class="escalafone-progress-bar" style="width: ${percentage}%"></div>
-        </div>
-      </div>
-    `;
-    
-    escalafoneContainer.appendChild(escalafoneDiv);
-  });
-}
-
-function getEscalafonColorClass(escalafon, index) {
-  const colorClasses = {
-    'General': 'escalafon-general',
-    'Coronel': 'escalafon-coronel',
-    'Teniente Coronel': 'escalafon-teniente-coronel',
-    'Mayor': 'escalafon-mayor',
-    'Capitán': 'escalafon-capitan',
-    'Teniente': 'escalafon-teniente',
-    'Suboficial': 'escalafon-suboficial',
-    'Sargento': 'escalafon-sargento',
-    'Cabo': 'escalafon-cabo',
-    'Soldado': 'escalafon-soldado',
-    'Marinero': 'escalafon-marinero',
-    'Aviador': 'escalafon-aviador',
-    'Civil': 'escalafon-civil',
-    'Sin escalafón': 'escalafon-sin-escalafon'
-  };
-  
-  return colorClasses[escalafon] || `escalafon-other-${index % 6}`;
-}
+const soldierSearch = new SoldierSearch(datasets);
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -1610,10 +1970,8 @@ function onWindowResize() {
   composer.setSize(window.innerWidth, window.innerHeight);
 }
 
-
 window.addEventListener('resize', onWindowResize);
 window.addEventListener('mousemove', onMouseMove);
-
 
 setupLighting();
 init();
