@@ -49,81 +49,83 @@
     <!-- Main UI Panel -->
   <div class="title__wrapper" id="main-ui">
     <span class="ui__prefix">Gesta de Malvinas</span>
-    <h1 class="ui__title">649</h1>
-    <p class="">Quiénes, dónde y qué edad tenían  nuestros caídos en Malvinas. </p>
+    <h1 class="ui__title">649 Héroes</h1>
+    <p class="">Quiénes, dónde y qué edad tenían  nuestros caídos en Malvinas.</p>
   </div>
 
    <!-- Fuerzas -->
-    <div class="dataset-section">
+    <div class="dataset__panel">
       <h3 class="ui__subtitle">Datasets</h3>
-        <div class="dataset-container armada" data-key="armada">
-            <div class="dataset-toggle active" data-toggle="armada"></div>
+
+      <!-- Armada -->
+        <div class="dataset__wrapper armada" data-key="armada">
+            <!-- <div class="dataset-toggle active" data-toggle="armada"></div> -->
             <div class="progress-container">
-                <div class="dataset-label">Armada</div>
-                <span class="progress-percent"></span>
+                <div class="dataset__prefix">Armada</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <div class="progress-text">0/0</div>
+                  <div class="progress-bar" style="width: 0%"></div>
                 </div>
+                <div class="dataset__subfix">0/0</div>
+                <span class="progress-percent"></span>
             </div>
         </div>
-       <div class="dataset-container ea" data-key="ea">
-            <div class="dataset-toggle active" data-toggle="ea"></div>
+       <div class="dataset__wrapper ea" data-key="ea">
+            <!-- <div class="dataset-toggle active" data-toggle="ea"></div> -->
             <div class="progress-container">
-                <div class="dataset-label">Ejército Argentino</div>
-                <span class="progress-percent"></span>
+                <div class="dataset__prefix">Ejército Argentino</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <div class="progress-text">0/0</div>
+                  <div class="progress-bar" style="width: 0%"></div>
                 </div>
+                <div class="dataset__subfix">0/0</div>
+                <span class="progress-percent"></span>
             </div>
         </div>
 
-        <div class="dataset-container ffa" data-key="ffa">
-            <div class="dataset-toggle active" data-toggle="ffa"></div>
+        <div class="dataset__wrapper ffa" data-key="ffa">
+            <!-- <div class="dataset-toggle active" data-toggle="ffa"></div> -->
             <div class="progress-container">
-                <div class="dataset-label">Fuerza Aérea</div>
-                <span class="progress-percent"></span>
+                <div class="dataset__prefix">Fuerza Aérea</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <div class="progress-text">0/0</div>
+                  <div class="progress-bar" style="width: 0%"></div>
                 </div>
+                <div class="dataset__subfix">0/0</div>
+                <span class="progress-percent"></span>
             </div>
         </div>
 
-        <div class="dataset-container gna" data-key="gna">
-            <div class="dataset-toggle active" data-toggle="gna"></div>
+        <div class="dataset__wrapper gna" data-key="gna">
+            <!-- <div class="dataset-toggle active" data-toggle="gna"></div> -->
             <div class="progress-container">
-                <div class="dataset-label">Gendarmería</div>
-                <span class="progress-percent"></span>
+                <div class="dataset__prefix">Gendarmería</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <div class="progress-text">0/0</div>
+                  <div class="progress-bar" style="width: 0%"></div>
                 </div>
+                <div class="dataset__subfix">0/0</div>
+                <span class="progress-percent"></span>
             </div>
         </div>
 
-        <div class="dataset-container pna" data-key="pna">
-            <div class="dataset-toggle active" data-toggle="pna"></div>
+        <div class="dataset__wrapper pna" data-key="pna">
+            <!-- <div class="dataset-toggle active" data-toggle="pna"></div> -->
             <div class="progress-container">
-                <div class="dataset-label">Prefectura</div>
-                <span class="progress-percent"></span>
+                <div class="dataset__prefix">Prefectura</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <div class="progress-text">0/0</div>
+                  <div class="progress-bar" style="width: 0%"></div>
                 </div>
+                <div class="dataset__subfix">0/0</div>
+                <span class="progress-percent"></span>
             </div>
         </div>
 
-        <div class="dataset-container pnc" data-key="pnc">
-            <div class="dataset-toggle active" data-toggle="pnc"></div>
+        <div class="dataset__wrapper pnc" data-key="pnc">
+            <!-- <div class="dataset-toggle active" data-toggle="pnc"></div> -->
             <div class="progress-container">
-                <div class="dataset-label">Continente</div>
-                <span class="progress-percent"></span>
+                <div class="dataset__prefix">Continente</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                    <div class="progress-text">0/0</div>
+                  <div class="progress-bar" style="width: 0%"></div>
                 </div>
+                <div class="dataset__subfix">0/0</div>
+                <span class="progress-percent"></span>
             </div>
         </div>
 
@@ -162,18 +164,18 @@
 
 
     <div class="kpi" id="average-age-display">
-      <div class="kpi__body" id="age-average">
-        Promedio de Edad
-      </div>
-        <span id="average-value" class="kpi__title">--</span>
-        <p class="kpi__subtitle">Años</p> 
+      <span id="average-value" class="kpi__title">--</span>
+      <p class="kpi__subtitle">Promedio de Edad</p> 
+      <p class="kpi__body" id="age-average">
+        Años
+      </p>
     </div>
     <div class="kpi">
-      <div class="kpi__body" id="age-average">
+      <span id="total-count" class="kpi__title">--</span>
+      <p class="kpi__subtitle">Caídos</p> 
+      <p class="kpi__body" id="age-average">
         Texto de apoyo
-      </div>
-        <span id="total-count" class="kpi__title">--</span>
-        <p class="kpi__subtitle">Caídos</p> 
+      </p>
     </div>
 
 

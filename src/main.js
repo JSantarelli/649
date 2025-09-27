@@ -338,13 +338,13 @@ function updateDatasetProgressBar(key, total, visible) {
 
   const progressBar = container.querySelector('.progress-bar');
   const progressPercent = container.querySelector('.progress-percent');
-  const progressText = container.querySelector('.progress-text');
+  const progressText = container.querySelector('.dataset__subfix');
   
-  const percentage = total > 0 ? (visible / total) * 100 : 0;
-  
+  const percentage = total > 0 ? Math.round((visible / total) * 100) : 0;
+
   progressBar.style.width = `${percentage}%`;
   progressPercent.textContent = `${percentage}%`;
-  progressText.textContent = `${visible}/${total}`;
+  progressText.innerHTML = `${visible}/<b>${total}</b>`;
   
   
   if (datasets[key].visible) {
@@ -759,7 +759,6 @@ function createMarkers(geojson, color, datasetKey) {
   }
   
   let ageStats = { min: Infinity, max: -Infinity, total: 0, count: 0 };
-  let positionDebug = [];
   
   geojson.features.forEach((feature, index) => {
     feature = normalizeFeatureDates(feature);

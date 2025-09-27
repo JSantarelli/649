@@ -1,10 +1,9 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   --bodyPadding: 48px;
-  --bodyGap: 16px;
+  --bodyGap: 8px;
   --panelPadding: 24px;
   --panelGap: 96px;
   --panelWidth: 280px;
@@ -12,7 +11,7 @@
   --cardWidth: 320px;
   --cardFontSize: 14px;
   --cardTitleSize: 24px;
-  --cardGap: 10px;
+  --cardGap: 4px;
   --containerGap: 24px;
   --containerGapRow: 16px;
   --primary: #0E7490;
@@ -136,12 +135,13 @@ body.container {
   font-weight: bolder;
 }
 .panel__floating--bottom .kpi__subtitle {
-  font-size: 28px;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 .panel__floating--bottom .kpi__body {
   font-size: 16px;
   color: var(--secondary);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .title__wrapper {
@@ -153,11 +153,11 @@ body.container {
   display: flex;
   flex-direction: column;
   gap: var(--bodyGap);
-  width: 280px;
+  width: fit-content;
   text-align: left;
 }
 .title__wrapper .ui__prefix {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--secondary);
   text-transform: uppercase;
 }
@@ -173,21 +173,40 @@ body.container {
   font-size: 24px;
   color: white;
   font-family: "Rajdhani";
+  text-transform: uppercase;
+  letter-spacing: 5%;
 }
 
-.dataset-section {
+.dataset__panel {
   position: absolute;
   right: 48px;
   top: 48px;
-  margin: 15px 0;
-  padding: 15px 0;
-  border-bottom: 1px solid #444;
-  /* Dataset-specific colors */
-  /* Escalafón Section Styles */
-  /* Rank-specific colors (military hierarchy) */
-  /* Fallback colors for other ranks */
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: "Rajdhani";
+  color: white;
 }
-.dataset-section .dataset-toggle {
+.dataset__panel .dataset__wrapper {
+  /* Dataset-specific colors */
+  --armada: #0066cc;
+  --ea: #00FF66;
+  --ffa: #00FFFF;
+  --gna: #ffd700;
+  --pna: #ff6347;
+  --pnc: #634eff;
+}
+.dataset__panel .dataset__wrapper .dataset__prefix {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 5%;
+}
+.dataset__panel .dataset__wrapper .dataset__subfix .dataset__subfix--bold {
+  font-weight: bolder;
+}
+.dataset__panel .dataset__wrapper .dataset-toggle {
   width: 50px;
   height: 25px;
   background-color: #7f8c8d;
@@ -197,10 +216,10 @@ body.container {
   transition: background-color 0.3s ease;
   flex-shrink: 0;
 }
-.dataset-section .dataset-toggle.active {
+.dataset__panel .dataset__wrapper .dataset-toggle.active {
   background-color: #27ae60;
 }
-.dataset-section .dataset-toggle::after {
+.dataset__panel .dataset__wrapper .dataset-toggle::after {
   content: "";
   position: absolute;
   width: 21px;
@@ -211,270 +230,108 @@ body.container {
   left: 2px;
   transition: transform 0.3s ease;
 }
-.dataset-section .dataset-toggle.active::after {
+.dataset__panel .dataset__wrapper .dataset-toggle.active::after {
   transform: translateX(25px);
 }
-.dataset-section .progress-container {
+.dataset__panel .dataset__wrapper .progress-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
-.dataset-section .dataset-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #ecf0f1;
-}
-.dataset-section .progress-bar-container {
+.dataset__panel .dataset__wrapper .progress-bar-container {
   width: 100%;
-  height: 20px;
-  background-color: #2c3e50;
-  border-radius: 10px;
+  height: 10px;
+  background-color: transparent;
   overflow: hidden;
   position: relative;
-  border: 2px solid #34495e;
 }
-.dataset-section .progress-bar {
+.dataset__panel .dataset__wrapper.armada .progress-bar-container {
+  border: 2px solid var(--armada);
+}
+.dataset__panel .dataset__wrapper.ea .progress-bar-container {
+  border: 2px solid var(--ea);
+}
+.dataset__panel .dataset__wrapper.ffa .progress-bar-container {
+  border: 2px solid var(--ffa);
+}
+.dataset__panel .dataset__wrapper.gna .progress-bar-container {
+  border: 2px solid var(--gna);
+}
+.dataset__panel .dataset__wrapper.pna .progress-bar-container {
+  border: 2px solid var(--pna);
+}
+.dataset__panel .dataset__wrapper.pnc .progress-bar-container {
+  border: 2px solid var(--pnc);
+}
+.dataset__panel .dataset__wrapper .progress-bar {
   height: 100%;
-  border-radius: 8px;
   transition: width 0.3s ease;
   position: relative;
 }
-.dataset-section .progress-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 11px;
-  font-weight: 600;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  z-index: 10;
+.dataset__panel .dataset__wrapper.armada .progress-percent {
+  color: var(--armada);
 }
-.dataset-section .armada .progress-bar {
-  background: linear-gradient(90deg, #0066cc, #4a90e2);
+.dataset__panel .dataset__wrapper.ea .progress-percent {
+  color: var(--ea);
 }
-.dataset-section .ea .progress-bar {
-  background: linear-gradient(90deg, #00FF66, #2ecc71);
+.dataset__panel .dataset__wrapper.ffa .progress-percent {
+  color: var(--ffa);
 }
-.dataset-section .ffa .progress-bar {
-  background: linear-gradient(90deg, #00FFFF, #1abc9c);
+.dataset__panel .dataset__wrapper.gna .progress-percent {
+  color: var(--gna);
 }
-.dataset-section .gna .progress-bar {
-  background: linear-gradient(90deg, #ffd700, #f39c12);
+.dataset__panel .dataset__wrapper.pna .progress-percent {
+  color: var(--pna);
 }
-.dataset-section .pna .progress-bar {
-  background: linear-gradient(90deg, #ff6347, #e74c3c);
+.dataset__panel .dataset__wrapper.pnc .progress-percent {
+  color: var(--pnc);
 }
-.dataset-section .pnc .progress-bar {
-  background: linear-gradient(90deg, #634eff, #9b59b6);
+.dataset__panel .dataset__wrapper.armada .progress-bar {
+  background: var(--armada);
 }
-.dataset-section #total-count {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #2c3e50;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 16px;
-  color: #3498db;
-  border: 2px solid #34495e;
+.dataset__panel .dataset__wrapper.ea .progress-bar {
+  background: var(--ea);
 }
-.dataset-section .disabled {
+.dataset__panel .dataset__wrapper.ffa .progress-bar {
+  background: var(--ffa);
+}
+.dataset__panel .dataset__wrapper.gna .progress-bar {
+  background: var(--gna);
+}
+.dataset__panel .dataset__wrapper.pna .progress-bar {
+  background: var(--pna);
+}
+.dataset__panel .dataset__wrapper.pnc .progress-bar {
+  background: var(--pnc);
+}
+.dataset__panel .dataset__wrapper.disabled {
   opacity: 0.5;
 }
-.dataset-section .disabled .progress-bar {
+.dataset__panel .dataset__wrapper.disabled .progress-bar {
   background: linear-gradient(90deg, #7f8c8d, #95a5a6) !important;
 }
-.dataset-section .escalafone-section {
-  background-color: #34495e;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-.dataset-section .escalafone-section h4 {
-  margin: 0 0 20px 0;
-  font-size: 18px;
-  color: #ecf0f1;
-  border-bottom: 2px solid #e74c3c;
-  padding-bottom: 8px;
-}
-.dataset-section #escalafone-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.dataset-section .escalafone-item {
-  margin: 0;
-}
-.dataset-section .escalafone-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.dataset-section .escalafone-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.dataset-section .escalafone-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: #ecf0f1;
-}
-.dataset-section .escalafone-count {
-  font-size: 12px;
-  color: #bdc3c7;
-  font-weight: 600;
-}
-.dataset-section .escalafone-progress-bar-container {
-  width: 100%;
-  height: 16px;
-  background-color: #2c3e50;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #34495e;
-}
-.dataset-section .escalafone-progress-bar {
-  height: 100%;
-  border-radius: 6px;
-  transition: width 0.4s ease;
-  position: relative;
-}
-.dataset-section .escalafone-no-data {
-  text-align: center;
-  padding: 20px;
-  color: #7f8c8d;
-  font-style: italic;
-}
-.dataset-section .escalafon-general .escalafone-progress-bar {
-  background: linear-gradient(90deg, #8e44ad, #9b59b6);
-}
-.dataset-section .escalafon-coronel .escalafone-progress-bar {
-  background: linear-gradient(90deg, #2980b9, #3498db);
-}
-.dataset-section .escalafon-teniente-coronel .escalafone-progress-bar {
-  background: linear-gradient(90deg, #16a085, #1abc9c);
-}
-.dataset-section .escalafon-mayor .escalafone-progress-bar {
-  background: linear-gradient(90deg, #27ae60, #2ecc71);
-}
-.dataset-section .escalafon-capitan .escalafone-progress-bar {
-  background: linear-gradient(90deg, #f39c12, #f1c40f);
-}
-.dataset-section .escalafon-teniente .escalafone-progress-bar {
-  background: linear-gradient(90deg, #e67e22, #f39c12);
-}
-.dataset-section .escalafon-suboficial .escalafone-progress-bar {
-  background: linear-gradient(90deg, #d35400, #e67e22);
-}
-.dataset-section .escalafon-sargento .escalafone-progress-bar {
-  background: linear-gradient(90deg, #c0392b, #e74c3c);
-}
-.dataset-section .escalafon-cabo .escalafone-progress-bar {
-  background: linear-gradient(90deg, #8e44ad, #a569bd);
-}
-.dataset-section .escalafon-soldado .escalafone-progress-bar {
-  background: linear-gradient(90deg, #7f8c8d, #95a5a6);
-}
-.dataset-section .escalafon-marinero .escalafone-progress-bar {
-  background: linear-gradient(90deg, #577ca1, #9bc8f5);
-}
-.dataset-section .escalafon-aviador .escalafone-progress-bar {
-  background: linear-gradient(90deg, #00FFFF, #1abc9c);
-}
-.dataset-section .escalafon-civil .escalafone-progress-bar {
-  background: linear-gradient(90deg, #795548, #8d6e63);
-}
-.dataset-section .escalafon-sin-escalafon .escalafone-progress-bar {
-  background: linear-gradient(90deg, #546e7a, #607d8b);
-}
-.dataset-section .escalafon-other-0 .escalafone-progress-bar {
-  background: linear-gradient(90deg, #ff5722, #ff7043);
-}
-.dataset-section .escalafon-other-1 .escalafone-progress-bar {
-  background: linear-gradient(90deg, #9c27b0, #ba68c8);
-}
-.dataset-section .escalafon-other-2 .escalafone-progress-bar {
-  background: linear-gradient(90deg, #3f51b5, #5c6bc0);
-}
-.dataset-section .escalafon-other-3 .escalafone-progress-bar {
-  background: linear-gradient(90deg, #009688, #26a69a);
-}
-.dataset-section .escalafon-other-4 .escalafone-progress-bar {
-  background: linear-gradient(90deg, #ff9800, #ffb74d);
-}
-.dataset-section .escalafon-other-5 .escalafone-progress-bar {
-  background: linear-gradient(90deg, #607d8b, #78909c);
-}
-
-.dataset-section h4 {
-  margin: 0 0 10px 0;
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.dataset-container {
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-.dataset-checkbox {
+.dataset__panel .dataset-checkbox {
   margin-right: 10px;
   transform: scale(1.2);
 }
-
-.dataset-label {
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.dataset-label.armada {
+.dataset__panel .dataset__prefix.armada {
   color: #0066cc;
 }
-
-.dataset-label.ea {
+.dataset__panel .dataset__prefix.ea {
   color: #00ff66;
 }
-
-.dataset-label.ffa {
+.dataset__panel .dataset__prefix.ffa {
   color: #00ffff;
 }
-
-.dataset-label.gna {
+.dataset__panel .dataset__prefix.gna {
   color: #ffd700;
 }
-
-.dataset-label.pna {
+.dataset__panel .dataset__prefix.pna {
   color: #ff6347;
 }
-
-.dataset-label.pnc {
+.dataset__panel .dataset__prefix.pnc {
   color: #634eff;
-}
-
-.stats {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #444;
-  font-size: 12px;
-}
-
-.stats strong {
-  margin: 5px 0;
-  display: block;
-}
-
-.stats-item {
-  margin: 2px 0;
-  color: #ccc;
-}
-
-.stats-item.highlight {
-  color: #00ff88;
 }
 
 #events-panel {
