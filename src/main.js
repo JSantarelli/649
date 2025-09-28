@@ -8,7 +8,7 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x2c3e50);
 
 const camera = new THREE.PerspectiveCamera(
-  75,
+  35,
   window.innerWidth / window.innerHeight,
   0.1,
   100000
@@ -510,7 +510,7 @@ function createEventHighlight(evento, pos) {
   glow.position.set(pos.x, ISLAND_HEIGHT + 0.05, -pos.y);
   glow.rotation.x = -Math.PI / 2;
   
-  // Add userData to both circle and glow for interaction
+  
   circle.userData = {
     evento: evento,
     isEventHighlight: true,
@@ -541,7 +541,7 @@ function createEventHighlight(evento, pos) {
   return group;
 }
 
-// Update the existing functions
+
 function updateEventHighlightStates() {
   if (!eventHighlights) return;
   
@@ -589,7 +589,7 @@ function clearEventHighlights() {
   eventHighlights = new THREE.Group();
   currentSelectedEvent = null;
   
-  // Reset event tooltip states
+  
   hoveredEvent = null;
   clickedEventTooltip = false;
   clickedEvent = null;
@@ -1175,7 +1175,7 @@ async function init() {
       
       updateMarkersVisibility();
       
-      camera.position.set(30, 60, 80);
+      camera.position.set(24, 48, 120);
       camera.lookAt(0, ISLAND_HEIGHT / 2, 0);
       controls.target.set(0, ISLAND_HEIGHT / 2, 0);
       controls.update();
@@ -1319,7 +1319,7 @@ let hoveredMarker = null;
 
 const tooltip = document.getElementById('tooltip');
 
-// Global variable to track clicked tooltip state
+
 let clickedTooltip = false;
 let clickedMarker = null;
 
@@ -1329,11 +1329,9 @@ function onMouseMove(event, isClick = false) {
   
   raycaster.setFromCamera(mouse, camera);
   
-  // Get all interactive objects (markers + event highlights)
   const allMarkers = [];
   const allEventHighlights = [];
   
-  // Collect markers
   Object.values(datasets).forEach(dataset => {
     if (dataset.visible) {
       dataset.allMarkers.forEach(markerData => {
@@ -1348,7 +1346,6 @@ function onMouseMove(event, isClick = false) {
     }
   });
   
-  // Collect event highlights
   if (eventHighlights) {
     eventHighlights.traverse((child) => {
       if (child.userData && child.userData.isEventHighlight) {
@@ -1363,35 +1360,34 @@ function onMouseMove(event, isClick = false) {
   if (intersects.length > 0) {
     const intersectedObject = intersects[0].object;
     
-    // Handle event highlights
+    
     if (intersectedObject.userData.isEventHighlight) {
       handleEventInteraction(intersectedObject, event, isClick);
     }
-    // Handle markers (existing functionality)
+    
     else {
       handleMarkerInteraction(intersectedObject, event, isClick);
     }
     
   } else {
-    // Handle click on empty space
+    
     if (isClick) {
       dismissEventTooltip();
-      dismissTooltip(); // Also dismiss marker tooltip
+      dismissTooltip(); 
       return;
     }
     
-    // Reset hover states
+    
     resetHoverStates();
   }
 }
-
-  // Reset clicked event appearance
+  
   if (clickedEvent) {
     resetEventHighlight(clickedEvent);
     clickedEvent = null;
   }
   
-  // Hide tooltip
+  
   if (tooltip) {
     tooltip.style.display = 'none';
     tooltip.style.border = '1px solid #ccc';
@@ -1403,26 +1399,24 @@ function handleEventInteraction(intersectedObject, event, isClick) {
   const eventObj = intersectedObject.userData.evento;
   const eventGroup = intersectedObject.userData.eventGroup;
   
-  // Handle click behavior
   if (isClick) {
-    // Reset previous clicked event
+    
     if (clickedEvent && clickedEvent !== eventGroup) {
       resetEventHighlight(clickedEvent);
     }
     
-    // Set new clicked event
+    
     clickedEvent = eventGroup;
     highlightEventGroup(eventGroup, true);
     
-    // Show pinned tooltip
+    
     clickedEventTooltip = true;
     showEventTooltip(eventObj, event, true);
     return;
   }
   
-  // Don't change hover state if tooltip is clicked and pinned
   if (clickedEventTooltip && clickedEvent === eventGroup) {
-    // Update tooltip position for pinned tooltip
+    
     if (tooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
       tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1431,19 +1425,19 @@ function handleEventInteraction(intersectedObject, event, isClick) {
   }
   
   if (hoveredEvent !== eventGroup) {
-    // Reset previous hovered event
+    
     if (hoveredEvent && hoveredEvent !== clickedEvent) {
       resetEventHighlight(hoveredEvent);
     }
     
     hoveredEvent = eventGroup;
     
-    // Don't change appearance if this is the clicked event
+    
     if (hoveredEvent !== clickedEvent) {
       highlightEventGroup(eventGroup, false);
     }
     
-    // Don't show hover tooltip if there's a pinned tooltip
+    
     if (!clickedEventTooltip) {
       showEventTooltip(eventObj, event, false);
     }
@@ -1451,7 +1445,7 @@ function handleEventInteraction(intersectedObject, event, isClick) {
     document.body.style.cursor = 'pointer';
   }
   
-  // Update tooltip position (for hover tooltips)
+  
   if (tooltip && !clickedEventTooltip) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1459,28 +1453,28 @@ function handleEventInteraction(intersectedObject, event, isClick) {
 }
 
 function handleMarkerInteraction(intersectedObject, event, isClick) {
-  // Handle click behavior for markers
+  
   if (isClick) {
-    // Reset previous clicked marker
+    
     if (clickedMarker && clickedMarker !== intersectedObject) {
       clickedMarker.material.opacity = 0.4;
       clickedMarker.material.emissiveIntensity = 2.5;
     }
     
-    // Set new clicked marker
+    
     clickedMarker = intersectedObject;
     clickedMarker.material.opacity = 1.0;
     clickedMarker.material.emissiveIntensity = 3.5;
     
-    // Show pinned tooltip
+    
     clickedTooltip = true;
     showTooltip(clickedMarker, event, true);
     return;
   }
   
-  // Don't change hover state if tooltip is clicked and pinned
+  
   if (clickedTooltip && clickedMarker === intersectedObject) {
-    // Update tooltip position for pinned tooltip
+    
     if (tooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
       tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1489,7 +1483,7 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
   }
   
   if (hoveredMarker !== intersectedObject) {
-    // Reset previous hovered marker
+    
     if (hoveredMarker && hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 0.4;
       hoveredMarker.material.emissiveIntensity = 2.5;
@@ -1497,13 +1491,12 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     
     hoveredMarker = intersectedObject;
     
-    // Don't change appearance if this is the clicked marker
+    
     if (hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 1.0;
       hoveredMarker.material.emissiveIntensity = 3.5;
-    }
+    }  
     
-    // Don't show hover tooltip if there's a pinned tooltip
     if (!clickedTooltip) {
       showTooltip(hoveredMarker, event);
     }
@@ -1511,7 +1504,6 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     document.body.style.cursor = 'pointer';
   }
   
-  // Update tooltip position (for hover tooltips)
   if (tooltip && !clickedTooltip) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1519,7 +1511,7 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
 }
 
 function resetHoverStates() {
-  // Only reset if not clicked/pinned
+  
   if (!clickedTooltip && !clickedEventTooltip) {
     if (hoveredMarker) {
       hoveredMarker.material.opacity = 0.4;
@@ -1538,7 +1530,7 @@ function resetHoverStates() {
       tooltip.style.display = 'none';
     }
   } else {
-    // Reset hover states but keep clicked objects highlighted
+    
     if (hoveredMarker && hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 0.4;
       hoveredMarker.material.emissiveIntensity = 2.5;
@@ -1593,7 +1585,7 @@ function showEventTooltip(evento, event, isPinned = false) {
   tooltip.style.left = (event.clientX + 15) + 'px';
   tooltip.style.top = (event.clientY - 10) + 'px';
   
-  // Add styling for pinned tooltips
+  
   if (isPinned) {
     tooltip.style.border = '2px solid #ff4444';
     tooltip.style.boxShadow = '0 4px 12px rgba(255,68,68,0.3)';
@@ -1629,7 +1621,7 @@ function showTooltip(marker, event, isPinned = false) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
     
-    // Add styling for pinned tooltips
+    
     if (isPinned) {
       tooltip.style.border = '2px solid #007acc';
       tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
@@ -1668,22 +1660,22 @@ function onClick(event) {
   if (intersects.length > 0) {
     const intersectedMarker = intersects[0].object;
     
-    // Reset previous clicked marker
+    
     if (clickedMarker && clickedMarker !== intersectedMarker) {
       clickedMarker.material.opacity = 0.4;
       clickedMarker.material.emissiveIntensity = 2.5;
     }
     
-    // Set new clicked marker
+    
     clickedMarker = intersectedMarker;
     clickedMarker.material.opacity = 1.0;
     clickedMarker.material.emissiveIntensity = 3.5;
     
-    // Show pinned tooltip
+    
     clickedTooltip = true;
     showTooltip(clickedMarker, event, true);
   } else {
-    // Clicked on empty space - dismiss tooltip
+    
     dismissTooltip();
   }
 }
@@ -1691,14 +1683,14 @@ function onClick(event) {
 function dismissTooltip() {
   clickedTooltip = false;
   
-  // Reset clicked marker appearance
+  
   if (clickedMarker) {
     clickedMarker.material.opacity = 0.4;
     clickedMarker.material.emissiveIntensity = 2.5;
     clickedMarker = null;
   }
   
-  // Hide tooltip
+  
   if (tooltip) {
     tooltip.style.display = 'none';
     tooltip.style.border = '1px solid #ccc';
@@ -1781,15 +1773,13 @@ class SoldierSearch {
                 });
             }
         });
-
-        
+  
         results.sort((a, b) => a.name.localeCompare(b.name));
         
         this.searchResults = results;
         return results;
     }
 
-    
     searchInGeoJSONData(searchTerm) {
         if (!searchTerm || searchTerm.trim() === '') {
             return [];
@@ -1829,7 +1819,6 @@ class SoldierSearch {
         this.searchResults = results;
         return results;
     }
-
     
     setupSearchUI() {
         
@@ -1837,19 +1826,27 @@ class SoldierSearch {
         searchContainer.id = 'soldier-search-container';
         searchContainer.style.cssText = `
             position: absolute;
-            top: calc(var(--bodyPadding) + 60px);
-            right: var(--bodyPadding);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            border-radius: 8px;
+            top: var(--bodyPadding);
+            right: calc(var(--bodyPadding) + var(--panelWidth) + var(--bodyGap));
+            background: var(--panelBg);
+            padding: var(--cardPadding);
+            border-radius: var(--borderRadius);
             color: white;
-            font-family: Arial, sans-serif;
-            z-index: 1000;
-            min-width: 300px;
-            max-width: 400px;
+            font-family: 'Roboto';
+            z-index: 2;
+            width: calc(var(--panelWidth) * 2);
+            display: flex;
+            flex-direction: column;
+            gap: var(--cardGap);
+            height: fit-content;
         `;
 
-        
+        // Create label
+        const searchLabel = document.createElement('label');
+        searchLabel.htmlFor = 'soldier-search-input';
+        searchLabel.textContent = 'Buscador';
+        searchLabel.classList.add('input__label');
+
         const searchInput = document.createElement('input');
         searchInput.id = 'soldier-search-input';
         searchInput.type = 'text';
@@ -1858,9 +1855,8 @@ class SoldierSearch {
             width: 100%;
             padding: 8px;
             border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 10px;
+            border-radius: var(--borderRadius);
+            font-size: var(--cardFontSize);
             box-sizing: border-box;
         `;
 
@@ -1868,9 +1864,8 @@ class SoldierSearch {
         const resultsContainer = document.createElement('div');
         resultsContainer.id = 'search-results';
         resultsContainer.style.cssText = `
-            max-height: 300px;
+            max-height: var(--panelWidth);
             overflow-y: auto;
-            margin-top: 10px;
         `;
 
         
@@ -1882,6 +1877,7 @@ class SoldierSearch {
             margin-bottom: 10px;
         `;
 
+        searchContainer.appendChild(searchLabel);
         searchContainer.appendChild(searchInput);
         searchContainer.appendChild(searchStats);
         searchContainer.appendChild(resultsContainer);
@@ -1907,7 +1903,6 @@ class SoldierSearch {
         const results = this.searchByName(searchTerm);
         this.updateSearchResults(results, searchTerm);
     }
-
     
     updateSearchResults(results, searchTerm) {
         const resultsContainer = document.getElementById('search-results');
@@ -1967,7 +1962,6 @@ class SoldierSearch {
             resultsContainer.appendChild(resultItem);
         });
     }
-
     
     focusOnResult(result) {
         console.log('Focusing on:', result);
@@ -2034,7 +2028,6 @@ class SoldierSearch {
             });
         }
     }
-
     
     extractCoordinatesFromUserData(userData) {
         if (!userData) return null;
@@ -2075,7 +2068,6 @@ class SoldierSearch {
         console.log('Could not extract coordinates from userData:', userData);
         return null;
     }
-
     
     simulateHoverEffect(result) {
         
@@ -2143,7 +2135,6 @@ class SoldierSearch {
         }, 5000); 
     }
 
-    
     clearHoverEffect() {
         if (window.hoveredMarker && window.hoveredMarker.material) {
             window.hoveredMarker.material.opacity = 0.4;
@@ -2157,7 +2148,6 @@ class SoldierSearch {
 
         document.body.style.cursor = 'default';
     }
-
     
     highlightSoldier(evento) {
         
@@ -2287,7 +2277,6 @@ function onWindowResize() {
 window.addEventListener('resize', onWindowResize);
 window.addEventListener('mousemove', onMouseMove);
 window.addEventListener('click', onClick);
-
 
 setupLighting();
 init();

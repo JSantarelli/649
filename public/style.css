@@ -18,7 +18,7 @@
   --cardGap: 6px;
   --containerGap: 24px;
   --containerGapRow: 16px;
-  --primary: #0E7490;
+  --primary: #2DEACA;
   --primaryLight: #0ABEBB;
   --primaryDark: #164E63;
   --secondary: #93F6FF;
@@ -135,7 +135,6 @@ body.container {
 }
 .panel__floating--bottom .kpi__title {
   font-size: 48px;
-  letter-spacing: 4%;
   font-weight: bolder;
 }
 .panel__floating--bottom .kpi__subtitle {
@@ -156,7 +155,6 @@ body.container {
   color: white;
   display: flex;
   flex-direction: column;
-  gap: var(--cardGap);
   width: fit-content;
   text-align: left;
 }
@@ -168,6 +166,7 @@ body.container {
 .title__wrapper h1.ui__title {
   font-size: 72px;
   text-transform: uppercase;
+  line-height: 1;
 }
 .title__wrapper p {
   font-size: 18px;
@@ -178,7 +177,6 @@ body.container {
   color: white;
   font-family: "Rajdhani";
   text-transform: uppercase;
-  letter-spacing: 5%;
 }
 .ui__subtitle.fixed {
   position: fixed;
@@ -194,7 +192,7 @@ body.container {
   flex-direction: row;
   gap: var(--cardGap);
   height: fit-content;
-  width: calc(var(--panelWidth) * 2);
+  width: var(--panelWidth);
   background: var(--panelBg);
   padding: var(--cardPadding);
   border-radius: var(--borderRadius);
@@ -206,6 +204,13 @@ body.container {
 .info__panel .panel__wrapper {
   display: flex;
   flex-direction: column;
+}
+
+label.input__label {
+  font-size: var(--panelPrefix);
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: bolder;
 }
 
 .dataset__panel {
@@ -225,6 +230,7 @@ body.container {
   padding: var(--cardPadding);
   border-radius: var(--borderRadius);
   width: var(--panelWidth);
+  border-left: 3px solid #2DEACA;
   /* Dataset-specific colors */
   --armada: #0066cc;
   --ea: #00FF66;
@@ -237,7 +243,6 @@ body.container {
   font-size: var(--panelPrefix);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 5%;
 }
 .dataset__panel .dataset__wrapper .dataset__footer {
   display: flex;

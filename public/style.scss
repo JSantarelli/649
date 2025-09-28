@@ -23,7 +23,7 @@
     --containerGap: 24px;
     --containerGapRow: 16px;
 
-    --primary: #0E7490;
+    --primary: #2DEACA;
     --primaryLight: #0ABEBB;
     --primaryDark: #164E63;
 
@@ -170,7 +170,7 @@ body.container {
     
             &__title {
                 font-size: 48px;
-                letter-spacing: 4%;
+                
                 font-weight: bolder;
             }
     
@@ -196,7 +196,7 @@ body.container {
         color: white;
         display: flex;
         flex-direction: column;
-        gap: var(--cardGap);
+        // gap: var(--cardGap);
         width: fit-content;
         text-align: left;
 
@@ -209,6 +209,7 @@ body.container {
         h1.ui__title {
             font-size: 72px;
             text-transform: uppercase;
+            line-height: 1;
         }
 
         p {
@@ -221,7 +222,7 @@ body.container {
         color: white;
         font-family: 'Rajdhani';
         text-transform: uppercase;  
-        letter-spacing: 5%;
+        
 
         &.fixed {
             position: fixed;
@@ -238,7 +239,7 @@ body.container {
         flex-direction: row;
         gap: var(--cardGap);
         height: fit-content;
-        width: calc(var(--panelWidth) * 2);
+        width: var(--panelWidth);
         background: var(--panelBg);
         padding: var(--cardPadding);
         border-radius: var(--borderRadius);
@@ -250,6 +251,16 @@ body.container {
         .panel__wrapper {
             display: flex;
             flex-direction: column;
+        }
+    }
+
+    label {
+        
+        &.input__label {
+            font-size: var(--panelPrefix);
+            text-transform: uppercase;  
+            color: var(--primary);
+            font-weight: bolder;
         }
     }
 
@@ -270,12 +281,13 @@ body.container {
             padding: var(--cardPadding);
             border-radius: var(--borderRadius);
             width: var(--panelWidth);
+            border-left: 3px solid #2DEACA;
 
             .dataset__prefix {
                 font-size: var(--panelPrefix);
                 font-weight: 500;
                 text-transform: uppercase;  
-                letter-spacing: 5%;
+                
             }
 
             .dataset__footer {
