@@ -456,6 +456,9 @@ function updateEventsPanel() {
     eventsContainer.appendChild(eventElement);
   });
 }
+let hoveredEvent = null;
+let clickedEventTooltip = false;
+let clickedEvent = null;
 
 function createEventHighlights(events) {
   if (!globalBounds || !scene) return;
@@ -477,14 +480,11 @@ function createEventHighlights(events) {
 function createEventHighlight(evento, pos) {
   const group = new THREE.Group();
   
-  
   let color = 0xff4444;
   let baseRadius = 1.5;
   
-  
   const casualtyMultiplier = Math.log10(evento.bajas + 1) + 1;
   const radius = baseRadius * casualtyMultiplier;
-  
   
   const circleGeometry = new THREE.RingGeometry(radius * 0.8, radius, 32);
   const circleMaterial = new THREE.MeshBasicMaterial({
@@ -498,7 +498,6 @@ function createEventHighlight(evento, pos) {
   circle.position.set(pos.x, ISLAND_HEIGHT + 0.1, -pos.y);
   circle.rotation.x = -Math.PI / 2;
   
-  
   const glowGeometry = new THREE.RingGeometry(radius * 0.5, radius * 1.2, 32);
   const glowMaterial = new THREE.MeshBasicMaterial({
     color: color,
@@ -511,15 +510,21 @@ function createEventHighlight(evento, pos) {
   glow.position.set(pos.x, ISLAND_HEIGHT + 0.05, -pos.y);
   glow.rotation.x = -Math.PI / 2;
   
-  
+  // Add userData to both circle and glow for interaction
   circle.userData = {
     evento: evento,
-    isEventHighlight: true
+    isEventHighlight: true,
+    eventGroup: group
+  };
+  
+  glow.userData = {
+    evento: evento,
+    isEventHighlight: true,
+    eventGroup: group
   };
   
   group.add(circle);
   group.add(glow);
-  
   
   group.userData = {
     evento: evento,
@@ -528,17 +533,19 @@ function createEventHighlight(evento, pos) {
     dimmedOpacity: 0.15, 
     dimmedGlowOpacity: 0.05, 
     materials: [circleMaterial, glowMaterial],
-    time: Math.random() * Math.PI * 2 
+    time: Math.random() * Math.PI * 2,
+    circle: circle,
+    glow: glow
   };
   
   return group;
 }
 
+// Update the existing functions
 function updateEventHighlightStates() {
   if (!eventHighlights) return;
   
   eventHighlights.traverse((child) => {
-    
     if (child.userData && child.userData.evento && child.userData.materials) {
       const isSelected = currentSelectedEvent && 
                         child.userData.evento.evento === currentSelectedEvent.evento &&
@@ -547,15 +554,12 @@ function updateEventHighlightStates() {
       const [circleMaterial, glowMaterial] = child.userData.materials;
       
       if (currentSelectedEvent === null) {
-        
         circleMaterial.opacity = child.userData.originalOpacity;
         glowMaterial.opacity = child.userData.glowOpacity;
       } else if (isSelected) {
-        
         circleMaterial.opacity = child.userData.originalOpacity * 1.2; 
         glowMaterial.opacity = child.userData.glowOpacity * 1.5;
       } else {
-        
         circleMaterial.opacity = child.userData.dimmedOpacity;
         glowMaterial.opacity = child.userData.dimmedGlowOpacity;
       }
@@ -563,10 +567,10 @@ function updateEventHighlightStates() {
   });
 }
 
+
 function clearEventHighlights() {
   if (eventHighlights && scene) {
     scene.remove(eventHighlights);
-    
     
     eventHighlights.traverse((child) => {
       if (child.geometry) child.geometry.dispose();
@@ -583,7 +587,12 @@ function clearEventHighlights() {
   }
   
   eventHighlights = new THREE.Group();
-  currentSelectedEvent = null; 
+  currentSelectedEvent = null;
+  
+  // Reset event tooltip states
+  hoveredEvent = null;
+  clickedEventTooltip = false;
+  clickedEvent = null;
 }
 
 function highlightSpecificEvent(evento) {
@@ -591,7 +600,6 @@ function highlightSpecificEvent(evento) {
   
   const [lon, lat] = evento.coordinates;
   const pos = latLonToXY(lat, lon, globalBounds);
-  
   
   const geometry = new THREE.RingGeometry(1.5, 2.5, 32);
   const material = new THREE.MeshBasicMaterial({
@@ -607,9 +615,7 @@ function highlightSpecificEvent(evento) {
   
   scene.add(highlight);
   
-  
   zoomToEvent(pos, evento);
-  
   
   let opacity = 0.8;
   const fadeOut = () => {
@@ -1317,13 +1323,17 @@ const tooltip = document.getElementById('tooltip');
 let clickedTooltip = false;
 let clickedMarker = null;
 
-function onMouseMove(event) {
+function onMouseMove(event, isClick = false) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   
   raycaster.setFromCamera(mouse, camera);
   
+  // Get all interactive objects (markers + event highlights)
   const allMarkers = [];
+  const allEventHighlights = [];
+  
+  // Collect markers
   Object.values(datasets).forEach(dataset => {
     if (dataset.visible) {
       dataset.allMarkers.forEach(markerData => {
@@ -1338,70 +1348,296 @@ function onMouseMove(event) {
     }
   });
   
-  const intersects = raycaster.intersectObjects(allMarkers);
+  // Collect event highlights
+  if (eventHighlights) {
+    eventHighlights.traverse((child) => {
+      if (child.userData && child.userData.isEventHighlight) {
+        allEventHighlights.push(child);
+      }
+    });
+  }
+  
+  const allInteractiveObjects = [...allMarkers, ...allEventHighlights];
+  const intersects = raycaster.intersectObjects(allInteractiveObjects);
   
   if (intersects.length > 0) {
-    const intersectedMarker = intersects[0].object;
+    const intersectedObject = intersects[0].object;
     
-    // Don't change hover state if tooltip is clicked and pinned
-    if (clickedTooltip && clickedMarker === intersectedMarker) {
-      // Update tooltip position for pinned tooltip
-      if (tooltip) {
-        tooltip.style.left = (event.clientX + 15) + 'px';
-        tooltip.style.top = (event.clientY - 10) + 'px';
-      }
-      return;
+    // Handle event highlights
+    if (intersectedObject.userData.isEventHighlight) {
+      handleEventInteraction(intersectedObject, event, isClick);
     }
-    
-    if (hoveredMarker !== intersectedMarker) {
-      // Reset previous hovered marker (but not if it's the clicked one)
-      if (hoveredMarker && hoveredMarker !== clickedMarker) {
-        hoveredMarker.material.opacity = 0.4;
-        hoveredMarker.material.emissiveIntensity = 2.5;
-      }
-      
-      hoveredMarker = intersectedMarker;
-      
-      // Don't change appearance if this is the clicked marker
-      if (hoveredMarker !== clickedMarker) {
-        hoveredMarker.material.opacity = 1.0;
-        hoveredMarker.material.emissiveIntensity = 3.5;
-      }
-      
-      // Don't show hover tooltip if there's a pinned tooltip
-      if (!clickedTooltip) {
-        showTooltip(hoveredMarker, event);
-      }
-      
-      document.body.style.cursor = 'pointer';
-    }
-    
-    // Update tooltip position (for both hover and clicked tooltips)
-    if (tooltip && !clickedTooltip) {
-      tooltip.style.left = (event.clientX + 15) + 'px';
-      tooltip.style.top = (event.clientY - 10) + 'px';
+    // Handle markers (existing functionality)
+    else {
+      handleMarkerInteraction(intersectedObject, event, isClick);
     }
     
   } else {
-    // Only hide tooltip and reset marker if not clicked/pinned
+    // Handle click on empty space
+    if (isClick) {
+      dismissEventTooltip();
+      dismissTooltip(); // Also dismiss marker tooltip
+      return;
+    }
+    
+    // Reset hover states
+    resetHoverStates();
+  }
+}
+
+  // Reset clicked event appearance
+  if (clickedEvent) {
+    resetEventHighlight(clickedEvent);
+    clickedEvent = null;
+  }
+  
+  // Hide tooltip
+  if (tooltip) {
+    tooltip.style.display = 'none';
+    tooltip.style.border = '1px solid #ccc';
+    tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+    tooltip.style.backgroundColor = '#ffffff';
+  }
+
+function handleEventInteraction(intersectedObject, event, isClick) {
+  const eventObj = intersectedObject.userData.evento;
+  const eventGroup = intersectedObject.userData.eventGroup;
+  
+  // Handle click behavior
+  if (isClick) {
+    // Reset previous clicked event
+    if (clickedEvent && clickedEvent !== eventGroup) {
+      resetEventHighlight(clickedEvent);
+    }
+    
+    // Set new clicked event
+    clickedEvent = eventGroup;
+    highlightEventGroup(eventGroup, true);
+    
+    // Show pinned tooltip
+    clickedEventTooltip = true;
+    showEventTooltip(eventObj, event, true);
+    return;
+  }
+  
+  // Don't change hover state if tooltip is clicked and pinned
+  if (clickedEventTooltip && clickedEvent === eventGroup) {
+    // Update tooltip position for pinned tooltip
+    if (tooltip) {
+      tooltip.style.left = (event.clientX + 15) + 'px';
+      tooltip.style.top = (event.clientY - 10) + 'px';
+    }
+    return;
+  }
+  
+  if (hoveredEvent !== eventGroup) {
+    // Reset previous hovered event
+    if (hoveredEvent && hoveredEvent !== clickedEvent) {
+      resetEventHighlight(hoveredEvent);
+    }
+    
+    hoveredEvent = eventGroup;
+    
+    // Don't change appearance if this is the clicked event
+    if (hoveredEvent !== clickedEvent) {
+      highlightEventGroup(eventGroup, false);
+    }
+    
+    // Don't show hover tooltip if there's a pinned tooltip
+    if (!clickedEventTooltip) {
+      showEventTooltip(eventObj, event, false);
+    }
+    
+    document.body.style.cursor = 'pointer';
+  }
+  
+  // Update tooltip position (for hover tooltips)
+  if (tooltip && !clickedEventTooltip) {
+    tooltip.style.left = (event.clientX + 15) + 'px';
+    tooltip.style.top = (event.clientY - 10) + 'px';
+  }
+}
+
+function handleMarkerInteraction(intersectedObject, event, isClick) {
+  // Handle click behavior for markers
+  if (isClick) {
+    // Reset previous clicked marker
+    if (clickedMarker && clickedMarker !== intersectedObject) {
+      clickedMarker.material.opacity = 0.4;
+      clickedMarker.material.emissiveIntensity = 2.5;
+    }
+    
+    // Set new clicked marker
+    clickedMarker = intersectedObject;
+    clickedMarker.material.opacity = 1.0;
+    clickedMarker.material.emissiveIntensity = 3.5;
+    
+    // Show pinned tooltip
+    clickedTooltip = true;
+    showTooltip(clickedMarker, event, true);
+    return;
+  }
+  
+  // Don't change hover state if tooltip is clicked and pinned
+  if (clickedTooltip && clickedMarker === intersectedObject) {
+    // Update tooltip position for pinned tooltip
+    if (tooltip) {
+      tooltip.style.left = (event.clientX + 15) + 'px';
+      tooltip.style.top = (event.clientY - 10) + 'px';
+    }
+    return;
+  }
+  
+  if (hoveredMarker !== intersectedObject) {
+    // Reset previous hovered marker
+    if (hoveredMarker && hoveredMarker !== clickedMarker) {
+      hoveredMarker.material.opacity = 0.4;
+      hoveredMarker.material.emissiveIntensity = 2.5;
+    }
+    
+    hoveredMarker = intersectedObject;
+    
+    // Don't change appearance if this is the clicked marker
+    if (hoveredMarker !== clickedMarker) {
+      hoveredMarker.material.opacity = 1.0;
+      hoveredMarker.material.emissiveIntensity = 3.5;
+    }
+    
+    // Don't show hover tooltip if there's a pinned tooltip
     if (!clickedTooltip) {
-      if (hoveredMarker) {
-        hoveredMarker.material.opacity = 0.4;
-        hoveredMarker.material.emissiveIntensity = 2.5;
-        hoveredMarker = null;
-        document.body.style.cursor = 'default';
-      }
-      if (tooltip) {
-        tooltip.style.display = 'none';
-      }
-    } else {
-      // Reset hover state but keep clicked marker highlighted
-      if (hoveredMarker && hoveredMarker !== clickedMarker) {
-        hoveredMarker.material.opacity = 0.4;
-        hoveredMarker.material.emissiveIntensity = 2.5;
-      }
+      showTooltip(hoveredMarker, event);
+    }
+    
+    document.body.style.cursor = 'pointer';
+  }
+  
+  // Update tooltip position (for hover tooltips)
+  if (tooltip && !clickedTooltip) {
+    tooltip.style.left = (event.clientX + 15) + 'px';
+    tooltip.style.top = (event.clientY - 10) + 'px';
+  }
+}
+
+function resetHoverStates() {
+  // Only reset if not clicked/pinned
+  if (!clickedTooltip && !clickedEventTooltip) {
+    if (hoveredMarker) {
+      hoveredMarker.material.opacity = 0.4;
+      hoveredMarker.material.emissiveIntensity = 2.5;
       hoveredMarker = null;
-      document.body.style.cursor = 'default';
+    }
+    
+    if (hoveredEvent) {
+      resetEventHighlight(hoveredEvent);
+      hoveredEvent = null;
+    }
+    
+    document.body.style.cursor = 'default';
+    
+    if (tooltip) {
+      tooltip.style.display = 'none';
+    }
+  } else {
+    // Reset hover states but keep clicked objects highlighted
+    if (hoveredMarker && hoveredMarker !== clickedMarker) {
+      hoveredMarker.material.opacity = 0.4;
+      hoveredMarker.material.emissiveIntensity = 2.5;
+    }
+    if (hoveredEvent && hoveredEvent !== clickedEvent) {
+      resetEventHighlight(hoveredEvent);
+    }
+    hoveredMarker = null;
+    hoveredEvent = null;
+    document.body.style.cursor = 'default';
+  }
+}
+
+function highlightEventGroup(eventGroup, isClicked) {
+  if (!eventGroup || !eventGroup.userData.materials) return;
+  
+  const [circleMaterial, glowMaterial] = eventGroup.userData.materials;
+  const multiplier = isClicked ? 1.5 : 1.2;
+  
+  circleMaterial.opacity = eventGroup.userData.originalOpacity * multiplier;
+  glowMaterial.opacity = eventGroup.userData.glowOpacity * multiplier;
+}
+
+function resetEventHighlight(eventGroup) {
+  if (!eventGroup || !eventGroup.userData.materials) return;
+  
+  const [circleMaterial, glowMaterial] = eventGroup.userData.materials;
+  
+  circleMaterial.opacity = eventGroup.userData.originalOpacity;
+  glowMaterial.opacity = eventGroup.userData.glowOpacity;
+}
+
+function showEventTooltip(evento, event, isPinned = false) {
+  if (!tooltip) return;
+  
+  const formattedDate = formatDateForDisplay(parseDate(evento.fechaInicio));
+  
+  tooltip.innerHTML = `
+    ${isPinned ? '<button class="tooltip-close" onclick="dismissEventTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
+    <div style="${isPinned ? 'padding-right: 25px;' : ''}">
+      <strong>${evento.evento}</strong><br>
+      <small><em>${evento.tipo}</em></small><br>
+      <small><strong>Fecha:</strong> ${formattedDate}</small><br>
+      <small><strong>Bajas:</strong> ${evento.bajas}</small><br>
+      <div style="margin-top: 8px; font-size: 12px; max-width: 250px;">
+        ${evento.descripcion}
+      </div>
+    </div>
+  `;
+  
+  tooltip.style.display = 'block';
+  tooltip.style.left = (event.clientX + 15) + 'px';
+  tooltip.style.top = (event.clientY - 10) + 'px';
+  
+  // Add styling for pinned tooltips
+  if (isPinned) {
+    tooltip.style.border = '2px solid #ff4444';
+    tooltip.style.boxShadow = '0 4px 12px rgba(255,68,68,0.3)';
+    tooltip.style.backgroundColor = '#171717ff';
+  } else {
+    tooltip.style.border = '1px solid #ccc';
+    tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+    tooltip.style.backgroundColor = '#434141ff';
+  }
+}
+
+function showTooltip(marker, event, isPinned = false) {
+  const userData = marker.userData;
+  const age = userData.age;
+  const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
+  const fNac = userData.F_Nac || 'Sin fecha';
+  const fDeceso = userData.F_Deceso || 'Sin fecha';
+  const LDeceso = userData.L_Deceso || 'Sin lugar';
+  const Escalafon = userData.Escalafon || 'Sin escalafón';
+  
+  if (tooltip) {
+    tooltip.innerHTML = `
+      ${isPinned ? '<button class="tooltip-close" onclick="dismissTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
+      <div style="${isPinned ? 'padding-right: 25px;' : ''}">
+        <strong>${name}</strong><br>
+        Edad: ${age} años<br>
+        <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
+        <small>Lugar: ${LDeceso}</small><br>
+        <small>Escalafón: ${Escalafon}</small>
+      </div>
+    `;
+    tooltip.style.display = 'block';
+    tooltip.style.left = (event.clientX + 15) + 'px';
+    tooltip.style.top = (event.clientY - 10) + 'px';
+    
+    // Add styling for pinned tooltips
+    if (isPinned) {
+      tooltip.style.border = '2px solid #007acc';
+      tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+      tooltip.style.backgroundColor = '#232323ff';
+    } else {
+      tooltip.style.border = '1px solid #ccc';
+      tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+      tooltip.style.backgroundColor = '#1c1c1cff';
     }
   }
 }
@@ -1449,41 +1685,6 @@ function onClick(event) {
   } else {
     // Clicked on empty space - dismiss tooltip
     dismissTooltip();
-  }
-}
-
-function showTooltip(marker, event, isPinned = false) {
-  const userData = marker.userData;
-  const age = userData.age;
-  const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
-  const fNac = userData.F_Nac || 'Sin fecha';
-  const fDeceso = userData.F_Deceso || 'Sin fecha';
-  const LDeceso = userData.L_Deceso || 'Sin lugar';
-  const Escalafon = userData.Escalafon || 'Sin escalafón';
-  
-  if (tooltip) {
-    tooltip.innerHTML = `
-      ${isPinned ? '<button class="tooltip-close" onclick="dismissTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
-      <div style="${isPinned ? 'padding-right: 25px;' : ''}">
-        <strong>${name}</strong><br>
-        Edad: ${age} años<br>
-        <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
-        <small>Lugar: ${LDeceso}</small><br>
-        <small>Escalafón: ${Escalafon}</small>
-      </div>
-    `;
-    tooltip.style.display = 'block';
-    tooltip.style.left = (event.clientX + 15) + 'px';
-    tooltip.style.top = (event.clientY - 10) + 'px';
-    
-    // Add some styling for pinned tooltips
-    if (isPinned) {
-      tooltip.style.border = '2px solid #007acc';
-      tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-    } else {
-      tooltip.style.border = '1px solid #ccc';
-      tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-    }
   }
 }
 
