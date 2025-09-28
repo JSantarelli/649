@@ -617,6 +617,26 @@ function highlightSpecificEvent(evento) {
   
   zoomToEvent(pos, evento);
   
+  // Delay tooltip display until after camera animation completes
+  setTimeout(() => {
+    // Convert event position to screen coordinates
+    const worldPosition = new THREE.Vector3(pos.x, ISLAND_HEIGHT + 0.2, -pos.y);
+    const screenPosition = worldPosition.clone();
+    screenPosition.project(camera);
+    
+    // Convert to screen pixels
+    const screenX = (screenPosition.x * 0.5 + 0.5) * window.innerWidth;
+    const screenY = (screenPosition.y * -0.5 + 0.5) * window.innerHeight;
+    
+    // Show pinned tooltip near the event location
+    const fakeEvent = {
+      clientX: screenX + 20,
+      clientY: screenY - 20
+    };
+    
+    showEventTooltip(evento, fakeEvent, true);
+  }, 1600); // Wait for camera animation to complete (1500ms + 100ms buffer)
+  
   let opacity = 0.8;
   const fadeOut = () => {
     opacity -= 0.01;
@@ -1563,16 +1583,32 @@ function resetEventHighlight(eventGroup) {
   glowMaterial.opacity = eventGroup.userData.glowOpacity;
 }
 
+function getEventIcon(tipo) {
+  const iconMap = {
+    'Batalla': 'fa fa-crossed-swords',
+    'Operación': 'fa fa-chess-knight',
+    'Ataque aéreo': 'fa fa-fighter-jet',
+    'Ataque naval': 'fa fa-ship',
+    'Operación submarina': 'fa fa-submarine',
+    'Bombardeo': 'fa fa-bomb',
+    'Reconocimiento': 'fa fa-binoculars',
+    'Desembarco': 'fa fa-anchor'
+  };
+
+  return iconMap[tipo] || 'fas fa-map-marker-alt';
+}
+
 function showEventTooltip(evento, event, isPinned = false) {
   if (!tooltip) return;
   
   const formattedDate = formatDateForDisplay(parseDate(evento.fechaInicio));
+  const eventIcon = getEventIcon(evento.tipo);
   
   tooltip.innerHTML = `
     ${isPinned ? '<button class="tooltip-close" onclick="dismissEventTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
     <div style="${isPinned ? 'padding-right: 25px;' : ''}">
       <strong>${evento.evento}</strong><br>
-      <small><em>${evento.tipo}</em></small><br>
+      <small><em><i class="${eventIcon}" style="margin-right: 6px;"></i>${evento.tipo}</em></small><br>
       <small><strong>Fecha:</strong> ${formattedDate}</small><br>
       <small><strong>Bajas:</strong> ${evento.bajas}</small><br>
       <div style="margin-top: 8px; font-size: 12px; max-width: 250px;">

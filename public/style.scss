@@ -23,6 +23,14 @@
     --containerGap: 24px;
     --containerGapRow: 16px;
 
+    /* Dataset */
+    --armada: #0066cc;
+    --ea: #00FF66;
+    --ffa: #00FFFF;
+    --gna: #ffd700;
+    --pna: #ff6347;
+    --pnc: #634eff;
+
     --primary: #2DEACA;
     --primaryLight: #0ABEBB;
     --primaryDark: #164E63;
@@ -277,12 +285,87 @@ body.container {
         color: white;
 
         .dataset__wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: var(--cardGap);
             background: var(--panelBg);
             padding: var(--cardPadding);
             border-radius: var(--borderRadius);
             width: var(--panelWidth);
             border-left: 3px solid #2DEACA;
 
+            &.armada i{
+                padding: var(--cardGap);
+                font-size: var(--btnFontSize);
+                border: 1px solid var(--armada);
+                height: var(--cardTitleSize);
+                width: var(--cardTitleSize);
+                color: var(--armada);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borderRadius);
+            }
+            &.ea i{
+                padding: var(--cardGap);
+                font-size: var(--btnFontSize);
+                border: 1px solid var(--ea);
+                height: var(--cardTitleSize);
+                width: var(--cardTitleSize);
+                color: var(--ea);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borderRadius);
+            }
+            &.ffa i{
+                padding: var(--cardGap);
+                font-size: var(--btnFontSize);
+                border: 1px solid var(--ffa);
+                height: var(--cardTitleSize);
+                width: var(--cardTitleSize);
+                color: var(--ffa);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borderRadius);
+            }
+            &.gna i{
+                padding: var(--cardGap);
+                font-size: var(--btnFontSize);
+                border: 1px solid var(--gna);
+                height: var(--cardTitleSize);
+                width: var(--cardTitleSize);
+                color: var(--gna);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borderRadius);
+            }
+            &.pna i{
+                padding: var(--cardGap);
+                font-size: var(--btnFontSize);
+                border: 1px solid var(--pna);
+                height: var(--cardTitleSize);
+                width: var(--cardTitleSize);
+                color: var(--pna);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borderRadius);
+            }
+            &.pnc i{
+                padding: var(--cardGap);
+                font-size: var(--btnFontSize);
+                border: 1px solid var(--pnc);
+                height: var(--cardTitleSize);
+                width: var(--cardTitleSize);
+                color: var(--pnc);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borderRadius);
+            }
             .dataset__prefix {
                 font-size: var(--panelPrefix);
                 font-weight: 500;
@@ -306,10 +389,10 @@ body.container {
         
             // Toggle  
             .dataset-toggle {
-                width: 50px;
-                height: 25px;
-                background-color: #7f8c8d;
-                border-radius: 12px;
+                width: 24px;
+                height: var(--cardFontSize);
+                background-color: var(--neutralDark);
+                border-radius: var(--borderRadius);
                 position: relative;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
@@ -317,23 +400,22 @@ body.container {
             }
 
             .dataset-toggle.active {
-                background-color: #27ae60;
+                background-color: var(--neutral);
             }
 
             .dataset-toggle::after {
                 content: '';
                 position: absolute;
-                width: 21px;
-                height: 21px;
+                width: var(--cardFontSize);
+                height: var(--cardFontSize);
                 background-color: white;
                 border-radius: 50%;
-                top: 2px;
-                left: 2px;
+                left: 0;
                 transition: transform 0.3s ease;
             }
 
             .dataset-toggle.active::after {
-                transform: translateX(25px);
+                transform: translateX(12px);
             }
 
             .progress-container {
@@ -376,13 +458,6 @@ body.container {
                 position: relative;
             }
 
-            /* Dataset-specific colors */
-            --armada: #0066cc;
-            --ea: #00FF66;
-            --ffa: #00FFFF;
-            --gna: #ffd700;
-            --pna: #ff6347;
-            --pnc: #634eff;
 
              &.armada .progress-percent {
                 color: var(--armada);
@@ -407,6 +482,8 @@ body.container {
             &.pnc .progress-percent {
                 color: var(--pnc);
             }
+
+            // bar color
 
             &.armada .progress-bar {
                 background: var(--armada);
@@ -471,6 +548,14 @@ body.container {
         }
     }
 
+    .event-icon {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
     #events-panel {
         position: absolute;
         bottom: var(--bodyPadding);
@@ -478,7 +563,7 @@ body.container {
         color: white;
         z-index: 1000;
         width: var(--panelWidth);
-        max-height: 60vh;
+        max-height: 36vh;
         overflow-y: auto;
         display: flex;
         flex-direction: column;

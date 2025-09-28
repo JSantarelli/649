@@ -55,10 +55,17 @@
 
    <!-- Fuerzas -->
    <div class="info__panel">
-     <i class="fa fa-file-word"></i>
+     <i class="fa fa-info-circle"></i>
      <article class="panel__wrapper">
        <b class="">Cómo navegar el mapa?</b>
-       <small class="">Lorem upsum....</small>
+       <small class="">
+        • Altura de cilindros = Edad al deceso<br>
+        • Estadísticas de edad en tiempo real<br>
+          <strong>Controles:</strong>
+        • Mouse: Rotar vista<br>
+        • Scroll: Zoom<br>
+        • Sliders: Filtrar fechas y ver cambios en edad promedio<br>
+       </small> 
       </article>
     </div>
     
@@ -67,9 +74,12 @@
 
       <!-- Armada -->
         <div class="dataset__wrapper armada" data-key="armada">
-            <!-- <div class="dataset-toggle active" data-toggle="armada"></div> -->
-            <div class="progress-container">
-                <div class="dataset__prefix">Armada</div>
+          <!-- <i class="fa fa-ship"></i> -->
+          <div class="progress-container">
+          <span class="dataset__footer">
+            <div class="dataset__prefix">Armada</div>
+              <div class="dataset-toggle active" data-toggle="armada"></div>
+          </span>
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
@@ -80,23 +90,29 @@
             </div>
         </div>
        <div class="dataset__wrapper ea" data-key="ea">
-            <!-- <div class="dataset-toggle active" data-toggle="ea"></div> -->
-            <div class="progress-container">
-                <div class="dataset__prefix">Ejército Argentino</div>
-                <div class="progress-bar-container">
-                  <div class="progress-bar" style="width: 0%"></div>
-                </div>
-                <span class="dataset__footer">   
-                  <p class="dataset__subfix">0/0</p>
-                  <small class="progress-percent"></small>
-                </span>
+        <!-- <i class="fa fa-shield-alt"></i> -->
+         <div class="progress-container">
+          <span class="dataset__footer">
+            <div class="dataset__prefix">Ejército Argentino</div>
+            <div class="dataset-toggle active" data-toggle="ea"></div>
+          </span>
+            <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 0%"></div>
             </div>
+            <span class="dataset__footer">   
+              <p class="dataset__subfix">0/0</p>
+              <small class="progress-percent"></small>
+            </span>
+        </div>
         </div>
 
         <div class="dataset__wrapper ffa" data-key="ffa">
-            <!-- <div class="dataset-toggle active" data-toggle="ffa"></div> -->
-            <div class="progress-container">
-                <div class="dataset__prefix">Fuerza Aérea</div>
+          <!-- <i class="fa fa-plane"></i> -->
+          <div class="progress-container">
+          <span class="dataset__footer">
+            <div class="dataset__prefix">Fuerza Aérea</div>
+            <div class="dataset-toggle active" data-toggle="ffa"></div>
+          </span>
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
@@ -108,9 +124,12 @@
         </div>
 
         <div class="dataset__wrapper gna" data-key="gna">
-            <!-- <div class="dataset-toggle active" data-toggle="gna"></div> -->
-            <div class="progress-container">
-                <div class="dataset__prefix">Gendarmería</div>
+          <!-- <i class="fa fa-user-shield"></i> -->
+          <div class="progress-container">
+          <span class="dataset__footer">
+            <div class="dataset__prefix">Gendarmería</div>
+              <div class="dataset-toggle active" data-toggle="gna"></div>
+          </span>
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
@@ -122,9 +141,12 @@
         </div>
 
         <div class="dataset__wrapper pna" data-key="pna">
-            <!-- <div class="dataset-toggle active" data-toggle="pna"></div> -->
-            <div class="progress-container">
-                <div class="dataset__prefix">Prefectura</div>
+          <!-- <i class="fa fa-user"></i> -->
+          <div class="progress-container">
+          <span class="dataset__footer">
+            <div class="dataset__prefix">Prefectura</div>
+              <div class="dataset-toggle active" data-toggle="pna"></div>
+          </span>
                 <div class="progress-bar-container">
                   <div class="progress-bar" style="width: 0%"></div>
                 </div>
@@ -136,16 +158,19 @@
         </div>
 
         <div class="dataset__wrapper pnc" data-key="pnc">
-            <!-- <div class="dataset-toggle active" data-toggle="pnc"></div> -->
-            <div class="progress-container">
-                <div class="dataset__prefix">Continente</div>
-                <div class="progress-bar-container">  
-                  <div class="progress-bar" style="width: 0%"></div>
-                </div>
-              <span class="dataset__footer">
-                <p class="dataset__subfix">0/0</p>
-                <small class="progress-percent"></small>
-              </span>
+          <!-- <i class="fa fa-shield-alt"></i> -->
+          <div class="progress-container">
+            <span class="dataset__footer">
+              <div class="dataset__prefix">Continente</div>
+              <div class="dataset-toggle active" data-toggle="pnc"></div>
+            </span>
+              <div class="progress-bar-container">    
+              <div class="progress-bar" style="width: 0%"></div>
+              </div>
+            <span class="dataset__footer">
+              <p class="dataset__subfix">0/0</p>
+              <small class="progress-percent"></small>
+            </span>
         </div>
       </section>
 
