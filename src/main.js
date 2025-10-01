@@ -1206,6 +1206,8 @@ async function init() {
   } catch (error) {
     console.error('Initialization error:', error);
   }
+
+  soldierSearch.populateBirthPlaceDropdown();
 }
 
 function updateTotalCount(visible) {
@@ -1639,8 +1641,9 @@ function showTooltip(marker, event, isPinned = false) {
   const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
   const fNac = userData.F_Nac || 'Sin fecha';
   const fDeceso = userData.F_Deceso || 'Sin fecha';
-  const LDeceso = userData.L_Deceso || 'Sin lugar';
+  const LDeceso = userData.L_Deceso || 'Lugar no esepcificaad';
   const Escalafon = userData.Escalafon || 'Sin escalafón';
+  const LNac = userData.L_Nac || 'Lugar no esepcificaado';
   
   if (tooltip) {
     tooltip.innerHTML = `
@@ -1649,8 +1652,9 @@ function showTooltip(marker, event, isPinned = false) {
         <strong>${name}</strong><br>
         Edad: ${age} años<br>
         <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
-        <small>Lugar: ${LDeceso}</small><br>
-        <small>Escalafón: ${Escalafon}</small>
+        <small>Escalafón: ${Escalafon}</small><br>
+        <small>Lugar de nacimiento: ${LNac}</small><br>
+        <small>Lugar de defunción: ${LDeceso}</small>
       </div>
     `;
     tooltip.style.display = 'block';
@@ -1738,11 +1742,138 @@ class SoldierSearch {
     constructor(datasets) {
         this.datasets = datasets;
         this.searchResults = [];
+        this.currentBirthPlaceFilter = ''; // Track current filter
         this.setupSearchUI();
     }
     
     extractName(userData) {
         return userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
+    }
+    
+    // NEW: Get unique birth places from all datasets
+    getUniqueBirthPlaces() {
+        const places = new Set();
+        
+        Object.values(this.datasets).forEach(dataset => {
+            if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
+                dataset.allMarkers.forEach(markerData => {
+                    if (markerData.marker && markerData.marker.userData) {
+                        const lNac = markerData.marker.userData.L_Nac;
+                        if (lNac && lNac.trim() !== '' && lNac !== 'Lugar no especificado') {
+                            places.add(lNac.trim());
+                        }
+                    }
+                });
+            }
+        });
+        
+        return Array.from(places).sort();
+    }
+    
+    // NEW: Populate or refresh the birth place dropdown
+    populateBirthPlaceDropdown() {
+        const dropdown = document.getElementById('birthplace-filter');
+        if (!dropdown) return;
+        
+        // Clear existing options
+        dropdown.innerHTML = '';
+        
+        // Add "All" option
+        const allOption = document.createElement('option');
+        allOption.value = '';
+        allOption.textContent = 'Todos los lugares';
+        dropdown.appendChild(allOption);
+        
+        // Add unique birth places
+        const uniquePlaces = this.getUniqueBirthPlaces();
+        console.log('Found unique birth places:', uniquePlaces); // Debug
+        
+        uniquePlaces.forEach(place => {
+            const option = document.createElement('option');
+            option.value = place;
+            option.textContent = place;
+            dropdown.appendChild(option);
+        });
+        
+        console.log(`Populated dropdown with ${uniquePlaces.length} birth places`);
+    }
+    
+    // NEW: Filter markers by birth place
+    filterMarkersByBirthPlace(birthPlace) {
+        this.currentBirthPlaceFilter = birthPlace;
+        
+        let hiddenCount = 0;
+        let shownCount = 0;
+        
+        Object.values(this.datasets).forEach(dataset => {
+            if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
+                dataset.allMarkers.forEach(markerData => {
+                    const marker = markerData.marker;
+                    
+                    if (marker && marker.userData) {
+                        const lNac = (marker.userData.L_Nac || '').trim();
+                        
+                        // Show marker if no filter or if it matches the filter
+                        if (!birthPlace || lNac === birthPlace) {
+                            marker.visible = true;
+                            // If scene exists, ensure marker is in scene
+                            if (window.scene && marker.parent !== window.scene) {
+                                window.scene.add(marker);
+                            }
+                            shownCount++;
+                        } else {
+                            marker.visible = false;
+                            // Remove from scene for better performance
+                            if (window.scene && marker.parent === window.scene) {
+                                window.scene.remove(marker);
+                            }
+                            hiddenCount++;
+                        }
+                    }
+                });
+            }
+        });
+        
+        console.log(`Filter applied: ${shownCount} markers shown, ${hiddenCount} markers hidden`);
+        
+        // Update search results if there's an active search
+        const searchInput = document.getElementById('soldier-search-input');
+        if (searchInput && searchInput.value.trim() !== '') {
+            this.performSearch(searchInput.value);
+        }
+        
+        // Update stats
+        this.updateFilterStats();
+    }
+    
+    // NEW: Update filter statistics
+    updateFilterStats() {
+        const filterStats = document.getElementById('filter-stats');
+        if (!filterStats) return;
+        
+        let visibleCount = 0;
+        let totalCount = 0;
+        
+        Object.values(this.datasets).forEach(dataset => {
+            if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
+                dataset.allMarkers.forEach(markerData => {
+                    if (markerData.marker && markerData.marker.userData && 
+                        typeof markerData.marker.userData.age === 'number') {
+                        totalCount++;
+                        if (markerData.marker.visible) {
+                            visibleCount++;
+                        }
+                    }
+                });
+            }
+        });
+        
+        if (this.currentBirthPlaceFilter) {
+            filterStats.textContent = `Mostrando ${visibleCount} de ${totalCount} soldados`;
+            filterStats.style.display = 'block';
+        } else {
+            filterStats.style.display = 'none';
+        }
     }
     
     searchByName(searchTerm) {
@@ -1753,12 +1884,9 @@ class SoldierSearch {
         const results = [];
         const normalizedSearch = searchTerm.toLowerCase().trim();
 
-        
         Object.entries(this.datasets).forEach(([datasetKey, dataset]) => {
-            
             if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
                 dataset.allMarkers.forEach((markerData, index) => {
-                    
                     if (markerData.marker && 
                         markerData.marker.userData && 
                         typeof markerData.marker.userData.age === 'number') {
@@ -1766,29 +1894,24 @@ class SoldierSearch {
                         const userData = markerData.marker.userData;
                         const name = this.extractName(userData);
                         
+                        // Apply birth place filter to search results
+                        const lNac = (userData.L_Nac || '').trim();
+                        const matchesBirthPlace = !this.currentBirthPlaceFilter || 
+                                                 lNac === this.currentBirthPlaceFilter;
                         
-                        if (name !== 'Sin nombre') {
+                        if (name !== 'Sin nombre' && matchesBirthPlace) {
                             const normalizedName = name.toLowerCase();
                             
-                            
                             if (normalizedName.includes(normalizedSearch)) {
-                                
                                 let coordinates = null;
-                                
                                 
                                 if (markerData.coordinates) {
                                     coordinates = markerData.coordinates;
-                                }
-                                
-                                else if (userData.coordinates) {
+                                } else if (userData.coordinates) {
                                     coordinates = userData.coordinates;
-                                }
-                                
-                                else if (userData.lat && userData.lon) {
+                                } else if (userData.lat && userData.lon) {
                                     coordinates = [userData.lon, userData.lat];
-                                }
-                                
-                                else {
+                                } else {
                                     coordinates = this.extractCoordinatesFromUserData(userData);
                                 }
                                 
@@ -1796,11 +1919,11 @@ class SoldierSearch {
                                     name: name,
                                     dataset: dataset.name,
                                     datasetKey: datasetKey,
-                                    marker: markerData.marker, 
-                                    markerData: markerData,    
+                                    marker: markerData.marker,
+                                    markerData: markerData,
                                     markerIndex: index,
-                                    userData: userData,        
-                                    coordinates: coordinates,  
+                                    userData: userData,
+                                    coordinates: coordinates,
                                     color: dataset.color
                                 });
                             }
@@ -1825,13 +1948,17 @@ class SoldierSearch {
         const normalizedSearch = searchTerm.toLowerCase().trim();
 
         Object.entries(this.datasets).forEach(([datasetKey, dataset]) => {
-            
             if (dataset.geoJsonData && dataset.geoJsonData.features) {
                 dataset.geoJsonData.features.forEach((feature, index) => {
                     const userData = feature.properties;
                     const name = this.extractName(userData);
                     
-                    if (name !== 'Sin nombre') {
+                    // Apply birth place filter
+                    const lNac = (userData.L_Nac || '').trim();
+                    const matchesBirthPlace = !this.currentBirthPlaceFilter || 
+                                             lNac === this.currentBirthPlaceFilter;
+                    
+                    if (name !== 'Sin nombre' && matchesBirthPlace) {
                         const normalizedName = name.toLowerCase();
                         
                         if (normalizedName.includes(normalizedSearch)) {
@@ -1843,7 +1970,7 @@ class SoldierSearch {
                                 featureIndex: index,
                                 userData: userData,
                                 color: dataset.color,
-                                coordinates: feature.geometry.coordinates 
+                                coordinates: feature.geometry.coordinates
                             });
                         }
                     }
@@ -1857,7 +1984,6 @@ class SoldierSearch {
     }
     
     setupSearchUI() {
-        
         const searchContainer = document.createElement('div');
         searchContainer.id = 'soldier-search-container';
         searchContainer.style.cssText = `
@@ -1877,7 +2003,7 @@ class SoldierSearch {
             height: fit-content;
         `;
 
-        // Create label
+        // Search label and input
         const searchLabel = document.createElement('label');
         searchLabel.htmlFor = 'soldier-search-input';
         searchLabel.textContent = 'Buscador';
@@ -1896,15 +2022,38 @@ class SoldierSearch {
             box-sizing: border-box;
         `;
 
-        
-        const resultsContainer = document.createElement('div');
-        resultsContainer.id = 'search-results';
-        resultsContainer.style.cssText = `
-            max-height: var(--panelWidth);
-            overflow-y: auto;
+        // NEW: Birth place filter dropdown
+        const filterLabel = document.createElement('label');
+        filterLabel.htmlFor = 'birthplace-filter';
+        filterLabel.textContent = 'Filtrar por lugar de nacimiento';
+        filterLabel.classList.add('input__label');
+        filterLabel.style.marginTop = '10px';
+
+        const birthPlaceDropdown = document.createElement('select');
+        birthPlaceDropdown.id = 'birthplace-filter';
+        birthPlaceDropdown.style.cssText = `
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: var(--borderRadius);
+            font-size: var(--cardFontSize);
+            box-sizing: border-box;
+            cursor: pointer;
         `;
 
-        
+        // Initial population (will be empty if data not loaded yet)
+        this.populateBirthPlaceDropdown();
+
+        // NEW: Filter stats display
+        const filterStats = document.createElement('div');
+        filterStats.id = 'filter-stats';
+        filterStats.style.cssText = `
+            font-size: 12px;
+            color: #4CAF50;
+            display: none;
+        `;
+
+        // Search stats and results
         const searchStats = document.createElement('div');
         searchStats.id = 'search-stats';
         searchStats.style.cssText = `
@@ -1913,28 +2062,44 @@ class SoldierSearch {
             margin-bottom: 10px;
         `;
 
+        const resultsContainer = document.createElement('div');
+        resultsContainer.id = 'search-results';
+        resultsContainer.style.cssText = `
+            max-height: var(--panelWidth);
+            overflow-y: auto;
+        `;
+
+        // Append all elements
         searchContainer.appendChild(searchLabel);
         searchContainer.appendChild(searchInput);
+        searchContainer.appendChild(filterLabel);
+        searchContainer.appendChild(birthPlaceDropdown);
+        searchContainer.appendChild(filterStats);
         searchContainer.appendChild(searchStats);
         searchContainer.appendChild(resultsContainer);
         document.body.appendChild(searchContainer);
 
+        // Search input event listener
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 this.performSearch(e.target.value);
-            }, 300); 
+            }, 300);
+        });
+
+        // NEW: Birth place dropdown event listener
+        birthPlaceDropdown.addEventListener('change', (e) => {
+            this.filterMarkersByBirthPlace(e.target.value);
         });
         
         document.addEventListener('click', (e) => {
             if (!searchContainer.contains(e.target)) {
-                this.clearHoverEffect(); 
+                this.clearHoverEffect();
             }
         });
     }
 
-    
     performSearch(searchTerm) {
         const results = this.searchByName(searchTerm);
         this.updateSearchResults(results, searchTerm);
@@ -1944,7 +2109,6 @@ class SoldierSearch {
         const resultsContainer = document.getElementById('search-results');
         const searchStats = document.getElementById('search-stats');
 
-        
         if (searchTerm.trim() === '') {
             searchStats.textContent = '';
             resultsContainer.innerHTML = '';
@@ -1953,7 +2117,6 @@ class SoldierSearch {
 
         searchStats.textContent = `${results.length} resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}`;
 
-        
         resultsContainer.innerHTML = '';
 
         if (results.length === 0) {
@@ -1964,7 +2127,6 @@ class SoldierSearch {
             return;
         }
 
-        
         results.forEach((result, index) => {
             const resultItem = document.createElement('div');
             resultItem.style.cssText = `
@@ -1977,12 +2139,13 @@ class SoldierSearch {
                 transition: background-color 0.2s;
             `;
 
+            const lNac = result.userData.L_Nac || 'Lugar no especificado';
             resultItem.innerHTML = `
                 <div style="font-weight: bold; margin-bottom: 2px;">${result.name}</div>
                 <div style="font-size: 12px; color: #ccc;">${result.dataset}</div>
+                <div style="font-size: 11px; color: #aaa;">📍 ${lNac}</div>
             `;
 
-            
             resultItem.addEventListener('click', () => {
                 this.focusOnResult(result);
             });
@@ -2009,41 +2172,27 @@ class SoldierSearch {
             userData: result.userData
         });
         
-        
         this.simulateHoverEffect(result);
         
-        
         let coordinates = null;
-        
         
         if (result.coordinates && Array.isArray(result.coordinates) && result.coordinates.length >= 2) {
             coordinates = result.coordinates;
             console.log('Found coordinates in result.coordinates:', coordinates);
-        }
-        
-        
-        else if (result.marker?.userData) {
+        } else if (result.marker?.userData) {
             const userData = result.marker.userData;
             coordinates = this.extractCoordinatesFromUserData(userData);
             if (coordinates) console.log('Found coordinates in marker.userData:', coordinates);
-        }
-        
-        
-        else if (result.userData) {
+        } else if (result.userData) {
             coordinates = this.extractCoordinatesFromUserData(result.userData);
             if (coordinates) console.log('Found coordinates in result.userData:', coordinates);
-        }
-        
-        
-        else if (result.marker?.position) {
+        } else if (result.marker?.position) {
             const pos = result.marker.position;
-            
             console.log('Found THREE.js position:', pos);
             console.log('You may need to convert THREE.js position back to lat/lon coordinates');
         }
         
         if (coordinates && coordinates.length >= 2) {
-            
             const evento = {
                 name: result.name,
                 coordinates: coordinates,
@@ -2051,9 +2200,7 @@ class SoldierSearch {
                 userData: result.userData || result.marker?.userData
             };
 
-            
             this.highlightSoldier(evento);
-            
             console.log(`Highlighting ${result.name} from ${result.dataset}`);
         } else {
             console.warn('No valid coordinates found for soldier:', result.name);
@@ -2068,29 +2215,23 @@ class SoldierSearch {
     extractCoordinatesFromUserData(userData) {
         if (!userData) return null;
         
-        
         if (userData.originalCoords && userData.originalCoords.lat && userData.originalCoords.lon) {
             const { lat, lon } = userData.originalCoords;
-            return [lon, lat]; 
+            return [lon, lat];
         }
-        
         
         let lat = null;
         let lon = null;
         
-        
         lat = userData.lat || userData.latitude || userData.Latitude || 
               userData.LAT || userData.LATITUDE;
               
-        
         lon = userData.lon || userData.longitude || userData.Longitude || 
               userData.LON || userData.LONGITUDE || userData.lng;
         
-        
         if (typeof lat === 'number' && typeof lon === 'number') {
-            return [lon, lat]; 
+            return [lon, lat];
         }
-        
         
         if (lat !== null && lon !== null) {
             const numLat = parseFloat(lat);
@@ -2106,7 +2247,6 @@ class SoldierSearch {
     }
     
     simulateHoverEffect(result) {
-        
         if (!result.marker || !tooltip) {
             console.warn('Marker or tooltip not available for hover simulation');
             return;
@@ -2115,44 +2255,40 @@ class SoldierSearch {
         const marker = result.marker;
         const userData = result.userData || marker.userData;
 
-        
         if (!marker.material) {
             console.warn('Marker does not have material property:', marker);
             return;
         }
 
-        
         if (window.hoveredMarker && window.hoveredMarker !== marker && window.hoveredMarker.material) {
             window.hoveredMarker.material.opacity = 0.4;
             window.hoveredMarker.material.emissiveIntensity = 2.5;
         }
 
-        
         window.hoveredMarker = marker;
         if (marker.material) {
             marker.material.opacity = 1.0;
             marker.material.emissiveIntensity = 3.5;
         }
 
-        
         const age = userData.age;
         const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
         const fNac = userData.F_Nac || 'Sin fecha';
         const fDeceso = userData.F_Deceso || 'Sin fecha';
         const LDeceso = userData.L_Deceso || 'Sin lugar';
+        const LNac = userData.L_Nac || 'Lugar no especificado';
         const Escalafon = userData.Escalafon || 'Sin escalafón';
 
-        
         if (tooltip) {
             tooltip.innerHTML = `
                 <strong>${name}</strong><br>
                 Edad: ${age} años<br>
+                <small>Lugar de nacimiento: ${LNac}</small><br>
                 <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
                 <small>Lugar: ${LDeceso}</small><br>
                 <small>Escalafón: ${Escalafon}</small>
             `;
             tooltip.style.display = 'block';
-            
             
             const searchContainer = document.getElementById('soldier-search-container');
             if (searchContainer) {
@@ -2162,13 +2298,11 @@ class SoldierSearch {
             }
         }
 
-        
         document.body.style.cursor = 'pointer';
 
-        
         setTimeout(() => {
             this.clearHoverEffect();
-        }, 5000); 
+        }, 5000);
     }
 
     clearHoverEffect() {
@@ -2186,7 +2320,6 @@ class SoldierSearch {
     }
     
     highlightSoldier(evento) {
-        
         if (!evento.coordinates || !globalBounds || !camera || !controls || !scene) {
             console.warn('Required globals not available for highlighting');
             return;
@@ -2195,10 +2328,9 @@ class SoldierSearch {
         const [lon, lat] = evento.coordinates;
         const pos = latLonToXY(lat, lon, globalBounds);
 
-        
         const geometry = new THREE.RingGeometry(1.5, 2.5, 32);
         const material = new THREE.MeshBasicMaterial({
-            color: 0xffffff, 
+            color: 0xffffff,
             transparent: true,
             opacity: 0.8,
             side: THREE.DoubleSide
@@ -2209,10 +2341,8 @@ class SoldierSearch {
         highlight.rotation.x = -Math.PI / 2;
         scene.add(highlight);
 
-        
         this.zoomToSoldier(pos, evento);
 
-        
         let opacity = 0.8;
         const fadeOut = () => {
             opacity -= 0.01;
@@ -2229,34 +2359,29 @@ class SoldierSearch {
         setTimeout(fadeOut, 1000);
     }
 
-    
     zoomToSoldier(pos, soldierEvento) {
         if (!camera || !controls) return;
 
-        
         const targetPosition = {
             x: pos.x,
-            y: camera.position.y * 0.7, 
-            z: -pos.y + 10 
+            y: camera.position.y * 0.7,
+            z: -pos.y + 10
         };
 
-        
         controls.target.set(pos.x, 0, -pos.y);
 
-        
         const startPosition = {
             x: camera.position.x,
             y: camera.position.y,
             z: camera.position.z
         };
 
-        const animationDuration = 1000; 
+        const animationDuration = 1000;
         const startTime = Date.now();
 
         const animateCamera = () => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / animationDuration, 1);
-            
             
             const easeOut = 1 - Math.pow(1 - progress, 3);
 
@@ -2301,6 +2426,7 @@ class SoldierSearch {
     }
 }
 
+// Initialize the search with datasets
 const soldierSearch = new SoldierSearch(datasets);
 
 function onWindowResize() {
