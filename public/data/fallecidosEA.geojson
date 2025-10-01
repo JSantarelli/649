@@ -14,7 +14,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 1,
-                "Foto": "./fotos/01-MARCELO SERGIO NOVOA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/01-MARCELO SERGIO NOVOA.png",
                 "PDF": "./resenas/1_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "CAPITÁN",
@@ -49,7 +49,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 2,
-                "Foto": "./fotos/02-JUAN CARLOS BUSCHIAZZO.pngg",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/02-JUAN CARLOS BUSCHIAZZO.pngg",
                 "PDF": "./resenas/2_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE PRIMERO",
@@ -84,7 +84,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 3,
-                "Foto": "./fotos/03-ROBERTO FIORITO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/03-ROBERTO FIORITO.png",
                 "PDF": "./resenas/3_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE PRIMERO",
@@ -119,7 +119,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 4,
-                "Foto": "./fotos/04-RUBEN EDUARDO MARQUEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/04-RUBEN EDUARDO MARQUEZ.png",
                 "PDF": "./resenas/4_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE PRIMERO",
@@ -154,7 +154,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 5,
-                "Foto": "./fotos//05-ALEJANDRO DACHARY.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos//05-ALEJANDRO DACHARY.png",
                 "PDF": "./resenas/5_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE",
@@ -189,7 +189,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 6,
-                "Foto": "./fotos//06-ALBERTO ROLANDO RAMOS A-5-1.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos//06-ALBERTO ROLANDO RAMOS A-5-1.png",
                 "PDF": "./resenas/6_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE",
@@ -224,7 +224,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 7,
-                "Foto": "./fotos/07-ESPINOSA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/07-ESPINOSA.png",
                 "PDF": "./resenas/7_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE",
@@ -259,7 +259,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 8,
-                "Foto": "./fotos/08-ROBERTO NESTOR ESTEVEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/08-ROBERTO NESTOR ESTEVEZ.png",
                 "PDF": "./resenas/8_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE",
@@ -294,7 +294,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 9,
-                "Foto": "./fotos/09-LUIS CARLOS MARTELLA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/09-LUIS CARLOS MARTELLA.png",
                 "PDF": "./resenas/9_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "TENIENTE",
@@ -329,7 +329,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 10,
-                "Foto": "./fotos/10-OSCAR AUGUSTO SILVA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/10-OSCAR AUGUSTO SILVA.png",
                 "PDF": "./resenas/10_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "SUBTENIENTE",
@@ -364,7 +364,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 11,
-                "Foto": "./fotos/11-JUAN DOMINGO BALDINI.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/11-JUAN DOMINGO BALDINI.png",
                 "PDF": "./resenas/11_FALLECIDO.pdf",
                 "Escalafon": "OFICIAL",
                 "Grado": "SUBTENIENTE",
@@ -399,7 +399,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 12,
-                "Foto": "./fotos/12-EUSEBIO ANTONIO AGUILAR.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/12-EUSEBIO ANTONIO AGUILAR.png",
                 "PDF": "./resenas/12_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO AYUDANTE",
@@ -434,7 +434,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 13,
-                "Foto": "./fotos/13-VICTOR JESUS BENZO 2.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/13-VICTOR JESUS BENZO 2.png",
                 "PDF": "./resenas/13_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO AYUDANTE",
@@ -469,7 +469,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 14,
-                "Foto": "./fotos/14-EDGARDO NESTOR OCHOA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/14-EDGARDO NESTOR OCHOA.png",
                 "PDF": "./resenas/14_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO AYUDANTE",
@@ -504,7 +504,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 15,
-                "Foto": "./fotos/15-RENE PASCUAL BLANCO A-5-1.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/15-RENE PASCUAL BLANCO A-5-1.png",
                 "PDF": "./resenas/15_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO PRIMERO",
@@ -539,7 +539,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 16,
-                "Foto": "./fotos/16-OSCAR HUMBERTO BLAS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/16-OSCAR HUMBERTO BLAS.png",
                 "PDF": "./resenas/16_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO PRIMERO",
@@ -574,7 +574,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 17,
-                "Foto": "./fotos/17-PEDRO FLORENTINO LARROSA A-3-12.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/17-PEDRO FLORENTINO LARROSA A-3-12.png",
                 "PDF": "./resenas/17_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO PRIMERO",
@@ -609,7 +609,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 18,
-                "Foto": "./fotos/18-JORGE ALBERTO RON.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/18-JORGE ALBERTO RON.png",
                 "PDF": "./resenas/18_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO PRIMERO",
@@ -644,7 +644,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 19,
-                "Foto": "./fotos/19-MATEO ANTONIO SBERT A-4-10.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/19-MATEO ANTONIO SBERT A-4-10.png",
                 "PDF": "./resenas/19_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO PRIMERO",
@@ -679,7 +679,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 20,
-                "Foto": "./fotos/20-ALEJANDRO RAUL PEREYRA A-5-5.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/20-ALEJANDRO RAUL PEREYRA A-5-5.png",
                 "PDF": "./resenas/20_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO",
@@ -714,7 +714,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 21,
-                "Foto": "./fotos/21-HECTOR RICARDO MONTELLANO A-5-10.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/21-HECTOR RICARDO MONTELLANO A-5-10.png",
                 "PDF": "./resenas/21_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO",
@@ -749,7 +749,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 22,
-                "Foto": "./fotos/22-SERGIO ISMAEL GARCIA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/22-SERGIO ISMAEL GARCIA.png",
                 "PDF": "./resenas/22_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO",
@@ -784,7 +784,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 23,
-                "Foto": "./fotos/23-CABRERA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/23-CABRERA.png",
                 "PDF": "./resenas/23_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO",
@@ -819,7 +819,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 24,
-                "Foto": "./fotos/24-MARIO ANTONIO CISNERO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/24-MARIO ANTONIO CISNERO.png",
                 "PDF": "./resenas/24_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO",
@@ -854,7 +854,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 25,
-                "Foto": "./fotos/25-RAUL DIMOTTA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/25-RAUL DIMOTTA.png",
                 "PDF": "./resenas/25_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "SARGENTO",
@@ -889,7 +889,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 26,
-                "Foto": "./fotos/26-ANGEL FIDEL QUISPE A-5-9.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/26-ANGEL FIDEL QUISPE A-5-9.png",
                 "PDF": "./resenas/26_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO PRIMERO",
@@ -924,7 +924,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 27,
-                "Foto": "./fotos/27-DARIO ROLANDO RIOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/27-DARIO ROLANDO RIOS.png",
                 "PDF": "./resenas/27_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO PRIMERO",
@@ -959,7 +959,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 28,
-                "Foto": "./fotos/28-JOSE LUIS RIOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/28-JOSE LUIS RIOS.png",
                 "PDF": "./resenas/28_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO PRIMERO",
@@ -994,7 +994,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 29,
-                "Foto": "./fotos/29-MIGUEL ANGEL AVILA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/29-MIGUEL ANGEL AVILA.png",
                 "PDF": "./resenas/29_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1029,7 +1029,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 30,
-                "Foto": "./fotos/30-BUSTO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/30-BUSTO.png",
                 "PDF": "./resenas/30_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1064,7 +1064,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 31,
-                "Foto": "./fotos/31-MARIO RODOLFO CASTRO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/31-MARIO RODOLFO CASTRO.png",
                 "PDF": "./resenas/31_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1099,7 +1099,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 32,
-                "Foto": "./fotos/32-ALBERTO FERNANDO CHAVEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/32-ALBERTO FERNANDO CHAVEZ.png",
                 "PDF": "./resenas/32_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO EN COMISIÓN",
@@ -1134,7 +1134,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 33,
-                "Foto": "./fotos/33-MARIO GOMEZ A-4-7.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/33-MARIO GOMEZ A-4-7.png",
                 "PDF": "./resenas/33_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1169,7 +1169,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 34,
-                "Foto": "./fotos/34-RAUL ADRIAN GOMEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/34-RAUL ADRIAN GOMEZ.png",
                 "PDF": "./resenas/34_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1204,7 +1204,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 35,
-                "Foto": "./fotos/35-OSMAR GONZALEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/35-OSMAR GONZALEZ.png",
                 "PDF": "./resenas/35_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1239,7 +1239,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 36,
-                "Foto": "./fotos/36-OSCAR EDUARDO LABALTA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/36-OSCAR EDUARDO LABALTA.png",
                 "PDF": "./resenas/36_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO EN COMISIÓN",
@@ -1274,7 +1274,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 37,
-                "Foto": "./fotos/37-EDMUNDO FEDERICO MARCIAL.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/37-EDMUNDO FEDERICO MARCIAL.png",
                 "PDF": "./resenas/37_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1309,7 +1309,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 38,
-                "Foto": "./fotos/38-LUIS MIÑO A-4-17.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/38-LUIS MIÑO A-4-17.png",
                 "PDF": "./resenas/38_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO EN COMISIÓN",
@@ -1344,7 +1344,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 39,
-                "Foto": "./fotos/39-PEDRO ALBERTO OROZCO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/39-PEDRO ALBERTO OROZCO.png",
                 "PDF": "./resenas/39_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO EN COMISIÓN",
@@ -1379,7 +1379,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 40,
-                "Foto": "./fotos/40-HECTOR RUBEN OVIEDO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/40-HECTOR RUBEN OVIEDO.png",
                 "PDF": "./resenas/40_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1414,7 +1414,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 41,
-                "Foto": "./fotos/41-HIPOLITO GONZALEZ A-5-17.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/41-HIPOLITO GONZALEZ A-5-17.png",
                 "PDF": "./resenas/41_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1449,7 +1449,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 42,
-                "Foto": "./fotos/42-ROBERTO VERDUN.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/42-ROBERTO VERDUN.png",
                 "PDF": "./resenas/42_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1484,7 +1484,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 43,
-                "Foto": "./fotos/43-JUAN WAUDRIK A-4-11.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/43-JUAN WAUDRIK A-4-11.png",
                 "PDF": "./resenas/43_FALLECIDO.pdf",
                 "Escalafon": "SUBOFICIAL",
                 "Grado": "CABO",
@@ -1519,7 +1519,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 44,
-                "Foto": "./fotos/44-JUAN JOSE ACUÑA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/44-JUAN JOSE ACUÑA.png",
                 "PDF": "./resenas/44_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -1554,7 +1554,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 45,
-                "Foto": "./fotos/45-LUIS ORLANDO AGUILERA A-3-10.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/45-LUIS ORLANDO AGUILERA A-3-10.png",
                 "PDF": "./resenas/45_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1589,7 +1589,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 46,
-                "Foto": "./fotos/46-ALBERTO MARCELINO AGUIRRE A-4-20.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/46-ALBERTO MARCELINO AGUIRRE A-4-20.png",
                 "PDF": "./resenas/46_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1624,7 +1624,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 47,
-                "Foto": "./fotos/47-CELSO ALEGRE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/47-CELSO ALEGRE.png",
                 "PDF": "./resenas/47_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1659,7 +1659,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 48,
-                "Foto": "./fotos/SIN RECONOCER.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/SIN RECONOCER.png",
                 "PDF": "./resenas/48_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 59",
@@ -1694,7 +1694,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 49,
-                "Foto": "./fotos/49-JOSE LUIS ALLENDE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/49-JOSE LUIS ALLENDE.png",
                 "PDF": "./resenas/49_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -1729,7 +1729,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 50,
-                "Foto": "./fotos/50-BERNARDINO BENITO ALMARAZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/50-BERNARDINO BENITO ALMARAZ.png",
                 "PDF": "./resenas/50_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1764,7 +1764,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 51,
-                "Foto": "./fotos/51-SIMON OSCAR ANTIECO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/51-SIMON OSCAR ANTIECO.png",
                 "PDF": "./resenas/51_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1799,7 +1799,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 52,
-                "Foto": "./fotos/52-ELBIO EDUARDO ARAUJO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/52-ELBIO EDUARDO ARAUJO.png",
                 "PDF": "./resenas/52_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1834,7 +1834,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 53,
-                "Foto": "./fotos/53-MIGUEL ANGEL ARRASCAETA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/53-MIGUEL ANGEL ARRASCAETA.png",
                 "PDF": "./resenas/53_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1869,7 +1869,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 54,
-                "Foto": "./fotos/54-RICARDO ANDRES AUSTIN.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/54-RICARDO ANDRES AUSTIN.png",
                 "PDF": "./resenas/54_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -1904,7 +1904,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 55,
-                "Foto": "./fotos/55-OFELIO VICTOR AVALOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/55-OFELIO VICTOR AVALOS.png",
                 "PDF": "./resenas/55_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -1939,7 +1939,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 56,
-                "Foto": "./fotos/56-OMAR ALBERTO AVALOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/56-OMAR ALBERTO AVALOS.png",
                 "PDF": "./resenas/56_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -1974,7 +1974,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 57,
-                "Foto": "./fotos/57-JUAN ALEJANDRO AYALA A-3-20.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/57-JUAN ALEJANDRO AYALA A-3-20.png",
                 "PDF": "./resenas/57_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2009,7 +2009,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 58,
-                "Foto": "./fotos/58-ORLANDO AYLAN A-3-17.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/58-ORLANDO AYLAN A-3-17.png",
                 "PDF": "./resenas/58_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -2044,7 +2044,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 59,
-                "Foto": "./fotos/59-SERGIO OMAR AZCARATE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/59-SERGIO OMAR AZCARATE.png",
                 "PDF": "./resenas/59_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2079,7 +2079,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 60,
-                "Foto": "./fotos/60-HORACIO ADOLFO BALVIDARES.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/60-HORACIO ADOLFO BALVIDARES.png",
                 "PDF": "./resenas/60_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2114,7 +2114,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 61,
-                "Foto": "./fotos/61-RAFAEL BARRIOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/61-RAFAEL BARRIOS.png",
                 "PDF": "./resenas/61_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -2149,7 +2149,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 62,
-                "Foto": "./fotos/62-CLAUDIO ALFREDO BASTIDA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/62-CLAUDIO ALFREDO BASTIDA.png",
                 "PDF": "./resenas/62_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -2184,7 +2184,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 63,
-                "Foto": "./fotos/63-WALTER IGNACIO BECERRA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/63-WALTER IGNACIO BECERRA.png",
                 "PDF": "./resenas/63_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2219,7 +2219,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 64,
-                "Foto": "./fotos/64-DIEGO MARTIN BELLINZONA A-3-8.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/64-DIEGO MARTIN BELLINZONA A-3-8.png",
                 "PDF": "./resenas/64_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2254,7 +2254,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 65,
-                "Foto": "./fotos/65-ANGEL BENITEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/65-ANGEL BENITEZ.png",
                 "PDF": "./resenas/65_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2289,7 +2289,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 66,
-                "Foto": "./fotos/66-RAMON CIRILO BLANCO A-3-19.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/66-RAMON CIRILO BLANCO A-3-19.png",
                 "PDF": "./resenas/66_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -2324,7 +2324,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 67,
-                "Foto": "./fotos/67-LUIS JORGE BORDON.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/67-LUIS JORGE BORDON.png",
                 "PDF": "./resenas/67_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2359,7 +2359,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 68,
-                "Foto": "./fotos/68-OMAR BRITO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/68-OMAR BRITO.png",
                 "PDF": "./resenas/68_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2394,7 +2394,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 69,
-                "Foto": "./fotos/69-RAMON SALVADOR CABALLERO A-4-6.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/69-RAMON SALVADOR CABALLERO A-4-6.png",
                 "PDF": "./resenas/69_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2429,7 +2429,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 70,
-                "Foto": "./fotos/70-RAMON ANGEL CABRERA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/70-RAMON ANGEL CABRERA.png",
                 "PDF": "./resenas/70_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -2464,7 +2464,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 71,
-                "Foto": "./fotos/71-JULIO RUBEN CAO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/71-JULIO RUBEN CAO.png",
                 "PDF": "./resenas/71_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 61",
@@ -2499,7 +2499,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 72,
-                "Foto": "./fotos/72-SERGIO ALBERTO CARBALLIDO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/72-SERGIO ALBERTO CARBALLIDO.png",
                 "PDF": "./resenas/72_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2534,7 +2534,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 73,
-                "Foto": "./fotos/73-FABRICIO EDGAR CARRASCULL.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/73-FABRICIO EDGAR CARRASCULL.png",
                 "PDF": "./resenas/73_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63 \"AOR\"",
@@ -2569,7 +2569,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 74,
-                "Foto": "./fotos/74-CARLOS EPIFANIO CASCO A-5-18.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/74-CARLOS EPIFANIO CASCO A-5-18.png",
                 "PDF": "./resenas/74_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2604,7 +2604,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 75,
-                "Foto": "./fotos/75-JOSE DOMINGO CURIMA A-3-11.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/75-JOSE DOMINGO CURIMA A-3-11.png",
                 "PDF": "./resenas/75_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2639,7 +2639,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 76,
-                "Foto": "./fotos/76-JOSE LUIS DEL HIERRO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/76-JOSE LUIS DEL HIERRO.png",
                 "PDF": "./resenas/76_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2674,7 +2674,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 77,
-                "Foto": "./fotos/77-SERGIO RAUL DESZA A-3-7.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/77-SERGIO RAUL DESZA A-3-7.png",
                 "PDF": "./resenas/77_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2709,7 +2709,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 78,
-                "Foto": "./fotos/78-OSCAR DANIEL DIARTE A-3-14.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/78-OSCAR DANIEL DIARTE A-3-14.png",
                 "PDF": "./resenas/78_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2744,7 +2744,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 79,
-                "Foto": "./fotos/79-CARLOS AGUSTIN DIAZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/79-CARLOS AGUSTIN DIAZ.png",
                 "PDF": "./resenas/79_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2779,7 +2779,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 80,
-                "Foto": "./fotos/80-LUIS ALBERTO DIAZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/80-LUIS ALBERTO DIAZ.png",
                 "PDF": "./resenas/80_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2814,7 +2814,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 81,
-                "Foto": "./fotos/81-VLADIMIRO DWORAK.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/81-VLADIMIRO DWORAK.png",
                 "PDF": "./resenas/81_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2849,7 +2849,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 82,
-                "Foto": "./fotos/82-HORACIO JOSE ECHAVE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/82-HORACIO JOSE ECHAVE.png",
                 "PDF": "./resenas/82_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2884,7 +2884,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 83,
-                "Foto": "./fotos/83-JOSE ALBERTO ENCINA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/83-JOSE ALBERTO ENCINA.png",
                 "PDF": "./resenas/83_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2919,7 +2919,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 84,
-                "Foto": "./fotos/84-MIGUEL FALCON.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/84-MIGUEL FALCON.png",
                 "PDF": "./resenas/84_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2954,7 +2954,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 85,
-                "Foto": "./fotos/85-CARMELO FERNANDEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/85-CARMELO FERNANDEZ.png",
                 "PDF": "./resenas/85_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -2989,7 +2989,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 86,
-                "Foto": "./fotos/86-REMIGIO ANTONIO FERNANDEZ A-4-8.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/86-REMIGIO ANTONIO FERNANDEZ A-4-8.png",
                 "PDF": "./resenas/86_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3024,7 +3024,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 87,
-                "Foto": "./fotos/87-JOSE RAMON FERRAU.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/87-JOSE RAMON FERRAU.png",
                 "PDF": "./resenas/87_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3059,7 +3059,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 88,
-                "Foto": "./fotos/88-ALDO OMAR FERREYRA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/88-ALDO OMAR FERREYRA.png",
                 "PDF": "./resenas/88_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3094,7 +3094,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 89,
-                "Foto": "./fotos/89-ANDRES ANIBAL FOLCH.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/89-ANDRES ANIBAL FOLCH.png",
                 "PDF": "./resenas/89_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3129,7 +3129,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 90,
-                "Foto": "./fotos/90-CARLOS ALBERTO FRIAS A-4-18.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/90-CARLOS ALBERTO FRIAS A-4-18.png",
                 "PDF": "./resenas/90_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3164,7 +3164,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 91,
-                "Foto": "./fotos/91-FABIAN MARIO GABRIELLI A-5-8.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/91-FABIAN MARIO GABRIELLI A-5-8.png",
                 "PDF": "./resenas/91_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3199,7 +3199,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 92,
-                "Foto": "./fotos/92-RAMON GARCIA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/92-RAMON GARCIA.png",
                 "PDF": "./resenas/92_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3234,7 +3234,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 93,
-                "Foto": "./fotos/93-MARIO GARCIA CAÑETE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/93-MARIO GARCIA CAÑETE.png",
                 "PDF": "./resenas/93_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3269,7 +3269,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 94,
-                "Foto": "./fotos/94-ALFREDO GATTONI.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/94-ALFREDO GATTONI.png",
                 "PDF": "./resenas/94_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 54",
@@ -3304,7 +3304,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 95,
-                "Foto": "./fotos/95-HORACIO LORENZO GIRAUDO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/95-HORACIO LORENZO GIRAUDO.png",
                 "PDF": "./resenas/95_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -3339,7 +3339,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 96,
-                "Foto": "./fotos/96-EDUARDO GOMEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/96-EDUARDO GOMEZ.png",
                 "PDF": "./resenas/96_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3374,7 +3374,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 97,
-                "Foto": "./fotos/97-MARTINIANO GOMEZ A-5-6.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/97-MARTINIANO GOMEZ A-5-6.png",
                 "PDF": "./resenas/97_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3409,7 +3409,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 98,
-                "Foto": "./fotos/98-RUBEN HORACIO GOMEZ A-4-16.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/98-RUBEN HORACIO GOMEZ A-4-16.png",
                 "PDF": "./resenas/98_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -3444,7 +3444,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 99,
-                "Foto": "./fotos/99-MIGUEL ANGEL GONZALEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/99-MIGUEL ANGEL GONZALEZ.png",
                 "PDF": "./resenas/99_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3479,7 +3479,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 100,
-                "Foto": "./fotos/100-NESTOR MIGUEL GONZALEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/100-NESTOR MIGUEL GONZALEZ.png",
                 "PDF": "./resenas/100_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3514,7 +3514,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 101,
-                "Foto": "./fotos/101-HECTOR ANTONIO GUANES.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/101-HECTOR ANTONIO GUANES.png",
                 "PDF": "./resenas/101_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3549,7 +3549,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 102,
-                "Foto": "./fotos/102-DONATO MANUEL GRAMISCI.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/102-DONATO MANUEL GRAMISCI.png",
                 "PDF": "./resenas/102_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3584,7 +3584,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 103,
-                "Foto": "./fotos/103-GUILLERMO ERNESTO GRANADO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/103-GUILLERMO ERNESTO GRANADO.png",
                 "PDF": "./resenas/103_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3619,7 +3619,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 104,
-                "Foto": "./fotos/104-ALFREDO GREGORIO A-3-5.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/104-ALFREDO GREGORIO A-3-5.png",
                 "PDF": "./resenas/104_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3654,7 +3654,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 105,
-                "Foto": "./fotos/105-RICARDO MARIO GURRIERI.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/105-RICARDO MARIO GURRIERI.png",
                 "PDF": "./resenas/105_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -3689,7 +3689,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 106,
-                "Foto": "./fotos/106-OMAR JESUS HERRERA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/106-OMAR JESUS HERRERA.png",
                 "PDF": "./resenas/106_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3724,7 +3724,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 107,
-                "Foto": "./fotos/107-RICARDO HORACIO HERRERA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/107-RICARDO HORACIO HERRERA.png",
                 "PDF": "./resenas/107_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3759,7 +3759,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 108,
-                "Foto": "./fotos/108-JUAN DOMINGO HORISBERGUER.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/108-JUAN DOMINGO HORISBERGUER.png",
                 "PDF": "./resenas/108_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3794,7 +3794,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 109,
-                "Foto": "./fotos/109-CARLOS ALBERTO HORNOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/109-CARLOS ALBERTO HORNOS.png",
                 "PDF": "./resenas/109_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3829,7 +3829,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 110,
-                "Foto": "./fotos/110-IGNACIO MARIA INDINO A-5-12.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/110-IGNACIO MARIA INDINO A-5-12.png",
                 "PDF": "./resenas/110_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3864,7 +3864,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 111,
-                "Foto": "./fotos/111-ALBERTO MANUEL JUAREZ A-3-4.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/111-ALBERTO MANUEL JUAREZ A-3-4.png",
                 "PDF": "./resenas/111_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3899,7 +3899,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 112,
-                "Foto": "./fotos/112-JUAN ROBERTO LEDESMA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/112-JUAN ROBERTO LEDESMA.png",
                 "PDF": "./resenas/112_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3934,7 +3934,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 113,
-                "Foto": "./fotos/113-JORGE ALBERTO LLAMAS A-5-19.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/113-JORGE ALBERTO LLAMAS A-5-19.png",
                 "PDF": "./resenas/113_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -3969,7 +3969,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 114,
-                "Foto": "./fotos/114-JORGE DANIEL LUDUEÑA A-4-9.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/114-JORGE DANIEL LUDUEÑA A-4-9.png",
                 "PDF": "./resenas/114_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4004,7 +4004,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 115,
-                "Foto": "./fotos/115-FERNANDO JESUS LUGO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/115-FERNANDO JESUS LUGO.png",
                 "PDF": "./resenas/115_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4039,7 +4039,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 116,
-                "Foto": "./fotos/116-RICARDO JOSE LUNA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/116-RICARDO JOSE LUNA.png",
                 "PDF": "./resenas/116_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4074,7 +4074,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 117,
-                "Foto": "./fotos/117-DANIEL OMAR LUQUE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/117-DANIEL OMAR LUQUE.png",
                 "PDF": "./resenas/117_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4109,7 +4109,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 118,
-                "Foto": "./fotos/118-JERONIMO MACIEL A-4-15.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/118-JERONIMO MACIEL A-4-15.png",
                 "PDF": "./resenas/118_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4144,7 +4144,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 119,
-                "Foto": "./fotos/119-IRENEO OSVALDO MACIEL.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/119-IRENEO OSVALDO MACIEL.png",
                 "PDF": "./resenas/119_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4179,7 +4179,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 120,
-                "Foto": "./fotos/120-JULIO HECTOR MAIDANA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/120-JULIO HECTOR MAIDANA.png",
                 "PDF": "./resenas/120_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4214,7 +4214,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 121,
-                "Foto": "./fotos/121-MARCELO DANIEL MASSAD.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/121-MARCELO DANIEL MASSAD.png",
                 "PDF": "./resenas/121_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4249,7 +4249,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 122,
-                "Foto": "./fotos/122-LUIS MENDEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/122-LUIS MENDEZ.png",
                 "PDF": "./resenas/122_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4284,7 +4284,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 123,
-                "Foto": "./fotos/123-IRENEO MENDOZA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/123-IRENEO MENDOZA.png",
                 "PDF": "./resenas/123_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4319,7 +4319,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 124,
-                "Foto": "./fotos/124-JUAN CARLOS MONZON.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/124-JUAN CARLOS MONZON.png",
                 "PDF": "./resenas/124_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4354,7 +4354,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 125,
-                "Foto": "./fotos/125-ALBERTO JOSE MOSCHEN.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/125-ALBERTO JOSE MOSCHEN.png",
                 "PDF": "./resenas/125_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4389,7 +4389,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 126,
-                "Foto": "./fotos/126-CARLOS GUSTAVO MOSTO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/126-CARLOS GUSTAVO MOSTO.png",
                 "PDF": "./resenas/126_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 59",
@@ -4424,7 +4424,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 127,
-                "Foto": "./fotos/127-SERGIO FABIAN NOSIKOSKI A-4-19.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/127-SERGIO FABIAN NOSIKOSKI A-4-19.png",
                 "PDF": "./resenas/127_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4459,7 +4459,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 128,
-                "Foto": "./fotos/128-GUILLERMO NUÑEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/128-GUILLERMO NUÑEZ.png",
                 "PDF": "./resenas/128_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4494,7 +4494,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 129,
-                "Foto": "./fotos/129-GUILLERMO RAUL OJEDA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/129-GUILLERMO RAUL OJEDA.png",
                 "PDF": "./resenas/129_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4529,7 +4529,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 130,
-                "Foto": "./fotos/130-JOSE HONORIO ORTEGA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/130-JOSE HONORIO ORTEGA.png",
                 "PDF": "./resenas/130_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4564,7 +4564,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 131,
-                "Foto": "./fotos/131-CARLOS OMAR OSYGUSS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/131-CARLOS OMAR OSYGUSS.png",
                 "PDF": "./resenas/131_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4599,7 +4599,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 132,
-                "Foto": "./fotos/132-ROLANDO PACHOLCZUK.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/132-ROLANDO PACHOLCZUK.png",
                 "PDF": "./resenas/132_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4634,7 +4634,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 133,
-                "Foto": "./fotos/133-CELSO PAEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/133-CELSO PAEZ.png",
                 "PDF": "./resenas/133_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4669,7 +4669,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 134,
-                "Foto": "./fotos/134-RAMON ORLANDO PALAVECINO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/134-RAMON ORLANDO PALAVECINO.png",
                 "PDF": "./resenas/134_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4704,7 +4704,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 135,
-                "Foto": "./fotos/135-MIGUEL ANGEL PASCUAL A-5-2.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/135-MIGUEL ANGEL PASCUAL A-5-2.png",
                 "PDF": "./resenas/135_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4739,7 +4739,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 136,
-                "Foto": "./fotos/136-ALBERTO GENARO PAVON.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/136-ALBERTO GENARO PAVON.png",
                 "PDF": "./resenas/136_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4774,7 +4774,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 137,
-                "Foto": "./fotos/137-NESTOR CESAR AVELINO PEGORARO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/137-NESTOR CESAR AVELINO PEGORARO.png",
                 "PDF": "./resenas/137_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4809,7 +4809,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 138,
-                "Foto": "./fotos/138-JUAN ANSELMO PERALTA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/138-JUAN ANSELMO PERALTA.png",
                 "PDF": "./resenas/138_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4844,7 +4844,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 139,
-                "Foto": "./fotos/139-DANTE LUIS SEGUNDO PEREIRA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/139-DANTE LUIS SEGUNDO PEREIRA.png",
                 "PDF": "./resenas/139_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 61",
@@ -4879,7 +4879,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 140,
-                "Foto": "./fotos/140-VICENTE PEREZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/140-VICENTE PEREZ.png",
                 "PDF": "./resenas/140_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -4914,7 +4914,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 141,
-                "Foto": "./fotos/141-ALBERTO DANIEL PETRUCELLI.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/141-ALBERTO DANIEL PETRUCELLI.png",
                 "PDF": "./resenas/141_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4949,7 +4949,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 142,
-                "Foto": "./fotos/142-NESTOR OSVALDO PIZARRO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/142-NESTOR OSVALDO PIZARRO.png",
                 "PDF": "./resenas/142_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -4984,7 +4984,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 143,
-                "Foto": "./fotos/143-MARCELO GUSTAVO PLANES.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/143-MARCELO GUSTAVO PLANES.png",
                 "PDF": "./resenas/143_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5019,7 +5019,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 144,
-                "Foto": "./fotos/144-JUAN CARLOS QUINTANA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/144-JUAN CARLOS QUINTANA.png",
                 "PDF": "./resenas/144_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5054,7 +5054,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 145,
-                "Foto": "./fotos/145-RAMON OMAR QUINTANA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/145-RAMON OMAR QUINTANA.png",
                 "PDF": "./resenas/145_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5089,7 +5089,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 146,
-                "Foto": "./fotos/146-RUBEN NORBERTO RAMIREZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/146-RUBEN NORBERTO RAMIREZ.png",
                 "PDF": "./resenas/146_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5124,7 +5124,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 147,
-                "Foto": "./fotos/147-JOSE ANTONIO REYES LOBOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/147-JOSE ANTONIO REYES LOBOS.png",
                 "PDF": "./resenas/147_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 60",
@@ -5159,7 +5159,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 148,
-                "Foto": "./fotos/148-SEGUNDINO ANTONIO RIQUELME.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/148-SEGUNDINO ANTONIO RIQUELME.png",
                 "PDF": "./resenas/148_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5194,7 +5194,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 149,
-                "Foto": "./fotos/149-ISAAC ERASMO ROCHA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/149-ISAAC ERASMO ROCHA.png",
                 "PDF": "./resenas/149_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5229,7 +5229,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 150,
-                "Foto": "./fotos/150-DANIEL ANDRES RODRIGUEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/150-DANIEL ANDRES RODRIGUEZ.png",
                 "PDF": "./resenas/150_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5264,7 +5264,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 151,
-                "Foto": "./fotos/151-JOSE LUIS RODRIGUEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/151-JOSE LUIS RODRIGUEZ.png",
                 "PDF": "./resenas/151_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5299,7 +5299,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 152,
-                "Foto": "./fotos/152-VICTOR RODRIGUEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/152-VICTOR RODRIGUEZ.png",
                 "PDF": "./resenas/152_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5334,7 +5334,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 153,
-                "Foto": "./fotos/153-VICTOR RODRIGUEZ A-4-13.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/153-VICTOR RODRIGUEZ A-4-13.png",
                 "PDF": "./resenas/153_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5369,7 +5369,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 154,
-                "Foto": "./fotos/154-MACEDONIO RODRIGUEZ A-5-3.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/154-MACEDONIO RODRIGUEZ A-5-3.png",
                 "PDF": "./resenas/154_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5404,7 +5404,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 155,
-                "Foto": "./fotos/155-JUAN DOMINGO RODRIGUEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/155-JUAN DOMINGO RODRIGUEZ.png",
                 "PDF": "./resenas/155_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5439,7 +5439,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 156,
-                "Foto": "./fotos/156-MARIO GUSTAVO RODRIGUEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/156-MARIO GUSTAVO RODRIGUEZ.png",
                 "PDF": "./resenas/156_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5474,7 +5474,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 157,
-                "Foto": "./fotos/157-CLAUDIO ALEJANDRO ROMERO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/157-CLAUDIO ALEJANDRO ROMERO.png",
                 "PDF": "./resenas/157_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5509,7 +5509,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 158,
-                "Foto": "./fotos/158-JORGE EDUARDO ROMERO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/158-JORGE EDUARDO ROMERO.png",
                 "PDF": "./resenas/158_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5544,7 +5544,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 159,
-                "Foto": "./fotos/159-JOSE LUCIANO ROMERO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/159-JOSE LUCIANO ROMERO.png",
                 "PDF": "./resenas/159_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5579,7 +5579,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 160,
-                "Foto": "./fotos/160-JULIO ROMERO COLLA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/160-JULIO ROMERO COLLA.png",
                 "PDF": "./resenas/160_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5614,7 +5614,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 161,
-                "Foto": "./fotos/161-JULIO ROMERO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/161-JULIO ROMERO.png",
                 "PDF": "./resenas/161_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5649,7 +5649,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 162,
-                "Foto": "./fotos/162-ENRIQUE HORACIO RONCONI",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/162-ENRIQUE HORACIO RONCONI",
                 "PDF": "./resenas/162_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5684,7 +5684,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 163,
-                "Foto": "./fotos/163-GABINO RUIZ DIAZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/163-GABINO RUIZ DIAZ.png",
                 "PDF": "./resenas/163_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5719,7 +5719,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 164,
-                "Foto": "./fotos/164-MARIO SANCHEZ A-4-5.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/164-MARIO SANCHEZ A-4-5.png",
                 "PDF": "./resenas/164_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5754,7 +5754,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 165,
-                "Foto": "./fotos/165-ROQUE EVARISTO SANCHEZ.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/165-ROQUE EVARISTO SANCHEZ.png",
                 "PDF": "./resenas/165_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5789,7 +5789,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 166,
-                "Foto": "./fotos/166-HIGINIO SEGOVIA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/166-HIGINIO SEGOVIA.png",
                 "PDF": "./resenas/166_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -5824,7 +5824,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 167,
-                "Foto": "./fotos/167-JULIO CESAR SEGURA A-5-14.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/167-JULIO CESAR SEGURA A-5-14.png",
                 "PDF": "./resenas/167_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5859,7 +5859,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 168,
-                "Foto": "./fotos/168-JUAN RAUL SERRADORI.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/168-JUAN RAUL SERRADORI.png",
                 "PDF": "./resenas/168_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5894,7 +5894,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 169,
-                "Foto": "./fotos/169-SERGIO SINCHICAY.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/169-SERGIO SINCHICAY.png",
                 "PDF": "./resenas/169_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5929,7 +5929,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 170,
-                "Foto": "./fotos/170-JORGE OSCAR SORIA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/170-JORGE OSCAR SORIA.png",
                 "PDF": "./resenas/170_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -5964,7 +5964,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 171,
-                "Foto": "./fotos/171-EDUARDO SOSA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/171-EDUARDO SOSA.png",
                 "PDF": "./resenas/171_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 61",
@@ -5999,7 +5999,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 172,
-                "Foto": "./fotos/172-OMAR ENRIQUE TORRES A-5-13.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/172-OMAR ENRIQUE TORRES A-5-13.png",
                 "PDF": "./resenas/172_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -6034,7 +6034,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 173,
-                "Foto": "./fotos/173-DANIEL ALBERTO UGALDE.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/173-DANIEL ALBERTO UGALDE.png",
                 "PDF": "./resenas/173_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 61",
@@ -6069,7 +6069,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 174,
-                "Foto": "./fotos/174-EDUARDO ANTONIO VALLEJO.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/174-EDUARDO ANTONIO VALLEJO.png",
                 "PDF": "./resenas/174_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -6104,7 +6104,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 175,
-                "Foto": "./fotos/175-ADOLFO VICTOR VALLEJOS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/175-ADOLFO VICTOR VALLEJOS.png",
                 "PDF": "./resenas/175_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -6139,7 +6139,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 176,
-                "Foto": "./fotos/176-ALEJANDRO PEDRO VARGAS.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/176-ALEJANDRO PEDRO VARGAS.png",
                 "PDF": "./resenas/176_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -6174,7 +6174,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 177,
-                "Foto": "./fotos/177-PEDRO HORACIO VOJKOVIC.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/177-PEDRO HORACIO VOJKOVIC.png",
                 "PDF": "./resenas/177_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",
@@ -6209,7 +6209,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 178,
-                "Foto": "./fotos/178-ARNALDO ENRIQUE ZABALA.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/178-ARNALDO ENRIQUE ZABALA.png",
                 "PDF": "./resenas/178_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 63",
@@ -6244,7 +6244,7 @@
             "geometry_name": "the_geom",
             "properties": {
                 "Nro": 179,
-                "Foto": "./fotos/179-MANUEL ALBERTO ZELARAYAN.png",
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/179-MANUEL ALBERTO ZELARAYAN.png",
                 "PDF": "./resenas/179_FALLECIDO.pdf",
                 "Escalafon": "SOLDADO",
                 "Grado": "SOLDADO CLASE 62",

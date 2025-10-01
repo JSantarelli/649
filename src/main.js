@@ -617,25 +617,25 @@ function highlightSpecificEvent(evento) {
   
   zoomToEvent(pos, evento);
   
-  // Delay tooltip display until after camera animation completes
+  
   setTimeout(() => {
-    // Convert event position to screen coordinates
+    
     const worldPosition = new THREE.Vector3(pos.x, ISLAND_HEIGHT + 0.2, -pos.y);
     const screenPosition = worldPosition.clone();
     screenPosition.project(camera);
     
-    // Convert to screen pixels
+    
     const screenX = (screenPosition.x * 0.5 + 0.5) * window.innerWidth;
     const screenY = (screenPosition.y * -0.5 + 0.5) * window.innerHeight;
     
-    // Show pinned tooltip near the event location
+    
     const fakeEvent = {
       clientX: screenX + 20,
       clientY: screenY - 20
     };
     
     showEventTooltip(evento, fakeEvent, true);
-  }, 1600); // Wait for camera animation to complete (1500ms + 100ms buffer)
+  }, 1600); 
   
   let opacity = 0.8;
   const fadeOut = () => {
@@ -1644,17 +1644,28 @@ function showTooltip(marker, event, isPinned = false) {
   const LDeceso = userData.L_Deceso || 'Lugar no esepcificaad';
   const Escalafon = userData.Escalafon || 'Sin escalafón';
   const LNac = userData.L_Nac || 'Lugar no esepcificaado';
+  const img = userData.Foto || 'https://static.vecteezy.com/system/resources/previews/050/562/695/non_2x/soldier-helmet-with-head-icon-silhouette-on-white-background-vector.jpg';
+  const informe = userData.PDF;
   
   if (tooltip) {
     tooltip.innerHTML = `
-      ${isPinned ? '<button class="tooltip-close" onclick="dismissTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
-      <div style="${isPinned ? 'padding-right: 25px;' : ''}">
-        <strong>${name}</strong><br>
-        Edad: ${age} años<br>
-        <small>Nac: ${fNac} - Dec: ${fDeceso}</small><br>
-        <small>Escalafón: ${Escalafon}</small><br>
-        <small>Lugar de nacimiento: ${LNac}</small><br>
-        <small>Lugar de defunción: ${LDeceso}</small>
+      <div class="card__wrapper">
+        <img src="${img}" class="card__img">
+        <article class="card__body">
+          <header class="card__header">
+            <strong class="card__title">${name}</strong>
+            ${isPinned ? '<button class="card__icon--close" onclick="dismissTooltip()">&times</button>' : ''}
+          </header>
+          <p class="card__subtitle">Edad: ${age} años</p>
+          <small class="card__text">Nac: ${fNac} - Dec: ${fDeceso}</small>
+          <small class="card__text">Escalafón: ${Escalafon}</small>
+          <small class="card__text">Lugar de nacimiento: ${LNac}</small>
+          <small class="card__text">Lugar de defunción: ${LDeceso}</small>
+          <button> 
+            <a href="${informe}} target="_blank"></a>
+            Conocer más
+          </button>
+        </article>
       </div>
     `;
     tooltip.style.display = 'block';
@@ -1742,7 +1753,7 @@ class SoldierSearch {
     constructor(datasets) {
         this.datasets = datasets;
         this.searchResults = [];
-        this.currentBirthPlaceFilter = ''; // Track current filter
+        this.currentBirthPlaceFilter = ''; 
         this.setupSearchUI();
     }
     
@@ -1750,7 +1761,7 @@ class SoldierSearch {
         return userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
     }
     
-    // NEW: Get unique birth places from all datasets
+    
     getUniqueBirthPlaces() {
         const places = new Set();
         
@@ -1770,23 +1781,23 @@ class SoldierSearch {
         return Array.from(places).sort();
     }
     
-    // NEW: Populate or refresh the birth place dropdown
+    
     populateBirthPlaceDropdown() {
         const dropdown = document.getElementById('birthplace-filter');
         if (!dropdown) return;
         
-        // Clear existing options
+        
         dropdown.innerHTML = '';
         
-        // Add "All" option
+        
         const allOption = document.createElement('option');
         allOption.value = '';
         allOption.textContent = 'Todos los lugares';
         dropdown.appendChild(allOption);
         
-        // Add unique birth places
+        
         const uniquePlaces = this.getUniqueBirthPlaces();
-        console.log('Found unique birth places:', uniquePlaces); // Debug
+        console.log('Found unique birth places:', uniquePlaces); 
         
         uniquePlaces.forEach(place => {
             const option = document.createElement('option');
@@ -1798,7 +1809,7 @@ class SoldierSearch {
         console.log(`Populated dropdown with ${uniquePlaces.length} birth places`);
     }
     
-    // NEW: Filter markers by birth place
+    
     filterMarkersByBirthPlace(birthPlace) {
         this.currentBirthPlaceFilter = birthPlace;
         
@@ -1813,17 +1824,17 @@ class SoldierSearch {
                     if (marker && marker.userData) {
                         const lNac = (marker.userData.L_Nac || '').trim();
                         
-                        // Show marker if no filter or if it matches the filter
+                        
                         if (!birthPlace || lNac === birthPlace) {
                             marker.visible = true;
-                            // If scene exists, ensure marker is in scene
+                            
                             if (window.scene && marker.parent !== window.scene) {
                                 window.scene.add(marker);
                             }
                             shownCount++;
                         } else {
                             marker.visible = false;
-                            // Remove from scene for better performance
+                            
                             if (window.scene && marker.parent === window.scene) {
                                 window.scene.remove(marker);
                             }
@@ -1836,17 +1847,17 @@ class SoldierSearch {
         
         console.log(`Filter applied: ${shownCount} markers shown, ${hiddenCount} markers hidden`);
         
-        // Update search results if there's an active search
+        
         const searchInput = document.getElementById('soldier-search-input');
         if (searchInput && searchInput.value.trim() !== '') {
             this.performSearch(searchInput.value);
         }
         
-        // Update stats
+        
         this.updateFilterStats();
     }
     
-    // NEW: Update filter statistics
+    
     updateFilterStats() {
         const filterStats = document.getElementById('filter-stats');
         if (!filterStats) return;
@@ -1894,7 +1905,7 @@ class SoldierSearch {
                         const userData = markerData.marker.userData;
                         const name = this.extractName(userData);
                         
-                        // Apply birth place filter to search results
+                        
                         const lNac = (userData.L_Nac || '').trim();
                         const matchesBirthPlace = !this.currentBirthPlaceFilter || 
                                                  lNac === this.currentBirthPlaceFilter;
@@ -1953,7 +1964,7 @@ class SoldierSearch {
                     const userData = feature.properties;
                     const name = this.extractName(userData);
                     
-                    // Apply birth place filter
+                    
                     const lNac = (userData.L_Nac || '').trim();
                     const matchesBirthPlace = !this.currentBirthPlaceFilter || 
                                              lNac === this.currentBirthPlaceFilter;
@@ -2003,7 +2014,7 @@ class SoldierSearch {
             height: fit-content;
         `;
 
-        // Search label and input
+        
         const searchLabel = document.createElement('label');
         searchLabel.htmlFor = 'soldier-search-input';
         searchLabel.textContent = 'Buscador';
@@ -2022,7 +2033,7 @@ class SoldierSearch {
             box-sizing: border-box;
         `;
 
-        // NEW: Birth place filter dropdown
+        
         const filterLabel = document.createElement('label');
         filterLabel.htmlFor = 'birthplace-filter';
         filterLabel.textContent = 'Filtrar por lugar de nacimiento';
@@ -2041,10 +2052,10 @@ class SoldierSearch {
             cursor: pointer;
         `;
 
-        // Initial population (will be empty if data not loaded yet)
+        
         this.populateBirthPlaceDropdown();
 
-        // NEW: Filter stats display
+        
         const filterStats = document.createElement('div');
         filterStats.id = 'filter-stats';
         filterStats.style.cssText = `
@@ -2053,7 +2064,7 @@ class SoldierSearch {
             display: none;
         `;
 
-        // Search stats and results
+        
         const searchStats = document.createElement('div');
         searchStats.id = 'search-stats';
         searchStats.style.cssText = `
@@ -2069,7 +2080,7 @@ class SoldierSearch {
             overflow-y: auto;
         `;
 
-        // Append all elements
+        
         searchContainer.appendChild(searchLabel);
         searchContainer.appendChild(searchInput);
         searchContainer.appendChild(filterLabel);
@@ -2079,7 +2090,7 @@ class SoldierSearch {
         searchContainer.appendChild(resultsContainer);
         document.body.appendChild(searchContainer);
 
-        // Search input event listener
+        
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
@@ -2088,7 +2099,7 @@ class SoldierSearch {
             }, 300);
         });
 
-        // NEW: Birth place dropdown event listener
+        
         birthPlaceDropdown.addEventListener('change', (e) => {
             this.filterMarkersByBirthPlace(e.target.value);
         });
@@ -2143,7 +2154,7 @@ class SoldierSearch {
             resultItem.innerHTML = `
                 <div style="font-weight: bold; margin-bottom: 2px;">${result.name}</div>
                 <div style="font-size: 12px; color: #ccc;">${result.dataset}</div>
-                <div style="font-size: 11px; color: #aaa;">📍 ${lNac}</div>
+                <div style="font-size: 11px; color: #aaa;">${lNac}</div>
             `;
 
             resultItem.addEventListener('click', () => {
@@ -2426,7 +2437,7 @@ class SoldierSearch {
     }
 }
 
-// Initialize the search with datasets
+
 const soldierSearch = new SoldierSearch(datasets);
 
 function onWindowResize() {

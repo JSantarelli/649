@@ -239,6 +239,65 @@ body.container {
         }
     }
 
+    .card {
+        display: none;
+        color: white;
+        pointer-events: none;
+        position: fixed;
+        width: 320px;
+        height: fit-content;
+        background: var(--panelBg);
+        font-family: 'Rajdhani';
+        padding: var(--cardPadding);
+        border-radius: var(--borderRadius);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+        &__wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: var(--cardGap);
+
+            .card__img {
+                width: 48px;
+                height: 48px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            .card__header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .card__title {
+                    font-size: 24px;
+                    font-weight: bolder;
+                    flex: 1;
+                }
+
+                .card__icon--close {
+                    color: black;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+            .card__body {
+                display: flex;
+                flex-direction: column;
+                
+                .card__subtitle {
+                    font-size: 18px;
+                    font-weight: lighter;
+                }
+                
+                .card__text {
+                    font-size: 14px;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
     .info__panel {
         position: absolute;
         right: var(--bodyPadding);
@@ -614,20 +673,6 @@ body.container {
         }
     }
 
-    .tooltip {
-        position: fixed;
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: bold;
-        pointer-events: none;
-        z-index: 10000;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        display: none;
-    }
 
 #cover {
 

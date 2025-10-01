@@ -37,7 +37,7 @@
                 "Latitud": -51.9206775972853,
                 "Longitud": -58.7457850154332,
                 "PDF": "./resenas/633.pdf",
-                "Foto": "./fotos/633 BENITEZ Julio Omar.jpg"
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/633 BENITEZ Julio Omar.jpg"
             }
         },
         {
@@ -76,7 +76,7 @@
                 "Latitud": -51.721449227045,
                 "Longitud": -59.4835891142318,
                 "PDF": "./resenas/634.pdf",
-                "Foto": "./fotos/634 LOPEZ Jorge Eduardo.jpg"
+                "Foto": "https://www.bienestar.mil.ar/mapa_interactivo/fotos/634 LOPEZ Jorge Eduardo.jpg"
             }
         }
     ]
