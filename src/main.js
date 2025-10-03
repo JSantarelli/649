@@ -1786,15 +1786,12 @@ class SoldierSearch {
         const dropdown = document.getElementById('birthplace-filter');
         if (!dropdown) return;
         
-        
         dropdown.innerHTML = '';
-        
         
         const allOption = document.createElement('option');
         allOption.value = '';
         allOption.textContent = 'Todos los lugares';
         dropdown.appendChild(allOption);
-        
         
         const uniquePlaces = this.getUniqueBirthPlaces();
         console.log('Found unique birth places:', uniquePlaces); 
@@ -1824,7 +1821,6 @@ class SoldierSearch {
                     if (marker && marker.userData) {
                         const lNac = (marker.userData.L_Nac || '').trim();
                         
-                        
                         if (!birthPlace || lNac === birthPlace) {
                             marker.visible = true;
                             
@@ -1847,14 +1843,76 @@ class SoldierSearch {
         
         console.log(`Filter applied: ${shownCount} markers shown, ${hiddenCount} markers hidden`);
         
-        
+        // Clear search input when filtering by birthplace
         const searchInput = document.getElementById('soldier-search-input');
-        if (searchInput && searchInput.value.trim() !== '') {
-            this.performSearch(searchInput.value);
+        if (searchInput) {
+            searchInput.value = '';
         }
         
+        // List all soldiers from the selected birthplace
+        if (birthPlace) {
+            this.listSoldiersByBirthPlace(birthPlace);
+        } else {
+            // Clear results when showing all places
+            this.updateSearchResults([], '');
+        }
         
         this.updateFilterStats();
+    }
+    
+    
+    listSoldiersByBirthPlace(birthPlace) {
+        const results = [];
+        
+        Object.entries(this.datasets).forEach(([datasetKey, dataset]) => {
+            if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
+                dataset.allMarkers.forEach((markerData, index) => {
+                    if (markerData.marker && 
+                        markerData.marker.userData && 
+                        typeof markerData.marker.userData.age === 'number') {
+                        
+                        const userData = markerData.marker.userData;
+                        const lNac = (userData.L_Nac || '').trim();
+                        
+                        if (lNac === birthPlace) {
+                            const name = this.extractName(userData);
+                            
+                            if (name !== 'Sin nombre') {
+                                let coordinates = null;
+                                
+                                if (markerData.coordinates) {
+                                    coordinates = markerData.coordinates;
+                                } else if (userData.coordinates) {
+                                    coordinates = userData.coordinates;
+                                } else if (userData.lat && userData.lon) {
+                                    coordinates = [userData.lon, userData.lat];
+                                } else {
+                                    coordinates = this.extractCoordinatesFromUserData(userData);
+                                }
+                                
+                                results.push({
+                                    name: name,
+                                    dataset: dataset.name,
+                                    datasetKey: datasetKey,
+                                    marker: markerData.marker,
+                                    markerData: markerData,
+                                    markerIndex: index,
+                                    userData: userData,
+                                    coordinates: coordinates,
+                                    color: dataset.color
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+        });
+        
+        results.sort((a, b) => a.name.localeCompare(b.name));
+        
+        this.searchResults = results;
+        this.updateSearchResults(results, birthPlace, true);
+        return results;
     }
     
     
@@ -1904,7 +1962,6 @@ class SoldierSearch {
                         
                         const userData = markerData.marker.userData;
                         const name = this.extractName(userData);
-                        
                         
                         const lNac = (userData.L_Nac || '').trim();
                         const matchesBirthPlace = !this.currentBirthPlaceFilter || 
@@ -1964,7 +2021,6 @@ class SoldierSearch {
                     const userData = feature.properties;
                     const name = this.extractName(userData);
                     
-                    
                     const lNac = (userData.L_Nac || '').trim();
                     const matchesBirthPlace = !this.currentBirthPlaceFilter || 
                                              lNac === this.currentBirthPlaceFilter;
@@ -2014,7 +2070,6 @@ class SoldierSearch {
             height: fit-content;
         `;
 
-        
         const searchLabel = document.createElement('label');
         searchLabel.htmlFor = 'soldier-search-input';
         searchLabel.textContent = 'Buscador';
@@ -2033,7 +2088,6 @@ class SoldierSearch {
             box-sizing: border-box;
         `;
 
-        
         const filterLabel = document.createElement('label');
         filterLabel.htmlFor = 'birthplace-filter';
         filterLabel.textContent = 'Filtrar por lugar de nacimiento';
@@ -2052,10 +2106,8 @@ class SoldierSearch {
             cursor: pointer;
         `;
 
-        
         this.populateBirthPlaceDropdown();
 
-        
         const filterStats = document.createElement('div');
         filterStats.id = 'filter-stats';
         filterStats.style.cssText = `
@@ -2064,7 +2116,6 @@ class SoldierSearch {
             display: none;
         `;
 
-        
         const searchStats = document.createElement('div');
         searchStats.id = 'search-stats';
         searchStats.style.cssText = `
@@ -2080,7 +2131,6 @@ class SoldierSearch {
             overflow-y: auto;
         `;
 
-        
         searchContainer.appendChild(searchLabel);
         searchContainer.appendChild(searchInput);
         searchContainer.appendChild(filterLabel);
@@ -2090,7 +2140,6 @@ class SoldierSearch {
         searchContainer.appendChild(resultsContainer);
         document.body.appendChild(searchContainer);
 
-        
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
@@ -2099,7 +2148,6 @@ class SoldierSearch {
             }, 300);
         });
 
-        
         birthPlaceDropdown.addEventListener('change', (e) => {
             this.filterMarkersByBirthPlace(e.target.value);
         });
@@ -2113,26 +2161,32 @@ class SoldierSearch {
 
     performSearch(searchTerm) {
         const results = this.searchByName(searchTerm);
-        this.updateSearchResults(results, searchTerm);
+        this.updateSearchResults(results, searchTerm, false);
     }
     
-    updateSearchResults(results, searchTerm) {
+    updateSearchResults(results, searchTerm, isBirthPlaceFilter = false) {
         const resultsContainer = document.getElementById('search-results');
         const searchStats = document.getElementById('search-stats');
 
-        if (searchTerm.trim() === '') {
+        if (searchTerm.trim() === '' && !isBirthPlaceFilter) {
             searchStats.textContent = '';
             resultsContainer.innerHTML = '';
             return;
         }
 
-        searchStats.textContent = `${results.length} resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}`;
+        const statsText = isBirthPlaceFilter 
+            ? `${results.length} soldado${results.length !== 1 ? 's' : ''} de ${searchTerm}`
+            : `${results.length} resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}`;
+        
+        searchStats.textContent = statsText;
 
         resultsContainer.innerHTML = '';
 
         if (results.length === 0) {
             const noResults = document.createElement('div');
-            noResults.textContent = 'No se encontraron soldados con ese nombre';
+            noResults.textContent = isBirthPlaceFilter 
+                ? 'No se encontraron soldados de este lugar'
+                : 'No se encontraron soldados con ese nombre';
             noResults.style.cssText = 'color: #999; font-style: italic; padding: 10px;';
             resultsContainer.appendChild(noResults);
             return;
@@ -2436,7 +2490,6 @@ class SoldierSearch {
         return stats;
     }
 }
-
 
 const soldierSearch = new SoldierSearch(datasets);
 
