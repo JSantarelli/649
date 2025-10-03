@@ -1344,6 +1344,8 @@ const tooltip = document.getElementById('tooltip');
 
 let clickedTooltip = false;
 let clickedMarker = null;
+let clickedEventRing = null;
+let hoveredEventRing = null;
 
 function onMouseMove(event, isClick = false) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -1418,27 +1420,26 @@ function onMouseMove(event, isClick = false) {
   }
 
 function handleEventInteraction(intersectedObject, event, isClick) {
-  const eventObj = intersectedObject.userData.evento;
-  const eventGroup = intersectedObject.userData.eventGroup;
   
   if (isClick) {
-    
-    if (clickedEvent && clickedEvent !== eventGroup) {
-      resetEventHighlight(clickedEvent);
+    // Reset previous clicked event ring if different
+    if (clickedEventRing && clickedEventRing !== intersectedObject) {
+      clickedEventRing.material.opacity = 0.3;
     }
     
+    // Set new clicked event ring
+    clickedEventRing = intersectedObject;
+    clickedEventRing.material.opacity = 0.6; // More visible when clicked
     
-    clickedEvent = eventGroup;
-    highlightEventGroup(eventGroup, true);
-    
-    
+    // Show pinned tooltip
     clickedEventTooltip = true;
-    showEventTooltip(eventObj, event, true);
+    const evento = intersectedObject.userData.evento;
+    showEventTooltip(evento, event, true);
     return;
   }
   
-  if (clickedEventTooltip && clickedEvent === eventGroup) {
-    
+  // If there's a pinned event tooltip, just update position
+  if (clickedEventTooltip && clickedEventRing === intersectedObject) {
     if (tooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
       tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1446,28 +1447,30 @@ function handleEventInteraction(intersectedObject, event, isClick) {
     return;
   }
   
-  if (hoveredEvent !== eventGroup) {
-    
-    if (hoveredEvent && hoveredEvent !== clickedEvent) {
-      resetEventHighlight(hoveredEvent);
+  // Handle hover state
+  if (hoveredEventRing !== intersectedObject) {
+    // Reset previous hovered event ring
+    if (hoveredEventRing && hoveredEventRing !== clickedEventRing) {
+      hoveredEventRing.material.opacity = 0.3;
     }
     
-    hoveredEvent = eventGroup;
+    hoveredEventRing = intersectedObject;
     
-    
-    if (hoveredEvent !== clickedEvent) {
-      highlightEventGroup(eventGroup, false);
+    // Highlight hovered event ring (if not already clicked)
+    if (hoveredEventRing !== clickedEventRing) {
+      hoveredEventRing.material.opacity = 0.5;
     }
     
-    
+    // Show hover tooltip if no pinned tooltip
     if (!clickedEventTooltip) {
-      showEventTooltip(eventObj, event, false);
+      const evento = hoveredEventRing.userData.evento;
+      showEventTooltip(evento, event, false);
     }
     
     document.body.style.cursor = 'pointer';
   }
   
-  
+  // Update tooltip position on hover (if not pinned)
   if (tooltip && !clickedEventTooltip) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1477,26 +1480,25 @@ function handleEventInteraction(intersectedObject, event, isClick) {
 function handleMarkerInteraction(intersectedObject, event, isClick) {
   
   if (isClick) {
-    
+    // Reset previous clicked marker if different
     if (clickedMarker && clickedMarker !== intersectedObject) {
       clickedMarker.material.opacity = 0.4;
       clickedMarker.material.emissiveIntensity = 2.5;
     }
     
-    
+    // Set new clicked marker
     clickedMarker = intersectedObject;
     clickedMarker.material.opacity = 1.0;
     clickedMarker.material.emissiveIntensity = 3.5;
     
-    
+    // Show pinned tooltip
     clickedTooltip = true;
     showTooltip(clickedMarker, event, true);
     return;
   }
   
-  
+  // If there's a pinned tooltip, just update position
   if (clickedTooltip && clickedMarker === intersectedObject) {
-    
     if (tooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
       tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1504,8 +1506,9 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     return;
   }
   
+  // Handle hover state
   if (hoveredMarker !== intersectedObject) {
-    
+    // Reset previous hovered marker
     if (hoveredMarker && hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 0.4;
       hoveredMarker.material.emissiveIntensity = 2.5;
@@ -1513,12 +1516,13 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     
     hoveredMarker = intersectedObject;
     
-    
+    // Highlight hovered marker (if not already clicked)
     if (hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 1.0;
       hoveredMarker.material.emissiveIntensity = 3.5;
-    }  
+    }
     
+    // Show hover tooltip if no pinned tooltip
     if (!clickedTooltip) {
       showTooltip(hoveredMarker, event);
     }
@@ -1526,6 +1530,7 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     document.body.style.cursor = 'pointer';
   }
   
+  // Update tooltip position on hover (if not pinned)
   if (tooltip && !clickedTooltip) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1533,37 +1538,25 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
 }
 
 function resetHoverStates() {
-  
-  if (!clickedTooltip && !clickedEventTooltip) {
-    if (hoveredMarker) {
-      hoveredMarker.material.opacity = 0.4;
-      hoveredMarker.material.emissiveIntensity = 2.5;
-      hoveredMarker = null;
-    }
-    
-    if (hoveredEvent) {
-      resetEventHighlight(hoveredEvent);
-      hoveredEvent = null;
-    }
-    
-    document.body.style.cursor = 'default';
-    
-    if (tooltip) {
-      tooltip.style.display = 'none';
-    }
-  } else {
-    
-    if (hoveredMarker && hoveredMarker !== clickedMarker) {
-      hoveredMarker.material.opacity = 0.4;
-      hoveredMarker.material.emissiveIntensity = 2.5;
-    }
-    if (hoveredEvent && hoveredEvent !== clickedEvent) {
-      resetEventHighlight(hoveredEvent);
-    }
+  // Reset marker hover state
+  if (hoveredMarker && hoveredMarker !== clickedMarker) {
+    hoveredMarker.material.opacity = 0.4;
+    hoveredMarker.material.emissiveIntensity = 2.5;
     hoveredMarker = null;
-    hoveredEvent = null;
-    document.body.style.cursor = 'default';
   }
+  
+  // Reset event ring hover state
+  if (hoveredEventRing && hoveredEventRing !== clickedEventRing) {
+    hoveredEventRing.material.opacity = 0.3;
+    hoveredEventRing = null;
+  }
+  
+  // Hide tooltip if not pinned
+  if (!clickedTooltip && !clickedEventTooltip && tooltip) {
+    tooltip.style.display = 'none';
+  }
+  
+  document.body.style.cursor = 'default';
 }
 
 function highlightEventGroup(eventGroup, isClicked) {
@@ -1692,6 +1685,8 @@ function onClick(event) {
   raycaster.setFromCamera(mouse, camera);
   
   const allMarkers = [];
+  const allEventHighlights = [];
+  
   Object.values(datasets).forEach(dataset => {
     if (dataset.visible) {
       dataset.allMarkers.forEach(markerData => {
@@ -1706,28 +1701,67 @@ function onClick(event) {
     }
   });
   
-  const intersects = raycaster.intersectObjects(allMarkers);
+  if (eventHighlights) {
+    eventHighlights.traverse((child) => {
+      if (child.userData && child.userData.isEventHighlight) {
+        allEventHighlights.push(child);
+      }
+    });
+  }
+  
+  const allInteractiveObjects = [...allMarkers, ...allEventHighlights];
+  const intersects = raycaster.intersectObjects(allInteractiveObjects);
   
   if (intersects.length > 0) {
-    const intersectedMarker = intersects[0].object;
+    const intersectedObject = intersects[0].object;
     
-    
-    if (clickedMarker && clickedMarker !== intersectedMarker) {
-      clickedMarker.material.opacity = 0.4;
-      clickedMarker.material.emissiveIntensity = 2.5;
+    // Handle event ring click
+    if (intersectedObject.userData.isEventHighlight) {
+      // Dismiss any pinned marker tooltip first
+      if (clickedMarker) {
+        clickedMarker.material.opacity = 0.4;
+        clickedMarker.material.emissiveIntensity = 2.5;
+        clickedMarker = null;
+        clickedTooltip = false;
+      }
+      
+      handleEventInteraction(intersectedObject, event, true);
+    }
+    // Handle marker click
+    else {
+      // Dismiss any pinned event tooltip first
+      if (clickedEventRing) {
+        clickedEventRing.material.opacity = 0.3;
+        clickedEventRing = null;
+        clickedEventTooltip = false;
+      }
+      
+      handleMarkerInteraction(intersectedObject, event, true);
     }
     
-    
-    clickedMarker = intersectedMarker;
-    clickedMarker.material.opacity = 1.0;
-    clickedMarker.material.emissiveIntensity = 3.5;
-    
-    
-    clickedTooltip = true;
-    showTooltip(clickedMarker, event, true);
   } else {
-    
+    // Clicked on empty space - dismiss both
+    dismissEventTooltip();
     dismissTooltip();
+  }
+}
+
+
+function dismissEventTooltip() {
+  clickedEventTooltip = false;
+  
+  // Reset the clicked event ring visual state if exists
+  if (clickedEventRing) {
+    // Reset to default state (you may want to adjust these values)
+    clickedEventRing.material.opacity = 0.3;
+    clickedEventRing = null;
+  }
+  
+  // Hide tooltip and reset styling
+  if (tooltip) {
+    tooltip.style.display = 'none';
+    tooltip.style.border = '1px solid #ccc';
+    tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
   }
 }
 
