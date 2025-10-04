@@ -1600,16 +1600,19 @@ function showEventTooltip(evento, event, isPinned = false) {
   const eventIcon = getEventIcon(evento.tipo);
   
   tooltip.innerHTML = `
-    ${isPinned ? '<button class="tooltip-close" onclick="dismissEventTooltip()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;">&times;</button>' : ''}
-    <div style="${isPinned ? 'padding-right: 25px;' : ''}">
-      <strong>${evento.evento}</strong><br>
-      <small><em><i class="${eventIcon}" style="margin-right: 6px;"></i>${evento.tipo}</em></small><br>
-      <small><strong>Fecha:</strong> ${formattedDate}</small><br>
-      <small><strong>Bajas:</strong> ${evento.bajas}</small><br>
-      <div style="margin-top: 8px; font-size: 12px; max-width: 250px;">
-        ${evento.descripcion}
+      <div class="card__wrapper">
+        <i class="card__icon ${eventIcon}"></i>
+        <article class="card__body">
+          <span class="card__badge">${evento.tipo}</span>
+          <header class="card__header">
+            <strong class="card__title">${evento.evento}</strong>
+            ${isPinned ? '<button class="card__icon--close" onclick="dismissEventTooltip()">&times</button>' : ''}
+          </header>
+          <p class="card__subtitle">${evento.descripcion}</p>
+          <small><strong>Fecha:</strong> ${formattedDate}</small>
+          <small><strong>Bajas:</strong> ${evento.bajas}</small>
+        </article>
       </div>
-    </div>
   `;
   
   tooltip.style.display = 'block';

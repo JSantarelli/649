@@ -264,15 +264,33 @@ body.container {
                 border-radius: 50%;
             }
 
+            .card__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 48px;
+                height: 48px;
+                object-fit: cover;
+                border: solid 2px var(--primary);
+                color: var(--primary);
+                border-radius: 50%;
+            }
+
+            .card__badge {
+                font-size: var(--panelPrefix);
+                font-weight: 500;
+                text-transform: uppercase; 
+            }
+
             .card__header {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
 
                 .card__title {
-                    font-size: 24px;
+                    font-size: 18px;
                     font-weight: bolder;
-                    flex: 1;
+                    // flex: 1;
                 }
 
                 .card__icon--close {
@@ -286,12 +304,12 @@ body.container {
                 flex-direction: column;
                 
                 .card__subtitle {
-                    font-size: 18px;
+                    font-size: 14px;
                     font-weight: lighter;
                 }
                 
                 .card__text {
-                    font-size: 14px;
+                    font-size: 12px;
                     font-weight: normal;
                 }
             }
