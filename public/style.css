@@ -5,17 +5,20 @@
   --bodyPadding: 48px;
   --bodyGap: 8px;
   --panelPadding: 24px;
-  --panelGap: 96px;
+  --panelGap: 48px;
   --panelWidth: 180px;
-  --panelBg: rgba(0, 0, 0, 0.5);
-  --panelPrefix: 14px;
+  --panelHeight: 20vh;
+  --panelBg: rgba(0, 0, 0, 0.25);
+  --panelHover: rgba(255, 255, 255, 0.2);
+  --panelPrefix: 12px;
   --panelSubfix: 12px;
   --borderRadius: 6px;
   --cardPadding: 12px;
-  --cardWidth: 320px;
+  --cardWidth: 280px;
   --cardFontSize: 14px;
-  --cardTitleSize: 24px;
+  --cardTitleSize: 14px;
   --cardGap: 6px;
+  --iconColor: red;
   --containerGap: 24px;
   --containerGapRow: 16px;
   /* Dataset */
@@ -23,12 +26,12 @@
   --ea: #00FF66;
   --ffa: #00FFFF;
   --gna: #ffd700;
-  --pna: #ff6347;
-  --pnc: #634eff;
-  --primary: #2DEACA;
+  --pna: #d447ff;
+  --pnc: #ff8800;
+  --primary: lightgray;
   --primaryLight: #0ABEBB;
   --primaryDark: #164E63;
-  --secondary: #93F6FF;
+  --secondary: lightgray;
   --secondaryLight: #2DD4BF;
   --neutralLight: #f8f8f8;
   --neutral: #64748B;
@@ -36,6 +39,8 @@
   --warning: #F9B303;
   --success: #70f2e1;
   --titleSize: 36px;
+  --titleHeight: 120px;
+  --titleWidth: 480px;
   --subtitleSize: 28px;
   --descriptionSize: 18px;
   --badgeSize: 16px;
@@ -108,12 +113,14 @@ body.container {
   position: absolute;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: flex-end;
   gap: var(--panelGap);
-  left: calc(var(--panelWidth) + var(--bodyPadding) + var(--panelGap));
+  left: var(--bodyPadding);
   bottom: var(--bodyPadding);
   z-index: 2;
+  height: var(--panelHeight);
+  font-family: "Rajdhani";
 }
 .panel__floating--bottom .date__wrapper {
   display: flex;
@@ -136,16 +143,15 @@ body.container {
   align-items: flex-start;
   justify-content: flex-start;
   gap: var(--cardGap);
-  font-family: "Rajdhani";
   text-align: left;
   color: white;
 }
 .panel__floating--bottom .kpi__title {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: bolder;
 }
 .panel__floating--bottom .kpi__subtitle {
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
 }
 .panel__floating--bottom .kpi__body {
@@ -162,7 +168,8 @@ body.container {
   color: white;
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  height: var(--titleHeight);
+  width: var(--titleWidth);
   text-align: left;
 }
 .title__wrapper .ui__prefix {
@@ -180,7 +187,7 @@ body.container {
 }
 
 .ui__subtitle {
-  font-size: 24px;
+  font-size: 20px;
   color: white;
   font-family: "Rajdhani";
   text-transform: uppercase;
@@ -201,7 +208,6 @@ body.container {
   background: var(--panelBg);
   font-family: "Rajdhani";
   padding: var(--cardPadding);
-  border-radius: var(--borderRadius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 .card__wrapper {
@@ -219,11 +225,11 @@ body.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 48px;
-  height: 48px;
+  min-width: 36px;
+  height: 36px;
   object-fit: cover;
-  border: solid 2px var(--primary);
-  color: var(--primary);
+  border: solid 2px var(--iconColor);
+  color: var(--iconColor);
   border-radius: 50%;
 }
 .card__wrapper .card__badge {
@@ -231,17 +237,25 @@ body.container {
   font-weight: 500;
   text-transform: uppercase;
 }
-.card__wrapper .card__header {
+.card__wrapper .card__badge--row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: var(--cardGap);
+}
+.card__wrapper .card__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .card__wrapper .card__header .card__title {
-  font-size: 18px;
+  font-size: var(--cardTitleSize);
   font-weight: bolder;
+  text-transform: uppercase;
 }
-.card__wrapper .card__header .card__icon--close {
-  color: black;
+.card__wrapper button.card__icon--close {
+  border: solid 2px white;
+  color: white;
+  background: none !important;
   width: 24px;
   height: 24px;
 }
@@ -262,6 +276,7 @@ body.container {
   position: absolute;
   right: var(--bodyPadding);
   top: var(--bodyPadding);
+  font-family: "Rajdhani";
   display: flex;
   flex-direction: row;
   gap: var(--cardGap);
@@ -269,15 +284,21 @@ body.container {
   width: var(--panelWidth);
   background: var(--panelBg);
   padding: var(--cardPadding);
-  border-radius: var(--borderRadius);
-  border-left: 3px solid #2DEACA;
   color: white;
-  font-family: "Roboto";
   font-size: var(--cardFontSize);
 }
 .info__panel .panel__wrapper {
   display: flex;
   flex-direction: column;
+}
+.info__panel .panel__wrapper .panel__title {
+  font-size: var(--cardTitleSize);
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+input, select {
+  font-family: "Rajdhani";
 }
 
 label.input__label {
@@ -305,84 +326,29 @@ label.input__label {
   gap: var(--cardGap);
   background: var(--panelBg);
   padding: var(--cardPadding);
-  border-radius: var(--borderRadius);
   width: var(--panelWidth);
   border-left: 3px solid #2DEACA;
 }
-.dataset__panel .dataset__wrapper.armada i {
-  padding: var(--cardGap);
-  font-size: var(--btnFontSize);
-  border: 1px solid var(--armada);
-  height: var(--cardTitleSize);
-  width: var(--cardTitleSize);
-  color: var(--armada);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--borderRadius);
+.dataset__panel .dataset__wrapper.armada {
+  border-left: 2px solid var(--armada);
 }
-.dataset__panel .dataset__wrapper.ea i {
-  padding: var(--cardGap);
-  font-size: var(--btnFontSize);
-  border: 1px solid var(--ea);
-  height: var(--cardTitleSize);
-  width: var(--cardTitleSize);
-  color: var(--ea);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--borderRadius);
+.dataset__panel .dataset__wrapper.ea {
+  border-left: 2px solid var(--ea);
 }
-.dataset__panel .dataset__wrapper.ffa i {
-  padding: var(--cardGap);
-  font-size: var(--btnFontSize);
-  border: 1px solid var(--ffa);
-  height: var(--cardTitleSize);
-  width: var(--cardTitleSize);
-  color: var(--ffa);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--borderRadius);
+.dataset__panel .dataset__wrapper.ffa {
+  border-left: 2px solid var(--ffa);
 }
-.dataset__panel .dataset__wrapper.gna i {
-  padding: var(--cardGap);
-  font-size: var(--btnFontSize);
-  border: 1px solid var(--gna);
-  height: var(--cardTitleSize);
-  width: var(--cardTitleSize);
-  color: var(--gna);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--borderRadius);
+.dataset__panel .dataset__wrapper.gna {
+  border-left: 2px solid var(--gna);
 }
-.dataset__panel .dataset__wrapper.pna i {
-  padding: var(--cardGap);
-  font-size: var(--btnFontSize);
-  border: 1px solid var(--pna);
-  height: var(--cardTitleSize);
-  width: var(--cardTitleSize);
-  color: var(--pna);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--borderRadius);
+.dataset__panel .dataset__wrapper.pna {
+  border-left: 2px solid var(--pna);
 }
-.dataset__panel .dataset__wrapper.pnc i {
-  padding: var(--cardGap);
-  font-size: var(--btnFontSize);
-  border: 1px solid var(--pnc);
-  height: var(--cardTitleSize);
-  width: var(--cardTitleSize);
-  color: var(--pnc);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--borderRadius);
+.dataset__panel .dataset__wrapper.pnc {
+  border-left: 2px solid var(--pnc);
 }
-.dataset__panel .dataset__wrapper .dataset__prefix {
-  font-size: var(--panelPrefix);
+.dataset__panel .dataset__wrapper .dataset__title {
+  font-size: var(--cardTitleSize);
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -533,54 +499,30 @@ label.input__label {
 }
 
 #events-panel {
-  position: absolute;
-  bottom: var(--bodyPadding);
-  left: var(--bodyPadding);
   color: white;
   z-index: 1000;
-  width: var(--panelWidth);
-  max-height: 36vh;
+  width: var(--cardWidth);
+  max-height: var(--panelHeight);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: var(--cardGap);
 }
-
-.event-item {
+#events-panel .card__wrapper {
   background: var(--panelBg);
   padding: 8px;
-  border-radius: var(--borderRadius);
-  border-left: 3px solid #2DEACA;
   font-size: 11px;
   line-height: 1.3;
+  transition: background-color 0.2s;
 }
-.event-item.active {
+#events-panel .card__wrapper:hover {
+  background-color: var(--panelHover);
+}
+#events-panel .card__wrapper.active {
   --panelBg: red;
 }
-.event-item .event-date {
-  font-weight: bold;
-  color: #2DEACA;
-}
-.event-item .event-title {
-  color: #fff;
-  font-weight: bold;
-}
-.event-item .event-type {
-  color: #ccc;
-  font-size: 10px;
-}
-.event-item .event-description {
-  color: #ddd;
-  font-size: 10px;
-}
-.event-item .event-casualties {
-  color: #ddd;
-  font-size: 10px;
-}
-.event-item .events-no-data {
-  color: #999;
-  font-size: 12px;
-  padding: var(--cardPadding);
+#events-panel .card__wrapper.active .card__icon {
+  --iconColor: black;
 }
 
 #cover {

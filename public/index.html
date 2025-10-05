@@ -57,27 +57,27 @@
    <div class="info__panel">
      <i class="fa fa-info-circle"></i>
      <article class="panel__wrapper">
-       <b class="">Cómo navegar el mapa?</b>
+       <h5 class="panel__title">Acerca del mapa</h5>
+      <br>
        <small class="">
-        • Altura de cilindros = Edad al deceso<br>
-        • Estadísticas de edad en tiempo real<br>
-          <strong>Controles:</strong>
-        • Mouse: Rotar vista<br>
-        • Scroll: Zoom<br>
-        • Sliders: Filtrar fechas y ver cambios en edad promedio<br>
+        • <b>Altura cilindros =</b>Edad<br>
+        <span></span><br>
+          <strong>CONTROLES:</strong><br>
+        • <b>Mouse:</b> Rotar vista<br>
+        • <b>Scroll:</b> Zoom<br>
        </small> 
       </article>
     </div>
     
     <section class="dataset__panel">
-      <h3 class="ui__subtitle">Datasets</h3>
+      <h3 class="ui__subtitle">Fuerza en combate</h3>
 
       <!-- Armada -->
         <div class="dataset__wrapper armada" data-key="armada">
           <!-- <i class="fa fa-ship"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
-            <div class="dataset__prefix">Armada</div>
+            <div class="dataset__title">Armada</div>
               <div class="dataset-toggle active" data-toggle="armada"></div>
           </span>
                 <div class="progress-bar-container">
@@ -93,7 +93,7 @@
         <!-- <i class="fa fa-shield-alt"></i> -->
          <div class="progress-container">
           <span class="dataset__footer">
-            <div class="dataset__prefix">Ejército Argentino</div>
+            <div class="dataset__title">Ejército Argentino</div>
             <div class="dataset-toggle active" data-toggle="ea"></div>
           </span>
             <div class="progress-bar-container">
@@ -110,7 +110,7 @@
           <!-- <i class="fa fa-plane"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
-            <div class="dataset__prefix">Fuerza Aérea</div>
+            <div class="dataset__title">Fuerza Aérea</div>
             <div class="dataset-toggle active" data-toggle="ffa"></div>
           </span>
                 <div class="progress-bar-container">
@@ -127,7 +127,7 @@
           <!-- <i class="fa fa-user-shield"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
-            <div class="dataset__prefix">Gendarmería</div>
+            <div class="dataset__title">Gendarmería</div>
               <div class="dataset-toggle active" data-toggle="gna"></div>
           </span>
                 <div class="progress-bar-container">
@@ -144,7 +144,7 @@
           <!-- <i class="fa fa-user"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
-            <div class="dataset__prefix">Prefectura</div>
+            <div class="dataset__title">Prefectura</div>
               <div class="dataset-toggle active" data-toggle="pna"></div>
           </span>
                 <div class="progress-bar-container">
@@ -161,7 +161,7 @@
           <!-- <i class="fa fa-shield-alt"></i> -->
           <div class="progress-container">
             <span class="dataset__footer">
-              <div class="dataset__prefix">Continente</div>
+              <div class="dataset__title">Continente</div>
               <div class="dataset-toggle active" data-toggle="pnc"></div>
             </span>
               <div class="progress-bar-container">    
@@ -177,12 +177,32 @@
 
   <section class="panel__floating--bottom">
             
+  <!-- Eventos  -->
+  <div id="events-panel">
+    <div class="events-no-data">Cargando eventos...</div>
+  </div>
+  <template id="event-item-template">
+
+      <div class="event-item card__wrapper">
+        <i class="card__icon fa fa-fighter-jet"></i>
+        <article class="card__body">
+          <div class="badge__wrapper--row">
+            <span class="card__badge event-type"></span>
+            <span class="card__badge event-date"></span>
+          </div>
+          <header class="card__header">
+            <strong class="card__title event-title"></strong>
+          </header>
+        </article>
+      </div>
+  </template>
+
   <!-- Fechas -->
   <section class="date__wrapper">
     <h3 class="ui__subtitle">Rango de fechas</h3>
     <div class="date-section"> 
       <div class="kpi">
-        <label class="kpi__body">
+        <label class="input__label">
           Desde
         </label>
         <input type="range" class="date-slider" id="start-date-slider" min="0" max="73" value="0">
@@ -190,7 +210,7 @@
       </div>
       
       <div class="kpi">
-        <label class="kpi__body">
+        <label class="input__label">
           Hasta
         </label>
         <input type="range" class="date-slider" id="end-date-slider" min="0" max="73" value="73">
@@ -200,34 +220,16 @@
   </section>
 
     <div class="kpi" id="average-age-display">
+      <h3 class="ui__subtitle">Prom. Edad</h3>
       <span id="average-value" class="kpi__title">--</span>
-      <p class="kpi__subtitle">Promedio de Edad</p> 
-      <p class="kpi__body" id="age-average">
-        Años
-      </p>
+      <p class="kpi__subtitle">Años</p> 
     </div>
     <div class="kpi">
+      <h3 class="ui__subtitle">Caídos</h3>
       <span id="total-count" class="kpi__title">--</span>
-      <p class="kpi__subtitle">Caídos</p> 
-      <p class="kpi__body" id="age-average">
-        Texto de apoyo
-      </p>
+      <p class="kpi__subtitle end-date-value">--</p> 
     </div>
   </section>
-
-  <!-- Eventos  -->
-  <div id="events-panel">
-    <div class="events-no-data">Cargando eventos...</div>
-  </div>
-  <template id="event-item-template">
-    <div class="event-item">
-      <div class="event-date"></div>
-      <div class="event-title"></div>
-      <div class="event-type"></div>
-      <div class="event-description"></div>
-      <div class="event-casualties"></div>
-    </div>
-  </template>
 
   <div class="card" id="tooltip"></div>
 

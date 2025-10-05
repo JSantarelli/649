@@ -102,7 +102,7 @@ const datasets = {
   },
   pna: {
     file: './data/fallecidosPNA.geojson',
-    color: 0xff6347,
+    color: 0xd447ff,
     name: 'Prefectura',
     group: new THREE.Group(),
     visible: true,
@@ -110,7 +110,7 @@ const datasets = {
   },
   pnc: {
     file: './data/fallecidosContinente.geojson',
-    color: 0x634eff,
+    color: 0xff8800,
     name: 'Continente',
     group: new THREE.Group(),
     visible: true,
@@ -414,7 +414,6 @@ function updateEventsPanel() {
     return;
   }
   
-  
   createEventHighlights(sortedEvents);
   
   sortedEvents.forEach(evento => {
@@ -422,10 +421,7 @@ function updateEventsPanel() {
     
     eventElement.querySelector('.event-date').textContent = formatDateForDisplay(parseDate(evento.fechaInicio));
     eventElement.querySelector('.event-title').textContent = evento.evento;
-    eventElement.querySelector('.event-type').textContent = `Tipo: ${evento.tipo}`;
-    eventElement.querySelector('.event-description').textContent = evento.descripcion;
-    eventElement.querySelector('.event-casualties').textContent = evento.bajas;
-
+    eventElement.querySelector('.event-type').textContent = `${evento.tipo}`;
     
     const eventItem = eventElement.querySelector('.event-item') || eventElement.children[0];
     if (eventItem && evento.coordinates) {
@@ -1224,7 +1220,8 @@ function setupUIEventListeners() {
   const endDateSlider = document.getElementById('end-date-slider');
   const startDateValue = document.getElementById('start-date-value');
   const endDateValue = document.getElementById('end-date-value');
-
+  const endDateValue2 = document.querySelector('.end-date-value');
+  
   const maxDays = Math.floor((dateRange.maxDate - dateRange.minDate) / (1000 * 60 * 60 * 24));
   
   if (startDateSlider && endDateSlider) {
@@ -1263,6 +1260,7 @@ function setupUIEventListeners() {
       
       if (endDateValue) {
         endDateValue.textContent = formatDateForDisplay(dateRange.currentEnd);
+        endDateValue2.textContent = formatDateForDisplay(dateRange.currentEnd);
       }
       updateMarkersVisibility();
     });
@@ -1414,9 +1412,6 @@ function onMouseMove(event, isClick = false) {
   
   if (tooltip) {
     tooltip.style.display = 'none';
-    tooltip.style.border = '1px solid #ccc';
-    tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-    tooltip.style.backgroundColor = '#ffffff';
   }
 
 function handleEventInteraction(intersectedObject, event, isClick) {
@@ -1603,15 +1598,15 @@ function showEventTooltip(evento, event, isPinned = false) {
       <div class="card__wrapper">
         <i class="card__icon ${eventIcon}"></i>
         <article class="card__body">
-          <span class="card__badge">${evento.tipo}</span>
           <header class="card__header">
-            <strong class="card__title">${evento.evento}</strong>
-            ${isPinned ? '<button class="card__icon--close" onclick="dismissEventTooltip()">&times</button>' : ''}
-          </header>
-          <p class="card__subtitle">${evento.descripcion}</p>
-          <small><strong>Fecha:</strong> ${formattedDate}</small>
-          <small><strong>Bajas:</strong> ${evento.bajas}</small>
+              <span class="card__badge">${evento.tipo}</span>
+              <strong class="card__title">${evento.evento}</strong>
+            </header>
+            <p class="card__subtitle">${evento.descripcion}</p>
+            <small><strong>Fecha:</strong> ${formattedDate}</small>
+            <small><strong>Bajas:</strong> ${evento.bajas}</small>
         </article>
+            ${isPinned ? '<button class="card__icon--close" onclick="dismissEventTooltip()">&times</button>' : ''}
       </div>
   `;
   
@@ -1621,13 +1616,13 @@ function showEventTooltip(evento, event, isPinned = false) {
   
   
   if (isPinned) {
-    tooltip.style.border = '2px solid #ff4444';
+    tooltip.style.border = 'solid 1px red';
     tooltip.style.boxShadow = '0 4px 12px rgba(255,68,68,0.3)';
-    tooltip.style.backgroundColor = '#171717ff';
+    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
   } else {
-    tooltip.style.border = '1px solid #ccc';
+    tooltip.style.border = 'none';
     tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-    tooltip.style.backgroundColor = '#434141ff';
+    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
   }
 }
 
@@ -1670,13 +1665,13 @@ function showTooltip(marker, event, isPinned = false) {
     
     
     if (isPinned) {
-      tooltip.style.border = '2px solid #007acc';
+      tooltip.style.border = 'solid 1px lightgrey';
       tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-      tooltip.style.backgroundColor = '#232323ff';
+      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     } else {
-      tooltip.style.border = '1px solid #ccc';
+      tooltip.style.border = 'none';
       tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-      tooltip.style.backgroundColor = '#1c1c1cff';
+      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     }
   }
 }
@@ -1763,7 +1758,6 @@ function dismissEventTooltip() {
   // Hide tooltip and reset styling
   if (tooltip) {
     tooltip.style.display = 'none';
-    tooltip.style.border = '1px solid #ccc';
     tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
   }
 }
@@ -1781,7 +1775,6 @@ function dismissTooltip() {
   
   if (tooltip) {
     tooltip.style.display = 'none';
-    tooltip.style.border = '1px solid #ccc';
     tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
   }
 }
@@ -2092,15 +2085,14 @@ class SoldierSearch {
         searchContainer.id = 'soldier-search-container';
         searchContainer.style.cssText = `
             position: absolute;
-            top: var(--bodyPadding);
-            right: calc(var(--bodyPadding) + var(--panelWidth) + var(--bodyGap));
+            left: calc(var(--bodyPadding));
+            top: calc(var(--bodyPadding) + var(--titleHeight) + var(--bodyGap));
             background: var(--panelBg);
             padding: var(--cardPadding);
-            border-radius: var(--borderRadius);
             color: white;
-            font-family: 'Roboto';
+            font-family: 'Rajdhani';
             z-index: 2;
-            width: calc(var(--panelWidth) * 2);
+            width: var(--cardWidth);
             display: flex;
             flex-direction: column;
             gap: var(--cardGap);
@@ -2120,7 +2112,6 @@ class SoldierSearch {
             width: 100%;
             padding: 8px;
             border: none;
-            border-radius: var(--borderRadius);
             font-size: var(--cardFontSize);
             box-sizing: border-box;
         `;
@@ -2137,7 +2128,6 @@ class SoldierSearch {
             width: 100%;
             padding: 8px;
             border: none;
-            border-radius: var(--borderRadius);
             font-size: var(--cardFontSize);
             box-sizing: border-box;
             cursor: pointer;
@@ -2234,10 +2224,9 @@ class SoldierSearch {
             resultItem.style.cssText = `
                 padding: 8px;
                 margin: 2px 0;
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 4px;
+                background: var(--panelBg);
                 cursor: pointer;
-                border-left: 4px solid #${result.color.toString(16).padStart(6, '0')};
+                border-left: 2px solid #${result.color.toString(16).padStart(6, '0')};
                 transition: background-color 0.2s;
             `;
 
