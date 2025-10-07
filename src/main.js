@@ -7,12 +7,12 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x2c3e50);
 
-const camera = new THREE.PerspectiveCamera(
-  35,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  100000
-);
+  const camera = new THREE.PerspectiveCamera(
+    35,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    100000
+  );
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const canvas = document.getElementById('map');
@@ -38,6 +38,8 @@ composer.addPass(bloomPass);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
+controls.maxPolarAngle = Math.PI / 2.05;
+controls.minPolarAngle = 0;  
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -46,7 +48,7 @@ const textures = {
   water: null
 };
 
-const ISLAND_HEIGHT = .5; 
+const ISLAND_HEIGHT = .25; 
 
 let dateRange = {
   startDate: new Date(1982, 3, 2), 
@@ -102,7 +104,7 @@ const datasets = {
   },
   pna: {
     file: './data/fallecidosPNA.geojson',
-    color: 0xd447ff,
+    color: 0xff8800,
     name: 'Prefectura',
     group: new THREE.Group(),
     visible: true,
@@ -110,7 +112,7 @@ const datasets = {
   },
   pnc: {
     file: './data/fallecidosContinente.geojson',
-    color: 0xff8800,
+    color: 0xd447ff,
     name: 'Continente',
     group: new THREE.Group(),
     visible: true,
@@ -1027,6 +1029,9 @@ function createWaterPlane(bounds, group) {
   if (textures.water) {
     waterMaterial = new THREE.MeshLambertMaterial({
       map: textures.water,
+      polygonOffset: true,
+      polygonOffsetFactor: 1,
+      polygonOffsetUnits: 1,
       transparent: true,
       opacity: 0.7,
       side: THREE.DoubleSide
