@@ -33,7 +33,7 @@
     "evento": "Ataque al ARA Alférez Sobral",
     "descripcion": "Atacado por helicópteros Lynx con misiles Sea Skua",
     "bajas": 8,
-    "coordinates": [-60.542, -47.940]
+    "coordinates": [-59.5, -49.501]
   },
   {
     "tipo": "Ataque naval",
@@ -42,7 +42,7 @@
     "evento": "Ataque al ARA Isla de los Estados",
     "descripcion": "Hundido por fuego de la fragata HMS Alacrity",
     "bajas": 22,
-    "coordinates": [-59.633, -51.700]
+    "coordinates": [-59.48448226, -51.76867493]
   },
   {
     "tipo": "Batalla",
@@ -51,7 +51,16 @@
     "evento": "Combate de Pradera del Ganso",
     "descripcion": "Captura de Pradera del Ganso y Darwin por 2 Para",
     "bajas": 45,
-    "coordinates": [-58.483, -51.800]
+    "coordinates": [-58.9731, -51.8274]
+  },
+  {
+    "tipo": "Batalla",
+    "fechaInicio": "28/05/1982",
+    "fechaFin": "29/05/1982",
+    "evento": "Desembarco en Bluff Cave Peak",
+    "descripcion": "Operación de desembarco para la toma de Monte Kent",
+    "bajas": 2,
+    "coordinates": [-58.1802313, -51.748286]
   },
   {
     "tipo": "Operación",
@@ -60,7 +69,7 @@
     "evento": "Combate de Top Malo House",
     "descripcion": "Asalto SAS/Royal Marines en Top Malo House",
     "bajas": 2,
-    "coordinates": [-58.418, -51.713]
+    "coordinates": [-58.4500, -51.6167]
   },
   {
     "tipo": "Batalla",
@@ -69,7 +78,7 @@
     "evento": "Batalla de Monte Harriet",
     "descripcion": "Asalto nocturno de 42 Commando RM a Monte Harriet",
     "bajas": 18,
-    "coordinates": [-58.273, -51.700]
+    "coordinates": [-58.0000, -51.7167]
   },
   {
     "tipo": "Batalla",
@@ -78,7 +87,7 @@
     "evento": "Batalla de Monte Longdon",
     "descripcion": "Conquista de Monte Longdon por 3 Para",
     "bajas": 31,
-    "coordinates": [-58.325, -51.733]
+    "coordinates": [-57.9819, -51.6710]
   },
   {
     "tipo": "Batalla",
@@ -87,7 +96,7 @@
     "evento": "Batalla de Dos Hermanas",
     "descripcion": "Toma de Dos Hermanas por 45 Commando RM",
     "bajas": 20,
-    "coordinates": [-58.300, -51.717]
+    "coordinates": [-58.0342, -51.6906]
   },
   {
     "tipo": "Batalla",
@@ -96,7 +105,7 @@
     "evento": "Combates aislados en Monte Tumbledown",
     "descripcion": "Ofensiva para expulsar fuerzas argentinas de Monte Tumbledown",
     "bajas": 30,
-    "coordinates": [-57.95759996, -51.69707833]                  
+    "coordinates": [-57.9575, -51.6992]                  
   },
   {
     "tipo": "Incidente aéreo",
@@ -105,7 +114,7 @@
     "evento": "Derribo del Learjet T-24",
     "descripcion": "Learjet T-24 derribado por misil Sea Dart",
     "bajas": 2,
-    "coordinates": [-57.800, -51.700]
+    "coordinates": [-59.219887537327025, -51.55332132326152]
   },
   {
     "tipo": "Incidente aéreo",

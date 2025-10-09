@@ -2086,8 +2086,7 @@ class SoldierSearch {
     }
     
     setupSearchUI() {
-        const searchContainer = document.createElement('div');
-        searchContainer.id = 'soldier-search-container';
+        const searchContainer = document.getElementById('soldier-search-container');
         searchContainer.style.cssText = `
             position: absolute;
             left: calc(var(--bodyPadding));
@@ -2096,7 +2095,7 @@ class SoldierSearch {
             padding: var(--cardPadding);
             color: white;
             font-family: 'Rajdhani';
-            z-index: 2;
+            z-index: 1;
             width: var(--cardWidth);
             display: flex;
             flex-direction: column;
@@ -2170,7 +2169,7 @@ class SoldierSearch {
         searchContainer.appendChild(filterStats);
         searchContainer.appendChild(searchStats);
         searchContainer.appendChild(resultsContainer);
-        document.body.appendChild(searchContainer);
+        // document.body.appendChild(searchContainer);
 
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {

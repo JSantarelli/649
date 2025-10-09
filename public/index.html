@@ -9,36 +9,45 @@
 </head> 
 <body class="container">
 
-    <span class="modal" id="myModal">
-        <div class="modal__overlay"></div>
-        <div class="modal__content">
-          <header class="modal__header">
-            <h2 class="modal__title text__color--primary">Acerca del proyecto</h2>
-            <button size="md" class="btn__link--primary" id="closeModal">
-                <a href="">×</a>
-            </button>
-          </header>
-          <div class="modal__body">
-            <p>Este proyecto propone visibilizar la problemática de la pobreza a través de la alteración visual de un símbolo nacional tan poderoso y reconocible como nuestra bandera. Pretende a su vez, ser un llamado a la reflexión sobre las desigualdades que afectan a millones de argentinos.</p>
-          </div>
+    <section class="modal" id="myModal">
+      <div class="modal__overlay"></div>
+      <div class="modal__content">
+        <header class="modal__header">
+          <button size="md" class="card__icon--close fa fa-times" id="closeModal"></button>
+          <h2 class="modal__title text__color--primary">Idea fuerza</h2>
+        </header>
+        <div class="modal__body">
+          <p>
+            ...las bajas primero son números...<br>
+            ...después son números con nombre y apellido...<br>
+            ...luego son bajas conocidas...<br>
+            ...y por último, son bajas conocidas y queridas...<br>
+          </p>
         </div>
-    </span>
+        <footer class="modal__footer">
+          <p>
+            <b>Andrés Ferrero</b><br>
+            Jefe de la 3ra Sección<br>
+            <i>Compañia de Comandos 602</i>
+          </p>
+        </footer>
+      </div>
+    </section>
+
 
   <section id="map">
     <span class="overlay"></span>
 
-    <!-- Main UI Panel -->
   <div class="title__wrapper" id="main-ui">
     <span class="ui__prefix">Gesta de Malvinas</span>
     <h1 class="ui__title">649 Héroes</h1>
     <p class="">Quiénes, dónde y qué edad tenían  nuestros caídos en Malvinas.</p>
   </div>
 
-   <!-- Fuerzas -->
    <div class="info__panel">
      <i class="fa fa-question-circle"></i>
      <article class="panel__wrapper">
-       <h5 class="panel__title">Cómo navegar</h5>
+       <h5 class="panel__title">Info</h5>
        <small>La altura de los cilíndros representa la edad de los combatientes.</small>
       <br>
        <small class="">
@@ -48,13 +57,14 @@
        </small> 
       </article>
     </div>
+
+        <div id="soldier-search-container"></div>
+
     
     <section class="dataset__panel">
-      <h3 class="ui__subtitle">Fuerza en combate</h3>
+      <h3 class="ui__subtitle">Fuerzas en combate</h3>
 
-      <!-- Armada -->
         <div class="dataset__wrapper armada" data-key="armada">
-          <!-- <i class="fa fa-ship"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
             <div class="dataset__title">Armada</div>
@@ -70,7 +80,6 @@
             </div>
         </div>
        <div class="dataset__wrapper ea" data-key="ea">
-        <!-- <i class="fa fa-shield-alt"></i> -->
          <div class="progress-container">
           <span class="dataset__footer">
             <div class="dataset__title">Ejército Argentino</div>
@@ -87,7 +96,6 @@
         </div>
 
         <div class="dataset__wrapper ffa" data-key="ffa">
-          <!-- <i class="fa fa-plane"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
             <div class="dataset__title">Fuerza Aérea</div>
@@ -104,7 +112,6 @@
         </div>
 
         <div class="dataset__wrapper gna" data-key="gna">
-          <!-- <i class="fa fa-user-shield"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
             <div class="dataset__title">Gendarmería</div>
@@ -121,7 +128,6 @@
         </div>
 
         <div class="dataset__wrapper pna" data-key="pna">
-          <!-- <i class="fa fa-user"></i> -->
           <div class="progress-container">
           <span class="dataset__footer">
             <div class="dataset__title">Prefectura</div>
@@ -138,7 +144,6 @@
         </div>
 
         <div class="dataset__wrapper pnc" data-key="pnc">
-          <!-- <i class="fa fa-shield-alt"></i> -->
           <div class="progress-container">
             <span class="dataset__footer">
               <div class="dataset__title">Continente</div>
@@ -154,10 +159,8 @@
         </div>
       </section>
 
-
-    <section class="panel__floating--bottom">
+      <section class="panel__floating--bottom">
               
-    <!-- Eventos  -->
     <div id="events-panel">
       <div class="events-no-data">Cargando eventos...</div>
     </div>
@@ -177,7 +180,6 @@
         </div>
     </template>
 
-    <!-- Fechas -->
     <section class="date__wrapper">
       <h3 class="ui__subtitle">Rango de fechas</h3>
       <div class="date-section"> 
@@ -218,7 +220,7 @@
     <nav>
       <ul class="footer__nav">
         <li id="openModal" class="footer__item">
-          <i class="footer__item--link fa fa-info-circle"></i>  Acerca del proyecto</li>
+          <i class="footer__item--link fa fa-info-circle"></i>Acerca del proyecto</li>
         <li class="footer__item">
           <a href="https://facebook.com" target="_blank"><i class="footer__item--link fa fa-share-alt"></i></a> Compartir</li>
       </ul>
@@ -226,7 +228,7 @@
     <div class="footer__nav">
       <p>Contar con Datos 2025  |  <b>Fuente: </b> 
         <cite>
-          <a class="footer__item--link" href="https://www.bienestar.mil.ar/" target="_blank" rel="noopener noreferrer">
+          <a class="footer__item--link" href="https://www.bienestar.mil.ar/" target="_blank">
             Dirección de Bienestar
           </a>
         </cite>
