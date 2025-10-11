@@ -72,7 +72,7 @@ let ageTracker = {
 const datasets = {
   armada: {
     file: './data/fallecidosArmada.geojson',
-    color: 0x0066cc,
+    color: 0x0088ff,
     name: 'Armada',
     group: new THREE.Group(),
     visible: true,
@@ -112,7 +112,7 @@ const datasets = {
   },
   pnc: {
     file: './data/fallecidosContinente.geojson',
-    color: 0xd447ff,
+    color: 0xff478d,
     name: 'Continente',
     group: new THREE.Group(),
     visible: true,
@@ -1023,7 +1023,7 @@ function createPolygonMesh(coordinates, bounds, group, id) {
 }
 
 function createWaterPlane(bounds, group) {
-  const waterGeometry = new THREE.PlaneGeometry(480, 480, 32, 32);
+  const waterGeometry = new THREE.PlaneGeometry(1600, 1600, 32, 32);
   
   let waterMaterial;
   if (textures.water) {
@@ -1422,23 +1422,19 @@ function onMouseMove(event, isClick = false) {
 function handleEventInteraction(intersectedObject, event, isClick) {
   
   if (isClick) {
-    // Reset previous clicked event ring if different
+    
     if (clickedEventRing && clickedEventRing !== intersectedObject) {
       clickedEventRing.material.opacity = 0.3;
     }
     
-    // Set new clicked event ring
     clickedEventRing = intersectedObject;
-    clickedEventRing.material.opacity = 0.6; // More visible when clicked
-    
-    // Show pinned tooltip
+    clickedEventRing.material.opacity = 0.6; 
     clickedEventTooltip = true;
     const evento = intersectedObject.userData.evento;
     showEventTooltip(evento, event, true);
     return;
   }
   
-  // If there's a pinned event tooltip, just update position
   if (clickedEventTooltip && clickedEventRing === intersectedObject) {
     if (tooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
@@ -1447,21 +1443,18 @@ function handleEventInteraction(intersectedObject, event, isClick) {
     return;
   }
   
-  // Handle hover state
   if (hoveredEventRing !== intersectedObject) {
-    // Reset previous hovered event ring
+    
     if (hoveredEventRing && hoveredEventRing !== clickedEventRing) {
       hoveredEventRing.material.opacity = 0.3;
     }
     
     hoveredEventRing = intersectedObject;
     
-    // Highlight hovered event ring (if not already clicked)
     if (hoveredEventRing !== clickedEventRing) {
       hoveredEventRing.material.opacity = 0.5;
     }
     
-    // Show hover tooltip if no pinned tooltip
     if (!clickedEventTooltip) {
       const evento = hoveredEventRing.userData.evento;
       showEventTooltip(evento, event, false);
@@ -1470,7 +1463,7 @@ function handleEventInteraction(intersectedObject, event, isClick) {
     document.body.style.cursor = 'pointer';
   }
   
-  // Update tooltip position on hover (if not pinned)
+  
   if (tooltip && !clickedEventTooltip) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1480,24 +1473,21 @@ function handleEventInteraction(intersectedObject, event, isClick) {
 function handleMarkerInteraction(intersectedObject, event, isClick) {
   
   if (isClick) {
-    // Reset previous clicked marker if different
+    
     if (clickedMarker && clickedMarker !== intersectedObject) {
       clickedMarker.material.opacity = 0.4;
       clickedMarker.material.emissiveIntensity = 2.5;
     }
     
-    // Set new clicked marker
     clickedMarker = intersectedObject;
     clickedMarker.material.opacity = 1.0;
     clickedMarker.material.emissiveIntensity = 3.5;
     
-    // Show pinned tooltip
     clickedTooltip = true;
     showTooltip(clickedMarker, event, true);
     return;
   }
   
-  // If there's a pinned tooltip, just update position
   if (clickedTooltip && clickedMarker === intersectedObject) {
     if (tooltip) {
       tooltip.style.left = (event.clientX + 15) + 'px';
@@ -1506,9 +1496,8 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     return;
   }
   
-  // Handle hover state
   if (hoveredMarker !== intersectedObject) {
-    // Reset previous hovered marker
+    
     if (hoveredMarker && hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 0.4;
       hoveredMarker.material.emissiveIntensity = 2.5;
@@ -1516,13 +1505,13 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     
     hoveredMarker = intersectedObject;
     
-    // Highlight hovered marker (if not already clicked)
+    
     if (hoveredMarker !== clickedMarker) {
       hoveredMarker.material.opacity = 1.0;
       hoveredMarker.material.emissiveIntensity = 3.5;
     }
     
-    // Show hover tooltip if no pinned tooltip
+    
     if (!clickedTooltip) {
       showTooltip(hoveredMarker, event);
     }
@@ -1530,7 +1519,7 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
     document.body.style.cursor = 'pointer';
   }
   
-  // Update tooltip position on hover (if not pinned)
+  
   if (tooltip && !clickedTooltip) {
     tooltip.style.left = (event.clientX + 15) + 'px';
     tooltip.style.top = (event.clientY - 10) + 'px';
@@ -1538,35 +1527,23 @@ function handleMarkerInteraction(intersectedObject, event, isClick) {
 }
 
 function resetHoverStates() {
-  // Reset marker hover state
+  
   if (hoveredMarker && hoveredMarker !== clickedMarker) {
     hoveredMarker.material.opacity = 0.4;
     hoveredMarker.material.emissiveIntensity = 2.5;
     hoveredMarker = null;
   }
   
-  // Reset event ring hover state
   if (hoveredEventRing && hoveredEventRing !== clickedEventRing) {
     hoveredEventRing.material.opacity = 0.3;
     hoveredEventRing = null;
   }
   
-  // Hide tooltip if not pinned
   if (!clickedTooltip && !clickedEventTooltip && tooltip) {
     tooltip.style.display = 'none';
   }
   
   document.body.style.cursor = 'default';
-}
-
-function highlightEventGroup(eventGroup, isClicked) {
-  if (!eventGroup || !eventGroup.userData.materials) return;
-  
-  const [circleMaterial, glowMaterial] = eventGroup.userData.materials;
-  const multiplier = isClicked ? 1.5 : 1.2;
-  
-  circleMaterial.opacity = eventGroup.userData.originalOpacity * multiplier;
-  glowMaterial.opacity = eventGroup.userData.glowOpacity * multiplier;
 }
 
 function resetEventHighlight(eventGroup) {
@@ -1580,13 +1557,11 @@ function resetEventHighlight(eventGroup) {
 
 function getEventIcon(tipo) {
   const iconMap = {
-    'Batalla': 'fa fa-crossed-swords',
-    'Operación': 'fa fa-chess-knight',
+    'Batalla': 'fa fa-shield-alt',
+    'Operación': 'fa fa-binoculars',
     'Ataque aéreo': 'fa fa-fighter-jet',
     'Ataque naval': 'fa fa-ship',
-    'Operación submarina': 'fa fa-submarine',
-    'Bombardeo': 'fa fa-bomb',
-    'Reconocimiento': 'fa fa-binoculars',
+    'Operación submarina': 'fa fa-ship',
     'Desembarco': 'fa fa-anchor'
   };
 
@@ -1597,6 +1572,8 @@ function showEventTooltip(evento, event, isPinned = false) {
   if (!tooltip) return;
   
   const formattedDate = formatDateForDisplay(parseDate(evento.fechaInicio));
+  const formattedEndDate = formatDateForDisplay(parseDate(evento.fechaInicio));
+  const showEndDate = evento.fechaInicio !== evento.fechaFin;
   const eventIcon = getEventIcon(evento.tipo);
   
   tooltip.innerHTML = `
@@ -1608,7 +1585,8 @@ function showEventTooltip(evento, event, isPinned = false) {
               <strong class="card__title">${evento.evento}</strong>
             </header>
             <p class="card__subtitle">${evento.descripcion}</p>
-            <small><strong>Fecha:</strong> ${formattedDate}</small>
+            <small><strong>Fecha de inicio:</strong> ${formattedDate}</small>
+            ${showEndDate ? `<small><strong>Fecha de fin:</strong> ${formattedEndDate}</small>` : ''}
             <small><strong>Bajas:</strong> ${evento.bajas}</small>
         </article>
             ${isPinned ? '<button class="card__icon--close" onclick="dismissEventTooltip()">&times</button>' : ''}
@@ -1637,7 +1615,7 @@ function showTooltip(marker, event, isPinned = false) {
   const name = userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
   const fNac = userData.F_Nac || 'Sin fecha';
   const fDeceso = userData.F_Deceso || 'Sin fecha';
-  const LDeceso = userData.L_Deceso || 'Lugar no esepcificaad';
+  const LDeceso = userData.L_Deceso || 'Lugar no esepcificado';
   const Escalafon = userData.Escalafon || 'Sin escalafón';
   const LNac = userData.L_Nac || 'Lugar no esepcificaado';
   const img = userData.Foto || 'https://static.vecteezy.com/system/resources/previews/050/562/695/non_2x/soldier-helmet-with-head-icon-silhouette-on-white-background-vector.jpg';
@@ -1718,9 +1696,9 @@ function onClick(event) {
   if (intersects.length > 0) {
     const intersectedObject = intersects[0].object;
     
-    // Handle event ring click
+    
     if (intersectedObject.userData.isEventHighlight) {
-      // Dismiss any pinned marker tooltip first
+      
       if (clickedMarker) {
         clickedMarker.material.opacity = 0.4;
         clickedMarker.material.emissiveIntensity = 2.5;
@@ -1730,9 +1708,9 @@ function onClick(event) {
       
       handleEventInteraction(intersectedObject, event, true);
     }
-    // Handle marker click
+    
     else {
-      // Dismiss any pinned event tooltip first
+      
       if (clickedEventRing) {
         clickedEventRing.material.opacity = 0.3;
         clickedEventRing = null;
@@ -1743,7 +1721,7 @@ function onClick(event) {
     }
     
   } else {
-    // Clicked on empty space - dismiss both
+    
     dismissEventTooltip();
     dismissTooltip();
   }
@@ -1753,14 +1731,14 @@ function onClick(event) {
 function dismissEventTooltip() {
   clickedEventTooltip = false;
   
-  // Reset the clicked event ring visual state if exists
+  
   if (clickedEventRing) {
-    // Reset to default state (you may want to adjust these values)
+    
     clickedEventRing.material.opacity = 0.3;
     clickedEventRing = null;
   }
   
-  // Hide tooltip and reset styling
+  
   if (tooltip) {
     tooltip.style.display = 'none';
     tooltip.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
@@ -1878,17 +1856,17 @@ class SoldierSearch {
         
         console.log(`Filter applied: ${shownCount} markers shown, ${hiddenCount} markers hidden`);
         
-        // Clear search input when filtering by birthplace
+        
         const searchInput = document.getElementById('soldier-search-input');
         if (searchInput) {
             searchInput.value = '';
         }
         
-        // List all soldiers from the selected birthplace
+        
         if (birthPlace) {
             this.listSoldiersByBirthPlace(birthPlace);
         } else {
-            // Clear results when showing all places
+            
             this.updateSearchResults([], '');
         }
         
@@ -2169,7 +2147,7 @@ class SoldierSearch {
         searchContainer.appendChild(filterStats);
         searchContainer.appendChild(searchStats);
         searchContainer.appendChild(resultsContainer);
-        // document.body.appendChild(searchContainer);
+        
 
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
