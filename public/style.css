@@ -10,13 +10,13 @@
   --panelHeight: 20vh;
   --panelBg: rgba(0, 0, 0, 0.25);
   --panelHover: rgba(255, 255, 255, 0.2);
-  --panelPrefix: 12px;
+  --panelPrefix: 10px;
   --panelSubfix: 12px;
   --borderRadius: 6px;
   --cardPadding: 12px;
   --cardWidth: 280px;
   --cardFontSize: 14px;
-  --cardTitleSize: 14px;
+  --cardTitleSize: 16px;
   --cardGap: 6px;
   --iconColor: red;
   --containerGap: 24px;
@@ -27,7 +27,7 @@
   --ffa: #00FFFF;
   --gna: #ffd700;
   --pna: #ff8800;
-  --pnc: #ff478d;
+  --pnc: #7d31c0;
   --primary: lightgray;
   --primaryLight: #0ABEBB;
   --primaryDark: #164E63;
@@ -141,7 +141,7 @@ body.container {
   font-weight: bolder;
 }
 .panel__floating--bottom .kpi__subtitle {
-  font-size: 14px;
+  font-size: var(--cardFontSize);
   text-transform: uppercase;
 }
 .panel__floating--bottom .kpi__body {
@@ -205,11 +205,42 @@ body.container {
   flex-direction: row;
   gap: var(--cardGap);
 }
+.card__wrapper.armada {
+  --fuerza: var(--armada);
+}
+.card__wrapper.ea {
+  --fuerza: var(--ea);
+}
+.card__wrapper.ea .card__badge {
+  color: black !important;
+}
+.card__wrapper.ffa {
+  --fuerza: var(--ffa);
+}
+.card__wrapper.ffa .card__badge {
+  color: black !important;
+}
+.card__wrapper.gna {
+  --fuerza: var(--gna);
+}
+.card__wrapper.gna .card__badge {
+  color: black !important;
+}
+.card__wrapper.pna {
+  --fuerza: var(--pna);
+}
+.card__wrapper.pna .card__badge {
+  color: black !important;
+}
+.card__wrapper.pnc {
+  --fuerza: var(--pnc);
+}
 .card__wrapper .card__img {
   width: 48px;
   height: 48px;
   object-fit: cover;
   border-radius: 50%;
+  border: solid 2px var(--fuerza);
 }
 .card__wrapper .card__icon {
   display: flex;
@@ -226,6 +257,11 @@ body.container {
   font-size: var(--panelPrefix);
   font-weight: 500;
   text-transform: uppercase;
+  width: fit-content;
+}
+.card__wrapper .card__badge:first-child {
+  background-color: var(--fuerza, red);
+  padding: 2px 4px;
 }
 .card__wrapper .card__badge--row {
   display: flex;
@@ -241,6 +277,7 @@ body.container {
   font-size: var(--cardTitleSize);
   font-weight: bolder;
   text-transform: uppercase;
+  margin-top: var(--cardGap);
 }
 .card__wrapper button.card__icon--close {
   border: solid 2px white;
@@ -260,9 +297,10 @@ body.container {
 .card__wrapper .card__body {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 .card__wrapper .card__body .card__subtitle {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: lighter;
 }
 .card__wrapper .card__body .card__text {
@@ -347,7 +385,7 @@ label.input__label {
   border-left: 2px solid var(--pnc);
 }
 .dataset__panel .dataset__wrapper .dataset__title {
-  font-size: var(--cardTitleSize);
+  font-size: var(--cardFontSize);
   font-weight: 500;
   text-transform: uppercase;
 }
@@ -470,24 +508,6 @@ label.input__label {
   margin-right: 10px;
   transform: scale(1.2);
 }
-.dataset__panel .dataset__prefix.armada {
-  color: #0066cc;
-}
-.dataset__panel .dataset__prefix.ea {
-  color: #00ff66;
-}
-.dataset__panel .dataset__prefix.ffa {
-  color: #00ffff;
-}
-.dataset__panel .dataset__prefix.gna {
-  color: #ffd700;
-}
-.dataset__panel .dataset__prefix.pna {
-  color: #ff6347;
-}
-.dataset__panel .dataset__prefix.pnc {
-  color: #634eff;
-}
 
 .event-icon {
   position: fixed;
@@ -522,6 +542,9 @@ label.input__label {
 }
 #events-panel .card__wrapper.active .card__icon {
   --iconColor: black;
+}
+#events-panel .card__wrapper.active .card__badge:first-child {
+  background-color: black !important;
 }
 
 #cover {

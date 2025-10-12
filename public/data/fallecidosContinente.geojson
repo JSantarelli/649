@@ -26,7 +26,7 @@
       "id": "Fallecidos.2",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.55, -46.45]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -46,7 +46,7 @@
       "id": "Fallecidos.3",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.50, -46.47]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -66,7 +66,7 @@
       "id": "Fallecidos.4",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.53, -46.42]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -86,7 +86,7 @@
       "id": "Fallecidos.5",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.57, -46.40]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -106,7 +106,7 @@
       "id": "Fallecidos.6",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.57, -46.49]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -126,7 +126,7 @@
       "id": "Fallecidos.7",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.51, -46.41]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -146,7 +146,7 @@
       "id": "Fallecidos.8",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.5621, -46.4933]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -166,7 +166,7 @@
       "id": "Fallecidos.9",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.5498, -46.5102]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -186,7 +186,7 @@
       "id": "Fallecidos.10",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.4816, -45.8647]
+        "coordinates": [-67.5816, -46.5435]
       },
       "geometry_name": "the_geom",
       "properties": {
@@ -206,7 +206,7 @@
       "id": "Fallecidos.11",
       "geometry": {
         "type": "Point",
-        "coordinates": [-67.5216, -46.4393]
+        "coordinates": [-67.59, -46.39]
       },
       "geometry_name": "the_geom",
       "properties": {

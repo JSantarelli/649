@@ -12,14 +12,14 @@
     --panelHeight: 20vh;
     --panelBg: rgba(0, 0, 0, 0.25);
     --panelHover: rgba(255, 255, 255, 0.2);
-    --panelPrefix: 12px;
+    --panelPrefix: 10px;
     --panelSubfix: 12px;
     --borderRadius: 6px;
 
     --cardPadding: 12px;
     --cardWidth: 280px;
     --cardFontSize: 14px;
-    --cardTitleSize: 14px;
+    --cardTitleSize: 16px;
     --cardGap: 6px;
     --iconColor: red;
     --containerGap: 24px;
@@ -31,7 +31,7 @@
     --ffa: #00FFFF;
     --gna: #ffd700;
     --pna: #ff8800;
-    --pnc: #ff478d;
+    --pnc: #7d31c0;
 
     --primary: lightgray;
     --primaryLight: #0ABEBB;
@@ -161,10 +161,8 @@ body.container {
             align-items: flex-start;
             justify-content: flex-start;
             gap: var(--cardGap);
-            // font-family: 'Rajdhani';
             text-align: left;
             color: white;
-            // padding: var(--cardPadding);
     
             &__title {
                 font-size: 36px;
@@ -173,7 +171,7 @@ body.container {
             }
     
             &__subtitle {
-                font-size: 14px;
+                font-size: var(--cardFontSize);
                 text-transform: uppercase;
             }
     
@@ -246,13 +244,54 @@ body.container {
             flex-direction: row;
             gap: var(--cardGap);
 
+            &.armada {
+                --fuerza: var(--armada);
+            }
+
+            &.ea {
+                --fuerza: var(--ea);
+
+                .card__badge {
+                    color: black!important;
+                }
+            }
+
+            &.ffa {
+                --fuerza: var(--ffa);
+
+                .card__badge {
+                    color: black!important;
+                }
+            }
+
+            &.gna {
+                --fuerza: var(--gna);
+
+                .card__badge {
+                    color: black!important;
+                }
+            }
+
+            &.pna {
+                --fuerza: var(--pna);
+
+                .card__badge {
+                    color: black!important;
+                }
+            }
+
+            &.pnc {
+                --fuerza: var(--pnc);
+            }
+
             .card__img {
                 width: 48px;
                 height: 48px;
                 object-fit: cover;
                 border-radius: 50%;
+                border: solid 2px var(--fuerza);
             }
-
+            
             .card__icon {
                 display: flex;
                 justify-content: center;
@@ -268,8 +307,14 @@ body.container {
             .card__badge {
                 font-size: var(--panelPrefix);
                 font-weight: 500;
-                text-transform: uppercase; 
-
+                text-transform: uppercase;
+                width: fit-content;
+                
+                &:first-child {
+                    background-color: var(--fuerza, red);
+                    padding: 2px 4px;
+                }
+                
                 &--row {
                     display: flex;
                     flex-direction: row;
@@ -286,8 +331,8 @@ body.container {
                     font-size: var(--cardTitleSize);
                     font-weight: bolder;
                     text-transform: uppercase;
+                    margin-top: var(--cardGap);
                 }
-
             }
 
             button.card__icon--close {
@@ -310,9 +355,10 @@ body.container {
             .card__body {
                 display: flex;
                 flex-direction: column;
+                flex: 1;
                 
                 .card__subtitle {
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: lighter;
                 }
                 
@@ -413,7 +459,7 @@ body.container {
             }
 
             .dataset__title {
-                font-size: var(--cardTitleSize);
+                font-size: var(--cardFontSize);
                 font-weight: 500;
                 text-transform: uppercase;  
                 
@@ -568,30 +614,6 @@ body.container {
             margin-right: 10px;
             transform: scale(1.2);
         }
-
-        .dataset__prefix.armada {
-            color: #0066cc;
-        }
-
-        .dataset__prefix.ea {
-            color: #00ff66;
-        }
-
-        .dataset__prefix.ffa {
-            color: #00ffff;
-        }
-
-        .dataset__prefix.gna {
-            color: #ffd700;
-        }
-
-        .dataset__prefix.pna {
-            color: #ff6347;
-        }
-
-        .dataset__prefix.pnc {
-            color: #634eff;
-        }
     }
 
     .event-icon {
@@ -628,6 +650,10 @@ body.container {
                 
                 .card__icon {
                     --iconColor: black;
+                }
+
+                .card__badge:first-child {
+                    background-color: black!important;
                 }
             }
         }

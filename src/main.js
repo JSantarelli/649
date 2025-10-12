@@ -112,7 +112,7 @@ const datasets = {
   },
   pnc: {
     file: './data/fallecidosContinente.geojson',
-    color: 0xff478d,
+    color: 0x7d31c0,
     name: 'Continente',
     group: new THREE.Group(),
     visible: true,
@@ -420,7 +420,13 @@ function updateEventsPanel() {
   
   sortedEvents.forEach(evento => {
     const eventElement = template.content.cloneNode(true);
-    
+
+    const eventIcon = getEventIcon(evento.tipo);
+    const iconElement = eventElement.querySelector('.card__icon');
+    if (iconElement) {
+      iconElement.className = `card__icon ${eventIcon}`;
+    }
+        
     eventElement.querySelector('.event-date').textContent = formatDateForDisplay(parseDate(evento.fechaInicio));
     eventElement.querySelector('.event-title').textContent = evento.evento;
     eventElement.querySelector('.event-type').textContent = `${evento.tipo}`;
@@ -430,8 +436,6 @@ function updateEventsPanel() {
       eventItem.addEventListener('click', () => {
         
         const isCurrentlyActive = eventItem.classList.contains('active');
-        
-        
         const allEventItems = eventsContainer.querySelectorAll('.event-item');
         allEventItems.forEach(item => item.classList.remove('active'));
         
@@ -481,7 +485,7 @@ function createEventHighlight(evento, pos) {
   let color = 0xff4444;
   let baseRadius = 1.5;
   
-  const casualtyMultiplier = Math.log10(evento.bajas + 1) + 1;
+  const casualtyMultiplier = Math.log10(evento.bajas + 1) + 0.25;
   const radius = baseRadius * casualtyMultiplier;
   
   const circleGeometry = new THREE.RingGeometry(radius * 0.8, radius, 32);
@@ -587,7 +591,6 @@ function clearEventHighlights() {
   eventHighlights = new THREE.Group();
   currentSelectedEvent = null;
   
-  
   hoveredEvent = null;
   clickedEventTooltip = false;
   clickedEvent = null;
@@ -663,25 +666,25 @@ function zoomToEvent(eventPos, evento) {
   let zoomDistance;
   switch (evento.tipo) {
     case 'Batalla':
-      zoomDistance = 8; 
+      zoomDistance = 12; 
       break;
     case 'Operación':
-      zoomDistance = 12; 
+      zoomDistance = 14; 
       break;
     case 'Ataque aéreo':
     case 'Ataque naval':
     case 'Operación submarina':
-      zoomDistance = 10; 
+      zoomDistance = 16; 
       break;
     default:
-      zoomDistance = 15; 
+      zoomDistance = 18; 
   }
   
   
   const targetPosition = new THREE.Vector3(
     eventPos.x,
     ISLAND_HEIGHT + zoomDistance,
-    -eventPos.y + zoomDistance * 0.7
+    -eventPos.y + zoomDistance * 2
   );
   
   const targetLookAt = new THREE.Vector3(
@@ -1599,7 +1602,7 @@ function showEventTooltip(evento, event, isPinned = false) {
   
   
   if (isPinned) {
-    tooltip.style.border = 'solid 1px red';
+    tooltip.style.border = 'solid 2px red';
     tooltip.style.boxShadow = '0 4px 12px rgba(255,68,68,0.3)';
     tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
   } else {
@@ -1619,27 +1622,35 @@ function showTooltip(marker, event, isPinned = false) {
   const Escalafon = userData.Escalafon || 'Sin escalafón';
   const LNac = userData.L_Nac || 'Lugar no esepcificaado';
   const img = userData.Foto || 'https://static.vecteezy.com/system/resources/previews/050/562/695/non_2x/soldier-helmet-with-head-icon-silhouette-on-white-background-vector.jpg';
-  const informe = userData.PDF;
+
+  const markerColor = marker.material.color.getHex();
+  const colorToClassMap = {
+    0x0088ff: 'armada',
+    0x00FF66: 'ea',
+    0x00FFFF: 'ffa',
+    0xffd700: 'gna',
+    0xff8800: 'pna',
+    0x7d31c0: 'pnc'
+  };
   
+  const datasetClass = colorToClassMap[markerColor] || '';
+
   if (tooltip) {
     tooltip.innerHTML = `
-      <div class="card__wrapper">
+      <div class="card__wrapper ${datasetClass}">
         <img src="${img}" class="card__img">
         <article class="card__body">
+          <span class="card__badge">${datasetClass}</span>
           <header class="card__header">
             <strong class="card__title">${name}</strong>
+            </header>
+            <p class="card__subtitle">${Escalafon} | ${age} años</p>
+            <small class="card__text"><b>Fecha de nac.:</b> ${fNac}</small>
+            <small class="card__text"><b>Fecha deceso:</b> ${fDeceso}</small>
+            <small class="card__text"><b>Lugar de nac.:</b> ${LNac}</small>
+            <small class="card__text"><b>Lugar de deceso:</b> ${LDeceso}</small>
+            </article>
             ${isPinned ? '<button class="card__icon--close" onclick="dismissTooltip()">&times</button>' : ''}
-          </header>
-          <p class="card__subtitle">Edad: ${age} años</p>
-          <small class="card__text">Nac: ${fNac} - Dec: ${fDeceso}</small>
-          <small class="card__text">Escalafón: ${Escalafon}</small>
-          <small class="card__text">Lugar de nacimiento: ${LNac}</small>
-          <small class="card__text">Lugar de defunción: ${LDeceso}</small>
-          <button> 
-            <a href="${informe}} target="_blank"></a>
-            Conocer más
-          </button>
-        </article>
       </div>
     `;
     tooltip.style.display = 'block';
@@ -1648,7 +1659,7 @@ function showTooltip(marker, event, isPinned = false) {
     
     
     if (isPinned) {
-      tooltip.style.border = 'solid 1px lightgrey';
+      tooltip.style.border = `solid 2px var(--${datasetClass})`;
       tooltip.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
       tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     } else {

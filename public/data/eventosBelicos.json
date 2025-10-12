@@ -18,6 +18,15 @@
     "coordinates": [-36.49539063666441, -54.28347683199378]
   },
   {
+    "tipo": "Accidente aéreo",
+    "fechaInicio": "30/04/1982",
+    "fechaFin": "30/04/1982",
+    "evento": "Explosión de helicóptero Bell UH-1H",
+    "descripcion": "Ocurrido durante misión de combate entre Caleta Olivia y Puerto Deseado",
+    "bajas": 9,
+    "coordinates": [-67.50, -46.47]
+  },
+  {
     "tipo": "Operación submarina",
     "fechaInicio": "02/05/1982",
     "fechaFin": "02/05/1982",
