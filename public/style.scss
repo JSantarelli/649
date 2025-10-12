@@ -9,7 +9,7 @@
     --panelPadding: 24px;
     --panelGap: 48px;
     --panelWidth: 180px;
-    --panelHeight: 20vh;
+    --panelHeight: 18vh;
     --panelBg: rgba(0, 0, 0, 0.25);
     --panelHover: rgba(255, 255, 255, 0.2);
     --panelPrefix: 10px;
@@ -223,7 +223,7 @@ body.container {
         &.fixed {
             position: fixed;
             width: var(--panelWidth);
-            transform: translateY(-50px);
+            transform: translateY(-36px);
         }
     }
 
@@ -632,6 +632,7 @@ body.container {
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         gap: var(--cardGap);
 
         .card__wrapper {
