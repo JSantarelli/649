@@ -9,6 +9,7 @@ yarn.lock
 # Build outputs
 build/
 out/
+dist/
 
 # Webpack specific
 .webpack/
