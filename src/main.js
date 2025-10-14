@@ -1632,6 +1632,9 @@ function showTooltip(marker, event, isPinned = false) {
     0xff8800: 'pna',
     0x7d31c0: 'pnc'
   };
+
+  const datasetKey = colorToClassMap[markerColor];
+  const dataset = datasets[datasetKey];
   
   const datasetClass = colorToClassMap[markerColor] || '';
 
@@ -1640,7 +1643,7 @@ function showTooltip(marker, event, isPinned = false) {
       <div class="card__wrapper ${datasetClass}">
         <img src="${img}" class="card__img">
         <article class="card__body">
-          <span class="card__badge">${datasetClass}</span>
+          <span class="card__badge">${dataset.name}</span>
           <header class="card__header">
             <strong class="card__title">${name}</strong>
             </header>

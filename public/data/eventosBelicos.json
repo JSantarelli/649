@@ -27,6 +27,15 @@
     "coordinates": [-67.50, -46.47]
   },
   {
+    "tipo": "Ataque aéreo",
+    "fechaInicio": "01/05/1982",
+    "fechaFin": "01/05/1982",
+    "evento": "Ataque a la Base Aérea Cóndor",
+    "descripcion": "Bombardeo rasante por parte de escuadrilla de aviones Sea Harrier",
+    "bajas": 8,
+    "coordinates": [-58.98250876478887, -51.81890074659655]
+  },
+  {
     "tipo": "Operación submarina",
     "fechaInicio": "02/05/1982",
     "fechaFin": "02/05/1982",
