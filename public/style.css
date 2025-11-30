@@ -76,12 +76,20 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 7 Free";
   font-style: normal;
   font-weight: 900;
   font-display: auto;
   src: url("./fonts/fa-solid-900.eot");
   src: url("./fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("./fonts/fa-solid-900.woff2") format("woff2"), url("./fonts/fa-solid-900.woff") format("woff"), url("./fonts/fa-solid-900.ttf") format("truetype"), url("./fonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+@font-face {
+  font-family: "Font Awesome 7 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: auto;
+  src: url("./fonts/fa-brands-400.eot");
+  src: url("./fonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("./fonts/fa-brands-400.woff2") format("woff2"), url("./fonts/fa-brands-400.woff") format("woff"), url("./fonts/fa-brands-400.ttf") format("truetype"), url("./fonts/fa-brands-400.svg#fontawesome") format("svg");
 }
 body.container {
   color: white;
@@ -104,7 +112,7 @@ body.container {
   position: absolute;
   pointer-events: none;
   z-index: 1;
-  background: linear-gradient(to top, rgb(1, 24, 30) 0%, rgba(1, 24, 30, 0.5) 25%, rgba(1, 24, 30, 0) 100%);
+  background: linear-gradient(to top, #01181e 0%, rgba(1, 24, 30, 0.5) 25%, rgba(1, 24, 30, 0) 100%);
 }
 
 .panel__floating--bottom {
@@ -673,6 +681,40 @@ label.input__label {
 .modal button.card__icon--close:hover {
   color: var(--neutral);
   cursor: pointer;
+}
+
+.share-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.share-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 2px var(--secondaryLight);
+  background-color: transparent;
+  color: var(--secondaryLight);
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s, border 0.2s;
+}
+
+.share-link:hover {
+  transform: scale(1.1);
+  color: var(--success);
+  border: solid 2px var(--success);
+}
+
+.share-link i {
+  pointer-events: none;
 }
 
 .footer__wrapper {

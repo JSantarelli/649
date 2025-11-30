@@ -216,6 +216,51 @@
     "coordinates": [-58.43664940394249, -51.8236858132915]
   },
   {
+    "tipo": "Ataque aéreo",
+    "fechaInicio": "03/06/1982",
+    "fechaFin": "03/06/1982",
+    "evento": "Operación Black Buck VI",
+    "descripcion": "Ataque de avión Vulcan B.2 sobre radar de tiro Skyguard",
+    "bajas": 4,
+    "coordinates": [-57.87071629, -51.70114809]
+  },
+  {
+    "tipo": "Ataque aéreo",
+    "fechaInicio": "03/06/1982",
+    "fechaFin": "09/06/1982",
+    "evento": "Corredores Mte. Harriet - Dos Hermanas",
+    "descripcion": "Bajas en tareas de exploración durante avance británico",
+    "bajas": 11,
+    "coordinates": [-58.02612983, -51.69407098]
+  },
+  {
+    "tipo": "Operación",
+    "fechaInicio": "10/06/1982",
+    "fechaFin": "10/06/1982",
+    "evento": "Ataque al Reg. de Infantería 7",
+    "descripcion": "Incursión británica del batallón de Paracaidistas 2 y 3",
+    "bajas": 4,
+    "coordinates": [-57.92873343, -51.66236341]
+  },
+  {
+    "tipo": "Ataque aéreo",
+    "fechaInicio": "10/06/1982",
+    "fechaFin": "10/06/1982",
+    "evento": "Ataque aéreo a posiciones argentinas",
+    "descripcion": "Bombardeo a posición de tiradores de la Brigada de Infantería III",
+    "bajas": 4,
+    "coordinates": [-57.8656619, -51.69977762]
+  },
+  {
+    "tipo": "Batalla",
+    "fechaInicio": "10/06/1982",
+    "fechaFin": "10/06/1982",
+    "evento": "Emboscada Monte Dos Hermanas",
+    "descripcion": "Enfrentamiento entre el Compañía 602 y el SAS",
+    "bajas": 4,
+    "coordinates": [-58.028423592065074, -51.69022850938402]
+  },
+  {
     "tipo": "Batalla",
     "fechaInicio": "11/06/1982",
     "fechaFin": "12/06/1982",
@@ -246,10 +291,19 @@
     "tipo": "Batalla",
     "fechaInicio": "13/06/1982",
     "fechaFin": "14/06/1982",
-    "evento": "Combates aislados en Monte Tumbledown",
-    "descripcion": "Ofensiva para expulsar fuerzas argentinas de Monte Tumbledown",
+    "evento": "Combates en Monte Tumbledown",
+    "descripcion": "Ofensiva británica sobre Monte Tumbledown",
     "bajas": 30,
     "coordinates": [-57.9575, -51.6992]                  
+  },
+  {
+    "tipo": "Batalla",
+    "fechaInicio": "14/06/1982",
+    "fechaFin": "14/06/1982",
+    "evento": "Combates en Mte. Williams y Sapper Hill",
+    "descripcion": "últimas operaciones británicas cercanas a Puerto Argentino",
+    "bajas": 6,
+    "coordinates": [-57.94293755, -51.7094315]                  
   },
   {
     "tipo": "Ataque naval",

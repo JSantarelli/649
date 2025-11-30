@@ -141,14 +141,8 @@ function convertISO8601ToDateString(isoString) {
   const iso8601Pattern = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{3})?(?:Z|[+-]\d{2}:\d{2})?)?$/;
   if (iso8601Pattern.test(isoString)) {
     try {
-      const date = new Date(isoString);
-      if (isNaN(date.getTime())) {
-        return isoString; 
-      }
-      
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = date.getFullYear();
+      const datePart = isoString.split('T')[0];
+      const [year, month, day] = datePart.split('-');
       
       return `${day}/${month}/${year}`;
     } catch (error) {

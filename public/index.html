@@ -37,6 +37,52 @@
       </div>
     </section>
 
+    <section class="modal" id="shareModal">
+      <div class="modal__overlay"></div>
+      <div class="modal__content">
+        <header class="modal__header">
+          <button size="md" class="card__icon--close fa fa-times" id="closeShareModal"></button>
+          <h2 class="modal__title text__color--primary">Compartir proyecto</h2>
+        </header>
+        <div class="modal__body">
+          <div class="share-links">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://jsantarelli.github.io/649/public/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="share-link"
+              aria-label="Compartir en Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://jsantarelli.github.io/649/public/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="share-link"
+              aria-label="Compartir en X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://jsantarelli.github.io/649/public/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="share-link"
+              aria-label="Compartir en LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?text=Explorá %22649 Héroes%22, el mapa interactivo sobre Malvinas: https://jsantarelli.github.io/649/public/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="share-link"
+              aria-label="Compartir en WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:?subject=Proyecto 649&body=https://jsantarelli.github.io/649/public/" 
+              class="share-link"
+              aria-label="Compartir por email">
+              <i class="fa fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <section id="map">
     <span class="overlay"></span>
@@ -224,8 +270,8 @@
       <ul class="footer__nav">
         <li id="openModal" class="footer__item">
           <i class="footer__item--link fa fa-info-circle"></i>Acerca del proyecto</li>
-        <li class="footer__item">
-          <a href="https://facebook.com" target="_blank"><i class="footer__item--link fa fa-share-alt"></i></a> Compartir</li>
+        <li id="openShareModal" class="footer__item">
+          <i class="footer__item--link fa fa-share-alt"></i>Compartir</li>
       </ul>
     </nav>
     <div class="footer__nav">

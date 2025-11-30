@@ -22,4 +22,28 @@
     });
   }
 
-  
+  // Social JS
+  const openShareModalButton = document.getElementById('openShareModal');
+  const closeShareModalButton = document.getElementById('closeShareModal');
+  const shareModal = document.getElementById('shareModal');
+  const shareOverlay = shareModal?.querySelector('.modal__overlay');
+
+  if (openShareModalButton && closeShareModalButton && shareModal && shareOverlay) {
+    openShareModalButton.addEventListener('click', () => {
+      shareModal.classList.add('modal--active');
+      document.body.style.overflow = 'hidden';
+      map.style.filter = 'blur(6px)';
+    });
+
+    closeShareModalButton.addEventListener('click', () => {
+      shareModal.classList.remove('modal--active');
+      document.body.style.overflow = '';
+      map.style.filter = '';
+    });
+
+    shareOverlay.addEventListener('click', () => {
+      shareModal.classList.remove('modal--active');
+      document.body.style.overflow = '';
+      map.style.filter = '';
+    });
+  }
