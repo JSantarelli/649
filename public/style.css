@@ -752,39 +752,36 @@ label.input__label {
   font-style: normal;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: portrait), (max-height: 768px) and (orientation: landscape) {
   body {
     margin: 0;
     padding: 0;
     overflow: hidden;
   }
-  body > *:not(.mobile-block-message) {
+  body .title__wrapper, body #soldier-search-container, body .dataset__panel, body .panel__floating--bottom {
+    transform: scale(0.5) !important;
+  }
+  body .title__wrapper {
+    left: -110px !important;
+    top: -14px !important;
+  }
+  body #soldier-search-container {
+    left: -60px !important;
+    top: 40px !important;
+  }
+  body .info__panel {
     display: none !important;
   }
-  body .mobile-block-message {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-    background: #f5f5f5;
+  body .dataset__panel {
+    top: -112px !important;
+    right: -34px !important;
   }
-  body .mobile-block-message h1 {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #333;
+  body .panel__floating--bottom {
+    left: -230px !important;
+    bottom: 0px !important;
   }
-  body .mobile-block-message p {
-    font-size: 16px;
-    color: #666;
-    max-width: 400px;
-  }
-}
-@media (min-width: 769px) {
-  .mobile-block-message {
-    display: none;
+  body footer.footer__wrapper {
+    font-size: 10px !important;
   }
 }
 

@@ -134,7 +134,7 @@
         "Escalafon": "SUBOFICIAL",
         "Grado": "CABO",
         "Grado_PM": "POST MORTEM",
-        "Nombre": "SEYRA, Fernando Luis",
+        "Nombre": "SIEYRA, Fernando Luis",
         "Unidad": "Ejército Argentino",
         "L_Deceso": "Caleta Olivia, Santa Cruz",
         "F_Deces": "1982-04-30T00:00:00Z",
@@ -197,7 +197,7 @@
         "Nombre": "MARCIAL, Jesús Artemio",
         "Unidad": "Ejército Argentino",
         "L_Deceso": "Comodoro Rivadavia",
-        "F_Deces": "1982-05-23T00:00:00Z",
+        "F_Deces": "1982-04-30T00:00:00Z",
         "Causa": "Accidente relacionado al conflicto"
       }
     },
@@ -297,7 +297,7 @@
         "Nombre": "CANTEROS, Aldo Rubén",
         "Unidad": "Ejército Argentino",
         "L_Deceso": "Tigre, Buenos Aires",
-        "F_Deces": "1982-06-15T00:00:00Z",
+        "F_Deces": "1982-06-14T00:00:00Z",
         "Causa": "Enfermedad"
       }
     }

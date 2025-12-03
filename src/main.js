@@ -56,7 +56,7 @@ let dateRange = {
   minDate: new Date(1982, 3, 2),
   maxDate: new Date(1982, 5, 14),
   currentStart: new Date(1982, 3, 2),
-  currentEnd: new Date(1982, 6, 8)
+  currentEnd: new Date(1982, 5, 14)
 };
 
 let globalBounds = null;
@@ -651,11 +651,6 @@ function highlightSpecificEvent(evento) {
 
 function zoomToEvent(eventPos, evento) {
   if (!camera || !controls) return;
-  
-  
-  const currentPosition = camera.position.clone();
-  const currentTarget = controls.target.clone();
-  
   
   let zoomDistance;
   switch (evento.tipo) {
@@ -1782,7 +1777,6 @@ class SoldierSearch {
         return userData.Nombre || userData.NOMBRE || userData.nombre || 'Sin nombre';
     }
     
-    
     getUniqueBirthPlaces() {
         const places = new Set();
         
@@ -1838,6 +1832,8 @@ class SoldierSearch {
             if (dataset.allMarkers && Array.isArray(dataset.allMarkers)) {
                 dataset.allMarkers.forEach(markerData => {
                     const marker = markerData.marker;
+                    const markerGlow = markerData.glowMarker;
+
                     
                     if (marker && marker.userData) {
                         const lNac = (marker.userData.L_Nac || '').trim();
@@ -1851,6 +1847,7 @@ class SoldierSearch {
                             shownCount++;
                         } else {
                             marker.visible = false;
+                            markerGlow.visible = false;
                             
                             if (window.scene && marker.parent === window.scene) {
                                 window.scene.remove(marker);
@@ -1880,7 +1877,6 @@ class SoldierSearch {
         
         this.updateFilterStats();
     }
-    
     
     listSoldiersByBirthPlace(birthPlace) {
         const results = [];
@@ -1935,7 +1931,6 @@ class SoldierSearch {
         this.updateSearchResults(results, birthPlace, true);
         return results;
     }
-    
     
     updateFilterStats() {
         const filterStats = document.getElementById('filter-stats');
@@ -2115,13 +2110,41 @@ class SoldierSearch {
         const birthPlaceDropdown = document.createElement('select');
         birthPlaceDropdown.id = 'birthplace-filter';
         birthPlaceDropdown.style.cssText = `
-            width: 100%;
             padding: 8px;
             border: none;
             font-size: var(--cardFontSize);
             box-sizing: border-box;
             cursor: pointer;
         `;
+
+        const clearButton = document.createElement('button');
+        clearButton.innerHTML = '×';
+        clearButton.style.cssText = `
+            width: 25px;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            color: gray;
+            position: absolute;
+            top: 107px;
+            left: 225px;        
+            display: none;    
+        `;
+
+        birthPlaceDropdown.addEventListener('change', () => {
+            clearButton.style.display = birthPlaceDropdown.value ? 'block' : 'none';
+        });
+
+        clearButton.addEventListener('click', () => {
+            birthPlaceDropdown.value = '';
+            clearButton.style.display = 'none';
+            birthPlaceDropdown.dispatchEvent(new Event('change'));
+        });
+
+        searchContainer.appendChild(birthPlaceDropdown);
+        searchContainer.appendChild(clearButton);
 
         this.populateBirthPlaceDropdown();
 
@@ -2156,7 +2179,6 @@ class SoldierSearch {
         searchContainer.appendChild(searchStats);
         searchContainer.appendChild(resultsContainer);
         
-
         let searchTimeout;
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);

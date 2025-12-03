@@ -5992,8 +5992,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -58.88948106,
-                    -51.78581867
+                    -57.931944444444,
+                    -51.670555555556
                 ]
             },
             "geometry_name": "the_geom",

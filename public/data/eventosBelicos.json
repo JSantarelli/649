@@ -21,9 +21,9 @@
     "tipo": "Accidente aéreo",
     "fechaInicio": "30/04/1982",
     "fechaFin": "30/04/1982",
-    "evento": "Explosión de helicóptero Bell UH-1H",
-    "descripcion": "Ocurrido durante misión de combate entre Caleta Olivia y Puerto Deseado",
-    "bajas": 9,
+    "evento": "Caída del helicóptero Bell UH-1H",
+    "descripcion": "Se precipitó al mar durante una misión entre Caleta Olivia y Puerto Deseado",
+    "bajas": 10,
     "coordinates": [-67.50, -46.47]
   },
   {
@@ -75,7 +75,7 @@
     "tipo": "Incidente",
     "fechaInicio": "09/05/1982",
     "fechaFin": "09/05/1982",
-    "evento": "Incendio de reufugio",
+    "evento": "Incendio de refugio",
     "descripcion": "Indendio de la cabaña abandonada donde se refugiaban soldados argentinos",
     "bajas": 3,
     "coordinates": [-60.11842892, -51.95028669]
@@ -166,7 +166,7 @@
     "fechaInicio": "26/05/1982",
     "fechaFin": "26/05/1982",
     "evento": "Bombardeo de Bahía Fox",
-    "descripcion": "Bombardeo naval británico desde ",
+    "descripcion": "Ataque naval británico desde la HMS Alacrity",
     "bajas": 1,
     "coordinates": [-60.087416527633415, -51.950974898194815]
   },
@@ -174,8 +174,8 @@
     "tipo": "Batalla",
     "fechaInicio": "28/05/1982",
     "fechaFin": "29/05/1982",
-    "evento": "Combate de Pradera del Ganso",
-    "descripcion": "Captura de Pradera del Ganso y Darwin por 2 Para",
+    "evento": "Batalla de Pradera del Ganso",
+    "descripcion": "Se enfrentan la Fuerza de Tareas «Mercedes» y el 2º Batallón de Paracaidistas",
     "bajas": 45,
     "coordinates": [-58.9731, -51.8274]
   },
@@ -210,7 +210,7 @@
     "tipo": "Ataque aéreo",
     "fechaInicio": "08/06/1982",
     "fechaFin": "08/06/1982",
-    "evento": "Ataque aéreo de bahía Agradable",
+    "evento": "Ataque aéreo de Bahía Agradable",
     "descripcion": "Interceptados y Derribados por una Patrulla Aérea de Combate",
     "bajas": 3,
     "coordinates": [-58.43664940394249, -51.8236858132915]
@@ -220,7 +220,7 @@
     "fechaInicio": "03/06/1982",
     "fechaFin": "03/06/1982",
     "evento": "Operación Black Buck VI",
-    "descripcion": "Ataque de avión Vulcan B.2 sobre radar de tiro Skyguard",
+    "descripcion": "Ataque de avión Vulcan B.2 al radar de tiro Skyguard",
     "bajas": 4,
     "coordinates": [-57.87071629, -51.70114809]
   },
@@ -228,7 +228,7 @@
     "tipo": "Ataque aéreo",
     "fechaInicio": "03/06/1982",
     "fechaFin": "09/06/1982",
-    "evento": "Corredores Mte. Harriet - Dos Hermanas",
+    "evento": "Combates aislados en Mte. Harriet y Dos Hermanas",
     "descripcion": "Bajas en tareas de exploración durante avance británico",
     "bajas": 11,
     "coordinates": [-58.02612983, -51.69407098]
@@ -255,8 +255,8 @@
     "tipo": "Batalla",
     "fechaInicio": "10/06/1982",
     "fechaFin": "10/06/1982",
-    "evento": "Emboscada Monte Dos Hermanas",
-    "descripcion": "Enfrentamiento entre el Compañía 602 y el SAS",
+    "evento": "Emboscada Mte. Dos Hermanas",
+    "descripcion": "Enfrentamiento entre la Compañía de Comandos 602 y fuerzas SAS",
     "bajas": 4,
     "coordinates": [-58.028423592065074, -51.69022850938402]
   },
@@ -264,17 +264,17 @@
     "tipo": "Batalla",
     "fechaInicio": "11/06/1982",
     "fechaFin": "12/06/1982",
-    "evento": "Batalla de Monte Harriet",
-    "descripcion": "Asalto nocturno de 42 Commando RM a Monte Harriet",
+    "evento": "Batalla de Mte. Harriet",
+    "descripcion": "Asalto nocturno del 42º Comando de Royal Marines británicos",
     "bajas": 18,
-    "coordinates": [-58.16454189992723, -51.66286810787282]
+    "coordinates": [-58.01073414, -51.70916448]
   },
   {
     "tipo": "Batalla",
     "fechaInicio": "11/06/1982",
     "fechaFin": "12/06/1982",
-    "evento": "Batalla de Monte Longdon",
-    "descripcion": "Enfrentamiento nocturno con victoria del 3 PARA británico",
+    "evento": "Batalla de Mte. Longdon",
+    "descripcion": "Enfrentamiento nocturno entre Reg. de Infantería 7 y el 3° Batallón de paracaidístas",
     "bajas": 31,
     "coordinates": [-57.96580633, -51.6743712]
   },
@@ -282,8 +282,8 @@
     "tipo": "Batalla",
     "fechaInicio": "11/06/1982",
     "fechaFin": "12/06/1982",
-    "evento": "Batalla de Dos Hermanas",
-    "descripcion": "Toma del cerro por 45 Commando Royal Marines",
+    "evento": "Batalla de Mte. Dos Hermanas",
+    "descripcion": "Enfrentamiento entre Compañía de Comandos 601 - 602 y el 45 Commando de Royal Marines",
     "bajas": 20,
     "coordinates": [-58.0342, -51.6906]
   },
@@ -291,8 +291,8 @@
     "tipo": "Batalla",
     "fechaInicio": "13/06/1982",
     "fechaFin": "14/06/1982",
-    "evento": "Combates en Monte Tumbledown",
-    "descripcion": "Ofensiva británica sobre Monte Tumbledown",
+    "evento": "Batalla de Mte. Tumbledown",
+    "descripcion": "Ofensiva británica a últimas posiciones argentinas (BIM 5)",
     "bajas": 30,
     "coordinates": [-57.9575, -51.6992]                  
   },
@@ -300,8 +300,8 @@
     "tipo": "Batalla",
     "fechaInicio": "14/06/1982",
     "fechaFin": "14/06/1982",
-    "evento": "Combates en Mte. Williams y Sapper Hill",
-    "descripcion": "últimas operaciones británicas cercanas a Puerto Argentino",
+    "evento": "Combates en Mte. William y Sapper Hill",
+    "descripcion": "Últimas operaciones británicas cercanas a Puerto Argentino",
     "bajas": 6,
     "coordinates": [-57.94293755, -51.7094315]                  
   },
@@ -311,7 +311,7 @@
     "fechaFin": "07/06/1982",
     "evento": "Derribo del Learjet T-24",
     "descripcion": "Learjet T-24 derribado por misil Sea Dart",
-    "bajas": 2,
+    "bajas": 5,
     "coordinates": [-59.219887537327025, -51.55332132326152]
   },
   {
