@@ -1,8 +1,8 @@
 # 649
 Mapa interactivo 3D
 
-# Instalar dependencias
+## Instalar dependencias
 npm i
 
-# Correr el proyecto
+## Correr el proyecto
 npm start
